@@ -1,0 +1,33 @@
+INSERT INTO produits 
+	(
+		id_produits,
+		nom,
+		prix,
+		categorie,
+        description
+	)
+VALUES
+('Ticket Cinéma Unité', 8.00,'Ticketterie','Votre ticket de cinéma, tarif avant réduction éventuelle. Valable 3 mois.'),
+('Ticket Cinéma 10 pièces', 60.00,'Ticketterie','Vos ticket de cinéma à -25%. Valable 3 mois.'),
+('Ticket Cinéma Mensuel', 30.00,'Ticketterie','Votre pass mensuel de cinéma, tarif avant réduction éventuelle.'),
+('PopCorn Nature 25cl',4.00,'Nourriture','Votre PopCorn tout chaud tout frais !'),
+('PopCorn Nature 50cl',6.00,'Nourriture','Votre PopCorn tout chaud tout frais !'),
+('PopCorn Nature 100cl',8.00,'Nourriture','Votre PopCorn tout chaud tout frais !'),
+('PopCorn Caramel 25cl',4.00,'Nourriture','Votre PopCorn tout chaud tout frais au Caramel !'),
+('PopCorn Caramel 50cl',6.00,'Nourriture','Votre PopCorn tout chaud tout frais au Caramel !'),
+('PopCorn Caramel 100cl',8.00,'Nourriture','Votre PopCorn tout chaud tout frais au Caramel !'),
+('PopCorn Salé 25cl',4.00,'Nourriture','Votre PopCorn tout chaud tout frais Salé !'),
+('PopCorn Salé 50cl',6.00,'Nourriture','Votre PopCorn tout chaud tout frais Salé !'),
+('PopCorn Salé 100cl',8.00,'Nourriture','Votre PopCorn tout chaud tout frais Salé !'),
+('PopCorn Caramel au Beurre Salé 25cl',5.00,'Nourriture','Votre PopCorn tout chaud tout frais ! Nouveau ! Caramel au Beurre Salé !!!'),
+('PopCorn Caramel au Beurre Salé 50cl',7.50,'Nourriture','Votre PopCorn tout chaud tout frais !  Nouveau ! Caramel au Beurre Salé !!!'),
+('PopCorn Caramel au Beurre Salé 100cl',10.00,'Nourriture','Votre PopCorn tout chaud tout frais ! Nouveau ! Caramel au Beurre Salé !!!'),
+('Coca Cola 25cl',1.00,'Boisson','Votre incontournable boisson Coca Cola!'),
+('Coca Cola 33cl',1.50,'Boisson','Votre incontournable boisson Coca Cola!'),
+('Coca Cola 50cl',2.00,'Boisson','Votre incontournable boisson Coca Cola!'),
+('Orangina 25cl',1.00,'Boisson','Votre incontournable boisson Orangina!'),
+('Orangina 33cl',1.50,'Boisson','Votre incontournable boisson Orangina!'),
+('Orangina 50cl',2.00,'Boisson','Votre incontournable boisson Orangina!'),
+('Schweppes 25cl',1.00,'Boisson','Votre incontournable boisson Schweppes!'),
+('Schweppes 33cl',1.50,'Boisson','Votre incontournable boisson Schweppes!'),
+('Schweppes 50cl',2.00,'Boisson','Votre incontournable boisson Schweppes!'),

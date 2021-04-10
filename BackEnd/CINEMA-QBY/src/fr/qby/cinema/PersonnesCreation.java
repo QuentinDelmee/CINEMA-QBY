@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Personnes {
+public class PersonnesCreation {
 
 	static String[] prenoms = { 
 			"Aaliyah",

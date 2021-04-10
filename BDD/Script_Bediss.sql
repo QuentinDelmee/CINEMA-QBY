@@ -14,11 +14,11 @@ CREATE TABLE personnes
 CREATE TABLE produits 
 	(
 		id_produits int NOT NULL AUTO_INCREMENT,
+		nom varchar (50),
 		prix decimal (6,2),
 		categorie varchar (50),
 		description text,
 		PRIMARY KEY (id_produits)
-		
 	);
 
 
