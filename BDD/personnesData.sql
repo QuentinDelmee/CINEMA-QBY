@@ -9999,4 +9999,5 @@ VALUES
 ('LANOE','Kate','2006-08-05','F','Saint-Brevin-les-Pins (44154)','LANOE.Kate@email44.fr'),
 ('GUILLOTEAU','Rokia','2017-12-31','H','Clisson (44043)','GUILLOTEAU.Rokia@email44.fr'),
 ('CHAUVET','Gabriela','1993-07-30','H','Les Sorinières (44198)','CHAUVET.Gabriela@email44.fr'),
-('CAILLON','Bradley','1984-07-25','H','Saint-Viaud (44192)','CAILLON.Bradley@email44.fr'),
+('CAILLON','Bradley','1984-07-25','H','Saint-Viaud (44192)','CAILLON.Bradley@email44.fr')
+;
