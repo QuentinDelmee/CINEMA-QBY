@@ -1,0 +1,12 @@
+INSERT INTO salles (id_salles,nom,etage,taille_ecran,nombre_de_place)
+VALUES
+(1,'Atlantis',0,'4K',256),
+(2,'Babylone',0,'4K',256),
+(3,'Carthage',0,'4K',128),
+(4,'Daedalus',1,'4K',256),
+(5,'Eristhem',1,'4K',128),
+(6,'Franborg',1,'4K',128),
+(7,'Gargantos',2,'4K',256),
+(8,'Hermetic',2,'4K',128),
+(9,'Istanbul',2,'2K',64),
+(10,'Jakarta',2'2K',64),
