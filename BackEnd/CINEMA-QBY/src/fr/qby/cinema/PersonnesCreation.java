@@ -3065,14 +3065,14 @@ public class PersonnesCreation {
 	static String[] sexes = {"H","F"} ;
 
 	LocalDate startDate = LocalDate.of(1970,1,1) ;
-	LocalDate endDate = LocalDate.now() ;
+	LocalDate endDate = LocalDate.of(2012,1,1) ;
 	long start = startDate.toEpochDay();
     long end = endDate.toEpochDay();
     
     static LocalDate randomDate()
     {
     	LocalDate startDate = LocalDate.of(1970,1,1) ;
-    	LocalDate endDate = LocalDate.now() ;
+    	LocalDate endDate = LocalDate.of(2012,1,1) ;
     	long start = startDate.toEpochDay();
         long end = endDate.toEpochDay();
         long randomEpochDay = ThreadLocalRandom.current().longs(start, end).findAny().getAsLong();
@@ -3081,7 +3081,7 @@ public class PersonnesCreation {
     
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		try(FileWriter fw = new FileWriter("C:\\Users\\Quentin\\Desktop\\Projet Fil Rouge\\BDD\\personnesData.sql", true);
+		try(FileWriter fw = new FileWriter("personnesData.sql", true);
 			    BufferedWriter bw = new BufferedWriter(fw);
 			    PrintWriter out = new PrintWriter(bw))
 			{
@@ -3089,7 +3089,7 @@ public class PersonnesCreation {
 				out.println("VALUES") ;
 				
 				Random rand = new Random() ;
-			    for(int i = 0 ; i < 10000 ; ++i )
+			    for(int i = 0 ; i < 1000 ; ++i )
 			    {	
 			    	String tempN = noms[rand.nextInt(noms.length)] ;
 			    	String tempP = prenoms[rand.nextInt(prenoms.length)] ;
