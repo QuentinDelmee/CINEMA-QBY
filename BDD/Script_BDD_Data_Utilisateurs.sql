@@ -1,4 +1,10 @@
-INSERT INTO personnes(nom,prenom,date_de_naissance,genre,adresse,e_mail)
+INSERT INTO utilisateurs
+    (
+        pseudo,
+		mdp,
+		id_personnes,	
+		id_nds
+    )
 VALUES
 ('Ryleegh','bm4RJzbKE8FCdefl',0,3),
 ('Emerton','X7Rk4Oib2xmppFpt',1,3),
