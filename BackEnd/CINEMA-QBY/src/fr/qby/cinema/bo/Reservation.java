@@ -3,6 +3,7 @@ package fr.qby.cinema.bo;
 import java.sql.Date;
 
 public class Reservation {
+	
 	private int id_reservation ;
 	private Utilisateurs id_users ;
 	private Places id_places ;

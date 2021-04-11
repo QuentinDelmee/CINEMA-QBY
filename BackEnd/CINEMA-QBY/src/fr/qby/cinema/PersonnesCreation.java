@@ -10,6 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class PersonnesCreation {
 
+	// Liste de prénoms
 	static String[] prenoms = { 
 			"Aaliyah",
 			"Aaron",
@@ -2649,6 +2650,7 @@ public class PersonnesCreation {
 			"Zyad"
 	} ;
 
+	// Liste de noms en 44
 	static String[] noms = {
 			"MOYON",
 			"HERVOUET",
@@ -2852,6 +2854,7 @@ public class PersonnesCreation {
 			"GAUDIN"	
 	};
 
+	// Liste des villes du 44
 	static String[] villes = {
 			"Abbaretz (44001)",
 			"Aigrefeuille-sur-Maine (44002)",
@@ -3062,13 +3065,13 @@ public class PersonnesCreation {
 			"La Grigonnais (44224)"
 	} ;
 			
+	// Liste des différents genres
 	static String[] sexes = {"H","F"} ;
 
-	LocalDate startDate = LocalDate.of(1970,1,1) ;
-	LocalDate endDate = LocalDate.of(2012,1,1) ;
-	long start = startDate.toEpochDay();
-    long end = endDate.toEpochDay();
-    
+   /**
+    * 
+    * @return retourne une date de naissance aléatoire entre 1970 et 2012 
+    */
     static LocalDate randomDate()
     {
     	LocalDate startDate = LocalDate.of(1970,1,1) ;
@@ -3080,26 +3083,35 @@ public class PersonnesCreation {
     }
     
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		// On essaie de créer ou ouvrir le fichier, le buffer sert à éviter de multiples accès au fichier.
 		try(FileWriter fw = new FileWriter("personnesData.sql", true);
 			    BufferedWriter bw = new BufferedWriter(fw);
 			    PrintWriter out = new PrintWriter(bw))
 			{
+				// On écrit dans le fichier à la suite de ce qui existe.
 				out.println("INSERT INTO personnes(nom,prenom,date_de_naissance,genre,adresse,e_mail)") ;
 				out.println("VALUES") ;
 				
 				Random rand = new Random() ;
+				// Dans cette boucle on crée de façon aléatoire 1000 personnes.
 			    for(int i = 0 ; i < 1000 ; ++i )
 			    {	
+			    	
+			    	// Noms et Prénoms aléatoires.
 			    	String tempN = noms[rand.nextInt(noms.length)] ;
 			    	String tempP = prenoms[rand.nextInt(prenoms.length)] ;
+			    	// Villes aléatoires.
+			    	String tempV = villes[rand.nextInt(villes.length)] ;
 			    	
 			    	String toWrite = "('"+tempN+"','"
 	    					+tempP+"','"
 	    					+randomDate().toString()+"','"
 	    					+sexes[rand.nextInt(sexes.length)]+"','"
-	    					+villes[rand.nextInt(villes.length)]+"','"
+	    					+tempV+"','"
 	    					+tempN+"."+tempP+"@email44.fr')," ;
+			    	
+			    	// On écrit le résultat dans le fichier !
 			    	out.println(toWrite) ;
 			    	System.out.println(toWrite);
 			    }
