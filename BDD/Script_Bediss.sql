@@ -1,45 +1,45 @@
-CREATE TABLE personnes 
+CREATE TABLE persons 
 	(
-		id_personnes int NOT NULL AUTO_INCREMENT,
-		nom varchar (50),
-		prenom varchar (50),
-		date_de_naissance date,
+		id_person int NOT NULL AUTO_INCREMENT,
+		family_name varchar (50),
+		first_name varchar (50),
+		birthdate date,
 		genre varchar (50),
-		adresse varchar (250),
+		city varchar (50),
 		e_mail varchar (50),
 		PRIMARY KEY  (id_personnes)
 	);
 
 
-CREATE TABLE produits 
+CREATE TABLE products 
 	(
-		id_produits int NOT NULL AUTO_INCREMENT,
-		nom varchar (50),
-		prix decimal (6,2),
-		categorie varchar (50),
-		description text,
-		PRIMARY KEY (id_produits)
+		id_product int NOT NULL AUTO_INCREMENT,
+		product_name varchar (50),
+		price decimal (6,2),
+		category varchar (50),
+		product_description text,
+		PRIMARY KEY (id_product)
 	);
 
 
-CREATE TABLE niveau_de_securite 
+CREATE TABLE security_level 
 	(
-		id_nds int NOT NULL AUTO_INCREMENT,
+		id_sl int NOT NULL AUTO_INCREMENT,
 		roles varchar (50),
-		PRIMARY KEY (id_nds)
+		PRIMARY KEY (id_sl)
 	
 	);
 
-CREATE TABLE utilisateurs 
+CREATE TABLE users 
 	(
-		id_users int NOT NULL AUTO_INCREMENT , 
+		id_user int NOT NULL AUTO_INCREMENT , 
 		pseudo varchar (50),
-		mdp varchar (50),
-		id_personnes int,	
-		id_nds int,
+		pwd varchar (50),
+		id_person int,	
+		id_sl int,
 		PRIMARY KEY (id_users),
-		FOREIGN KEY (id_personnes) REFERENCES personnes(id_personnes),
-		FOREIGN KEY (id_nds) REFERENCES niveau_de_securite(id_nds)
+		FOREIGN KEY (id_person) REFERENCES persons(id_person),
+		FOREIGN KEY (id_sl) REFERENCES security_level(id_sl)
 	);
 
 
