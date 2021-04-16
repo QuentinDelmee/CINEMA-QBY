@@ -1,4 +1,8 @@
-INSERT INTO niveau_de_securite(id_nds,roles)
+INSERT INTO security_level 
+	(
+		id_sl,
+		roles
+	)
 VALUES
 (1,"NDS Client, accès aux utilisations basiques de réservation et achats."),
 (2,"NDS Employé, accès aux utilisations basiques, de ventes et de modifications clients."),

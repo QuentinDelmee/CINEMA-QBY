@@ -1,4 +1,12 @@
-INSERT INTO personnes(nom,prenom,date_de_naissance,genre,adresse,e_mail)
+INSERT INTO persons 
+	(
+		family_name,
+		first_name,
+		birthdate,
+		genre,
+		city,
+		e_mail
+	)
 VALUES
 ('GUIMARD','Ilona','1984-03-21','F','Soulvache (44200)','GUIMARD.Ilona@email44.fr'),
 ('LEDUC','Colombine','1973-04-22','H','Corsept (44046)','LEDUC.Colombine@email44.fr'),

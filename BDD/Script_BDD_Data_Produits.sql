@@ -1,10 +1,9 @@
-INSERT INTO produits 
+INSERT INTO products 
 	(
-		id_produits,
-		nom,
-		prix,
-		categorie,
-        description
+		product_name,
+		price,
+		category,
+		product_description
 	)
 VALUES
 ('Ticket Cinéma Unité', 8.00,'Ticketterie','Votre ticket de cinéma, tarif avant réduction éventuelle. Valable 3 mois.'),

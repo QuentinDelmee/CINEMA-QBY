@@ -1,4 +1,10 @@
-INSERT INTO salles (id_salles,nom,etage,taille_ecran,nombre_de_place)
+INSERT INTO cinemas (
+	id_cinema,
+	room_name,
+	room_level,
+	screen_size,
+	places_number
+)
 VALUES
 (1,'Atlantis',0,'4K',256),
 (2,'Babylone',0,'4K',256),

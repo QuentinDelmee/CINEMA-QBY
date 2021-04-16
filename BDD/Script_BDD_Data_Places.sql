@@ -1,4 +1,8 @@
-INSERT INTO places(id_places,id_salles,numero,rang)
+INSERT INTO seats (
+	id_cinema,
+	seat_number,
+	row_name
+)
 VALUES
 (1,1,'A'),
 (1,2,'A'),

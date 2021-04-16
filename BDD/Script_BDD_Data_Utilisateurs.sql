@@ -1,10 +1,10 @@
-INSERT INTO utilisateurs
-    (
-        pseudo,
-		mdp,
-		id_personnes,	
-		id_nds
-    )
+INSERT INTO users 
+	(
+		pseudo,
+		pwd,
+		id_person,	
+		id_sl
+	)
 VALUES
 ('Ryleegh','bm4RJzbKE8FCdefl',0,3),
 ('Emerton','X7Rk4Oib2xmppFpt',1,3),
