@@ -1,71 +1,61 @@
 package fr.qby.cinema.bo;
+import java.sql.Date;
 
 public class Salles {
 	
-	private int id_salles ;
-	private String nom;
-	private String etage;
-	private String taille_ecran;
-	private int nombre_de_places;
+	private int cinema_room ;
+	private int nb_places;
+	private String name;
+	private String floor;
+	private String screen_size;
 	
-	public Salles(int id_salles, String nom, string etage, String taille_ecran, int nombre_de_places) {
-		this.id_salles = id_salles;
-		this.nom = nom;
-		this.etage = etage;
-		this.taille_ecran = taille_ecran;
-		this.nombre_de_places = nombre_de_places;
+	public Salles(int cinema_room, int nb_places, String name, string floor, String screen_size) {
+		this.cinema_room = cinema_room;
+		this.nb_places = nb_places;
+		this.name = name;
+		this.floor = floor;
+		this.screen_size = screen_size;
 	}
 
-	public String getNom() {
-		return nom;
+	public int getCinema_room() {
+		return cinema_room;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setCinema_room(int cinema_room) {
+		this.cinema_room = cinema_room;
 	}
 
-	public String getEtage() {
-		return etage;
+	public int getNb_places() {
+		return nb_places;
 	}
 
-	public void setEtage(String etage) {
-		this.etage = etage;
+	public void setNb_places(int nb_places) {
+		this.nb_places = nb_places;
 	}
 
-	public String getTaille_ecran() {
-		return taille_ecran;
+	public String getName() {
+		return name;
 	}
 
-	public void setTaille_ecran(String taille_ecran) {
-		this.taille_ecran = taille_ecran;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getNombre_de_places() {
-		return nombre_de_places;
+	public String getFloor() {
+		return floor;
 	}
 
-	public void setNombre_de_places(int nombre_de_places) {
-		this.nombre_de_places = nombre_de_places;
+	public void setFloor(String floor) {
+		this.floor = floor;
 	}
 
-	public void setId_salles(int id_salles) {
-		this.id_salles = id_salles;
+	public String getScreen_size() {
+		return screen_size;
 	}
 
-	public int getId_seance() {
-		return id_seance;
+	public void setScreen_size(String screen_size) {
+		this.screen_size = screen_size;
 	}
 
-	public void setId_seance(int id_seance) {
-		this.id_seance = id_seance;
-	}
 
-	public Salles getId_salles() {
-		return id_salles;
-	}
-
-	public void setId_salles(Salles id_salles) {
-		this.id_salles = id_salles;
-	}
-		
 }
