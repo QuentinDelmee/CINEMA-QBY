@@ -3,34 +3,34 @@ import java.sql.Date;
 
 public class Salles {
 	
-	private int cinema_room ;
-	private int nb_places;
+	private int id_Cinema_room ;
+	private int nb_seats;
 	private String name;
 	private String floor;
 	private String screen_size;
 	
-	public Salles(int cinema_room, int nb_places, String name, string floor, String screen_size) {
-		this.cinema_room = cinema_room;
-		this.nb_places = nb_places;
+	public Salles(int id_Cinema_room, int nb_seats, String name, string floor, String screen_size) {
+		this.id_Cinema_room = id_Cinema_room;
+		this.nb_seats = nb_seats;
 		this.name = name;
 		this.floor = floor;
 		this.screen_size = screen_size;
 	}
 
-	public int getCinema_room() {
-		return cinema_room;
+	public int getid_Cinema_room() {
+		return id_Cinema_room;
 	}
 
-	public void setCinema_room(int cinema_room) {
-		this.cinema_room = cinema_room;
+	public void setCinema_room(int id_Cinema_room) {
+		this.id_Cinema_room = id_Cinema_room;
 	}
 
-	public int getNb_places() {
-		return nb_places;
+	public int getNb_seats() {
+		return nb_seats;
 	}
 
-	public void setNb_places(int nb_places) {
-		this.nb_places = nb_places;
+	public void setNb_places(int nb_seats) {
+		this.nb_seats = nb_seats;
 	}
 
 	public String getName() {
