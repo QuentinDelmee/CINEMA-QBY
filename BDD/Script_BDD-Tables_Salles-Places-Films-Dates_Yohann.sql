@@ -9,20 +9,20 @@ CREATE TABLE IF NOT EXISTS cinemas (
 	room_name varchar(50),
 	room_level varchar(50),
 	screen_size varchar(50),
-	places_number int,
+	seats_number int,
 	PRIMARY KEY (id_salles)
 );
 
-CREATE TABLE IF NOT EXISTS films (
-	id_film int NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS movies (
+	id_movie int NOT NULL AUTO_INCREMENT,
 	title varchar(50) NOT NULL,
 	original_title varchar(50),
 	pegi int,
 	release_year int,
-	total_time time,
-	film_genre varchar(50),
+	movie_duration time,
+	movie_genre varchar(50),
 	average_rating decimal(6,2),
-	film_description varchar(50) NOT NULL,
+	movie_description varchar(50) NOT NULL,
 	PRIMARY KEY (id_films)
 );
 

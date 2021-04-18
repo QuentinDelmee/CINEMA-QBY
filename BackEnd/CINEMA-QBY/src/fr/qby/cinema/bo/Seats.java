@@ -2,24 +2,24 @@ package fr.qby.cinema.bo;
 
 public class Seats {
 
-	private int id_Cinema_room;
+	private Cinemas id_Cinema_room;
 	private int id_seat;
 	private int seat_number;
-	private String rank;
+	private String row_name;
 	
-	public Seats(int id_Cinema_room, int id_seat, int seat_number, String rank)
-	{
+	public Seats(Cinemas id_Cinema_room, int id_seat, int seat_number, String row_name) {
+		super();
 		this.id_Cinema_room = id_Cinema_room;
 		this.id_seat = id_seat;
 		this.seat_number = seat_number;
-		this.rank = rank;
+		this.row_name = row_name;
 	}
 
-	public int getId_Cinema_room() {
+	public Cinemas getId_Cinema_room() {
 		return id_Cinema_room;
 	}
 
-	public void setId_Cinema_room(int id_Cinema_room) {
+	public void setId_Cinema_room(Cinemas id_Cinema_room) {
 		this.id_Cinema_room = id_Cinema_room;
 	}
 
@@ -39,11 +39,14 @@ public class Seats {
 		this.seat_number = seat_number;
 	}
 
-	public String getRank() {
-		return rank;
+	public String getRow_name() {
+		return row_name;
 	}
 
-	public void setRank(String rank) {
-		this.rank = rank;
+	public void setRow_name(String row_name) {
+		this.row_name = row_name;
 	}
+	
+	
+	
 }

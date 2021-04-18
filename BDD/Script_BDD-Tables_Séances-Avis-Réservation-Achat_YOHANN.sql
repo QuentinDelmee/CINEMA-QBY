@@ -6,7 +6,7 @@ USE CINEMA_test;
 
 CREATE TABLE IF NOT EXISTS sessions (
 	id_cinema int NOT NULL,
-	id_film int NOT NULL,
+	id_movie int NOT NULL,
 	id_date datetime,
 	seats_left int,
 	PRIMARY KEY (id_cinema),
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS sessions (
 	FOREIGN KEY (id_date)
 );
 
-CREATE TABLE IF NOT EXISTS opinion (
+CREATE TABLE IF NOT EXISTS opinions (
 	id_cinema int NOT NULL,
 	id_user int NOT NULL,
 	rating int,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS opinion (
 	FOREIGN KEY (id_user) REFERENCES users(id_user)
 );
 
-CREATE TABLE IF NOT EXISTS reservation (
+CREATE TABLE IF NOT EXISTS reservations (
 	id_user int NOT NULL,
 	id_cinema int NOT NULL,
 	id_seat int NOT NULL,

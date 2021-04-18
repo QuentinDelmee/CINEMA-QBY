@@ -1,12 +1,12 @@
-INSERT INTO films (
+INSERT INTO movies (
 	title,
 	original_title,
 	pegi,
 	release_year,
-	total_time,
-	film_genre,
+	movie_duration,
+	movie_genre,
 	average_rating,
-	film_description
+	movie_description
 )
 VALUES
 ('Nadia, butterfly','Nadia, butterfly',0,2021,'1:46:00','Drame',5.00,"Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision..."),

@@ -3,7 +3,7 @@ INSERT INTO cinemas (
 	room_name,
 	room_level,
 	screen_size,
-	places_number
+	seats_number
 )
 VALUES
 (1,'Atlantis',0,'4K',256),

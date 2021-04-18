@@ -1,5 +1,5 @@
 package fr.qby.cinema.bo;
 
-public class Produits {
+public class Products {
 
 }
