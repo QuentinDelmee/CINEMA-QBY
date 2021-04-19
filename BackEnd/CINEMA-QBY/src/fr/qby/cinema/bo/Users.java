@@ -2,7 +2,7 @@ package bo;
 
 import java.sql.Date;
 
-//Création des Class Identiques au Bases de données
+//CrÃ©ation des Class Identiques au Bases de donnÃ©es
 	// Classe "users"
 
 //Vers le la ligne "94" il y a la table SQL y correspondant
@@ -16,11 +16,11 @@ public class users {
 	private Security_Level  id_sl;
 	
 	
-	// Constructeur par défaut
+	// Constructeur par dÃ©faut
 	public users() {
 	}
 	
-	// Constructeur avec les attributs de Class comme paramètre
+	// Constructeur avec les attributs de Class comme paramÃ¨tre
 	public users(int id_user, String pseudo, String pwd, Persons id_person, Security_Level id_sl) {
 		this.id_user = id_user;
 		this.pseudo = pseudo;
@@ -30,20 +30,20 @@ public class users {
 	}
 
 	
-	// Méthode toString pour accéder aux valeurs 
+	// MÃ©thode toString pour accÃ©der aux valeurs 
 	@Override
 	public String toString() {
 		return "" + id_user 
 				+ "" + pseudo
 				+ " a pour mot de pass " + pwd 
-				+ ", correspondant à " + id_person
-				+ ", ayant un niveau de sécurité " + id_sl;
+				+ ", correspondant Ã  " + id_person
+				+ ", ayant un niveau de sÃ©curitÃ© " + id_sl;
 	}
 
 	
 	//************************************************************************************//
-		// Gettres (pour récupérer-afficher nos attributs de class )
-	//et   Settres (pour apporter les modifictaions le ac échants) 
+		// Gettres (pour rÃ©cupÃ©rer-afficher nos attributs de class )
+	//et   Settres (pour apporter les modifictaions le ac Ã©chants) 
 
 	public int getId_user() {
 		return id_user;

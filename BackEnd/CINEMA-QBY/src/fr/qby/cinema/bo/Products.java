@@ -1,5 +1,5 @@
 package bo;
-//Création des Class Identiques au Bases de données
+//CrÃ©ation des Class Identiques au Bases de donnÃ©es
 	// Classe "products"
 
 //Vers le la ligne "106" il y a la table SQL y correspondant
@@ -14,13 +14,13 @@ public class products {
 	private String product_description ;
 	
 	
-	// Constrcuteur par défaut
+	// Constrcuteur par dÃ©faut
 	public products() {
 		
 	}
 
 
-	// Constructeur avec paramètre les attributs de class
+	// Constructeur avec paramÃ¨tre les attributs de class
 	
 	public products(int id_product, String product_name, double price, String category, String product_description) {
 		this.id_product = id_product;
@@ -31,13 +31,13 @@ public class products {
 	}
 
 
-	// Méthode toString pour accéder aux valeurs 
+	// MÃ©thode toString pour accÃ©der aux valeurs 
 	
 	
 	@Override
 	public String toString() {
 		return " " + id_product 
-				   + " a été vendu au prix de " + price
+				   + " a Ã©tÃ© vendu au prix de " + price
 				+ " " + product_name 
 				+ " .Il s'agit de " + category 
 				+ " " + product_description + "]";

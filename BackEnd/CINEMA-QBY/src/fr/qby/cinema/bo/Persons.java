@@ -1,6 +1,6 @@
 package fr.qby.cinema.bo;
 
-// Quand j'ai crée l'attribut de class "Date" je ne s'avais laquelle utiliser entre :
+// Quand j'ai crÃ©e l'attribut de class "Date" je ne s'avais laquelle utiliser entre :
 		// import java.sql.Date;   
 		// import java.util.Date; --> par logique j'ai choisi celle-ci
 
@@ -9,7 +9,7 @@ package fr.qby.cinema.bo;
 // Class "util"
 import java.util.Date;  
 
-// Création des Class Identiques au Bases de données
+// CrÃ©ation des Class Identiques au Bases de donnÃ©es
 	// Classe "person"
 
 public class Persons {
@@ -23,7 +23,7 @@ public class Persons {
 	
 	
 	
-	// Constructeur avec paramètre
+	// Constructeur avec paramÃ¨tre
 	public Persons(int id_person, String family_name, String first_name, Date date, String genre, String city, String e_mail) {
 		this.id_person = id_person;
 		this.family_name = family_name;
@@ -35,26 +35,26 @@ public class Persons {
 	}
 
 
-	// Constructeur par défault
+	// Constructeur par dÃ©fault
 	public Persons() {
 	}
 	
 	
-	//Méthode toString pour accéder aux valeurs 
+	//MÃ©thode toString pour accÃ©der aux valeurs 
 	@Override
 	public String toString() {
 		return "L'identifiant : " + id_person 
 				+ " de" + genre
 				+ " " + family_name 
 				+ " " + first_name 
-				+ "né(e) le " + date 
-				+ " à " + city 			
+				+ "nÃ©(e) le " + date 
+				+ " Ã  " + city 			
 				+ "e_mail=" + e_mail + "]";
 	}
 
 //************************************************************************************//
-	// Gettres (pour récupérer-afficher nos attributs de class )
-//et   Settres (pour apporter les modifictaions le ac échants) 
+	// Gettres (pour rÃ©cupÃ©rer-afficher nos attributs de class )
+//et   Settres (pour apporter les modifictaions le ac Ã©chants) 
 	
 	public int getId_person() {
 		return id_person;

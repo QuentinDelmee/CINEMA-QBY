@@ -1,6 +1,6 @@
 package fr.qby.cinema.bo;
 
-//Création des Class Identiques au Bases de données
+//CrÃ©ation des Class Identiques au Bases de donnÃ©es
 	// Classe "security_level"
 
 //Vers le la ligne "54" il y a la table SQL y correspondant
@@ -9,16 +9,16 @@ public class Security_Level {
 	private int id_sl;
 	private String roles;
 	
-	// Constructeur par défaut
+	// Constructeur par dÃ©faut
 	public Security_Level() {
 	}
-	// Constructeur avec les attributs de Class comme paramètre
+	// Constructeur avec les attributs de Class comme paramÃ¨tre
 	public Security_Level(int id_sl, String roles) {
 		this.id_sl = id_sl;
 		this.roles = roles;
 	}
 	
-	// Méthode toString pour accéder aux valeurs 
+	// MÃ©thode toString pour accÃ©der aux valeurs 
 	@Override
 	public String toString() {
 		return "Cette id " + id_sl  
@@ -27,8 +27,8 @@ public class Security_Level {
 	
 	
 	//************************************************************************************//
-		// Gettres (pour récupérer-afficher nos attributs de class )
-	//et   Settres (pour apporter les modifictaions le ac échants) 
+		// Gettres (pour rÃ©cupÃ©rer-afficher nos attributs de class )
+	//et   Settres (pour apporter les modifictaions le ac Ã©chants) 
 	
 	
 	public int getId_sl() {
