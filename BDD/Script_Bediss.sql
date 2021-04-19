@@ -7,7 +7,7 @@ CREATE TABLE persons
 		genre varchar (50),
 		city varchar (50),
 		e_mail varchar (50),
-		PRIMARY KEY  (id_personnes)
+		PRIMARY KEY  (id_person)
 	);
 
 
@@ -37,7 +37,7 @@ CREATE TABLE users
 		pwd varchar (50),
 		id_person int,	
 		id_sl int,
-		PRIMARY KEY (id_users),
+		PRIMARY KEY (id_user),
 		FOREIGN KEY (id_person) REFERENCES persons(id_person),
 		FOREIGN KEY (id_sl) REFERENCES security_level(id_sl)
 	);
