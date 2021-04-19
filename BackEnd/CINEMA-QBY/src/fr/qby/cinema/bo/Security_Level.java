@@ -1,19 +1,19 @@
-package bo;
+package fr.qby.cinema.bo;
 
 //Création des Class Identiques au Bases de données
 	// Classe "security_level"
 
 //Vers le la ligne "54" il y a la table SQL y correspondant
 
-public class security_level {
+public class Security_Level {
 	private int id_sl;
 	private String roles;
 	
 	// Constructeur par défaut
-	public security_level() {
+	public Security_Level() {
 	}
 	// Constructeur avec les attributs de Class comme paramètre
-	public security_level(int id_sl, String roles) {
+	public Security_Level(int id_sl, String roles) {
 		this.id_sl = id_sl;
 		this.roles = roles;
 	}

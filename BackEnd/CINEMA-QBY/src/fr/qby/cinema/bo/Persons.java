@@ -1,4 +1,4 @@
-package bo;
+package fr.qby.cinema.bo;
 
 // Quand j'ai crée l'attribut de class "Date" je ne s'avais laquelle utiliser entre :
 		// import java.sql.Date;   
@@ -12,7 +12,7 @@ import java.util.Date;
 // Création des Class Identiques au Bases de données
 	// Classe "person"
 
-public class person {
+public class Persons {
 	private int  id_person;
 	private String family_name;
 	private String first_name; // on ne devrait pas donner un last name pour avoir un nom complet ??
@@ -24,7 +24,7 @@ public class person {
 	
 	
 	// Constructeur avec paramètre
-	public person(int id_person, String family_name, String first_name, Date date, String genre, String city, String e_mail) {
+	public Persons(int id_person, String family_name, String first_name, Date date, String genre, String city, String e_mail) {
 		this.id_person = id_person;
 		this.family_name = family_name;
 		this.first_name = first_name;
@@ -36,7 +36,7 @@ public class person {
 
 
 	// Constructeur par défault
-	public person() {
+	public Persons() {
 	}
 	
 	

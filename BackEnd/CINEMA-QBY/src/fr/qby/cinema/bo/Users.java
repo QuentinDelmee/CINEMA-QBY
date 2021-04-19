@@ -12,8 +12,8 @@ public class users {
 	private int  id_user;
 	private String pseudo;
 	private String pwd;
-	private int  id_person;
-	private int  id_sl;
+	private Persons  id_person;
+	private Security_Level  id_sl;
 	
 	
 	// Constructeur par défaut
@@ -21,7 +21,7 @@ public class users {
 	}
 	
 	// Constructeur avec les attributs de Class comme paramètre
-	public users(int id_user, String pseudo, String pwd, int id_person, int id_sl) {
+	public users(int id_user, String pseudo, String pwd, Persons id_person, Security_Level id_sl) {
 		this.id_user = id_user;
 		this.pseudo = pseudo;
 		this.pwd = pwd;
@@ -69,19 +69,19 @@ public class users {
 		this.pwd = pwd;
 	}
 
-	public int getId_person() {
+	public Persons getId_person() {
 		return id_person;
 	}
 
-	public void setId_person(int id_person) {
+	public void setId_person(Persons id_person) {
 		this.id_person = id_person;
 	}
 
-	public int getId_sl() {
+	public Security_Level getId_sl() {
 		return id_sl;
 	}
 
-	public void setId_sl(int id_sl) {
+	public void setId_sl(Security_Level id_sl) {
 		this.id_sl = id_sl;
 	}
 	
