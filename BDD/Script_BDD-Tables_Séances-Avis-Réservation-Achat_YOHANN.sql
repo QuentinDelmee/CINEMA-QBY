@@ -28,6 +28,17 @@ CREATE TABLE IF NOT EXISTS opinions (
 	FOREIGN KEY (id_user) REFERENCES users(id_user)
 );
 
+CREATE TABLE IF NOT EXISTS comments (
+	id_movie int NOT NULL,
+	id_user int NOT NULL,
+	rating int,
+	comment varchar(255),
+	PRIMARY KEY (id_cinema),
+	FOREIGN KEY (id_cinema) REFERENCES cinemas(id_cinema),
+	PRIMARY KEY (id_user),
+	FOREIGN KEY (id_user) REFERENCES users(id_user)
+);
+
 CREATE TABLE IF NOT EXISTS reservations (
 	id_user int NOT NULL,
 	id_cinema int NOT NULL,

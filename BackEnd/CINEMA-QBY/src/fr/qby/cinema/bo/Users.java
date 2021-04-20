@@ -12,7 +12,7 @@ public class users {
 	private int  id_user;
 	private String pseudo;
 	private String pwd;
-	private Persons  id_person;
+	private Persons id_person;
 	private Security_Level  id_sl;
 	
 	
