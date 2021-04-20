@@ -6,21 +6,21 @@ USE CINEMA_test;
 CREATE TABLE IF NOT EXISTS persons 
 (
     id_person int NOT NULL AUTO_INCREMENT,
-    family_name varchar (255),
-    first_name varchar (255),
+    family_name varchar (255) NOT NULL,
+    first_name varchar (255) NOT NULL,
     birthdate date,
-    genre varchar (255),
+    genre varchar (255) NOT NULL,
     city varchar (255),
-    e_mail varchar (255),
+    e_mail varchar (255) NOT NULL,
     PRIMARY KEY  (id_person)
 );
 
 CREATE TABLE IF NOT EXISTS products 
 (
     id_product int NOT NULL AUTO_INCREMENT,
-    product_name varchar (255),
-    price decimal (6,2),
-    category varchar (255),
+    product_name varchar (255) NOT NULL,
+    price decimal (6,2) NOT NULL,
+    category varchar (255) NOT NULL,
     product_description text,
     PRIMARY KEY (id_product)
 );
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS products
 CREATE TABLE IF NOT EXISTS security_level 
 (
     id_sl int NOT NULL AUTO_INCREMENT,
-    roles varchar (255),
+    roles varchar (255) NOT NULL,
     PRIMARY KEY (id_sl)
 
 );
@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS security_level
 CREATE TABLE IF NOT EXISTS users 
 (
     id_user int NOT NULL AUTO_INCREMENT , 
-    pseudo varchar (255),
-    pwd varchar (255),
-    id_person int,	
+    pseudo varchar (255) NOT NULL,
+    pwd varchar (255) NOT NULL,
+    id_person int NOT NULL,	
     id_sl int,
     PRIMARY KEY (id_user),
     FOREIGN KEY (id_person) REFERENCES persons(id_person),
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS users
 
 CREATE TABLE IF NOT EXISTS cinemas (
 	id_cinema int NOT NULL AUTO_INCREMENT,
-	room_name varchar(255),
-	room_level varchar(255),
+	room_name varchar(255) NOT NULL,
+	room_level varchar(255) NOT NULL,
 	screen_size varchar(255),
 	seats_number int,
 	PRIMARY KEY (id_cinema)
@@ -69,9 +69,9 @@ CREATE TABLE IF NOT EXISTS movies (
 
 CREATE TABLE IF NOT EXISTS seats (
 	id_seat int NOT NULL AUTO_INCREMENT,
-	id_cinema int,
-	seat_number int,
-	row_name varchar(255),
+	id_cinema int NOT NULL,
+	seat_number int NOT NULL,
+	row_name varchar(255) NOT NULL,
 	PRIMARY KEY (id_seat, id_cinema),
 	FOREIGN KEY (id_cinema) REFERENCES cinemas(id_cinema)
 );
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS sessions (
 	id_cinema int NOT NULL,
 	id_movie int NOT NULL,
 	id_date datetime,
-	seats_left int,
+	seats_left int NOT NULL,
 	PRIMARY KEY (id_cinema,id_movie,id_date),
 	FOREIGN KEY (id_cinema) REFERENCES cinemas(id_cinema),
 	FOREIGN KEY (id_movie) REFERENCES movies(id_movie)
@@ -99,8 +99,8 @@ CREATE TABLE IF NOT EXISTS opinions (
 CREATE TABLE IF NOT EXISTS comments (
 	id_movie int NOT NULL,
 	id_user int NOT NULL,
-	rating int,
-	comment TEXT,
+	rating int NOT NULL,
+	comment TEXT NOT NULL,
 	PRIMARY KEY (id_movie,id_user),
 	FOREIGN KEY (id_movie) REFERENCES movies(id_movie),
 	FOREIGN KEY (id_user) REFERENCES users(id_user)
