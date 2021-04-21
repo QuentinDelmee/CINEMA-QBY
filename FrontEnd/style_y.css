@@ -1,0 +1,127 @@
+body{
+    background:  linear-gradient(to Bottom, darkred, black );
+    min-height: 100vh ;
+}
+
+/* CSS SINGIN.HTML */
+.app-singin-container{
+    width:500px;
+    margin: auto;
+
+}
+form {
+    width:100%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+input[type=submit] {
+    background-color : black;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid darkred;
+}
+
+/* CSS MOVIE.HTML */
+.app-Movie-Divbackground
+{
+    background-color: white;
+}
+
+.app-Movie-globaldiv{
+    
+    color:white;
+    background-color: purple;
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+.app-bloc-block {
+    display: block;
+}
+
+.app-bloc-inline {
+    display: inline;
+}
+
+.app-bloc-inline-block {
+    width: 200px;
+    height: 200px;
+    background-color: darkgrey;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.app-double-column--left {
+    display: inline-block;
+    width: 40%;
+    background-color: navajowhite;
+}
+
+.app-double-column--right {
+    display: inline-block;
+    width: 55%;
+    background-color: paleturquoise;
+    vertical-align: top;
+}
+
+.app-double-column__img {
+    width: 150px;
+    float: right;
+}
+
+
+
+/********* FLEXBOX *********/
+
+.app-bloc-flexbox {
+    background-color: grey;
+    width: 50%;
+    height: 500px;
+    /* FLEXBOX */
+    display: flex; /*Pour avoir notre container en tant que flexbox container*/
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: flex-end;
+    align-items: flex-start;
+}
+
+.app-bloc-flexbox__item {
+    width: 200px;
+    background-color: red;
+    border: 2px solid black;
+    /* FLEXBOX */
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.app-bloc-flexbox__item--justify {
+    flex: 0 1 auto;
+}
