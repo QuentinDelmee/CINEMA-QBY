@@ -1,59 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
+    <!-- IMPORTANT  (adapter le site à tous les écrans) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Film</title>
+    <!-- IMPORTANT (description du site sur les moteurs) -->
+    <meta name="description" content="description du site">
+    <!-- IMPORTANT  (indexer le site sur les moteurs) -->
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+    <!-- Optionelle (mot clé pour trouver le site) -->
+    <meta name="keywords" content="QYB">
 	<link rel="stylesheet" href="css/style_y.css">
-	<link rel="stylesheet" href="css/style.css" >
+    <link rel="stylesheet" href="css/default.css">
+    <!-- Font Asom -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- LIEN POUR FONT AWESOME https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself -->
+    <!--load all styles -->
+    <title>CINEMA QYB</title>
 </head>
 
-<header>
+<body>
 
-</header>
 
-<main>
-	<body>
-		<div class="container">
-			<div class="content-container">
-				<div class="movie-list-container">
-					<div class="movie-list-wrapper">
-						<div class="movie-list">
-							<div class="movie-list-item">
-								<img class="movie-list-item-img" src="" alt="">
-								<span class="movie-list-item-title">Her</span>
-								<p class="movie-list-item-desc">Ceci est la description breve du film</p>
-								<button class="movie-list-item-button">Watch</button>
-							</div>
-							<div class="movie-list-item">
-								<img class="movie-list-item-img" src="" alt="">
-								<span class="movie-list-item-title">Star Wars</span>
-								<p class="movie-list-item-desc">Ceci est la description breve du film</p>
-								<button class="movie-list-item-button">Watch</button>
-							</div>
-							<div class="movie-list-item">
-								<img class="movie-list-item-img" src="" alt="">
-								<span class="movie-list-item-title">Storm</span>
-								<p class="movie-list-item-desc">Ceci est la description breve du film</p>
-								<button class="movie-list-item-button">Watch</button>
-							</div>
-							<div class="movie-list-item">
-								<img class="movie-list-item-img" src="" alt="">
-								<span class="movie-list-item-title">1917</span>
-								<p class="movie-list-item-desc">Ceci est la description breve du film</p>
-								<button class="movie-list-item-button">Watch</button>
-							</div>
-							<div class="movie-list-item">
-								<img class="movie-list-item-img" src="" alt="">
-								<span class="movie-list-item-title">Avengers</span>
-								<p class="movie-list-item-desc">Ceci est la description breve du film</p>
-								<button class="movie-list-item-button">Watch</button>
+    <!-- =============================HEADER============================= -->
+    <header>
+        <img class="app-img-cinema" src="img/cinéma.jpg" alt="Image Cinéma ">
+        <nav class="app-nav-header">
+            <div class="app-nav-ul">
+                    <a href="home_page.html" class="app-default-headerlink">
+                        <div class="app-default-headdiv">Acceuil</div>
+                    </a>
+                    <a href="movie_page.html" class="app-default-headerlink">
+                        <div class="app-default-headdiv">Films</div>
+                    </a>
+                    <a href="timetable_page.html" class="app-default-headerlink">
+                        <div class="app-default-headdiv">Horaires</div>
+                    </a>
+                    <a href="reservation_page.html" class="app-default-headerlink">
+                        <div class="app-default-headdiv">Réservation </div>
+                    </a>
+                    <a href="signin_page.html" class="app-default-headerlink">
+                        <div class="app-default-headdiv">Connexion</div>
+                    </a>
+                    <a href="signup_page.html " class="app-default-headerlink">
+                        <div class="app-default-headdiv">Inscription</div>
+                    </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- =============================MAIN============================= -->
+    <main>
+			<div class="container">
+				<div class="content-container">
+					<div class="movie-list-container">
+						<div class="movie-list-wrapper">
+							<div class="movie-list">
+								<div class="movie-list-item">
+									<img class="movie-list-item-img" src="" alt="">
+									<span class="movie-list-item-title">Her</span>
+									<p class="movie-list-item-desc">Ceci est la description breve du film</p>
+									<button class="movie-list-item-button">Watch</button>
+								</div>
+								<div class="movie-list-item">
+									<img class="movie-list-item-img" src="" alt="">
+									<span class="movie-list-item-title">Star Wars</span>
+									<p class="movie-list-item-desc">Ceci est la description breve du film</p>
+									<button class="movie-list-item-button">Watch</button>
+								</div>
+								<div class="movie-list-item">
+									<img class="movie-list-item-img" src="" alt="">
+									<span class="movie-list-item-title">Storm</span>
+									<p class="movie-list-item-desc">Ceci est la description breve du film</p>
+									<button class="movie-list-item-button">Watch</button>
+								</div>
+								<div class="movie-list-item">
+									<img class="movie-list-item-img" src="" alt="">
+									<span class="movie-list-item-title">1917</span>
+									<p class="movie-list-item-desc">Ceci est la description breve du film</p>
+									<button class="movie-list-item-button">Watch</button>
+								</div>
+								<div class="movie-list-item">
+									<img class="movie-list-item-img" src="" alt="">
+									<span class="movie-list-item-title">Avengers</span>
+									<p class="movie-list-item-desc">Ceci est la description breve du film</p>
+									<button class="movie-list-item-button">Watch</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</body>
-</main>
+	</main>
+
+    <!-- =============================FOOTER============================= -->
+    <footer>
+
+        <div class="app-footer">
+            <div class="app-div">
+                <div class="app-default-footerInfo">
+                    <h2 class="app-default-footertitle">NOS HORAIRES D'OUVERTURE</h2>
+                    <div class="app-horaires-open">✔️Lun 10h-22h</div>
+                    <div class="app-horaires-open">✔️Mar 10h-22h</div>
+                    <div class="app-horaires-open">✔️Mer 10h-22h</div>
+                    <div class="app-horaires-open">✔️Jeu 10h-22h</div>
+                    <div class="app-horaires-open">✔️Ven 10h-22h</div>
+                    <div class="app-horaires-close">❌Sam fermé</div>
+                    <div class="app-horaires-close">❌Dim fermé</div>
+                </div>
+            </div>
+            <div class="app-div">
+                <div class="app-default-footerInfo">
+                    <h2 class="app-default-footertitle">RESTONS EN CONTACT : </h2>
+                    <p class="app-contact-p"> 48-48-48-48-48</p>
+                    <p class="app-contact-p"> supportclient@contact.com</p>
+                </div>
+            
+
+
+                <div  class="app-default-footerInfo">
+                    <h2 class="app-default-footertitle">RESEAUX SOCIAUX : </h2>
+                    <a href="https://www.facebook.com/">
+                        <img src="img/facebook.png" class="app-img"></a>
+                    <a href="https://twitter.com/?lang=fr" alt=" ">
+                        <img src="img/twitter.png " class="app-img"></a>
+                    <a href="" alt=" ">
+                        <img src="img/linkedin.png " class="app-img"></a>
+                </div>
+            </div>   
+        </div>
+        <div class="app-CGV-CGU ">
+            <a href="CGU_CGV_page.html">MENTIONS LÉGALES</a>
+            <a href="data_page.html"> DONNÉES PERSONNELLES</a>
+            <a href="howToCome_page.html">PLAN DU SITE</a>
+        </div>
+        <div class="app-separation"></div>
+        <div class="app-copyright ">
+            <p class="app-parag"> &copy: Team QBY </p>
+            <p><a href="mailto:hege@example.com ">hege@example.com</a></p>
+        </div>
+    </footer>
+</body>
+
 </html>
