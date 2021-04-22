@@ -136,15 +136,13 @@ h3 {
 /* liens */
 .app-img {
     display: inline-block;
-    height: 32%;
-    width: 30%;
+    height: 100px;
 }
 
 /* contact */
 .app-contact-p {
     display: inline-block;
-    margin: 12px;
-    color: aliceblue;
+    color: white;
 }
 .app-horaires {
     display: inline-block;
