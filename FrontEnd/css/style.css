@@ -83,7 +83,7 @@ header {
     width: 95%;
 }
 main {
-    height: 100vh;
+    min-height: 100vh;
 }
 h3 {
     color: white;
