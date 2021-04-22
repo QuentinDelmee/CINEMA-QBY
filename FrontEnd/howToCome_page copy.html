@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <!-- Fichiers CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+        <!-- Ces deux balises link sont à insérer entre les deux balises existantes -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+        <link rel="stylesheet" href="css/OSMapi.css">
+        <link rel="stylesheet" href="css/default.css">
+        
+    </head>
+    <body>
+        <!-- =============================HEADER============================= -->
+        <header>
+            <img class="app-img-cinema" src="img/cinéma.jpg" alt="Image Cinéma ">
+            <nav class="app-nav-header">
+                <div class="app-nav-ul">
+                    <div>
+
+                        <a href="home_page.html">
+                            <div class="app-li">Acceuil</div>
+                        </a>
+                        <a href="movie_page.html">
+                            <div class="app-li">Films</div>
+                        </a>
+                        <a href="timetable_page.html">
+                            <div class="app-li">Horaires</div>
+                        </a>
+                        <a href="reservation_page.html">
+                            <div class="app-li">Réservation </div>
+                        </a>
+                        <a href="signin_page.html">
+                            <div class="app-li">Connexion</div>
+                        </a>
+                        <a href="signup_page.html ">
+                            <div class="app-li">Inscription</div>
+                        </a>
+
+                    </div>
+                    </ul>
+            </nav>
+        </header>
+        <main>
+        <div id="carte"></div>
+        </main>
+
+
+        <!-- =============================FOOTER============================= -->
+        <footer class="footer">
+
+            <div class="app-footer">
+                <div class="app-div">
+                    <div>
+                        <h3>NOS HORAIRES D'OUVETURE</h3>
+                        <div>
+                            <div>
+                                <div class="app-horaires">✔️ Lun 10h-19h</div>
+                                <div class="app-horaires">✔️ Mar 10h-19h</div>
+                            </div>
+                            <div>
+                                <div class="app-horaires">✔️ Mer 10h-19h</div>
+                                <div class="app-horaires">✔️ Jeu 10h-19h</div>
+                            </div>
+                            <div>
+                                <div class="app-horaires">✔️ Ven 10h-19h</div>
+                                <div class="app-horaires">❌ Sam fermé</div>
+                                <div class="app-horaires">❌ Dim fermé</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>RESTONS EN CONTACT</h3>
+                        <div>
+                            <p class="app-contact-p">48-48-48-48-48</p>
+                            <p class="app-contact-p">supportclient@contact.com</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>LIENS</h3>
+                        <a href="https://www.facebook.com/"><img src="img/facebook.png" class="app-img"></a>
+                        <a href="https://twitter.com/?lang=fr" alt=" "><img src="img/twitter.png " class="app-img "></a>
+                        <a href="" alt=" "> <img src="img/linkedin.png " class="app-img "></a>
+                    </div>
+                </div>
+            </div>
+            <div class="app-CGV-CGU ">
+                <p>MENTIONS LÉGALES</p>
+                <p> DONNÉES PERSONNELLES</p>
+                <p>PLAN DU SITE</p>
+            </div>
+            <div class="app-separation"></div>
+            <div class="app-copyright ">
+                <p class="app-parag"> &copy: Team QBY </p>
+                <p><a href="mailto:hege@example.com ">hege@example.com</a></p>
+            </div>
+        </footer>
+
+
+        
+        <!-- Fichiers JS -->
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+        <!-- Ces deux balises script sont à insérer entre les deux balises existantes -->
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+        <script src="js/OSMapi.js"></script>
+    </body>
+</html>
