@@ -11,11 +11,20 @@
     <meta name="robots" content="NOINDEX, NOFOLLOW">
     <!-- Optionelle (mot clé pour trouver le site) -->
     <meta name="keywords" content="QYB">
+
+    <link rel="stylesheet" href="css/OSMapi.css">
     <link rel="stylesheet" href="css/default.css">
     <!-- Font Asom -->
     <link rel="stylesheet" href="css/all.min.css">
     <!-- LIEN POUR FONT AWESOME https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself -->
     <!--load all styles -->
+    <!-- Fichiers CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+    <!-- Ces deux balises link sont à insérer entre les deux balises existantes -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
     <title>CINEMA QYB</title>
 </head>
 
@@ -51,78 +60,7 @@
 
     <!-- =============================MAIN============================= -->
     <main>
-        <section class="app-profil-section">
-            <h2>Vos informations de connexion</h2>
-            <form class="app-form-connect" onsubmit="return formPseudo();">
-                <div>
-                <label for="pseudo">Pseudo :</label>
-                <input type="text" id="pseudo" name="pseudo" value="MoshGoss" disabled>
-                </div>
-                <div>
-                <label for="newpseudo">Nouveau Pseudo :</label>
-                <input type="text" id="newpseudo" name="newpseudo" value="">
-                </div>
-                <div>
-                <label for="email">Email :</label>
-                <input disabled type="text" id="email" name="email" value="quentin.delmee@france.fr">
-                </div>
-                <div>
-                <label for="newemail">Nouvel email :</label>
-                <input type="text" id="newemail" name="newemail" value="">
-                </div>
-                <div>
-                <label for="pwd">MDP :</label>
-                <input type="password" id="pwd" name="pwd" value="">
-                </div>
-                <div>
-                <button type="submit" value="Appliquer">Appliquer</button>
-                </div>
-            </form> 
-            <h2>Vos informations personnelles</h2>
-            <form class="app-form-perso" onsubmit="return formInfo();">
-                <div>
-                <label for="fname">Prénom :</label>
-                <input type="text" id="fname" name="fname" value="Quentin">
-                </div>
-                <div>
-                <label for="lname">Nom de Famille:</label>
-                <input type="text" id="lname" name="lname" value="Delmée">
-                </div>
-                <div>
-                <label for="date">Date de Naissance:</label>
-                <input type="date" id="date" name="date" value="1991-03-09">
-                </div>
-                <div>
-                <label for="genre">Genre/Sexe: </label>
-                <input type="text" id="genre" name="genre" value="Homme">
-                </div>
-                <div>
-                <label for="city">Votre Ville:</label>
-                <input type="text" id="city" name="city" value="Blain (44130)">
-                </div>
-                <div>
-                <input type="submit" value="Appliquer">
-                </div>
-              </form> 
-            <h2>Changements de Mot de Passe</h2>
-            <form class="app-form-mdp" onsubmit="return formMdP();">
-                <div>
-                <label for="pwdact">Mot de Passe Actuel :</label>
-                <input type="password" id="pwdact" name="pwdact" value="">
-                </div>
-                <div>
-                <label for="newpwd">Nouveau Mot de Passe :</label>
-                <input type="password" id="newpwd" name="newpwd" value="">
-                </div>
-                <div>
-                <label for="cnewpwd">Confirmer Nouveau MdP :</label>
-                <input type="password" id="cnewpwd" name="cnewpwd" value="">
-                </div>
-                <div>
-                <input type="submit" value="Appliquer">
-                </div>
-              </form> 
-        </section>
+        <div id="carte"></div>
     </main>
 
     <!-- =============================FOOTER============================= -->
@@ -172,6 +110,15 @@
             <p><a href="mailto:hege@example.com ">hege@example.com</a></p>
         </div>
     </footer>
+
+
+    <!-- Fichiers JS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <!-- Ces deux balises script sont à insérer entre les deux balises existantes -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="js/OSMapi.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,8 @@
 #carte{
-    height: 90vh;
+    height: 80vh;
 }
 
 
+.leaflet-routing-add-waypoint {
+    visibility: hidden ;
+}

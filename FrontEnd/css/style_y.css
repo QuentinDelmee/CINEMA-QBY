@@ -1,27 +1,52 @@
-body{
-    background:  linear-gradient(to Bottom, darkred, black );
-    min-height: 100vh ;
+/* ===========================Général======================== */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/* font-size: 100%;
+	font: inherit;
+	vertical-align: baseline; */
 }
 
+
+/*******************/
 /* CSS SINGIN.HTML */
+/*******************/
+
+/******** Formulaire ********/
 .app-singin-container{
     width:500px;
     margin: auto;
 
 }
-form {
+
+.app-singin-form{
     width:100%;
     padding: 30px;
     border: 1px solid #f1f1f1;
     background: #fff;
 }
-#container h1{
+
+.app-singin-h1{
     width: 38%;
     margin: 0 auto;
     padding-bottom: 10px;
 }
 
-
+/******** champ pseudo et pwd ********/
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -41,87 +66,184 @@ input[type=submit] {
     cursor: pointer;
     width: 100%;
 }
+
+/******** au survol du bouton de connexion ********/
 input[type=submit]:hover {
     background-color: white;
     color: black;
     border: 2px solid darkred;
 }
 
+/******************/
 /* CSS MOVIE.HTML */
-.app-Movie-Divbackground
-{
-    background-color: white;
+/******************/
+
+.movie-list-wrapper{
+    position: relative;
+    overflow: hidden;
+}
+  
+<<<<<<< HEAD
+.moviecontainer {
+  min-height: calc(100vh - 50px);
+  color: white;
 }
 
-.app-Movie-globaldiv{
-    
-    color:white;
-    background-color: purple;
-    width: 70%;
-    margin: 0 auto;
+.movie-list-container {
+  padding: 0 20px;
 }
 
-
-.app-bloc-block {
-    display: block;
+.movie-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
 }
 
-.app-bloc-inline {
-    display: inline;
+.movie-list-item {
+  margin-right: 30px;
+  position: relative;
 }
 
-.app-bloc-inline-block {
-    width: 200px;
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc,
+.movie-list-item:hover .movie-list-item-button {
+  opacity: 1;
+}
+
+.movie-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.movie-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 30%;
+  left: 50px;
+  width: 230px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-button {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+=======
+  .container {
+    min-height: calc(100vh - 50px);
+    color: white;
+  }
+  
+  .movie-list-container {
+    padding: 0 20px;
+  }
+  
+  .movie-list {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    transform: translateX(0);
+    transition: all 0.250s ease-in-out;
+  }
+  
+  .movie-list-item {
+    margin-right: 30px;
+    position: relative;
+  }
+  
+  .movie-list-item:hover .movie-list-item-img {
+    transform: scale(1.2);
+    margin: 0 30px;
+    opacity: 0.5;
+  }
+  
+  .movie-list-item:hover .movie-list-item-title,
+  .movie-list-item:hover .movie-list-item-desc,
+  .movie-list-item:hover .movie-list-item-button {
+    opacity: 1;
+  }
+  
+  .movie-list-item-img {
+    transition: all 0.250s ease-in-out;
+    width: 270px;
     height: 200px;
-    background-color: darkgrey;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.app-double-column--left {
-    display: inline-block;
-    width: 40%;
-    background-color: navajowhite;
-}
-
-.app-double-column--right {
-    display: inline-block;
-    width: 55%;
-    background-color: paleturquoise;
-    vertical-align: top;
-}
-
-.app-double-column__img {
-    width: 150px;
-    float: right;
-}
-
-
-
-/********* FLEXBOX *********/
-
-.app-bloc-flexbox {
-    background-color: grey;
-    width: 50%;
-    height: 500px;
-    /* FLEXBOX */
-    display: flex; /*Pour avoir notre container en tant que flexbox container*/
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: flex-end;
-    align-items: flex-start;
-}
-
-.app-bloc-flexbox__item {
-    width: 200px;
-    background-color: red;
-    border: 2px solid black;
-    /* FLEXBOX */
-    flex: 0 1 auto;
-    align-self: auto;
-}
-
-.app-bloc-flexbox__item--justify {
-    flex: 0 1 auto;
-}
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  .movie-list-item-title {
+    background-color: #333;
+    padding: 0 10px;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50px;
+    opacity: 0;
+    transition: 0.250s all ease-in-out;
+  }
+  
+  .movie-list-item-desc {
+    background-color: #333;
+    padding: 10px;
+    font-size: 14px;
+    position: absolute;
+    top: 30%;
+    left: 50px;
+    width: 230px;
+    opacity: 0;
+    transition: 0.250s all ease-in-out;
+  }
+  
+  .movie-list-item-button {
+    padding: 10px;
+    background-color: #4dbf00;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    opacity: 0;
+    transition: 0.250s all ease-in-out;
+  }
+>>>>>>> 5e1e743f1b1fb9ed931fca7735099d6cc6e5b3ad
+  

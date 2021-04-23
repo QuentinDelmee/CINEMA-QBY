@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS users
     pseudo varchar (255) NOT NULL,
     pwd varchar (255) NOT NULL,
     id_person int NOT NULL,	
-    id_sl int,
+    id_sl int, #A voir pour notnull
     PRIMARY KEY (id_user),
     FOREIGN KEY (id_person) REFERENCES persons(id_person),
     FOREIGN KEY (id_sl) REFERENCES security_level(id_sl)
