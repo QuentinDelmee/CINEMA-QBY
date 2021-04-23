@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <!-- ============================= FORMULAIRE ============================= -->
+
+        <!-- ici se termine notre div principale -->
+    </div>
+
+    <div class="app-div-principale">
+        <form onsubmit="return maFonction()">
+          <div class="app-formulaire">
+            <h1>FORMULAIRE D'INSCRIPTION</h1>
+          </div>
+          <h2>Renseigner les éléments ci-dessous</h2>
+          <div class="app-div-secondaire">
+            <p class ="app-paragraphe">Pseudo</p>
+            <div class="name-item">
+              <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo"/>
+              <input id="confirm-pseudo" type="text" name="confirm-pseudo" placeholder="Confirmer pseudo"/>
+            </div>
+          </div>
+          
+          <div class="app-div-secondaire">
+            <p class ="app-paragraphe">Email</p>
+            <input id="email" type="text" name="email" placeholder="email ..."/>
+          </div>
+
+          <div class="app-div-secondaire">
+            <p class ="app-paragraphe">Confirmation Email</p>
+            <input id="confirm-email" type="text" name="confirm-email" placeholder="Confirmer email ..."/>
+          </div> 
+          <div class="app-div-secondaire">
+            <p class ="app-paragraphe">Mot de Passe</p>
+            <input id="motdepasse" type="password" name="motdepasse" placeholder="Saisir Mot de Passe ..."/>
+          </div>    
+          <div class="app-div-secondaire">
+            <p class ="app-paragraphe">Confirmer Mot de passe</p>
+            <input id="confirm-motdepasse" type="password" name="confirm-motdepasse" placeholder="Saisir Mot de Passe ..."/>
+          </div> 
+          <input type="submit" id='submit' value='Valider' >       
+        </form>
+      </div>
+
+      <script src="./main.js"></script>
+
+</body>
+
+</html>
