@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Quizz</title>
+		<link rel="stylesheet" href="style_y.css">
+	</head>
+
+
+	<body>
+		<main>
+			<div class="app-singin-container">
+
+				<form onsubmit="return verif()" class="app-singin-form" method="POST">
+
+					<button onclick="return createNewQuizz()"> Question </button>
+
+					<div>
+						<h1>Quizz</h1>
+						<p id="progression"></p>
+					</div>
+					
+					<div>
+						<label id="js-question"></label>
+					</div>
+					
+					<div id="js-contenaireRadio">
+						<label><b>Choix</b></label>
+					</div>
+				
+					<div>
+						<input id="QuizzValider" type="submit" value="Valider choix"></input>
+					</div>
+					<div>
+						<p id="verification"></p>
+						<p id="js-chrono"></p>
+					</div>
+				</form>
+			</div>
+			<script src="js/Quizz.js"></script>
+		</main>
+	</body>
+
+</html>

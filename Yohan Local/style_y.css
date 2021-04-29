@@ -21,6 +21,19 @@ time, mark, audio, video {
 	vertical-align: baseline; */
 }
 
+body{
+    background:  linear-gradient(to Bottom, darkred, black );
+    min-height: 100vh ;
+    font-family: "Roboto", sans-serif;
+}
+
+
+main {
+    min-height: 100vh ;
+    min-width: 100vw ;
+    display: inline-flex;
+    align-items: center;
+}
 
 /*******************/
 /* CSS SINGIN.HTML */
@@ -28,7 +41,7 @@ time, mark, audio, video {
 
 /******** Formulaire ********/
 .app-singin-container{
-    width:500px;
+    width: 500px;
     margin: auto;
 
 }
@@ -97,7 +110,7 @@ input[type=submit]:hover {
     align-items: center;
     height: 300px;
     transform: translateX(0);
-    transition: all 0.250s ease-in-out;
+    transition: all 1s ease-in-out;
   }
   
   .movie-list-item {
@@ -118,7 +131,7 @@ input[type=submit]:hover {
   }
   
   .movie-list-item-img {
-    transition: all 0.250s ease-in-out;
+    transition: all 1s ease-in-out;
     width: 270px;
     height: 200px;
     object-fit: cover;
@@ -134,7 +147,7 @@ input[type=submit]:hover {
     top: 10%;
     left: 50px;
     opacity: 0;
-    transition: 0.250s all ease-in-out;
+    transition: 1s all ease-in-out;
   }
   
   .movie-list-item-desc {
@@ -146,7 +159,7 @@ input[type=submit]:hover {
     left: 50px;
     width: 230px;
     opacity: 0;
-    transition: 0.250s all ease-in-out;
+    transition: 1s all ease-in-out;
   }
   
   .movie-list-item-button {
@@ -161,6 +174,19 @@ input[type=submit]:hover {
     bottom: 20px;
     left: 50px;
     opacity: 0;
-    transition: 0.250s all ease-in-out;
+    transition: 1s all ease-in-out;
   }
   
+.align-div{
+  vertical-align: top;
+}
+
+
+/******************/
+/* CSS SINGIN HTML*/
+/******************/
+
+.app-signin-a{
+  text-decoration: none;
+  color:rgba(255,0,0,0.5);
+}
