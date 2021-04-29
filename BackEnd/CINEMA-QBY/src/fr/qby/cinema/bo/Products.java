@@ -1,4 +1,4 @@
-package bo;
+package fr.qby.cinema.bo;
 //Création des Class Identiques au Bases de données
 	// Classe "products"
 
@@ -6,7 +6,7 @@ package bo;
 
 import java.sql.Date;
 
-public class products {
+public class Products {
 	private int  id_product ;
 	private String product_name ;
 	private double price ;
@@ -15,14 +15,14 @@ public class products {
 	
 	
 	// Constrcuteur par défaut
-	public products() {
+	public Products() {
 		
 	}
 
 
 	// Constructeur avec paramètre les attributs de class
 	
-	public products(int id_product, String product_name, double price, String category, String product_description) {
+	public Products(int id_product, String product_name, double price, String category, String product_description) {
 		this.id_product = id_product;
 		this.product_name = product_name;
 		this.price = price;
