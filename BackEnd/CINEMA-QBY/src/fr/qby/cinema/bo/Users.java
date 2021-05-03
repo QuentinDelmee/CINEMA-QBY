@@ -1,4 +1,4 @@
-package bo;
+package fr.qby.cinema.bo;
 
 import java.sql.Date;
 
@@ -8,7 +8,7 @@ import java.sql.Date;
 //Vers le la ligne "94" il y a la table SQL y correspondant
 
 
-public class users {
+public class Users {
 	private int  id_user;
 	private String pseudo;
 	private String pwd;
@@ -17,11 +17,11 @@ public class users {
 	
 	
 	// Constructeur par défaut
-	public users() {
+	public Users() {
 	}
 	
 	// Constructeur avec les attributs de Class comme paramètre
-	public users(int id_user, String pseudo, String pwd, Persons id_person, Security_Level id_sl) {
+	public Users(int id_user, String pseudo, String pwd, Persons id_person, Security_Level id_sl) {
 		this.id_user = id_user;
 		this.pseudo = pseudo;
 		this.pwd = pwd;

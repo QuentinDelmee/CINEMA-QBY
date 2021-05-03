@@ -49,5 +49,27 @@ function maFonction(){
 }
 
 
+/* 
+    Question :
+        - Il y a un texte,
+        - list de résponses [],
+        - création de question, / fonction
+        - désactiver la question (lorsqu"on  adéja répondu), / fonction
+        - supprimer la question, / fonction
+
+Il faut être capable de :
+        - Créer / supprimer une fonction
+        - Savoir quand on a répondu à une question
+        - Savoir si la réponse est correcte ou non (priviligier le switch)
+*/
+
+const Question = function (questionBobjet){
+    this.value ={
+        text: 'Question : Quel est le nom de notre formateur ib pour la POEC DU 15/03/2021 au 07/06/2021 ?';
+        reponse :[]
+
+    }
+}
+
 
 
