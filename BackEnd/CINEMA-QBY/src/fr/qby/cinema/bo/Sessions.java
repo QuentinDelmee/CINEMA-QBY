@@ -47,6 +47,12 @@ public class Sessions {
 	public void setNbPlacesLeft(int nbPlacesLeft) {
 		this.seats_left = nbPlacesLeft;
 	}
+
+	@Override
+	public String toString() {
+		return "Sessions [id_cinema=" + id_cinema + ", id_movie=" + id_movie + ", id_date=" + id_date + ", seats_left="
+				+ seats_left + "]";
+	}
 	
 	
 	

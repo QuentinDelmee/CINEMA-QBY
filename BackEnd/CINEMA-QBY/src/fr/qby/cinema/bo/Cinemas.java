@@ -56,6 +56,12 @@ public class Cinemas {
 	public void setScreen_size(String screen_size) {
 		this.screen_size = screen_size;
 	}
+
+	@Override
+	public String toString() {
+		return "Cinemas [id_Cinema=" + id_Cinema + ", nb_seats=" + nb_seats + ", room_name=" + room_name
+				+ ", room_level=" + room_level + ", screen_size=" + screen_size + "]";
+	}
 	
 	
 	

@@ -106,6 +106,14 @@ public class Movies {
 	public void setMovie_description(String movie_description) {
 		this.movie_description = movie_description;
 	}
+
+	@Override
+	public String toString() {
+		return "Movies [id_movie=" + id_movie + ", pegi=" + pegi + ", average_rating=" + average_rating
+				+ ", movie_duration=" + movie_duration + ", title=" + title + ", original_title=" + original_title
+				+ ", release_date=" + release_date + ", movie_genre=" + movie_genre + ", movie_description="
+				+ movie_description + "]";
+	}
 	
 	
 	

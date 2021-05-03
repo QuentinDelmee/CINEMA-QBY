@@ -37,6 +37,11 @@ public class Reservations {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		return "Reservations [id_users=" + id_users + ", id_seat=" + id_seat + ", date=" + date + "]";
+	}
 	
 	
 	

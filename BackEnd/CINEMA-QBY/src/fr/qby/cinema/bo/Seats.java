@@ -46,6 +46,12 @@ public class Seats {
 	public void setRow_name(String row_name) {
 		this.row_name = row_name;
 	}
+
+	@Override
+	public String toString() {
+		return "Seats [id_Cinema_room=" + id_Cinema_room + ", id_seat=" + id_seat + ", seat_number=" + seat_number
+				+ ", row_name=" + row_name + "]";
+	}
 	
 	
 	

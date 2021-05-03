@@ -56,6 +56,12 @@ public class Purchases {
 	public void setId_purchase(int id_purchase) {
 		this.id_purchase = id_purchase;
 	}
+
+	@Override
+	public String toString() {
+		return "Purchases [id_product=" + id_product + ", id_users=" + id_users + ", date=" + date + ", quantity="
+				+ quantity + ", id_purchase=" + id_purchase + "]";
+	}
 	
 	
 	

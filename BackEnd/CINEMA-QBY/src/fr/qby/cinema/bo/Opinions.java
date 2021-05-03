@@ -45,6 +45,12 @@ public class Opinions {
 	public void setCleanlyness(String cleanlyness) {
 		this.cleanlyness = cleanlyness;
 	}
+
+	@Override
+	public String toString() {
+		return "Opinions [id_cinema=" + id_cinema + ", id_users=" + id_users + ", rating=" + rating + ", cleanlyness="
+				+ cleanlyness + "]";
+	}
 	
 	
 	
