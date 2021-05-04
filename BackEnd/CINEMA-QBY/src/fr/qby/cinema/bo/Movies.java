@@ -34,6 +34,10 @@ public class Movies {
 		this.movie_genre = movie_genre;
 		this.movie_description = movie_description;
 	}
+	
+	public Movies(int id_movie) {
+		this.id_movie = id_movie;
+	}
 
 	public int getId_movie() {
 		return id_movie;
@@ -42,6 +46,7 @@ public class Movies {
 	public void setId_movie(int id_movie) {
 		this.id_movie = id_movie;
 	}
+	
 
 	public int getPegi() {
 		return pegi;

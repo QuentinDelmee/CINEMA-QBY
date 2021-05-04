@@ -1,19 +1,24 @@
 package fr.qby.cinema.bo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Sessions {
 	private Cinemas id_cinema ;
 	private Movies id_movie ;
-	private LocalDate id_date ;
-	private int seats_left ;
+	private LocalDateTime id_date ;
+	private int seats_left;
 	
-	public Sessions(Cinemas id_cinema, Movies id_movie, LocalDate date, int nbPlacesLeft) {
+	public Sessions(Cinemas id_cinema, Movies id_movie, LocalDateTime id_date, int seats_left) {
 		super();
 		this.id_cinema = id_cinema;
 		this.id_movie = id_movie;
-		this.id_date = date;
-		this.seats_left = nbPlacesLeft;
+		this.id_date = id_date;
+		this.seats_left = seats_left;
+	}
+	public Sessions(Movies id_movie, LocalDateTime id_date) {
+		this.id_movie = id_movie;
+		this.id_date = id_date;
 	}
 
 	public Cinemas getId_cinema() {
@@ -32,20 +37,20 @@ public class Sessions {
 		this.id_movie = id_movie;
 	}
 
-	public LocalDate getDate() {
+	public LocalDateTime getDate() {
 		return id_date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(LocalDateTime date) {
 		this.id_date = date;
 	}
 
-	public int getNbPlacesLeft() {
+	public int getSeats_left() {
 		return seats_left;
 	}
 
-	public void setNbPlacesLeft(int nbPlacesLeft) {
-		this.seats_left = nbPlacesLeft;
+	public void setNbPlacesLeft(int seats_left) {
+		this.seats_left = seats_left;
 	}
 
 	@Override
