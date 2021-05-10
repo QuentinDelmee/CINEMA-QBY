@@ -9,20 +9,26 @@ import java.util.List;
 
 public class AlgoDate {
 	
-	//CREER LIST SESSION 
-	//CREATION D'UNE SESSION
-	
-	
-	public static List<Movies> returnAllMoviesByTime(List<Sessions> moviesList ,LocalDateTime broadcastTime){
+	//Création de la méthode avec en paramètre une liste de session et un horaire
+	//pour récupérer une liste de film selon une heure précise (Afficher les films entre 20h et 20h59)
+	public static List<Movies> returnAllMoviesByTime(List<Sessions> sessionsMoviesList ,LocalDateTime broadcastTime){
+		
+		//Création de la liste qui récupèra les films éligible à la demande
 		List<Movies> availableMoviesList = new ArrayList<Movies>();
 
 		
-		for(Sessions sessionMovie:moviesList){
+		//Vérification de l'éligibilité pour chaque session contenu dans la liste
+		for(Sessions sessionMovie:sessionsMoviesList){
+			
+			//Si l'horaire en cours de lecture correspond à l'horaire 
+			//donné en paramètre de la fonction
 			if(!sessionMovie.getDate().isBefore(broadcastTime)&&
-			   !sessionMovie.getDate().isAfter(broadcastTime.plusMinutes(59)))
-			{
-				availableMoviesList.add(sessionMovie.getId_movie());
-			}
+			   !sessionMovie.getDate().isAfter(broadcastTime.plusMinutes(59))
+			   )
+				{
+					//Ajout de l'ID correspondant au film à partir de la session
+					availableMoviesList.add(sessionMovie.getId_movie());
+				}
 		}
 		
 		return availableMoviesList;
