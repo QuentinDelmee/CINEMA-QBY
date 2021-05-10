@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\ib\Desktop\CINEMA-QBY\.metadata\.plugins\org.eclipse.jdt.core
+1585746891.index
+1696731249.index
+221307401.index
