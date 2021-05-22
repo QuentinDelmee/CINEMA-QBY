@@ -1,1 +1,0 @@
-SELECT email, pwrd FROM users WHERE email = "migliorini-yohannIB@outlook.r";
