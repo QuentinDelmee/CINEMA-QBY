@@ -1,6 +1,9 @@
 <header>
     <mat-toolbar color="primary">
-        <mat-toolbar-row>
+        <div>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
             <a mat-button [routerLink]="['/home-page']">Home</a> |
             <a mat-button [routerLink]="['/data-page']">Data</a> |
             <a mat-button [routerLink]="['/how-to-come-page']">How To Come ?</a> |
@@ -10,31 +13,8 @@
             <a mat-button [routerLink]="['/signin-page']">Sign In Now !</a> |
             <a mat-button [routerLink]="['/signup-page']">Sign Up Now !</a> |
             <a mat-button [routerLink]="['/timetable-page']">Session Timetable</a>
-        </mat-toolbar-row>
+        </div>
     </mat-toolbar>
-
-    <mat-sidenav-container>
-        <mat-sidenav #sidenav>
-          <mat-nav-list>
-            <a mat-list-item [routerLink]="['/home-page']">Home</a> |
-            <a mat-list-item [routerLink]="['/data-page']">Data</a> |
-            <a mat-list-item [routerLink]="['/how-to-come-page']">How To Come ?</a> |
-            <a mat-list-item [routerLink]="['/movie-page']">Movies</a> |
-            <a mat-list-item [routerLink]="['/profil-page']">Your Profile</a> |
-            <a mat-list-item [routerLink]="['/reserFvation-page']">Reservation</a> |
-            <a mat-list-item [routerLink]="['/signin-page']">Sign In Now !</a> |
-            <a mat-list-item [routerLink]="['/signup-page']">Sign Up Now !</a> |
-            <a mat-list-item [routerLink]="['/timetable-page']">Session Timetable</a>
-      
-          </mat-nav-list>
-        </mat-sidenav>
-        <mat-sidenav-content>
-          <div style="height: 88vh;">
-      
-            <router-outlet></router-outlet>
-          </div>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
     <!-- <nav>
         <a [routerLink]="['/home-page']">Home</a> |
         <a [routerLink]="['/data-page']">Data</a> |
@@ -46,6 +26,6 @@
         <a [routerLink]="['/signup-page']">Sign Up Now !</a> |
         <a [routerLink]="['/timetable-page']">Session Timetable</a> |
     </nav> -->
-    
+
     <p>header works!</p>
 </header>
