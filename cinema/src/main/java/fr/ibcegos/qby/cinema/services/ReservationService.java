@@ -14,4 +14,6 @@ public interface ReservationService {
 	public void update(Reservation cinemaRoom);
 
 	public void delete(Reservation cinemaRoom);
+	
+	public void deleteById(Integer id_reservation);
 }

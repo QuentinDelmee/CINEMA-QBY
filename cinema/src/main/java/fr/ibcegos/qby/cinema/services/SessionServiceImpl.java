@@ -43,4 +43,10 @@ public class SessionServiceImpl implements SessionService {
 		sdao.delete(session);
 	}
 
+	@Override
+	public void deleteById(Integer id_session) {
+		// TODO Auto-generated method stub
+		sdao.deleteById(id_session);
+	}
+
 }

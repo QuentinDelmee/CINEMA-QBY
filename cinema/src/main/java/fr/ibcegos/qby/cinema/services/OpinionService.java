@@ -14,4 +14,6 @@ public interface OpinionService {
 	public void update(Opinion cinemaRoom);
 
 	public void delete(Opinion cinemaRoom);
+	
+	public void deleteById(Integer id_opinion);
 }

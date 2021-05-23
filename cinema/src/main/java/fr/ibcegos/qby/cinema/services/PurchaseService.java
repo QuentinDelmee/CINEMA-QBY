@@ -14,4 +14,6 @@ public interface PurchaseService {
 	public void update(Purchase cinemaRoom);
 
 	public void delete(Purchase cinemaRoom);
+
+	public void deleteById(Integer id_purchase);
 }

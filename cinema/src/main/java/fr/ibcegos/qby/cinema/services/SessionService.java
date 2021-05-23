@@ -14,4 +14,6 @@ public interface SessionService {
 	public void update(Session cinemaRoom);
 
 	public void delete(Session cinemaRoom);
+	
+	public void deleteById(Integer id_session);
 }

@@ -44,4 +44,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	}
 
+	@Override
+	public void deleteById(Integer id_purchase) {
+		// TODO Auto-generated method stub
+		pdao.deleteByIdPurchase(id_purchase);
+	}
+
 }

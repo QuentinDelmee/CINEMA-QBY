@@ -41,7 +41,13 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public void delete(Reservation reservation) {
 		// TODO Auto-generated method stub
-		
+		rdao.delete(reservation);
+	}
+
+	@Override
+	public void deleteById(Integer id_reservation) {
+		// TODO Auto-generated method stub
+		rdao.deleteById(id_reservation);
 	}
 
 }
