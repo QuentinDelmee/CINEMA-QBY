@@ -60,7 +60,7 @@ public class CinemaRoomController {
 	//////////
 	
 	//Récupération par l'id d'une salle du cinema
-	@GetMapping("/REST/listesalle/{id}")
+	@GetMapping("/REST/salle/{id}")
 	public CinemaRoom getFromId(@PathVariable("id") Integer id) {
 		return service.getCinemaRoomById(id);
 	}

@@ -1,5 +1,10 @@
 package fr.ibcegos.qby.cinema.daos;
 
-public interface MovieDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import fr.ibcegos.qby.cinema.beans.Movie;
+
+
+public interface MovieDAO extends CrudRepository<Movie, Integer> {
 
 }
