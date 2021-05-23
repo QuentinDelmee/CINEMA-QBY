@@ -17,25 +17,28 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Purchase {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_purchase;
 	private Product id_product;
+	@Id
 	private User id_users;
+	@Id
 	private Date date;
-	private Integer quantity;
 
-	public Purchase(Product id_product, User id_users, Date date, Integer quantity) {
+	private Integer quantity;
+	private Integer id_purchase;
+
+	@Override
+	public String toString() {
+		return "Purchases [id=" + id_purchase + ", id_product=" + id_product + ", id_users=" + id_users + ", date="
+				+ date + ", quantity=" + quantity + "]";
+	}
+
+	public Purchase(Product id_product, User id_users, Date date, Integer quantity, Integer id_purchase) {
 		super();
 		this.id_product = id_product;
 		this.id_users = id_users;
 		this.date = date;
 		this.quantity = quantity;
-	}
-
-	@Override
-	public String toString() {
-		return "Purchases [id=" + id_purchase + ", id_product=" + id_product + ", id_users="
-				+ id_users + ", date=" + date + ", quantity=" + quantity + "]";
+		this.id_purchase = id_purchase;
 	}
 
 }

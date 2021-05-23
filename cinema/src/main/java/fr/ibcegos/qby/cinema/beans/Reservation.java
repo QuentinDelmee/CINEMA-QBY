@@ -18,11 +18,12 @@ import lombok.Setter;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id ;
-	private User id_users ;
-	private Seat id_seat ;
-	private Date date ;
-	
+	private Integer id_reservation;
+
+	private User id_users;
+	private Seat id_seat;
+	private Date date;
+
 	public Reservation(User id_users, Seat id_seat, Date date) {
 		super();
 		this.id_users = id_users;
@@ -32,12 +33,8 @@ public class Reservation {
 
 	@Override
 	public String toString() {
-		return "Reservations [id=" + id + ", id_users=" + id_users + ", id_seat=" + id_seat + ", date=" + date + "]";
+		return "Reservations [id=" + id_reservation + ", id_users=" + id_users + ", id_seat=" + id_seat + ", date="
+				+ date + "]";
 	}
 
-	
-	
-	
-	
-	
 }

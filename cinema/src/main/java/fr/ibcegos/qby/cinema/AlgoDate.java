@@ -1,9 +1,11 @@
 package fr.ibcegos.qby.cinema;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.ibcegos.qby.cinema.beans.Movie;
+import fr.ibcegos.qby.cinema.beans.Session;
 
 /* Pour construire cet algo je compte v�rifier avec le .before du localdate */
 
@@ -22,8 +24,8 @@ public class AlgoDate {
 			
 			//Si l'horaire en cours de lecture correspond � l'horaire 
 			//donn� en param�tre de la fonction
-			if(!sessionMovie.getDate().isBefore(broadcastTime)&&
-			   !sessionMovie.getDate().isAfter(broadcastTime.plusMinutes(59))
+			if(!sessionMovie.getId_date().isBefore(broadcastTime)&&
+			   !sessionMovie.getId_date().isAfter(broadcastTime.plusMinutes(59))
 			   )
 				{
 					//Ajout de l'ID correspondant au film � partir de la session
