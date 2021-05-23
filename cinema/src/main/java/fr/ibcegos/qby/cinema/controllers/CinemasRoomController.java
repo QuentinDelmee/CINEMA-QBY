@@ -43,4 +43,5 @@ public class CinemasRoomController {
 	public List<CinemasRoom> getAllCinemasRoom(){
 		return service.getAllCinemasRoom();
 	}
+	
 }
