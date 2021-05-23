@@ -7,6 +7,8 @@ import fr.ibcegos.qby.cinema.beans.Session;
 public interface SessionService {
 	public void create(Session cinemaRoom);
 
+	public Session getSession(Integer id_session);
+
 	public List<Session> getAllSession();
 
 	public void update(Session cinemaRoom);

@@ -8,6 +8,7 @@ public interface OpinionService {
 
 	public void create(Opinion cinemaRoom);
 
+	public Opinion getOpinion(Integer id_opinion);
 	public List<Opinion> getAllOpinion();
 
 	public void update(Opinion cinemaRoom);
