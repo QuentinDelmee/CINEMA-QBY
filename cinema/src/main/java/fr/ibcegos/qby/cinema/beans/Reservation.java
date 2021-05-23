@@ -1,6 +1,6 @@
 package fr.ibcegos.qby.cinema.beans;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,9 +22,9 @@ public class Reservation {
 
 	private User id_users;
 	private Seat id_seat;
-	private Date date;
+	private LocalDateTime date;
 
-	public Reservation(User id_users, Seat id_seat, Date date) {
+	public Reservation(User id_users, Seat id_seat, LocalDateTime date) {
 		super();
 		this.id_users = id_users;
 		this.id_seat = id_seat;
