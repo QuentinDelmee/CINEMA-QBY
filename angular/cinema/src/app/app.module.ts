@@ -12,6 +12,12 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { TimeTableComponent } from './time-table/time-table.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from './material.module' ;
+
 
 @NgModule({
   declarations: [
@@ -24,11 +30,16 @@ import { TimeTableComponent } from './time-table/time-table.component';
     ReservationComponent,
     SignInComponent,
     SignUpComponent,
-    TimeTableComponent
+    TimeTableComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
