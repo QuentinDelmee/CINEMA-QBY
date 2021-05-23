@@ -28,7 +28,7 @@ import lombok.Setter;
  * @author QBY
  *
  */
-public class CinemasRoom {
+public class CinemaRoom {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,9 +42,9 @@ public class CinemasRoom {
 	
 	
 	@OneToMany(mappedBy="cinemasRoom")
-	private List<Seats> lstSeats = new ArrayList<>();
+	private List<Seat> lstSeats = new ArrayList<>();
 
-	public CinemasRoom(Integer nb_seats, String room_name, String room_level, String screen_size) {
+	public CinemaRoom(Integer nb_seats, String room_name, String room_level, String screen_size) {
 
 		this.nb_seats = nb_seats;
 		this.room_name = room_name;
@@ -54,10 +54,10 @@ public class CinemasRoom {
 	}
 	
 	
-	public void addSeats(Seats seats) {
+	public void addSeats(Seat seat) {
 		//PLUS TARD Rajouter condition pour vérifier capacité
-		lstSeats.add(seats);
-		seats.setCinemasRoom(this);
+		lstSeats.add(seat);
+		seat.setCinemaRoom(this);
 	}
 	
 	

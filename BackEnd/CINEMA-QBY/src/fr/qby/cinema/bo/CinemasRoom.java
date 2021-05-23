@@ -1,7 +1,7 @@
 package fr.qby.cinema.bo;
 import java.sql.Date;
 
-public class Cinemas {
+public class CinemasRoom {
 	
 	private int id_Cinema ;
 	private int nb_seats;
@@ -9,7 +9,7 @@ public class Cinemas {
 	private String room_level;
 	private String screen_size;
 	
-	public Cinemas(int id_Cinema, int nb_seats, String room_name, String room_level, String screen_size) {
+	public CinemasRoom(int id_Cinema, int nb_seats, String room_name, String room_level, String screen_size) {
 		this.id_Cinema = id_Cinema;
 		this.nb_seats = nb_seats;
 		this.room_name = room_name;

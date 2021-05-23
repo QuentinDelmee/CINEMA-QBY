@@ -9,26 +9,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.ibcegos.qby.cinema.beans.CinemasRoom;
-import fr.ibcegos.qby.cinema.beans.Seats;
-import fr.ibcegos.qby.cinema.services.CinemasRoomService;
+import fr.ibcegos.qby.cinema.beans.CinemaRoom;
+import fr.ibcegos.qby.cinema.beans.Seat;
+import fr.ibcegos.qby.cinema.services.CinemaRoomService;
 
 @RestController
-public class CinemasRoomController {
+public class CinemaRoomController {
 
 	@Autowired
-	private CinemasRoomService service;
+	private CinemaRoomService service;
 	
 	@PostConstruct
 	@Transactional
 	public void init() {
-		CinemasRoom RoomA = new CinemasRoom(50,"SalleA","Niveau RDC", "4k");
-		CinemasRoom RoomB = new CinemasRoom(100,"SalleB","Niveau 1", "4k");
-		CinemasRoom RoomC = new CinemasRoom(150,"SalleC","Niveau 1", "4k");
+		CinemaRoom RoomA = new CinemaRoom(50,"SalleA","Niveau RDC", "4k");
+		CinemaRoom RoomB = new CinemaRoom(100,"SalleB","Niveau 1", "4k");
+		CinemaRoom RoomC = new CinemaRoom(150,"SalleC","Niveau 1", "4k");
 		
-		Seats a = new Seats(1,"a");
-		Seats d = new Seats(10,"b");
-		Seats c = new Seats(20,"d");
+		Seat a = new Seat(1,"a");
+		Seat d = new Seat(10,"b");
+		Seat c = new Seat(20,"d");
 		
 		RoomA.addSeats(d);
 		RoomB.addSeats(c);
@@ -40,7 +40,7 @@ public class CinemasRoomController {
 	}
 	
 	@GetMapping("/REST/listesalle/")
-	public List<CinemasRoom> getAllCinemasRoom(){
+	public List<CinemaRoom> getAllCinemasRoom(){
 		return service.getAllCinemasRoom();
 	}
 }

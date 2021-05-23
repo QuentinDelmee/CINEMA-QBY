@@ -1,0 +1,105 @@
+package fr.ibcegos.qby.cinema.beans;
+
+import java.sql.Date;
+
+//Création des Class Identiques au Bases de données
+	// Classe "users"
+
+//Vers le la ligne "94" il y a la table SQL y correspondant
+
+
+public class User {
+	private int  id_user;
+	private String pseudo;
+	private String pwd;
+	private Person id_person;
+	private Security_Level  id_sl;
+	
+	
+	// Constructeur par défaut
+	public User() {
+	}
+	
+	// Constructeur avec les attributs de Class comme paramètre
+	public User(int id_user, String pseudo, String pwd, Person id_person, Security_Level id_sl) {
+		this.id_user = id_user;
+		this.pseudo = pseudo;
+		this.pwd = pwd;
+		this.id_person = id_person;
+		this.id_sl = id_sl;
+	}
+
+	
+	// Méthode toString pour accéder aux valeurs 
+	@Override
+	public String toString() {
+		return "" + id_user 
+				+ "" + pseudo
+				+ " a pour mot de pass " + pwd 
+				+ ", correspondant à " + id_person
+				+ ", ayant un niveau de sécurité " + id_sl;
+	}
+
+	
+	//************************************************************************************//
+		// Gettres (pour récupérer-afficher nos attributs de class )
+	//et   Settres (pour apporter les modifictaions le ac échants) 
+
+	public int getId_user() {
+		return id_user;
+	}
+
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+
+	public String getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public Person getId_person() {
+		return id_person;
+	}
+
+	public void setId_person(Person id_person) {
+		this.id_person = id_person;
+	}
+
+	public Security_Level getId_sl() {
+		return id_sl;
+	}
+
+	public void setId_sl(Security_Level id_sl) {
+		this.id_sl = id_sl;
+	}
+	
+}
+
+
+
+/*
+	CREATE TABLE users 
+	(
+		id_user int NOT NULL AUTO_INCREMENT , 
+		pseudo varchar (50),
+		pwd varchar (50),
+		id_person int,	
+		id_sl int,
+		PRIMARY KEY (id_users),
+		FOREIGN KEY (id_person) REFERENCES persons(id_person),
+		FOREIGN KEY (id_sl) REFERENCES security_level(id_sl)
+	);
+
+*/

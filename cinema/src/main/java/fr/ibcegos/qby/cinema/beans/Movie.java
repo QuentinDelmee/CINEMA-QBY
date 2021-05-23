@@ -1,5 +1,5 @@
 package fr.ibcegos.qby.cinema.beans;
 
-public class Movies {
+public class Movie {
 
 }

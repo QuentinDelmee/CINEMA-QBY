@@ -7,35 +7,35 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.ibcegos.qby.cinema.beans.Seats;
-import fr.ibcegos.qby.cinema.daos.SeatsDAO;
+import fr.ibcegos.qby.cinema.beans.Seat;
+import fr.ibcegos.qby.cinema.daos.SeatDAO;
 
 @Service
-public class SeatsServiceImpl implements SeatsService{
+public class SeatServiceImpl implements SeatService{
 	
 	@Autowired
-	SeatsDAO dao;
+	SeatDAO dao;
 	
 	@Override
 	@Transactional
-	public void create(Seats seat) {
+	public void create(Seat seat) {
 		dao.save(seat);
 	}
 
 	@Override
-	public List<Seats> getAllSeats() {
-		return (List<Seats>) dao.findAll();
+	public List<Seat> getAllSeats() {
+		return (List<Seat>) dao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public void update(Seats seat) {
+	public void update(Seat seat) {
 		dao.save(seat);
 	}
 
 	@Override
 	@Transactional
-	public void delete(Seats seat) {
+	public void delete(Seat seat) {
 		dao.delete(seat);
 	}
 

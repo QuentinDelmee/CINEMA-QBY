@@ -26,7 +26,7 @@ import lombok.Setter;
  * @author QBY
  *
  */
-public class Seats {
+public class Seat {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,9 +36,9 @@ public class Seats {
 	private String row_name;
 	
 	@ManyToOne
-	private CinemasRoom cinemasRoom;
+	private CinemaRoom cinemaRoom;
 
-	public Seats(Integer seat_number, String row_name) {
+	public Seat(Integer seat_number, String row_name) {
 		this.seat_number = seat_number;
 		this.row_name = row_name;
 	}
