@@ -1,12 +1,12 @@
 package fr.qby.cinema.bo;
 
 public class Opinions {
-	private Cinemas id_cinema ;
+	private CinemasRoom id_cinema ;
 	private Users id_users ;
 	private double rating ;
 	private String cleanlyness ;
 	
-	public Opinions(Cinemas id_cinema, Users id_users, double rating, String cleanlyness) {
+	public Opinions(CinemasRoom id_cinema, Users id_users, double rating, String cleanlyness) {
 		super();
 		this.id_cinema = id_cinema;
 		this.id_users = id_users;
@@ -14,11 +14,11 @@ public class Opinions {
 		this.cleanlyness = cleanlyness;
 	}
 
-	public Cinemas getId_cinema() {
+	public CinemasRoom getId_cinema() {
 		return id_cinema;
 	}
 
-	public void setId_cinema(Cinemas id_cinema) {
+	public void setId_cinema(CinemasRoom id_cinema) {
 		this.id_cinema = id_cinema;
 	}
 
