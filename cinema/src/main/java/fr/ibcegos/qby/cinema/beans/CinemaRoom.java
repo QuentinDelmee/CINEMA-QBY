@@ -41,7 +41,7 @@ public class CinemaRoom {
 	private String screen_size;
 	
 	
-	@OneToMany(mappedBy="cinemasRoom")
+	@OneToMany(mappedBy="cinemaRoom")
 	private List<Seat> lstSeats = new ArrayList<>();
 
 	public CinemaRoom(Integer nb_seats, String room_name, String room_level, String screen_size) {

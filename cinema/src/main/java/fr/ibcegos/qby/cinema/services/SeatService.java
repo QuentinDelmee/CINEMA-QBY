@@ -12,11 +12,26 @@ import fr.ibcegos.qby.cinema.beans.Seat;
  */
 public interface SeatService {
 
+	//////////
+	//CREATE//
+	//////////
 	/**
 	 * Créer une salle de cinema
 	 * @param cinemaRoom
 	 */
 	public void create(Seat seat);
+	
+		
+	//////////
+	// GET  //
+	//////////
+
+	/**
+	 * Récupérer un siege par son Id
+	 * @param id_seat
+	 * @return
+	 */
+	public Seat getSeatById(Integer id_seat);
 	
 	/**
 	 * Retourne toutes les places de la salle du cinema
@@ -24,6 +39,10 @@ public interface SeatService {
 	 */
 	public List<Seat> getAllSeats();
 	
+	
+	//////////
+	//UPDATE//
+	//////////
 	/**
 	 * Modifie la place
 	 * @param cinemaRoom
@@ -31,9 +50,14 @@ public interface SeatService {
 	public void update(Seat seat);
 	
 	
+	//////////
+	//DELETE//
+	//////////
 	/**
 	 * Supprime la place
 	 * @param cinemaRoom
 	 */
 	public void delete(Seat seat);
+	
+	public void deleteById(Integer id_seat);
 }

@@ -21,7 +21,9 @@ public class CinemaRoomImpl implements CinemaRoomService{
 	@Autowired
 	SeatDAO daoSeats;
 	
-	
+	//////////
+	//CREATE//
+	//////////
 	@Override
 	@Transactional
 	public void create(CinemaRoom cinemaRoom) {
@@ -31,20 +33,45 @@ public class CinemaRoomImpl implements CinemaRoomService{
 		dao.save(cinemaRoom);
 	}
 
+	
+	
+	//////////
+	// GET  //
+	//////////
+	@Override
+	public CinemaRoom getCinemaRoomById(Integer id_Cinema) {
+		return dao.findById(id_Cinema).orElse(null);
+	}
+	
 	@Override
 	public List<CinemaRoom> getAllCinemasRoom() {
 		return (List<CinemaRoom>) dao.findAll();
 	}
 
+	
+	//////////
+	//UPDATE//
+	//////////
 	@Override
 	@Transactional
 	public void update(CinemaRoom cinemaRoom) {
 		dao.save(cinemaRoom);
 	}
 
+	
+	//////////
+	//DELETE//
+	//////////
 	@Override
 	@Transactional
 	public void delete(CinemaRoom cinemaRoom) {
 		dao.delete(cinemaRoom);
+	}
+
+
+	@Override
+	@Transactional
+	public void deleteById(Integer id_Cinema) {
+		dao.deleteById(id_Cinema);
 	}
 }
