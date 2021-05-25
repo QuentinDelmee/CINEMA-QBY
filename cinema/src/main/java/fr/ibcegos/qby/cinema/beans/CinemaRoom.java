@@ -41,7 +41,7 @@ public class CinemaRoom {
 	private String screen_size;
 	
 	
-	@OneToMany(mappedBy="cinemaRoom")
+	@OneToMany(mappedBy="id_cinemaRoom")
 	private List<Seat> lstSeats = new ArrayList<>();
 
 	public CinemaRoom(Integer nb_seats, String room_name, String room_level, String screen_size) {
@@ -57,7 +57,7 @@ public class CinemaRoom {
 	public void addSeats(Seat seat) {
 		//PLUS TARD Rajouter condition pour vérifier capacité
 		lstSeats.add(seat);
-		seat.setCinemaRoom(this);
+		seat.setId_cinemaRoom(this);
 	}
 	
 	
