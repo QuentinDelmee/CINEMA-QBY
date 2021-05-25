@@ -1,5 +1,9 @@
 package fr.ibcegos.qby.cinema.daos;
 
-public interface UserDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import fr.ibcegos.qby.cinema.beans.User;
+
+public interface UserDAO  extends CrudRepository<User, Integer> {
 
 }
