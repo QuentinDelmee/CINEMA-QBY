@@ -49,5 +49,4 @@ public class OpinionServiceImpl implements OpinionService{
 		// TODO Auto-generated method stub
 		odao.deleteById(id_opinion);
 	}
-
 }

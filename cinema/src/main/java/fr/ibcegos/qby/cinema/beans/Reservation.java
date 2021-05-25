@@ -14,7 +14,8 @@ import lombok.Setter;
 /**
  * 
  * Class to stock and manage users reservations on films
- * @author ib
+ * 
+ * @author QBY
  *
  */
 @Entity
@@ -32,9 +33,12 @@ public class Reservation {
 
 	/**
 	 * Constructor of the class, all other functions are automated with Lombok
-	 * @param id_users User which is reserving a seat for a film on a specific session
-	 * @param id_seat Seat reserved by the user inside the CinemaRoom
-	 * @param date Date of the reservation which corresponds to the start of a film session
+	 * 
+	 * @param id_users User which is reserving a seat for a film on a specific
+	 *                 session
+	 * @param id_seat  Seat reserved by the user inside the CinemaRoom
+	 * @param date     Date of the reservation which corresponds to the start of a
+	 *                 film session
 	 */
 	public Reservation(User id_users, Seat id_seat, LocalDateTime date) {
 		super();

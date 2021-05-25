@@ -12,6 +12,7 @@ import lombok.Setter;
 /**
  * 
  * Class which allows to stock and manage all purchases from users
+ * 
  * @author ib
  *
  */
@@ -29,13 +30,14 @@ public class Purchase {
 
 	private Integer quantity;
 	private Integer id_purchase;
-	
+
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
-	 * @param id_product product which is transacted
-	 * @param id_users user which is buying
-	 * @param date the exact date at which the transaction occurs
-	 * @param quantity the quantity of product which is transacted
+	 * 
+	 * @param id_product  product which is transacted
+	 * @param id_users    user which is buying
+	 * @param date        the exact date at which the transaction occurs
+	 * @param quantity    the quantity of product which is transacted
 	 * @param id_purchase the overall id of the purchases
 	 */
 	public Purchase(Product id_product, User id_users, LocalDateTime date, Integer quantity, Integer id_purchase) {
@@ -46,7 +48,7 @@ public class Purchase {
 		this.quantity = quantity;
 		this.id_purchase = id_purchase;
 	}
-	
+
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
@@ -55,7 +57,5 @@ public class Purchase {
 		return "Purchases [id=" + id_purchase + ", id_product=" + id_product + ", id_users=" + id_users + ", date="
 				+ date + ", quantity=" + quantity + "]";
 	}
-
-
 
 }

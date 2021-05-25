@@ -14,7 +14,8 @@ import lombok.Setter;
 /**
  * 
  * Class to stock and manage films in cinemarooms at given dates
- * @author ib
+ * 
+ * @author QBY
  *
  */
 @Entity
@@ -33,9 +34,10 @@ public class Session {
 
 	/**
 	 * Constructor of the class, all other functions are automated with Lombok
-	 * @param id_cinema The room in which the film is projected
-	 * @param id_movie The movie which will be projected
-	 * @param id_date The starting date of the movie
+	 * 
+	 * @param id_cinema  The room in which the film is projected
+	 * @param id_movie   The movie which will be projected
+	 * @param id_date    The starting date of the movie
 	 * @param seats_left The number of seats left in the room
 	 */
 	public Session(CinemaRoom id_cinema, Movie id_movie, LocalDateTime id_date, Integer seats_left) {
@@ -45,7 +47,7 @@ public class Session {
 		this.id_date = id_date;
 		this.seats_left = seats_left;
 	}
-	
+
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
@@ -54,7 +56,5 @@ public class Session {
 		return "Session [id=" + id + ", id_cinema=" + id_cinema + ", id_movie=" + id_movie + ", id_date=" + id_date
 				+ ", seats_left=" + seats_left + "]";
 	}
-	
-	
 
 }
