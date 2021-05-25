@@ -34,18 +34,21 @@ public class Seat {
 	
 	private Integer seat_number;
 	private String row_name;
+	private Boolean free;
 	
 	@ManyToOne
-	private CinemaRoom cinemaRoom;
+	private CinemaRoom id_cinemaRoom;
 
 	public Seat(Integer seat_number, String row_name) {
 		this.seat_number = seat_number;
 		this.row_name = row_name;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "SeatsDAO [id_seat=" + id_seat + ", seat_number=" + seat_number
-				+ ", row_name=" + row_name + "]";
+		return "Seat [id_seat=" + id_seat + ", seat_number=" + seat_number + ", row_name=" + row_name + ", free=" + free
+				+ ", id_cinemaRoom=" + id_cinemaRoom + "]";
 	}
+	
+
 }
