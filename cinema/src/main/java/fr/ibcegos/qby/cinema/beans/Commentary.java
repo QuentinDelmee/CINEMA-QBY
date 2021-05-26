@@ -22,11 +22,11 @@ public class Commentary {
 	
 	//Plusieurs film peuvent avoir plusieurs commentaires
 	@ManyToMany
-	private Movie movie;
+	private Movie movie_id;
 	
 	//Plusieurs film peuvent avoir plusieurs commentaires
 	@ManyToMany
-	private User user;
+	private User user_id;
 	
 	
 }

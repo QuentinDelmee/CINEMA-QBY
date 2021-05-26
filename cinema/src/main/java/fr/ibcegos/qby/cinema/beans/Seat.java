@@ -39,9 +39,10 @@ public class Seat {
 	@ManyToOne
 	private CinemaRoom id_cinemaRoom;
 
-	public Seat(Integer seat_number, String row_name) {
+	public Seat(Integer seat_number, String row_name, Boolean free) {
 		this.seat_number = seat_number;
 		this.row_name = row_name;
+		this.free = free;
 	}
 
 	@Override
