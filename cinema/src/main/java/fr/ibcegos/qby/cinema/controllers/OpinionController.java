@@ -19,6 +19,12 @@ import fr.ibcegos.qby.cinema.services.CinemaRoomService;
 import fr.ibcegos.qby.cinema.services.OpinionService;
 import fr.ibcegos.qby.cinema.services.UserService;
 
+/**
+ * Controller class for Opinion with basic CRUDs Mapping
+ * 
+ * @author QBY
+ *
+ */
 @RestController
 public class OpinionController {
 	@Autowired
@@ -27,38 +33,69 @@ public class OpinionController {
 	private UserService uservice;
 	@Autowired
 	private CinemaRoomService crservice;
-	
+
+	/**
+	 * Initialization function to potentially add data in DB
+	 */
 	@PostConstruct
 	@Transactional
 	public void init() {
-		
+
 	}
-	
+
+	/**
+	 * Function to Map getOpinion to an URL
+	 * 
+	 * @param id the id of the opinion we want to get
+	 * @return the opinion found in the DB (null if absent)
+	 */
 	@GetMapping("/REST/opinion/{id}")
 	public Opinion getFromId(@PathVariable("id") Integer id) {
 		return oservice.getOpinion(id);
 	}
 
+	/**
+	 * Function to Map getAllOpinion to an URL
+	 * 
+	 * @return the list of all opinion in DB
+	 */
 	@GetMapping("/REST/opinion")
 	public List<Opinion> getAll() {
 		return oservice.getAllOpinion();
 	}
 
+	/**
+	 * Function to Map POST create to an URL
+	 * 
+	 * @param opinion the opinion posted inside a form
+	 * @return the opinion object we obtain
+	 */
 	@PostMapping("/REST/opinion")
-	public Opinion addAvion(@RequestBody Opinion opinion) {
+	public Opinion addOpinion(@RequestBody Opinion opinion) {
 		oservice.create(opinion);
 		return opinion;
 	}
 
+	/**
+	 * Function to map PUT update to an URL
+	 * 
+	 * @param opinion the opinion to update
+	 * @return the updated opinion we obtain
+	 */
 	@PutMapping("/REST/opinion")
-	public Opinion updateAvion(@RequestBody Opinion opinion) {
+	public Opinion updateOpinion(@RequestBody Opinion opinion) {
 		oservice.update(opinion);
 		return opinion;
 	}
-	
+
+	/**
+	 * Function to Map DELETE deleteById to an URL
+	 * 
+	 * @param id the id of the opinion to delete
+	 */
 	@DeleteMapping("/REST/opinion/{id}")
 	public void deleteById(@PathVariable("id") Integer id) {
 		oservice.deleteById(id);
 	}
-	
+
 }

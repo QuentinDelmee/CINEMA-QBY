@@ -4,6 +4,12 @@ import org.springframework.data.repository.CrudRepository;
 
 import fr.ibcegos.qby.cinema.beans.Opinion;
 
-public interface OpinionDAO extends CrudRepository<Opinion, Integer>{
+/**
+ * Interface DAO to manage Opinion DataBase
+ * 
+ * @author QBY
+ *
+ */
+public interface OpinionDAO extends CrudRepository<Opinion, Integer> {
 
 }
