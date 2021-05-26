@@ -6,23 +6,31 @@ package fr.ibcegos.qby.cinema.beans;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Product {
-	private int  id_product ;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer  id_product ;
 	private String product_name ;
 	private double price ;
 	private String category ;
 	private String product_description ;
-	
-	
-	// Constrcuteur par défaut
-	public Product() {
-		
-	}
 
 
 	// Constructeur avec paramètre les attributs de class
 	
-	public Product(int id_product, String product_name, double price, String category, String product_description) {
+	public Product(Integer id_product, String product_name, double price, String category, String product_description) {
 		this.id_product = id_product;
 		this.product_name = product_name;
 		this.price = price;
@@ -30,78 +38,22 @@ public class Product {
 		this.product_description = product_description;
 	}
 
+	// Constructeur avec paramètre sauf id
+	public Product(String product_name, double price, String category, String product_description) {
+		this.product_name = product_name;
+		this.price = price;
+		this.category = category;
+		this.product_description = product_description;
+	}
 
 	// Méthode toString pour accéder aux valeurs 
-	
-	
+
 	@Override
 	public String toString() {
-		return " " + id_product 
-				   + " a été vendu au prix de " + price
-				+ " " + product_name 
-				+ " .Il s'agit de " + category 
-				+ " " + product_description + "]";
+		return "Product [id_product=" + id_product + ", product_name=" + product_name + ", price=" + price
+				+ ", category=" + category + ", product_description=" + product_description + "]";
 	}
 	
-	
-	
-	
-	
-	
-	
-//************************************************************************************//
-	// Getters et Settres
-	
-	
-	public int getId_product() {
-		return id_product;
-	}
-
-
-	public void setId_product(int id_product) {
-		this.id_product = id_product;
-	}
-
-
-	public String getProduct_name() {
-		return product_name;
-	}
-
-
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-
-
-	public double getPrice() {
-		return price;
-	}
-
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-
-	public String getCategory() {
-		return category;
-	}
-
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-
-	public String getProduct_description() {
-		return product_description;
-	}
-
-
-	public void setProduct_description(String product_description) {
-		this.product_description = product_description;
-	}
-
 	
 }
 //************************************************************************************//
