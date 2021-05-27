@@ -1,9 +1,13 @@
 package fr.ibcegos.qby.cinema.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +26,10 @@ public class Security_Level {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_sl;
 	private String roles;
-
+	
+	@OneToMany(mappedBy = "id_user")
+	private List<Security_Level> mySecurity_Level = new ArrayList<Security_Level>();
+	
 	// Constructeur avec les attributs de Class comme paramètre
 	public Security_Level(Integer id_sl, String roles) {
 		this.id_sl = id_sl;
