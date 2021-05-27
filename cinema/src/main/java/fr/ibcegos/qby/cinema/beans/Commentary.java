@@ -37,12 +37,10 @@ public class Commentary {
 	private String commentary;
 	
 	@ManyToOne
-	@JsonBackReference
 	private User iduser;
 	
 	@ManyToOne
 	@JoinColumn(name = "idmovie")
-	@JsonBackReference
 	private Movie idmovie; 
 	
 	

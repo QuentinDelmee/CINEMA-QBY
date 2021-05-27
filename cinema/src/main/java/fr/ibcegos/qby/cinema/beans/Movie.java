@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +24,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idmovie")
 /**
  * 
  * @author QBY
@@ -39,14 +45,14 @@ public class Movie {
 	private LocalTime movieduration;
 	private String moviegenre;
 	private Double averagerating;
+	
+	@Column(columnDefinition="text")
 	private String moviedescription;
 	
-	@OneToMany(mappedBy="idmovie")
-	@JsonBackReference
+	@OneToMany(targetEntity=Commentary.class, mappedBy="idmovie")
 	private List<Commentary> lstCommentarys = new ArrayList<>();
 	
-	@OneToMany(mappedBy="idmovie")
-	@JsonBackReference
+	@OneToMany(targetEntity=Session.class, mappedBy="idmovie")
 	private List<Session> lstSessions = new ArrayList<>();
 	
 	

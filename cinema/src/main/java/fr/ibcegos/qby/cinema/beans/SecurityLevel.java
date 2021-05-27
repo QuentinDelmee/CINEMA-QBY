@@ -29,7 +29,6 @@ public class SecurityLevel {
 	private Integer idsl;
 	private String roles;
 	
-	@JsonBackReference
 	@OneToMany(mappedBy = "iduser")
 	private List<User> allUsers = new ArrayList<User>();
 	

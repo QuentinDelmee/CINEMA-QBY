@@ -40,22 +40,21 @@ public class User {
 	
 	@ManyToOne
 	@JoinColumn(name ="idsl")
-	@JsonManagedReference
 	private SecurityLevel  idsl;
 	
-	@JsonBackReference
+	
 	@OneToMany(mappedBy = "iduser")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 
-	@JsonBackReference
+	
 	@OneToMany(mappedBy = "iduser")
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 	
-	@JsonBackReference
+	
 	@OneToMany(mappedBy = "iduser")
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 	
-	@JsonBackReference
+	
 	@OneToMany(mappedBy = "iduser")
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
 		

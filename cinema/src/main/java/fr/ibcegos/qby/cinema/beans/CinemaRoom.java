@@ -39,7 +39,6 @@ public class CinemaRoom {
 	
 
 	@OneToMany(mappedBy="idcinema")
-	@JsonBackReference
 	private List<Seat> lstSeats = new ArrayList<>();
 	
 	@OneToMany(mappedBy="idcinema")

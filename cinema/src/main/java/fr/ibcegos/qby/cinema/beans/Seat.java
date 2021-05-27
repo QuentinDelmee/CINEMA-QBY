@@ -38,11 +38,9 @@ public class Seat {
 	private Boolean free;
 	
 	@ManyToOne
-	@JsonBackReference
 	private CinemaRoom idcinema;
 	
 	@OneToMany(mappedBy="idreservation")
-	@JsonBackReference
 	private List<Reservation> allReservations;
 
 	public Seat(Integer seatnumber, String rowname, Boolean free) {
