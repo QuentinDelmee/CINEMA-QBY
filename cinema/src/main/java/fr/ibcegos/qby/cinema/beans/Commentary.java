@@ -41,6 +41,7 @@ public class Commentary {
 	private User idUser;
 	
 	@ManyToOne
+<<<<<<< HEAD
 	@JoinColumn(name = "id")
 	private Movie idMovie;
 
@@ -52,6 +53,18 @@ public class Commentary {
 		this.idUser = idUser;
 		this.idMovie = idMovie;
 	}
+=======
+	@JoinColumn(name = "idmovie")
+	private Movie idmovie;
+
+	public Commentary(Integer rating, String commentary, User iduser, Movie idmovie) {
+		super();
+		this.rating = rating;
+		this.commentary = commentary;
+		this.iduser = iduser;
+		this.idmovie = idmovie;
+	} 
+>>>>>>> a874e36af9c68ac8c70804b9e8146b3906c1003d
 	
 	
 	@Override

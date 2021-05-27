@@ -1,13 +1,6 @@
 package fr.ibcegos.qby.cinema.beans;
 
-// Quand j'ai crée l'attribut de class "Date" je ne s'avais laquelle utiliser entre :
-		// import java.sql.Date;   
-		// import java.util.Date; --> par logique j'ai choisi celle-ci
-
-//Vers le la ligne "120" il y a la table SQL y correspondant
-
-// Class "util"
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,25 +20,53 @@ import lombok.Setter;
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+<<<<<<< HEAD
 	private Integer  id;
 	private String familyName;
 	private String firstName; // on ne devrait pas donner un last name pour avoir un nom complet ??
 	private Date date;   	
+=======
+	private Integer  idperson;
+	private String familyname;
+	private String firstname; // on ne devrait pas donner un last name pour avoir un nom complet ??
+	private LocalDate date;   	
+>>>>>>> a874e36af9c68ac8c70804b9e8146b3906c1003d
 	private String genre;
 	private String city;
 	private String email;
 	
 	
 	
+<<<<<<< HEAD
 	public Person(String familyName, String firstName, Date date, String genre, String city, String email) {
 		super();
 		this.familyName = familyName;
 		this.firstName = firstName;
+=======
+	// Constructeur avec paramètre
+	public Person(Integer idperson, String familyname, String firstname, LocalDate date, String genre, String city, String email) {
+		this.idperson = idperson;
+		this.familyname = familyname;
+		this.firstname = firstname;
+>>>>>>> a874e36af9c68ac8c70804b9e8146b3906c1003d
 		this.date = date;
 		this.genre = genre;
 		this.city = city;
 		this.email = email;
 	}
+<<<<<<< HEAD
+=======
+	
+	// Constructeur avec paramètre sauf id
+		public Person(String familyname, String firstname, LocalDate date, String genre, String city, String email) {
+			this.familyname = familyname;
+			this.firstname = firstname;
+			this.date = date;
+			this.genre = genre;
+			this.city = city;
+			this.email = email;
+		}
+>>>>>>> a874e36af9c68ac8c70804b9e8146b3906c1003d
 
 
 
