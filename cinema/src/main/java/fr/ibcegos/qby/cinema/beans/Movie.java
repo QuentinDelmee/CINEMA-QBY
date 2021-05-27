@@ -1,6 +1,6 @@
 package fr.ibcegos.qby.cinema.beans;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,13 +32,13 @@ public class Movie {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_movie;
 	
-	private Integer pegi;
-	private Double average_rating;
-	private Time movie_duration;
 	private String title;
 	private String original_title;
-	private String release_date;
+	private Integer pegi;
+	private Integer release_date;
+	private LocalTime movie_duration;
 	private String movie_genre;
+	private Double average_rating;
 	private String movie_description;
 	
 	@OneToMany(mappedBy="id_movie")
@@ -49,8 +49,10 @@ public class Movie {
 	@JsonBackReference
 	private List<Session> lstSessions = new ArrayList<>();
 	
-	public Movie(Integer pegi, Double average_rating, Time movie_duration, String title, String original_title,
-			String release_date, String movie_genre, String movie_description) {
+	
+	
+	public Movie(Integer pegi, Double average_rating, LocalTime movie_duration, String title, String original_title,
+			Integer release_date, String movie_genre, String movie_description) {
 
 		this.pegi = pegi;
 		this.average_rating = average_rating;
@@ -68,6 +70,18 @@ public class Movie {
 				+ ", movie_duration=" + movie_duration + ", title=" + title + ", original_title=" + original_title
 				+ ", release_date=" + release_date + ", movie_genre=" + movie_genre + ", movie_description="
 				+ movie_description + "]";
+	}
+
+	public Movie(String title, String original_title, Integer pegi, Integer release_date,
+			LocalTime movie_duration, String movie_genre, Double average_rating, String movie_description) {
+		this.title = title;
+		this.original_title = original_title;
+		this.pegi = pegi;
+		this.release_date = release_date;
+		this.movie_duration = movie_duration;
+		this.movie_genre = movie_genre;
+		this.average_rating = average_rating;
+		this.movie_description = movie_description;
 	}
 	
 	
