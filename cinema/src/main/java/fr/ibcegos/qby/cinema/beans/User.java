@@ -7,7 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,22 +34,31 @@ public class User {
 	private Integer  id_user;
 	private String pseudo;
 	private String pwd;
+	@OneToOne
+	@JoinColumn(name ="id_person")
 	private Person id_person;
+	
+	@ManyToOne
+	@JoinColumn(name ="id_sl")
+	@JsonManagedReference
 	private Security_Level  id_sl;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy = "id_user")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
-	
+
+	@JsonBackReference
 	@OneToMany(mappedBy = "id_user")
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 	
+	@JsonBackReference
 	@OneToMany(mappedBy = "id_user")
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 	
+	@JsonBackReference
 	@OneToMany(mappedBy = "id_user")
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
-	
-	
+		
 	// Constructeur avec les attributs de Class comme paramètre
 	public User(Integer id_user, String pseudo, String pwd, Person id_person, Security_Level id_sl) {
 		this.id_user = id_user;

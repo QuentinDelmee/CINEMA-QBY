@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,8 +29,9 @@ public class Security_Level {
 	private Integer id_sl;
 	private String roles;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy = "id_user")
-	private List<Security_Level> mySecurity_Level = new ArrayList<Security_Level>();
+	private List<User> allUsers = new ArrayList<User>();
 	
 	// Constructeur avec les attributs de Class comme paramètre
 	public Security_Level(Integer id_sl, String roles) {
