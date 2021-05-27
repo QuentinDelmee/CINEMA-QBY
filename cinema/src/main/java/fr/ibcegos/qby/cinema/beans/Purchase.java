@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,14 +24,17 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Purchase {
 	@Id
+	private Integer id_purchase;
+	@ManyToOne
+	@JoinColumn(name = "id_product")
 	private Product id_product;
-	@Id
-	private User id_users;
-	@Id
+	@ManyToOne
+	@JoinColumn(name = "id_cinema")
+	private User id_user;
 	private LocalDateTime date;
 
 	private Integer quantity;
-	private Integer id_purchase;
+	private Integer id_receipt;
 
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
@@ -40,10 +45,10 @@ public class Purchase {
 	 * @param quantity    the quantity of product which is transacted
 	 * @param id_purchase the overall id of the purchases
 	 */
-	public Purchase(Product id_product, User id_users, LocalDateTime date, Integer quantity, Integer id_purchase) {
+	public Purchase(Product id_product, User id_user, LocalDateTime date, Integer quantity, Integer id_purchase) {
 		super();
 		this.id_product = id_product;
-		this.id_users = id_users;
+		this.id_user = id_user;
 		this.date = date;
 		this.quantity = quantity;
 		this.id_purchase = id_purchase;
@@ -54,8 +59,8 @@ public class Purchase {
 	 */
 	@Override
 	public String toString() {
-		return "Purchases [id=" + id_purchase + ", id_product=" + id_product + ", id_users=" + id_users + ", date="
-				+ date + ", quantity=" + quantity + "]";
+		return "Purchases [id=" + id_purchase + ", id_product=" + id_product + ", id_user=" + id_user + ", date=" + date
+				+ ", quantity=" + quantity + "]";
 	}
 
 }

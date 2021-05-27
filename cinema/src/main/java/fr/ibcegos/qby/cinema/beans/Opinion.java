@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +27,13 @@ public class Opinion {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_opinion;
 
+	@ManyToOne
+	@JoinColumn(name = "id_cinema")
 	private CinemaRoom id_cinema;
-	private User id_users;
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private User id_user;
+
 	private Double rating;
 	private String cleanlyness;
 
@@ -34,14 +41,14 @@ public class Opinion {
 	 * Constructor of the class, all other function are automated with Lombok
 	 * 
 	 * @param id_cinema   CinemaRoom the user wants to rate.
-	 * @param id_users    User which rate the CinemaRoom
+	 * @param id_user     User which rate the CinemaRoom
 	 * @param rating      The rating the user will give
 	 * @param cleanlyness User's comment.
 	 */
-	public Opinion(CinemaRoom id_cinema, User id_users, Double rating, String cleanlyness) {
+	public Opinion(CinemaRoom id_cinema, User id_user, Double rating, String cleanlyness) {
 		super();
 		this.id_cinema = id_cinema;
-		this.id_users = id_users;
+		this.id_user = id_user;
 		this.rating = rating;
 		this.cleanlyness = cleanlyness;
 	}
@@ -51,7 +58,7 @@ public class Opinion {
 	 */
 	@Override
 	public String toString() {
-		return "Opinion [id_opinion=" + id_opinion + ", id_cinema=" + id_cinema + ", id_users=" + id_users + ", rating="
+		return "Opinion [id_opinion=" + id_opinion + ", id_cinema=" + id_cinema + ", id_user=" + id_user + ", rating="
 				+ rating + ", cleanlyness=" + cleanlyness + "]";
 	}
 

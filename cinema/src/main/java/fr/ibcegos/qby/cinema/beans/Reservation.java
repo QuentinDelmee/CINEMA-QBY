@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +28,11 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_reservation;
-
-	private User id_users;
+	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private User id_user;
+	@ManyToOne
+	@JoinColumn ( name = "id_seat" )
 	private Seat id_seat;
 	private LocalDateTime date;
 
@@ -40,9 +45,9 @@ public class Reservation {
 	 * @param date     Date of the reservation which corresponds to the start of a
 	 *                 film session
 	 */
-	public Reservation(User id_users, Seat id_seat, LocalDateTime date) {
+	public Reservation(User id_user, Seat id_seat, LocalDateTime date) {
 		super();
-		this.id_users = id_users;
+		this.id_user = id_user;
 		this.id_seat = id_seat;
 		this.date = date;
 	}
@@ -52,7 +57,7 @@ public class Reservation {
 	 */
 	@Override
 	public String toString() {
-		return "Reservations [id=" + id_reservation + ", id_users=" + id_users + ", id_seat=" + id_seat + ", date="
+		return "Reservations [id=" + id_reservation + ", id_user=" + id_user + ", id_seat=" + id_seat + ", date="
 				+ date + "]";
 	}
 
