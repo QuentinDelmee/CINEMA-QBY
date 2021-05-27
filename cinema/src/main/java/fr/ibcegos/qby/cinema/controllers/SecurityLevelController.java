@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.ibcegos.qby.cinema.beans.Security_Level;
-import fr.ibcegos.qby.cinema.services.Security_LevelService;
+import fr.ibcegos.qby.cinema.beans.SecurityLevel;
+import fr.ibcegos.qby.cinema.services.SecurityLevelService;
 
 @RestController
-public class Security_LevelController {
+public class SecurityLevelController {
 	 @Autowired 
-	 private Security_LevelService security_LevelService;
+	 private SecurityLevelService securityLevelService;
 	 
 	//////////
 	//CREATE//
 	//////////
-	 @PostMapping("/REST/security_Level")
-	 public void create (@RequestBody Security_Level securityLevel) {
-		 security_LevelService.create(securityLevel);
+	 @PostMapping("/REST/securityLevel")
+	 public void create (@RequestBody SecurityLevel securityLevel) {
+		 securityLevelService.create(securityLevel);
 	 }
 	 
 	 
@@ -32,23 +32,23 @@ public class Security_LevelController {
 	// GET  //
 	//////////
 	//Récupérer un niveau de sécurité par son id
-	@GetMapping("/REST/getSecurity_LevelById/{id}")
-	public Security_Level getSecurityLevelById(@PathVariable("id") Integer id_sl) {
-		return security_LevelService.getSecurityLevelById(id_sl);
+	@GetMapping("/REST/getSecurityLevelById/{id}")
+	public SecurityLevel getSecurityLevelById(@PathVariable("id") Integer idsl) {
+		return securityLevelService.getSecurityLevelById(idsl);
 	}
 	
 	//Récupérer tous les niveaux de sécurité
-	@GetMapping("/REST/getSecurity_LevelAllId")
-	public List<Security_Level> getAllSecurityLevel(){
-		return security_LevelService.getAllSecurityLevel();
+	@GetMapping("/REST/getSecurityLevelAllId")
+	public List<SecurityLevel> getAllSecurityLevel(){
+		return securityLevelService.getAllSecurityLevel();
 	}
 	
 	//////////
 	//UPDATE//
 	//////////
-	@PutMapping("/REST/updateSecurity_Level")
-	public void getSecurity_LevelUpdate(@RequestBody Security_Level securityLevel) {
-		security_LevelService.update(securityLevel);
+	@PutMapping("/REST/updateSecurityLevel")
+	public void getSecurityLevelUpdate(@RequestBody SecurityLevel securityLevel) {
+		securityLevelService.update(securityLevel);
 	}
 	  
 	
@@ -57,15 +57,15 @@ public class Security_LevelController {
 	//////////
 	
 	//Effacer un niveau de sécurité par son id
-	@DeleteMapping("/REST/delelteSecurity_LevelById")
-	public void delelteSecurity_LevelById(Integer id_sl) {
-		security_LevelService.deleteById(id_sl);
+	@DeleteMapping("/REST/delelteSecurityLevelById")
+	public void delelteSecurityLevelById(Integer idsl) {
+		securityLevelService.deleteById(idsl);
 	}
 		
 	//Effacer tous les niveaux de sécurité
-	@DeleteMapping("/REST/delelteSecurity_LevelAll")
-	public void delelteSecurity_LevelAll(Security_Level security_Level) {
-		security_LevelService.delete(security_Level);
+	@DeleteMapping("/REST/delelteSecurityLevelAll")
+	public void delelteSecurityLevelAll(SecurityLevel securityLevel) {
+		securityLevelService.delete(securityLevel);
 	}
 	 
 
