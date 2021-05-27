@@ -18,7 +18,7 @@ import fr.ibcegos.qby.cinema.services.CinemaRoomService;
 public class CinemaRoomController {
 
 	@Autowired
-	private CinemaRoomService service;
+	private CinemaRoomService crservice;
 	
 
 	//////////
@@ -28,7 +28,7 @@ public class CinemaRoomController {
 	//Création d'une salle de cinema
 	@PostMapping("/REST/salle")
 	public CinemaRoom createCinemaRoom(@RequestBody CinemaRoom cinema) {
-		service.create(cinema);
+		crservice.create(cinema);
 		return cinema;
 	}
 	
@@ -39,13 +39,13 @@ public class CinemaRoomController {
 	//Récupération par l'id d'une salle du cinema
 	@GetMapping("/REST/salle/{id}")
 	public CinemaRoom getFromId(@PathVariable("id") Integer id) {
-		return service.getCinemaRoomById(id);
+		return crservice.getCinemaRoomById(id);
 	}
 	
 	//Récupération de la liste des salles du cinema
 	@GetMapping("/REST/listesalle")
 	public List<CinemaRoom> getAllCinemasRoom(){
-		return service.getAllCinemasRoom();
+		return crservice.getAllCinemasRoom();
 	}
 	
 	//////////
@@ -55,7 +55,7 @@ public class CinemaRoomController {
 	//Mise à jour d'une salle de cinema
 	@PutMapping("/REST/salle")
 	public CinemaRoom updateCinemaRoom(@RequestBody CinemaRoom cinema) {
-		service.update(cinema);
+		crservice.update(cinema);
 		return cinema;
 	}
 	
@@ -67,7 +67,7 @@ public class CinemaRoomController {
 	//Suppression cinema par id
 	@DeleteMapping("/REST/salle/{id}")
 	public void deleteCinemaRoomById(@PathVariable("id") Integer id) {
-		service.deleteById(id);
+		crservice.deleteById(id);
 	}
 	
 }

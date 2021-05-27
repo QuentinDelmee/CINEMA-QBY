@@ -46,7 +46,7 @@ public class PurchaseController {
 	 */
 	@GetMapping("/REST/purchase/{id}")
 	public List<Purchase> getFromId(@PathVariable("id") Integer id) {
-		return pservice.getPurchase(id);
+		return (List<Purchase>) pservice.getPurchase(id);
 	}
 
 	/**

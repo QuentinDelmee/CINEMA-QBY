@@ -19,7 +19,7 @@ import fr.ibcegos.qby.cinema.services.CommentaryService;
 public class CommentaryController {
 
 	@Autowired
-	private CommentaryService service;
+	private CommentaryService cservice;
 	
 	//////////
 	//CREATE//
@@ -28,7 +28,7 @@ public class CommentaryController {
 	//Création d'un commentaire
 	@PostMapping("/REST/commentaire")
 	public Commentary createCommentary(@RequestBody Commentary commentary) {
-		service.create(commentary);
+		cservice.create(commentary);
 		return commentary;
 	}
 	
@@ -39,13 +39,13 @@ public class CommentaryController {
 	//Récupération par l'id d'un commentaire
 	@GetMapping("/REST/commentaire/{id}")
 	public Commentary getFromId(@PathVariable("id") Integer id) {
-		return service.getCommentaryById(id);
+		return cservice.getCommentaryById(id);
 	}
 	
 	//Récupération de la liste des commentaires
-	@GetMapping("/REST/listecommentaire")
+	@GetMapping("/REST/commentaire")
 	public List<Commentary> getAllCommentary(){
-		return service.getAllCommentary();
+		return cservice.getAllCommentary();
 	}
 	
 	//////////
@@ -55,7 +55,7 @@ public class CommentaryController {
 	//Mise à jour d'un commentaire
 	@PutMapping("/REST/commentaire")
 	public Commentary updateCinemaRoom(@RequestBody Commentary commentary) {
-		service.update(commentary);
+		cservice.update(commentary);
 		return commentary;
 	}
 	
@@ -67,7 +67,7 @@ public class CommentaryController {
 	//Suppression commentaire par id
 	@DeleteMapping("/REST/commentaire/{id}")
 	public void deleteCommentaireById(@PathVariable("id") Integer id) {
-		service.deleteById(id);
+		cservice.deleteById(id);
 	}
 	
 }

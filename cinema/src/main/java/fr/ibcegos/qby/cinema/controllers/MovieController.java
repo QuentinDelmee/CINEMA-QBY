@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.ibcegos.qby.cinema.beans.Movie;
 import fr.ibcegos.qby.cinema.services.MovieService;
 
+
 @RestController
 public class MovieController {
 	
 	@Autowired
-	private MovieService service;
+	private MovieService mservice;
 	
 	//////////
 	//CREATE//
@@ -27,7 +28,7 @@ public class MovieController {
 	//Création d'un film
 	@PostMapping("/REST/film")
 	public Movie createMovie(@RequestBody Movie movie) {
-		service.create(movie);
+		mservice.create(movie);
 		return movie;
 	}
 	
@@ -38,13 +39,13 @@ public class MovieController {
 	//Récupération par l'id d'un film
 	@GetMapping("/REST/film/{id}")
 	public Movie getFromId(@PathVariable("id") Integer id) {
-		return service.getMovieById(id);
+		return mservice.getMovieById(id);
 	}
 	
 	//Récupération de la liste des films
-	@GetMapping("/REST/listesalle")
+	@GetMapping("/REST/film")
 	public List<Movie> getAllMovies(){
-		return service.getAllMovies();
+		return mservice.getAllMovies();
 	}
 	
 	//////////
@@ -52,9 +53,9 @@ public class MovieController {
 	//////////
 	
 	//Mise à jour d'une salle de cinema
-	@PutMapping("/REST/movie")
+	@PutMapping("/REST/film")
 	public Movie updateMovie(@RequestBody Movie movie) {
-		service.update(movie);
+		mservice.update(movie);
 		return movie;
 	}
 	
@@ -64,9 +65,9 @@ public class MovieController {
 	//////////
 
 	//Suppression d'un film par son id
-	@DeleteMapping("/REST/movie/{id}")
+	@DeleteMapping("/REST/film/{id}")
 	public void deleteMovieById(@PathVariable("id") Integer id) {
-		service.deleteById(id);
+		mservice.deleteById(id);
 	}
 
 
