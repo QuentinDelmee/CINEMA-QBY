@@ -31,18 +31,37 @@ import lombok.Setter;
 public class Commentary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idCommentary;
+	private Integer id;
 	
 	private Integer rating;
 	private String commentary;
 	
 	@ManyToOne
-	private User iduser;
+	@JoinColumn(name = "id")
+	private User idUser;
 	
 	@ManyToOne
-	@JoinColumn(name = "idmovie")
-	private Movie idmovie; 
+	@JoinColumn(name = "id")
+	private Movie idMovie;
+
+	
+	public Commentary(Integer rating, String commentary, User idUser, Movie idMovie) {
+
+		this.rating = rating;
+		this.commentary = commentary;
+		this.idUser = idUser;
+		this.idMovie = idMovie;
+	}
 	
 	
+	@Override
+	public String toString() {
+		return "Commentary [rating=" + rating + ", commentary=" + commentary + ", idUser=" + idUser + ", idMovie="
+				+ idMovie + "]";
+	}
+
+
+
+
 	
 }

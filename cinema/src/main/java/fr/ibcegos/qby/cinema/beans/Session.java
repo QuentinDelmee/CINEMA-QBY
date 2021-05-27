@@ -29,13 +29,13 @@ public class Session {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "idcinema")
-	private CinemaRoom idcinema;
+	@JoinColumn(name = "id")
+	private CinemaRoom idCinema;
 	@ManyToOne
-	@JoinColumn(name = "idmovie")
-	private Movie idmovie;
-	private LocalDateTime iddate;
-	private Integer seatsleft;
+	@JoinColumn(name = "id")
+	private Movie idMovie;
+	private LocalDateTime idDate;
+	private Integer seatsLeft;
 
 	/**
 	 * Constructor of the class, all other functions are automated with Lombok
@@ -45,21 +45,23 @@ public class Session {
 	 * @param iddate    The starting date of the movie
 	 * @param seatsleft The number of seats left in the room
 	 */
-	public Session(CinemaRoom idcinema, Movie idmovie, LocalDateTime iddate, Integer seatsleft) {
+	public Session(CinemaRoom idCinema, Movie idMovie, LocalDateTime idDate, Integer seatsLeft) {
 		super();
-		this.idcinema = idcinema;
-		this.idmovie = idmovie;
-		this.iddate = iddate;
-		this.seatsleft = seatsleft;
+		this.idCinema = idCinema;
+		this.idMovie = idMovie;
+		this.idDate = idDate;
+		this.seatsLeft = seatsLeft;
 	}
 
+	
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
+
 	@Override
 	public String toString() {
-		return "Session [id=" + id + ", idcinema=" + idcinema + ", idmovie=" + idmovie + ", iddate=" + iddate
-				+ ", seatsleft=" + seatsleft + "]";
+		return "Session [idCinema=" + idCinema + ", idMovie=" + idMovie + ", idDate=" + idDate + ", seatsLeft="
+				+ seatsLeft + "]";
 	}
 
 }

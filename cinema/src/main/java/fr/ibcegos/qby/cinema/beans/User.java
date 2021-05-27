@@ -31,59 +31,65 @@ import lombok.Setter;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer  iduser;
+	private Integer  id;
 	private String pseudo;
 	private String pwd;
 	@OneToOne
-	@JoinColumn(name ="idperson")
-	private Person idperson;
+	@JoinColumn(name ="id")
+	private Person idPerson;
 	
 	@ManyToOne
-	@JoinColumn(name ="idsl")
-	private SecurityLevel  idsl;
+	@JoinColumn(name ="id")
+	private SecurityLevel idSecurityLevel;
 	
 	
-	@OneToMany(mappedBy = "iduser")
+	@OneToMany(mappedBy = "id")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 
 	
-	@OneToMany(mappedBy = "iduser")
+	@OneToMany(mappedBy = "id")
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 	
 	
-	@OneToMany(mappedBy = "iduser")
+	@OneToMany(mappedBy = "id")
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 	
 	
-	@OneToMany(mappedBy = "iduser")
+	@OneToMany(mappedBy = "id")
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
 		
-	// Constructeur avec les attributs de Class comme paramètre
-	public User(Integer iduser, String pseudo, String pwd, Person idperson, SecurityLevel idsl) {
-		this.iduser = iduser;
+
+	public User(String pseudo, String pwd, Person idPerson, SecurityLevel idSecurityLevel, List<Opinion> myOpinions,
+			List<Commentary> myCommentary, List<Purchase> myPurchase, List<Reservation> myReservation) {
+		super();
 		this.pseudo = pseudo;
 		this.pwd = pwd;
-		this.idperson = idperson;
-		this.idsl = idsl;
-	}
-	
-	// Constructeur avec paramètre sauf id
-	public User(String pseudo, String pwd, Person idperson, SecurityLevel idsl) {
-		this.pseudo = pseudo;
-		this.pwd = pwd;
-		this.idperson = idperson;
-		this.idsl = idsl;
+		this.idPerson = idPerson;
+		this.idSecurityLevel = idSecurityLevel;
+		this.myOpinions = myOpinions;
+		this.myCommentary = myCommentary;
+		this.myPurchase = myPurchase;
+		this.myReservation = myReservation;
 	}
 
+
+	@Override
+	public String toString() {
+		return "User [pseudo=" + pseudo + ", pwd=" + pwd + ", idPerson=" + idPerson + ", idSecurityLevel="
+				+ idSecurityLevel + ", myOpinions=" + myOpinions + ", myCommentary=" + myCommentary + ", myPurchase="
+				+ myPurchase + ", myReservation=" + myReservation + "]";
+	}
 
 	
 	// Méthode toString pour accéder aux valeurs 
 	
-	@Override
-	public String toString() {
-		return "User [iduser=" + iduser + ", pseudo=" + pseudo + ", pwd=" + pwd + ", idperson=" + idperson
-				+ ", idsl=" + idsl + "]";
-	}
+
+
+
+
+
+
+
 	
 	
 }

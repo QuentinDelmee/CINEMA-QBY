@@ -31,29 +31,34 @@ public class Seat {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idseat;
+	private Integer id;
 	
-	private Integer seatnumber;
-	private String rowname;
+	private Integer seatNumber;
+	private String rowName;
 	private Boolean free;
 	
 	@ManyToOne
-	private CinemaRoom idcinema;
+	private CinemaRoom idCinema;
 	
-	@OneToMany(mappedBy="idreservation")
+	@OneToMany(mappedBy="id")
 	private List<Reservation> allReservations;
 
-	public Seat(Integer seatnumber, String rowname, Boolean free) {
-		this.seatnumber = seatnumber;
-		this.rowname = rowname;
+	public Seat(Integer seatNumber, String rowName, Boolean free, CinemaRoom idCinema,
+			List<Reservation> allReservations) {
+		super();
+		this.seatNumber = seatNumber;
+		this.rowName = rowName;
 		this.free = free;
+		this.idCinema = idCinema;
+		this.allReservations = allReservations;
 	}
 
 	@Override
 	public String toString() {
-		return "Seat [idseat=" + idseat + ", seatnumber=" + seatnumber + ", rowname=" + rowname + ", free=" + free
-				+ ", idcinema=" + idcinema + "]";
+		return "Seat [seatNumber=" + seatNumber + ", rowName=" + rowName + ", free=" + free + ", idCinema=" + idCinema
+				+ "]";
 	}
+
 	
 
 }

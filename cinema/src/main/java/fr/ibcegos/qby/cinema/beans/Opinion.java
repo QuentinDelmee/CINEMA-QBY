@@ -25,17 +25,18 @@ import lombok.Setter;
 public class Opinion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idopinion;
+	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "idcinema")
-	private CinemaRoom idcinema;
+	@JoinColumn(name = "id")
+	private CinemaRoom idCinema;
 	@ManyToOne
-	@JoinColumn(name = "iduser")
-	private User iduser;
+	@JoinColumn(name = "id")
+	private User idUser;
 
 	private Double rating;
 	private String cleanlyness;
+
 
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
@@ -45,21 +46,25 @@ public class Opinion {
 	 * @param rating      The rating the user will give
 	 * @param cleanlyness User's comment.
 	 */
-	public Opinion(CinemaRoom idcinema, User iduser, Double rating, String cleanlyness) {
+	
+	public Opinion(CinemaRoom idCinema, User idUser, Double rating, String cleanlyness) {
 		super();
-		this.idcinema = idcinema;
-		this.iduser = iduser;
+		this.idCinema = idCinema;
+		this.idUser = idUser;
 		this.rating = rating;
 		this.cleanlyness = cleanlyness;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Opinion [idCinema=" + idCinema + ", idUser=" + idUser + ", rating=" + rating + ", cleanlyness="
+				+ cleanlyness + "]";
 	}
 
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
-	@Override
-	public String toString() {
-		return "Opinion [idopinion=" + idopinion + ", idcinema=" + idcinema + ", iduser=" + iduser + ", rating="
-				+ rating + ", cleanlyness=" + cleanlyness + "]";
-	}
 
+	
 }

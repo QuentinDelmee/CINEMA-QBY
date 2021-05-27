@@ -3,6 +3,8 @@ package fr.ibcegos.qby.cinema.beans;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,17 +26,21 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Purchase {
 	@Id
-	private Integer idpurchase;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
 	@ManyToOne
-	@JoinColumn(name = "idproduct")
-	private Product idproduct;
+	@JoinColumn(name = "id")
+	private Product idProduct;
 	@ManyToOne
-	@JoinColumn(name = "iduser")
-	private User iduser;
+	@JoinColumn(name = "id")
+	private User idUser;
+	
 	private LocalDateTime date;
 
 	private Integer quantity;
-	private Integer idreceipt;
+	private Integer idReceipt;
+	
 
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
@@ -45,24 +51,28 @@ public class Purchase {
 	 * @param quantity    the quantity of product which is transacted
 	 * @param idpurchase the overall id of the purchases
 	 */
-	public Purchase(Product idproduct, User iduser, LocalDateTime date, Integer quantity, Integer idreceipt) {
+
+	public Purchase(Product idProduct, User idUser, LocalDateTime date, Integer quantity, Integer idReceipt) {
 		super();
-		this.idproduct = idproduct;
-		this.iduser = iduser;
+		this.idProduct = idProduct;
+		this.idUser = idUser;
 		this.date = date;
 		this.quantity = quantity;
-		this.idreceipt = idreceipt;
+		this.idReceipt = idReceipt;
 	}
+
+
+
 	
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
+
+	
 	@Override
 	public String toString() {
-		return "Purchase [idpurchase=" + idpurchase + ", idproduct=" + idproduct + ", iduser=" + iduser
-				+ ", date=" + date + ", quantity=" + quantity + ", idreceipt=" + idreceipt + "]";
+		return "Purchase [idProduct=" + idProduct + ", idUser=" + idUser + ", date=" + date + ", quantity=" + quantity
+				+ ", idReceipt=" + idReceipt + "]";
 	}
-	
-	
 
 }

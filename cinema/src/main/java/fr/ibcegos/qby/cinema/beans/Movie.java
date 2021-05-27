@@ -36,59 +36,47 @@ public class Movie {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idmovie;
+	private Integer id;
 	
 	private String title;
-	private String originaltitle;
+	private String originalTitle;
 	private Integer pegi;
-	private Integer releasedate;
-	private LocalTime movieduration;
-	private String moviegenre;
-	private Double averagerating;
+	private Integer releaseDate;
+	private LocalTime movieDuration;
+	private String movieGenre;
+	private Double averageRating;
 	
 	@Column(columnDefinition="text")
-	private String moviedescription;
+	private String movieDescription;
 	
-	@OneToMany(targetEntity=Commentary.class, mappedBy="idmovie")
+	@OneToMany(targetEntity=Commentary.class, mappedBy="id")
 	private List<Commentary> lstCommentarys = new ArrayList<>();
 	
-	@OneToMany(targetEntity=Session.class, mappedBy="idmovie")
+	@OneToMany(targetEntity=Session.class, mappedBy="id")
 	private List<Session> lstSessions = new ArrayList<>();
 	
 	
-	
-	public Movie(Integer pegi, Double averagerating, LocalTime movieduration, String title, String originaltitle,
-			Integer releasedate, String moviegenre, String moviedescription) {
+	public Movie(String title, String originalTitle, Integer pegi, Integer releaseDate, LocalTime movieDuration,
+			String movieGenre, Double averageRating, String movieDescription) {
 
-		this.pegi = pegi;
-		this.averagerating = averagerating;
-		this.movieduration = movieduration;
 		this.title = title;
-		this.originaltitle = originaltitle;
-		this.releasedate = releasedate;
-		this.moviegenre = moviegenre;
-		this.moviedescription = moviedescription;
+		this.originalTitle = originalTitle;
+		this.pegi = pegi;
+		this.releaseDate = releaseDate;
+		this.movieDuration = movieDuration;
+		this.movieGenre = movieGenre;
+		this.averageRating = averageRating;
+		this.movieDescription = movieDescription;
 	}
+	
 
 	@Override
 	public String toString() {
-		return "Movie [idmovie=" + idmovie + ", pegi=" + pegi + ", averagerating=" + averagerating
-				+ ", movieduration=" + movieduration + ", title=" + title + ", originaltitle=" + originaltitle
-				+ ", releasedate=" + releasedate + ", moviegenre=" + moviegenre + ", moviedescription="
-				+ moviedescription + "]";
+		return "Movie [title=" + title + ", originalTitle=" + originalTitle + ", pegi=" + pegi + ", releaseDate="
+				+ releaseDate + ", movieDuration=" + movieDuration + ", movieGenre=" + movieGenre + ", averageRating="
+				+ averageRating + ", movieDescription=" + movieDescription + "]";
 	}
-
-	public Movie(String title, String originaltitle, Integer pegi, Integer releasedate,
-			LocalTime movieduration, String moviegenre, Double averagerating, String moviedescription) {
-		this.title = title;
-		this.originaltitle = originaltitle;
-		this.pegi = pegi;
-		this.releasedate = releasedate;
-		this.movieduration = movieduration;
-		this.moviegenre = moviegenre;
-		this.averagerating = averagerating;
-		this.moviedescription = moviedescription;
-	}
+	
 	
 	
 }

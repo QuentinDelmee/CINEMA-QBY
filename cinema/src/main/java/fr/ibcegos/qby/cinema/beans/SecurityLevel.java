@@ -26,30 +26,31 @@ import lombok.Setter;
 public class SecurityLevel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idsl;
+	private Integer id;
 	private String roles;
 	
-	@OneToMany(mappedBy = "iduser")
+	@OneToMany(mappedBy = "id")
 	private List<User> allUsers = new ArrayList<User>();
-	
-	// Constructeur avec les attributs de Class comme paramètre
-	public SecurityLevel(Integer idsl, String roles) {
-		this.idsl = idsl;
+
+
+	public SecurityLevel(String roles) {
+		super();
 		this.roles = roles;
 	}
-	
-	// Constructeur avec paramètre sauf id
-	public SecurityLevel(String roles) {
-		this.roles = roles;
+
+
+	@Override
+	public String toString() {
+		return "SecurityLevel [roles=" + roles + ", allUsers=" + allUsers + "]";
 	}
 
 
 	
 	// Méthode toString pour accéder aux valeurs 
-	@Override
-	public String toString() {
-		return "SecurityLevel [idsl=" + idsl + ", roles=" + roles + "]";
-	}
+
+
+
+
 	
 }
 

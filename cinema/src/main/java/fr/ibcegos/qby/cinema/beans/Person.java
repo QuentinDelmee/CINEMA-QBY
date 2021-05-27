@@ -27,9 +27,9 @@ import lombok.Setter;
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer  idperson;
-	private String familyname;
-	private String firstname; // on ne devrait pas donner un last name pour avoir un nom complet ??
+	private Integer  id;
+	private String familyName;
+	private String firstName; // on ne devrait pas donner un last name pour avoir un nom complet ??
 	private Date date;   	
 	private String genre;
 	private String city;
@@ -37,35 +37,36 @@ public class Person {
 	
 	
 	
-	// Constructeur avec paramètre
-	public Person(Integer idperson, String familyname, String firstname, Date date, String genre, String city, String email) {
-		this.idperson = idperson;
-		this.familyname = familyname;
-		this.firstname = firstname;
+	public Person(String familyName, String firstName, Date date, String genre, String city, String email) {
+		super();
+		this.familyName = familyName;
+		this.firstName = firstName;
 		this.date = date;
 		this.genre = genre;
 		this.city = city;
 		this.email = email;
 	}
-	
-	// Constructeur avec paramètre sauf id
-		public Person(String familyname, String firstname, Date date, String genre, String city, String email) {
-			this.familyname = familyname;
-			this.firstname = firstname;
-			this.date = date;
-			this.genre = genre;
-			this.city = city;
-			this.email = email;
-		}
+
+
+
+	@Override
+	public String toString() {
+		return "Person [familyName=" + familyName + ", firstName=" + firstName + ", date=" + date + ", genre=" + genre
+				+ ", city=" + city + ", email=" + email + "]";
+	}
 
 
 	
 	//Méthode toString pour accéder aux valeurs 
-	@Override
-	public String toString() {
-		return "Person [idperson=" + idperson + ", familyname=" + familyname + ", firstname=" + firstname
-				+ ", date=" + date + ", genre=" + genre + ", city=" + city + ", email=" + email + "]";
-	}
+
+
+
+
+
+
+
+
+
 }
 
 /* Ci-dessous la Table y correpondant
