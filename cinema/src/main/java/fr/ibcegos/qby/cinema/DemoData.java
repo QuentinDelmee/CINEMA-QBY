@@ -1,6 +1,7 @@
 package fr.ibcegos.qby.cinema;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Random;
@@ -14,10 +15,14 @@ import org.springframework.stereotype.Component;
 import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
+import fr.ibcegos.qby.cinema.beans.Opinion;
 import fr.ibcegos.qby.cinema.beans.Person;
 import fr.ibcegos.qby.cinema.beans.Product;
+import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.beans.SecurityLevel;
+import fr.ibcegos.qby.cinema.beans.Session;
 import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
@@ -623,10 +628,6 @@ public class DemoData {
 		crdao.save(new CinemaRoom("Hermetic", 2, "4K", 128));
 		crdao.save(new CinemaRoom("Istanbul", 2, "2K", 64));
 		crdao.save(new CinemaRoom("Jakarta", 2, "2K", 64));
-	}
-
-	@EventListener
-	public void appReadyDependant(ApplicationReadyEvent event) {
 
 		List<SecurityLevel> allSL = (List<SecurityLevel>) sldao.findAll();
 		Random rand = new Random();
@@ -665,25 +666,35 @@ public class DemoData {
 				}
 			}
 		}
-	}
 
-	@EventListener
-	public void appReadyAssociation(ApplicationReadyEvent event) {
-
-		Random rand = new Random();
 		List<User> allUsers = (List<User>) udao.findAll() ;
+		System.out.println(allUsers);
 		List<Movie> allMovies = (List<Movie>) mdao.findAll() ;
+		System.out.println(allMovies);
 		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll() ;
-		
+		System.out.println(allRooms);
+		List<Product> allProducts = (List<Product>) prdao.findAll() ;
+		System.out.println(allProducts);
+		List<Seat> allSeats = (List<Seat>) seadao.findAll() ;
+		 
 		for (int i = 0; i < 10; ++i) {
 			String tempC = comments[rand.nextInt(comments.length)] ;
 			User tempU = allUsers.get(rand.nextInt(allUsers.size())) ;
 			Movie tempM = allMovies.get(rand.nextInt(allMovies.size())) ;
-			CinemaRoom tempCR = allRooms.get(rand.nextint(allRooms.size())) ;
+			CinemaRoom tempCR = allRooms.get(rand.nextInt(allRooms.size())) ;
 			String tempP = proprete[rand.nextInt(proprete.length)] ;
+			Product tempProduct = allProducts.get(rand.nextInt(allProducts.size())) ;
+			LocalDateTime ldt = LocalDateTime.of(randomDate(), LocalTime.of(0, 0)) ;
+			Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size())) ;
+			int tempQ = rand.nextInt(20) ;
+			int tempTC = rand.nextInt(20) ;
 			
 			cdao.save(new Commentary(rand.nextInt(5),tempC,tempU,tempM)) ;
-			odao.save(new Opinion(tempCR,tempU, rand.nextDouble(20), tempP )) ;
+			odao.save(new Opinion(tempCR,tempU, rand.nextInt(5), tempP )) ;
+			pudao.save(new Purchase(tempProduct,tempU,ldt,tempQ,tempTC)) ;
+			
+			rdao.save(new Reservation(tempU, tempSeat , ldt)) ;
+			sesdao.save(new Session(tempCR,tempM,ldt,tempCR.getNbseats()) ) ;
 		}
 
 	}

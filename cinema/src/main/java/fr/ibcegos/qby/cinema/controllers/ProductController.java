@@ -32,7 +32,7 @@ public class ProductController {
 	// GET  //
 	//////////
 	//Récupérer un produit par son id
-	@GetMapping("/REST/productById/{id}")
+	@GetMapping("/REST/product/{id}")
 	public Product getProductById(@PathVariable ("id") Integer id_product) {
 		return productService.getProductById(id_product);
 	}
@@ -63,7 +63,7 @@ public class ProductController {
 	}
 	
 	//Effacer un produit par son id
-	@DeleteMapping("/REST/deleteProductById/{id}")
+	@DeleteMapping("/REST/product/{id}")
 	public void deleteProductById(@PathVariable("id") Integer id_product) {
 		productService.deleteProductById(id_product);
 	}

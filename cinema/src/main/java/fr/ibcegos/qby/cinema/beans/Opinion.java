@@ -34,7 +34,7 @@ public class Opinion {
 	@JoinColumn(name = "iduser")
 	private User iduser;
 
-	private Double rating;
+	private Integer rating;
 	private String cleanlyness;
 
 	/**
@@ -45,7 +45,7 @@ public class Opinion {
 	 * @param rating      The rating the user will give
 	 * @param cleanlyness User's comment.
 	 */
-	public Opinion(CinemaRoom idcinema, User iduser, Double rating, String cleanlyness) {
+	public Opinion(CinemaRoom idcinema, User iduser, Integer rating, String cleanlyness) {
 		super();
 		this.idcinema = idcinema;
 		this.iduser = iduser;
