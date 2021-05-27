@@ -31,9 +31,9 @@ public class CinemaRoomController {
 		CinemaRoom RoomB = new CinemaRoom(100,"SalleB","Niveau 1", "4k");
 		CinemaRoom RoomC = new CinemaRoom(150,"SalleC","Niveau 1", "4k");
 		
-		Seat a = new Seat(1,"a");
-		Seat d = new Seat(10,"b");
-		Seat c = new Seat(20,"d");
+		Seat a = new Seat(1,"a",true);
+		Seat d = new Seat(10,"b",true);
+		Seat c = new Seat(20,"d",true);
 		
 		RoomA.addSeats(d);
 		RoomB.addSeats(c);

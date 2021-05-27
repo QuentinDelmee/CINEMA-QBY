@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +28,11 @@ public class Session {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
+	@ManyToOne
+	@JoinColumn(name = "id_cinema")
 	private CinemaRoom id_cinema;
+	@ManyToOne
+	@JoinColumn(name = "id_movie")
 	private Movie id_movie;
 	private LocalDateTime id_date;
 	private Integer seats_left;
