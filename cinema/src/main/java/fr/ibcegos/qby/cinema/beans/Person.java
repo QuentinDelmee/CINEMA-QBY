@@ -1,13 +1,6 @@
 package fr.ibcegos.qby.cinema.beans;
 
-// Quand j'ai crée l'attribut de class "Date" je ne s'avais laquelle utiliser entre :
-		// import java.sql.Date;   
-		// import java.util.Date; --> par logique j'ai choisi celle-ci
-
-//Vers le la ligne "120" il y a la table SQL y correspondant
-
-// Class "util"
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +23,7 @@ public class Person {
 	private Integer  idperson;
 	private String familyname;
 	private String firstname; // on ne devrait pas donner un last name pour avoir un nom complet ??
-	private Date date;   	
+	private LocalDate date;   	
 	private String genre;
 	private String city;
 	private String email;
@@ -38,7 +31,7 @@ public class Person {
 	
 	
 	// Constructeur avec paramètre
-	public Person(Integer idperson, String familyname, String firstname, Date date, String genre, String city, String email) {
+	public Person(Integer idperson, String familyname, String firstname, LocalDate date, String genre, String city, String email) {
 		this.idperson = idperson;
 		this.familyname = familyname;
 		this.firstname = firstname;
@@ -49,7 +42,7 @@ public class Person {
 	}
 	
 	// Constructeur avec paramètre sauf id
-		public Person(String familyname, String firstname, Date date, String genre, String city, String email) {
+		public Person(String familyname, String firstname, LocalDate date, String genre, String city, String email) {
 			this.familyname = familyname;
 			this.firstname = firstname;
 			this.date = date;

@@ -13,8 +13,10 @@ import org.springframework.stereotype.Component;
 
 import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.beans.Movie;
+import fr.ibcegos.qby.cinema.beans.Person;
 import fr.ibcegos.qby.cinema.beans.Product;
 import fr.ibcegos.qby.cinema.beans.SecurityLevel;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.MovieDAO;
 import fr.ibcegos.qby.cinema.daos.OpinionDAO;
@@ -327,6 +329,63 @@ public class DemoData {
 			"ALLAIN", "HEMERY", "BLAIN", "BOURREAU", "GUILLOTIN", "NEAU", "PINARD", "HERVE", "PITON", "LELOUP",
 			"OUVRARD", "MONNIER", "GAUDIN" };
 
+	// Liste des villes du 44
+	static String[] villes = { "Abbaretz (44001)", "Aigrefeuille-sur-Maine (44002)", "Ancenis-Saint-Géréon (44003)",
+			"Chaumes-en-Retz (44005)", "Assérac (44006)", "Avessac (44007)", "Basse-Goulaine (44009)",
+			"Batz-sur-Mer (44010)", "La Bernerie-en-Retz (44012)", "Besné (44013)", "Le Bignon (44014)",
+			"Blain (44015)", "La Boissière-du-Doré (44016)", "Bouaye (44018)", "Bouée (44019)", "Bouguenais (44020)",
+			"Villeneuve-en-Retz (44021)", "Boussay (44022)", "Bouvron (44023)", "Brains (44024)", "Campbon (44025)",
+			"Carquefou (44026)", "Casson (44027)", "Le Cellier (44028)", "Divatte-sur-Loire (44029)",
+			"La Chapelle-des-Marais (44030)", "La Chapelle-Glain (44031)", "La Chapelle-Heulin (44032)",
+			"La Chapelle-Launay (44033)", "La Chapelle-sur-Erdre (44035)", "Châteaubriant (44036)",
+			"Château-Thébaud (44037)", "Chauvé (44038)", "Cheix-en-Retz (44039)", "La Chevrolière (44041)",
+			"Clisson (44043)", "Conquereuil (44044)", "Cordemais (44045)", "Corsept (44046)", "Couëron (44047)",
+			"Couffé (44048)", "Le Croisic (44049)", "Crossac (44050)", "Derval (44051)", "Donges (44052)",
+			"Drefféac (44053)", "Erbray (44054)", "La Baule-Escoublac (44055)", "Fay-de-Bretagne (44056)",
+			"Fégréac (44057)", "Fercé (44058)", "Frossay (44061)", "Le Gâvre (44062)", "Gétigné (44063)",
+			"Gorges (44064)", "Grand-Auverné (44065)", "Grandchamps-des-Fontaines (44066)", "Guémené-Penfao (44067)",
+			"Guenrouet (44068)", "Guérande (44069)", "La Haie-Fouassière (44070)", "Haute-Goulaine (44071)",
+			"Herbignac (44072)", "Héric (44073)", "Indre (44074)", "Issé (44075)", "Jans (44076)",
+			"Joué-sur-Erdre (44077)", "Juigné-des-Moutiers (44078)", "Le Landreau (44079)", "Lavau-sur-Loire (44080)",
+			"Legé (44081)", "Ligné (44082)", "La Limouzinière (44083)", "Le Loroux-Bottereau (44084)",
+			"Louisfert (44085)", "Lusanger (44086)", "Machecoul-Saint-Même (44087)", "Maisdon-sur-Sèvre (44088)",
+			"Malville (44089)", "La Marne (44090)", "Marsac-sur-Don (44091)", "Massérac (44092)",
+			"Mauves-sur-Loire (44094)", "La Meilleraye-de-Bretagne (44095)", "Mésanger (44096)", "Mesquer (44097)",
+			"Missillac (44098)", "Moisdon-la-Rivière (44099)", "Monnières (44100)", "La Montagne (44101)",
+			"Montbert (44102)", "Montoir-de-Bretagne (44103)", "Montrelais (44104)", "Mouais (44105)",
+			"Les Moutiers-en-Retz (44106)", "Mouzeil (44107)", "Mouzillon (44108)", "Nantes (44109)",
+			"Nort-sur-Erdre (44110)", "Notre-Dame-des-Landes (44111)", "Noyal-sur-Brutz (44112)", "Nozay (44113)",
+			"Orvault (44114)", "Oudon (44115)", "Paimbœuf (44116)", "Le Pallet (44117)", "Pannecé (44118)",
+			"Paulx (44119)", "Le Pellerin (44120)", "Petit-Auverné (44121)", "Petit-Mars (44122)", "Pierric (44123)",
+			"Le Pin (44124)", "Piriac-sur-Mer (44125)", "La Plaine-sur-Mer (44126)", "La Planche (44127)",
+			"Plessé (44128)", "Pontchâteau (44129)", "Pont-Saint-Martin (44130)", "Pornic (44131)", "Pornichet (44132)",
+			"Port-Saint-Père (44133)", "Pouillé-les-Côteaux (44134)", "Le Pouliguen (44135)", "Préfailles (44136)",
+			"Prinquiau (44137)", "Puceul (44138)", "Quilly (44139)", "La Regrippière (44140)", "La Remaudière (44141)",
+			"Remouillé (44142)", "Rezé (44143)", "Riaillé (44144)", "Rouans (44145)", "Rougé (44146)",
+			"Ruffigné (44148)", "Saffré (44149)", "Saint-Aignan-Grandlieu (44150)", "Saint-André-des-Eaux (44151)",
+			"Sainte-Anne-sur-Brivet (44152)", "Saint-Aubin-des-Châteaux (44153)", "Saint-Brevin-les-Pins (44154)",
+			"Saint-Colomban (44155)", "Corcoué-sur-Logne (44156)", "Saint-Étienne-de-Mer-Morte (44157)",
+			"Saint-Étienne-de-Montluc (44158)", "Saint-Fiacre-sur-Maine (44159)", "Saint-Gildas-des-Bois (44161)",
+			"Saint-Herblain (44162)", "Vair-sur-Loire (44163)", "Saint-Hilaire-de-Chaléons (44164)",
+			"Saint-Hilaire-de-Clisson (44165)", "Saint-Jean-de-Boiseau (44166)", "Saint-Joachim (44168)",
+			"Saint-Julien-de-Concelles (44169)", "Saint-Julien-de-Vouvantes (44170)", "Saint-Léger-les-Vignes (44171)",
+			"Sainte-Luce-sur-Loire (44172)", "Saint-Lumine-de-Clisson (44173)", "Saint-Lumine-de-Coutais (44174)",
+			"Saint-Lyphard (44175)", "Saint-Malo-de-Guersac (44176)", "Saint-Mars-de-Coutais (44178)",
+			"Saint-Mars-du-Désert (44179)", "Vallons-de-l'Erdre (44180)", "Saint-Michel-Chef-Chef (44182)",
+			"Saint-Molf (44183)", "Saint-Nazaire (44184)", "Saint-Nicolas-de-Redon (44185)", "Sainte-Pazanne (44186)",
+			"Saint-Père-en-Retz (44187)", "Saint-Philbert-de-Grand-Lieu (44188)", "Sainte-Reine-de-Bretagne (44189)",
+			"Saint-Sébastien-sur-Loire (44190)", "Saint-Viaud (44192)", "Saint-Vincent-des-Landes (44193)",
+			"Sautron (44194)", "Savenay (44195)", "Sévérac (44196)", "Sion-les-Mines (44197)", "Les Sorinières (44198)",
+			"Soudan (44199)", "Soulvache (44200)", "Sucé-sur-Erdre (44201)", "Teillé (44202)",
+			"Le Temple-de-Bretagne (44203)", "Thouaré-sur-Loire (44204)", "Les Touches (44205)", "Touvois (44206)",
+			"Trans-sur-Erdre (44207)", "Treffieux (44208)", "Treillières (44209)", "Trignac (44210)",
+			"La Turballe (44211)", "Vallet (44212)", "Loireauxence (44213)", "Vay (44214)", "Vertou (44215)",
+			"Vieillevigne (44216)", "Vigneux-de-Bretagne (44217)", "Villepot (44218)", "Vue (44220)",
+			"La Chevallerais (44221)", "La Roche-Blanche (44222)", "Geneston (44223)", "La Grigonnais (44224)" };
+
+	// Liste des différents genres
+	static String[] sexes = { "H", "F", "B", "A", "T" };
+
 	// Liste de pseudos futuristes
 	static String[] pseudoFutur = { "Aarav", "Aarom", "Abbrahan", "Abrahan", "Ace", "Acsel", "Adahm", "Adahn", "Adit",
 			"Adone", "Adran", "Adrihan", "Adrihel", "Adrihen", "Adriyel", "Adriyen", "Adryan", "Adryel", "Aebram",
@@ -446,7 +505,7 @@ public class DemoData {
 
 		return temp;
 	}
-	
+
 	/**
 	 * 
 	 * @return retourne une date de naissance aléatoire
@@ -459,89 +518,144 @@ public class DemoData {
 		long randomEpochDay = ThreadLocalRandom.current().longs(start, end).findAny().getAsLong();
 		return LocalDate.ofEpochDay(randomEpochDay);
 	}
-	
+
 	@EventListener
 	public void appReadyBasic(ApplicationReadyEvent event) {
-		
-		sldao.save( new SecurityLevel("NDS Client, accès aux utilisations basiques de réservation et achats.") ) ;
-		sldao.save( new SecurityLevel("NDS Employé, accès aux utilisations basiques, de ventes et de modifications clients.") );
-		sldao.save( new SecurityLevel("NDS RH, accès aux utilisations basiques, ajout et suppression d\'employés de NDS 2,3,4.") );
-		sldao.save( new SecurityLevel("NDS Modérateur, accès aux utilisations basiques, de ventes et de modifications clients, employé et RH.") );
-		sldao.save( new SecurityLevel("NDS Administrateur, accès total.") );
-		
-		mdao.save( new Movie("Nadia, butterfly","Nadia, butterfly",0,2021,LocalTime.of(1,46,00,00),"Drame",5.00,"Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l\'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision...") );
-		mdao.save( new Movie("Nouvel ordre","New Order",12,2021,LocalTime.of(1,28,00,00),"Drame",5.00,"Un mariage mondain est interrompu par l\'arrivée d\'invités importuns.") );
-		mdao.save( new Movie("Promising Young Woman","Promising Young Woman",12,2021,LocalTime.of(1,54,00,00),"Thriller",5.00,"Tout le monde s\'entendait pour dire que Cassie était une jeune femme pleine d\'avenir jusqu\'à ce qu\'un évènement inattendu ne vienne tout bouleverser. Mais rien dans la vie de Cassie n\'est en fait conforme aux apparences , elle est aussi intelligente que rusée, séduisante que calculatrice et mêne une double vie dès la nuit..."));
-		mdao.save( new Movie("Tom & Jerry","Tom & Jerry",0,2021,LocalTime.of(1,41,00,00),"Animation",5.00,"Les nouvelles aventures de Tom & Jerry dans un long métrage melant CGI et prises de vues réelles. Tom, le chat et Jerry, la souris n\'ont plus de domicile. Ils emménagent dans un hôtel chic de New York où Kayla a trouvé un emploi. Mais pour qu\'elle puisse le garder, il faut impérativement qu\'elle chasse Jerry avant la réception..."));
-		mdao.save( new Movie("Freaky","Freaky",0,2021,LocalTime.of(1,42,00,00),"Thriller",5.00,"Millie Kessler, une adolescente de 17 ans, occupée à faire bonne figure dans son très élitiste lycée, Blissfield High, devient la nouvelle cible du Boucher, un tueur en série tristement notoire. Son année de Terminale va alors devenir le cadet de ses soucis. Lorsque, sous l\'effet du poignard antique du Boucher ils se réveillent dans le corps de..."));
-		mdao.save( new Movie("9 jours à Raqqa","9 jours à Raqqa",12,2021,LocalTime.of(1,30,00,00),"Documentaire",5.00,"Le film fait partie de la Sélection Officielle Cannes 2020. Leïla Mustapha est à 30 ans la nouvelle maire Kurde de Raqqa en Syrie. Ingénieure en génie civil et chargée de la reconstruction de l\'ancienne capitale de Daech, elle doit réconcilier la population et arriver à faire vivre la démocratie. La journaliste grand reporter et écrivaine, Marine"));
-		mdao.save( new Movie("Comment je suis devenu super-héros","Comment je suis devenu super-héros",12,2021,LocalTime.of(1,37,00,00),"Policier / Espionnage",5.00,"Paris 2020. Dans une société où les surhommes sont banalisés et parfaitement intégrés, une mystérieuse substance procurant des super-pouvoirs à ceux qui n\'en ont pas se répand. Face aux incidents qui se multiplient, les lieutenants Moreau et Schaltzmann sont chargés de l\'enquête. Avec l\'aide de Monté Carlo et Callista, deux..."));
-		mdao.save( new Movie("Fatima","Fatima",12,2021,LocalTime.of(1,53,00,00),"Drame",5.00,"Portugal. 1917, trois jeunes bergers de Fatima racontent avoir vu la Vierge Marie. Leurs révélations vont toucher de nombreux croyants mais également attirer la colère des représentants de l\'Eglise et du gouvernement. Ils vont tout faire pour essayer d\'étouffer l\'affaire et obliger les trois enfants à se rétracter. Mais la rumeur..."));
-		mdao.save( new Movie("Mystère à Saint-Tropez","Mystère à Saint-Tropez",12,2021,LocalTime.of(00,00,00,00),"Comédie",5.00,"Aout 1970, en pleine période yéyé. Comme chaque année, le milliardaire Claude Tranchant et sa femme Eliane ont invité le gratin du show-business dans leur somptueuse villa tropézienne. Rien ne semble pouvoir gâcher les festivités, si ce n\'est l\'inquiétant sabotage de la décapotable du couple. Persuadé d\'être victime"));
-		mdao.save( new Movie("Nomadland","Nomadland",12,2021,LocalTime.of(1,48,00,00),"Drame",5.00,"Après avoir tout perdu pendant la Grande Récession, une sexagénaire se lance dans un voyage à travers l\'Ouest américain, vivant comme un nomade des temps modernes."));
-		mdao.save( new Movie("Nos plus belles années","Nos plus belles années",12,2021,LocalTime.of(2,15,00,00),"Comédie dramatique",5.00,"C\'est l\'histoire de quatre amis, racontée sur quarante ans, en Italie, des années 1980 à aujourd\'hui. La chronique de leurs espoirs, de leurs désillusions, de leurs amours, et surtout, de leur amitié."));
-		mdao.save( new Movie("Un homme en colère","Un homme en colère",12,2021,LocalTime.of(00,00,00,00),"Action",5.00,"Un convoyeur de fond fraichement engagé surprend ses collègues par l\'incroyable précision de ses tirs de riposte alors qu\'ils subissent les assauts de braqueurs expérimentés.Tous se demandent désormais qui il est, d\'où il vient et pourquoi est-il là."));
-		mdao.save( new Movie("Délicieux","Délicieux",12,2021,LocalTime.of(1,53,00,00),"Comédie dramatique",5.00,"XVIIIe siècle. Un cuisinier est limogé par son maître. Il trouve le courage au contact d\'une jeune femme étonnante de se libérer de sa condition de domestique et de proposer son savoir-faire directement au public en créant le premier restaurant."));
-		mdao.save( new Movie("L\'un des notres","L\'un des notres",12,2021,LocalTime.of(1,55,00,00),"Thriller",5.00,"Après la perte de leur fils, le shérif à la retraite George Blackledge et son épouse, Margaret quittent leur ranch du Montana pour sauver leur jeune petit-fils des griffes d\'une dangereuse famille tenue d\'une main de fer par la matriarche Blanche Weboy. Quand ils découvrent que les Weboy n\'ont pas l\'intention de laisser partir l\'enfant..."));
-		mdao.save( new Movie("Ca tourne à Saint-Pierre et Miquelon","Ca tourne à Saint-Pierre et Miquelon",12,2021,LocalTime.of(1,35,00,00),"Comédie dramatique",5.00,"Céline, une actrice, engagée par le célèbre réalisateur Milan Zodowski, arrive à Saint-Pierre et Miquelon. Sur place, il n\'y a qu\'un ingénieur du son et une régisseuse pour toute équipe et Milan refuse obstinément de sortir du cabanon où il s\'est enfermé. Le grand \'menteur en sc�ne\", adepte du cinéma vérité, fera-t-il tourner Céline ou l\'a-t-il..."));
 
-		prdao.save( new Product("Ticket Cinéma Unité",8.00,"Ticketterie","Votre ticket de cinéma, tarif avant réduction éventuelle. Valable 3 mois.") );
-		prdao.save( new Product("Ticket Cinéma 10 pièces", 60.00,"Ticketterie","Vos ticket de cinéma à -25%. Valable 3 mois.") );
-		prdao.save( new Product("Ticket Cinéma Mensuel", 30.00,"Ticketterie","Votre pass mensuel de cinéma, tarif avant réduction éventuelle.") );
-		prdao.save( new Product("PopCorn Nature 25cl",4.00,"Nourriture","Votre PopCorn tout chaud tout frais !") );
-		prdao.save( new Product("PopCorn Nature 50cl",6.00,"Nourriture","Votre PopCorn tout chaud tout frais !") );
-		prdao.save( new Product("PopCorn Nature 100cl",8.00,"Nourriture","Votre PopCorn tout chaud tout frais !") );
-		prdao.save( new Product("PopCorn Caramel 25cl",4.00,"Nourriture","Votre PopCorn tout chaud tout frais au Caramel !") );
-		prdao.save( new Product("PopCorn Caramel 50cl",6.00,"Nourriture","Votre PopCorn tout chaud tout frais au Caramel !") );
-		prdao.save( new Product("PopCorn Caramel 100cl",8.00,"Nourriture","Votre PopCorn tout chaud tout frais au Caramel !") );
-		prdao.save( new Product("PopCorn Salé 25cl",4.00,"Nourriture","Votre PopCorn tout chaud tout frais Salé !") );
-		prdao.save( new Product("PopCorn Salé 50cl",6.00,"Nourriture","Votre PopCorn tout chaud tout frais Salé !") );
-		prdao.save( new Product("PopCorn Salé 100cl",8.00,"Nourriture","Votre PopCorn tout chaud tout frais Salé !") );
-		prdao.save( new Product("PopCorn Caramel au Beurre Salé 25cl",5.00,"Nourriture","Votre PopCorn tout chaud tout frais ! Nouveau ! Caramel au Beurre Salé !!!") );
-		prdao.save( new Product("PopCorn Caramel au Beurre Salé 50cl",7.50,"Nourriture","Votre PopCorn tout chaud tout frais !  Nouveau ! Caramel au Beurre Salé !!!") );
-		prdao.save( new Product("PopCorn Caramel au Beurre Salé 100cl",10.00,"Nourriture","Votre PopCorn tout chaud tout frais ! Nouveau ! Caramel au Beurre Salé !!!") );
-		prdao.save( new Product("Coca Cola 25cl",1.00,"Boisson","Votre incontournable boisson Coca Cola!") );
-		prdao.save( new Product("Coca Cola 33cl",1.50,"Boisson","Votre incontournable boisson Coca Cola!") );
-		prdao.save( new Product("Coca Cola 50cl",2.00,"Boisson","Votre incontournable boisson Coca Cola!") );
-		prdao.save( new Product("Orangina 25cl",1.00,"Boisson","Votre incontournable boisson Orangina!") );
-		prdao.save( new Product("Orangina 33cl",1.50,"Boisson","Votre incontournable boisson Orangina!") );
-		prdao.save( new Product("Orangina 50cl",2.00,"Boisson","Votre incontournable boisson Orangina!") );
-		prdao.save( new Product("Schweppes 25cl",1.00,"Boisson","Votre incontournable boisson Schweppes!") );
-		prdao.save( new Product("Schweppes 33cl",1.50,"Boisson","Votre incontournable boisson Schweppes!") );
-		prdao.save( new Product("Schweppes 50cl",2.00,"Boisson","Votre incontournable boisson Schweppes!") );
-		
-		crdao.save(new CinemaRoom("Atlantis",0,"4K",256));
-		crdao.save(new CinemaRoom("Babylone",0,"4K",256));
-		crdao.save(new CinemaRoom("Carthage",0,"4K",128));
-		crdao.save(new CinemaRoom("Daedalus",1,"4K",256));
-		crdao.save(new CinemaRoom("Eristhem",1,"4K",128));
-		crdao.save(new CinemaRoom("Franborg",1,"4K",128));
-		crdao.save(new CinemaRoom("Gargantos",2,"4K",256));
-		crdao.save(new CinemaRoom("Hermetic",2,"4K",128));
-		crdao.save(new CinemaRoom("Istanbul",2,"2K",64));
-		crdao.save(new CinemaRoom("Jakarta",2,"2K",64));
+		sldao.save(new SecurityLevel("NDS Client, accès aux utilisations basiques de réservation et achats."));
+		sldao.save(new SecurityLevel(
+				"NDS Employé, accès aux utilisations basiques, de ventes et de modifications clients."));
+		sldao.save(new SecurityLevel(
+				"NDS RH, accès aux utilisations basiques, ajout et suppression d\'employés de NDS 2,3,4."));
+		sldao.save(new SecurityLevel(
+				"NDS Modérateur, accès aux utilisations basiques, de ventes et de modifications clients, employé et RH."));
+		sldao.save(new SecurityLevel("NDS Administrateur, accès total."));
+
+		mdao.save(new Movie("Nadia, butterfly", "Nadia, butterfly", 0, 2021, LocalTime.of(1, 46, 00, 00), "Drame", 5.00,
+				"Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l\'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision..."));
+		mdao.save(new Movie("Nouvel ordre", "New Order", 12, 2021, LocalTime.of(1, 28, 00, 00), "Drame", 5.00,
+				"Un mariage mondain est interrompu par l\'arrivée d\'invités importuns."));
+		mdao.save(new Movie("Promising Young Woman", "Promising Young Woman", 12, 2021, LocalTime.of(1, 54, 00, 00),
+				"Thriller", 5.00,
+				"Tout le monde s\'entendait pour dire que Cassie était une jeune femme pleine d\'avenir jusqu\'à ce qu\'un évènement inattendu ne vienne tout bouleverser. Mais rien dans la vie de Cassie n\'est en fait conforme aux apparences , elle est aussi intelligente que rusée, séduisante que calculatrice et mêne une double vie dès la nuit..."));
+		mdao.save(new Movie("Tom & Jerry", "Tom & Jerry", 0, 2021, LocalTime.of(1, 41, 00, 00), "Animation", 5.00,
+				"Les nouvelles aventures de Tom & Jerry dans un long métrage melant CGI et prises de vues réelles. Tom, le chat et Jerry, la souris n\'ont plus de domicile. Ils emménagent dans un hôtel chic de New York où Kayla a trouvé un emploi. Mais pour qu\'elle puisse le garder, il faut impérativement qu\'elle chasse Jerry avant la réception..."));
+		mdao.save(new Movie("Freaky", "Freaky", 0, 2021, LocalTime.of(1, 42, 00, 00), "Thriller", 5.00,
+				"Millie Kessler, une adolescente de 17 ans, occupée à faire bonne figure dans son très élitiste lycée, Blissfield High, devient la nouvelle cible du Boucher, un tueur en série tristement notoire. Son année de Terminale va alors devenir le cadet de ses soucis. Lorsque, sous l\'effet du poignard antique du Boucher ils se réveillent dans le corps de..."));
+		mdao.save(new Movie("9 jours à Raqqa", "9 jours à Raqqa", 12, 2021, LocalTime.of(1, 30, 00, 00), "Documentaire",
+				5.00,
+				"Le film fait partie de la Sélection Officielle Cannes 2020. Leïla Mustapha est à 30 ans la nouvelle maire Kurde de Raqqa en Syrie. Ingénieure en génie civil et chargée de la reconstruction de l\'ancienne capitale de Daech, elle doit réconcilier la population et arriver à faire vivre la démocratie. La journaliste grand reporter et écrivaine, Marine"));
+		mdao.save(new Movie("Comment je suis devenu super-héros", "Comment je suis devenu super-héros", 12, 2021,
+				LocalTime.of(1, 37, 00, 00), "Policier / Espionnage", 5.00,
+				"Paris 2020. Dans une société où les surhommes sont banalisés et parfaitement intégrés, une mystérieuse substance procurant des super-pouvoirs à ceux qui n\'en ont pas se répand. Face aux incidents qui se multiplient, les lieutenants Moreau et Schaltzmann sont chargés de l\'enquête. Avec l\'aide de Monté Carlo et Callista, deux..."));
+		mdao.save(new Movie("Fatima", "Fatima", 12, 2021, LocalTime.of(1, 53, 00, 00), "Drame", 5.00,
+				"Portugal. 1917, trois jeunes bergers de Fatima racontent avoir vu la Vierge Marie. Leurs révélations vont toucher de nombreux croyants mais également attirer la colère des représentants de l\'Eglise et du gouvernement. Ils vont tout faire pour essayer d\'étouffer l\'affaire et obliger les trois enfants à se rétracter. Mais la rumeur..."));
+		mdao.save(new Movie("Mystère à Saint-Tropez", "Mystère à Saint-Tropez", 12, 2021, LocalTime.of(00, 00, 00, 00),
+				"Comédie", 5.00,
+				"Aout 1970, en pleine période yéyé. Comme chaque année, le milliardaire Claude Tranchant et sa femme Eliane ont invité le gratin du show-business dans leur somptueuse villa tropézienne. Rien ne semble pouvoir gâcher les festivités, si ce n\'est l\'inquiétant sabotage de la décapotable du couple. Persuadé d\'être victime"));
+		mdao.save(new Movie("Nomadland", "Nomadland", 12, 2021, LocalTime.of(1, 48, 00, 00), "Drame", 5.00,
+				"Après avoir tout perdu pendant la Grande Récession, une sexagénaire se lance dans un voyage à travers l\'Ouest américain, vivant comme un nomade des temps modernes."));
+		mdao.save(new Movie("Nos plus belles années", "Nos plus belles années", 12, 2021, LocalTime.of(2, 15, 00, 00),
+				"Comédie dramatique", 5.00,
+				"C\'est l\'histoire de quatre amis, racontée sur quarante ans, en Italie, des années 1980 à aujourd\'hui. La chronique de leurs espoirs, de leurs désillusions, de leurs amours, et surtout, de leur amitié."));
+		mdao.save(new Movie("Un homme en colère", "Un homme en colère", 12, 2021, LocalTime.of(00, 00, 00, 00),
+				"Action", 5.00,
+				"Un convoyeur de fond fraichement engagé surprend ses collègues par l\'incroyable précision de ses tirs de riposte alors qu\'ils subissent les assauts de braqueurs expérimentés.Tous se demandent désormais qui il est, d\'où il vient et pourquoi est-il là."));
+		mdao.save(new Movie("Délicieux", "Délicieux", 12, 2021, LocalTime.of(1, 53, 00, 00), "Comédie dramatique", 5.00,
+				"XVIIIe siècle. Un cuisinier est limogé par son maître. Il trouve le courage au contact d\'une jeune femme étonnante de se libérer de sa condition de domestique et de proposer son savoir-faire directement au public en créant le premier restaurant."));
+		mdao.save(new Movie("L\'un des notres", "L\'un des notres", 12, 2021, LocalTime.of(1, 55, 00, 00), "Thriller",
+				5.00,
+				"Après la perte de leur fils, le shérif à la retraite George Blackledge et son épouse, Margaret quittent leur ranch du Montana pour sauver leur jeune petit-fils des griffes d\'une dangereuse famille tenue d\'une main de fer par la matriarche Blanche Weboy. Quand ils découvrent que les Weboy n\'ont pas l\'intention de laisser partir l\'enfant..."));
+		mdao.save(new Movie("Ca tourne à Saint-Pierre et Miquelon", "Ca tourne à Saint-Pierre et Miquelon", 12, 2021,
+				LocalTime.of(1, 35, 00, 00), "Comédie dramatique", 5.00,
+				"Céline, une actrice, engagée par le célèbre réalisateur Milan Zodowski, arrive à Saint-Pierre et Miquelon. Sur place, il n\'y a qu\'un ingénieur du son et une régisseuse pour toute équipe et Milan refuse obstinément de sortir du cabanon où il s\'est enfermé. Le grand \'menteur en sc�ne\", adepte du cinéma vérité, fera-t-il tourner Céline ou l\'a-t-il..."));
+
+		prdao.save(new Product("Ticket Cinéma Unité", 8.00, "Ticketterie",
+				"Votre ticket de cinéma, tarif avant réduction éventuelle. Valable 3 mois."));
+		prdao.save(new Product("Ticket Cinéma 10 pièces", 60.00, "Ticketterie",
+				"Vos ticket de cinéma à -25%. Valable 3 mois."));
+		prdao.save(new Product("Ticket Cinéma Mensuel", 30.00, "Ticketterie",
+				"Votre pass mensuel de cinéma, tarif avant réduction éventuelle."));
+		prdao.save(new Product("PopCorn Nature 25cl", 4.00, "Nourriture", "Votre PopCorn tout chaud tout frais !"));
+		prdao.save(new Product("PopCorn Nature 50cl", 6.00, "Nourriture", "Votre PopCorn tout chaud tout frais !"));
+		prdao.save(new Product("PopCorn Nature 100cl", 8.00, "Nourriture", "Votre PopCorn tout chaud tout frais !"));
+		prdao.save(new Product("PopCorn Caramel 25cl", 4.00, "Nourriture",
+				"Votre PopCorn tout chaud tout frais au Caramel !"));
+		prdao.save(new Product("PopCorn Caramel 50cl", 6.00, "Nourriture",
+				"Votre PopCorn tout chaud tout frais au Caramel !"));
+		prdao.save(new Product("PopCorn Caramel 100cl", 8.00, "Nourriture",
+				"Votre PopCorn tout chaud tout frais au Caramel !"));
+		prdao.save(new Product("PopCorn Salé 25cl", 4.00, "Nourriture", "Votre PopCorn tout chaud tout frais Salé !"));
+		prdao.save(new Product("PopCorn Salé 50cl", 6.00, "Nourriture", "Votre PopCorn tout chaud tout frais Salé !"));
+		prdao.save(new Product("PopCorn Salé 100cl", 8.00, "Nourriture", "Votre PopCorn tout chaud tout frais Salé !"));
+		prdao.save(new Product("PopCorn Caramel au Beurre Salé 25cl", 5.00, "Nourriture",
+				"Votre PopCorn tout chaud tout frais ! Nouveau ! Caramel au Beurre Salé !!!"));
+		prdao.save(new Product("PopCorn Caramel au Beurre Salé 50cl", 7.50, "Nourriture",
+				"Votre PopCorn tout chaud tout frais !  Nouveau ! Caramel au Beurre Salé !!!"));
+		prdao.save(new Product("PopCorn Caramel au Beurre Salé 100cl", 10.00, "Nourriture",
+				"Votre PopCorn tout chaud tout frais ! Nouveau ! Caramel au Beurre Salé !!!"));
+		prdao.save(new Product("Coca Cola 25cl", 1.00, "Boisson", "Votre incontournable boisson Coca Cola!"));
+		prdao.save(new Product("Coca Cola 33cl", 1.50, "Boisson", "Votre incontournable boisson Coca Cola!"));
+		prdao.save(new Product("Coca Cola 50cl", 2.00, "Boisson", "Votre incontournable boisson Coca Cola!"));
+		prdao.save(new Product("Orangina 25cl", 1.00, "Boisson", "Votre incontournable boisson Orangina!"));
+		prdao.save(new Product("Orangina 33cl", 1.50, "Boisson", "Votre incontournable boisson Orangina!"));
+		prdao.save(new Product("Orangina 50cl", 2.00, "Boisson", "Votre incontournable boisson Orangina!"));
+		prdao.save(new Product("Schweppes 25cl", 1.00, "Boisson", "Votre incontournable boisson Schweppes!"));
+		prdao.save(new Product("Schweppes 33cl", 1.50, "Boisson", "Votre incontournable boisson Schweppes!"));
+		prdao.save(new Product("Schweppes 50cl", 2.00, "Boisson", "Votre incontournable boisson Schweppes!"));
+
+		crdao.save(new CinemaRoom("Atlantis", 0, "4K", 256));
+		crdao.save(new CinemaRoom("Babylone", 0, "4K", 256));
+		crdao.save(new CinemaRoom("Carthage", 0, "4K", 128));
+		crdao.save(new CinemaRoom("Daedalus", 1, "4K", 256));
+		crdao.save(new CinemaRoom("Eristhem", 1, "4K", 128));
+		crdao.save(new CinemaRoom("Franborg", 1, "4K", 128));
+		crdao.save(new CinemaRoom("Gargantos", 2, "4K", 256));
+		crdao.save(new CinemaRoom("Hermetic", 2, "4K", 128));
+		crdao.save(new CinemaRoom("Istanbul", 2, "2K", 64));
+		crdao.save(new CinemaRoom("Jakarta", 2, "2K", 64));
 	}
 
 	@EventListener
 	public void appReadyDependant(ApplicationReadyEvent event) {
 
+		List<SecurityLevel> allSL = (List<SecurityLevel>) sldao.findAll();
 		Random rand = new Random();
 
 		for (int i = 0; i < 100; ++i) {
 			String tempN = noms[rand.nextInt(noms.length)];
 			String tempP = prenoms[rand.nextInt(prenoms.length)];
-			String tempPseudo = pseudoFutur[rand.nextInt(pseudoFutur.length)];
 			LocalDate bd = randomDate();
-
+			String tempS = sexes[rand.nextInt(sexes.length)] ;
+			String tempV = villes[rand.nextInt(villes.length)] ;
+			String email = tempN+"."+tempP+"@email44.fr" ;
+			
+			Person tempPerson = new Person(tempN,tempP,bd,tempS,tempV,email) ;
+			pedao.save(tempPerson) ;
+			
+			String tempPseudo = pseudoFutur[rand.nextInt(pseudoFutur.length)];
+			int SL = rolesNDS[rand.nextInt(rolesNDS.length)];
+			
+			User tempUser = new User(tempPseudo,createMDP(),tempPerson,allSL.get(SL-1)) ;
+			udao.save(tempUser) ;
 		}
-
+		
+		List<CinemaRoom> cineRoom = (List<CinemaRoom>) crdao.findAll() ;
+		
+		for (CinemaRoom cinemaRoom : cineRoom) {
+			int tempSize = cinemaRoom.getNbseats() / 32 ;
+			int tempRank = 32 ;
+			
+			for( int i = 0 ; i < tempSize ; ++i )
+			{
+				
+			}
+		}
 	}
-	
+
 	@EventListener
 	public void appReadyAssociation(ApplicationReadyEvent event) {
-		
-		//List< SecurityLevel > = (List<SecurityLevel>) sldao.findAll() ;
-		
+
 		Random rand = new Random();
 
 		for (int i = 0; i < 100; ++i) {
