@@ -38,7 +38,7 @@ public class SecurityLevelController {
 	}
 	
 	//Récupérer tous les niveaux de sécurité
-	@GetMapping("/REST/getSecurityLevelAllId")
+	@GetMapping("/REST/securityLevel")
 	public List<SecurityLevel> getAllSecurityLevel(){
 		return securityLevelService.getAllSecurityLevel();
 	}
@@ -46,7 +46,7 @@ public class SecurityLevelController {
 	//////////
 	//UPDATE//
 	//////////
-	@PutMapping("/REST/updateSecurityLevel")
+	@PutMapping("/REST/securityLevel")
 	public void getSecurityLevelUpdate(@RequestBody SecurityLevel securityLevel) {
 		securityLevelService.update(securityLevel);
 	}
@@ -57,13 +57,13 @@ public class SecurityLevelController {
 	//////////
 	
 	//Effacer un niveau de sécurité par son id
-	@DeleteMapping("/REST/delelteSecurityLevelById")
-	public void delelteSecurityLevelById(Integer idsl) {
+	@DeleteMapping("/REST/securityLevel/{id}")
+	public void delelteSecurityLevelById(@PathVariable ("id") Integer idsl) {
 		securityLevelService.deleteById(idsl);
 	}
 		
 	//Effacer tous les niveaux de sécurité
-	@DeleteMapping("/REST/delelteSecurityLevelAll")
+	@DeleteMapping("/REST/securityLevel")
 	public void delelteSecurityLevelAll(SecurityLevel securityLevel) {
 		securityLevelService.delete(securityLevel);
 	}

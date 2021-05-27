@@ -37,7 +37,7 @@ public class UserController {
 		return userService.getUserId(id);
 	}
 	
-	@GetMapping("/REST/userall")
+	@GetMapping("/REST/user")
 	public List<User> getAllUser(){
 		return userService.getAllUser();
 	}
@@ -45,7 +45,7 @@ public class UserController {
 	//////////
 	//UPDATE//
 	//////////
-	@PutMapping("/REST/userall")
+	@PutMapping("/REST/user")
 	public void update (@RequestBody User user) {
 		userService.update(user);
 	}

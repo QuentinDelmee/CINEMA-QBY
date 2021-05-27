@@ -38,7 +38,7 @@ public class ProductController {
 	}
 	
 	//Récupérer tous les produits
-	@GetMapping("/REST/allProduct")
+	@GetMapping("/REST/product")
 	public List<Product> getAllProduct() {
 		return productService.getAllProduct();
 	}
@@ -46,7 +46,7 @@ public class ProductController {
 	//////////
 	//UPDATE//
 	//////////
-	@PutMapping("/REST/updateProduct")
+	@PutMapping("/REST/product")
 	public void update(Product product) {
 		productService.update(product);
 	}
@@ -56,8 +56,13 @@ public class ProductController {
 	//////////
 	//Effacer tous les produits
 	
+<<<<<<< HEAD
 	@DeleteMapping("/REST/deleteProductById")
 	public void deleteAll(@RequestBody Product product) {
+=======
+	@DeleteMapping("/REST/product")
+	public void deleteAll(Product product) {
+>>>>>>> 2581c3120336a06d848e1f62f57ac27255b448c8
 		productService.delete(product);
 	}
 	
@@ -66,4 +71,4 @@ public class ProductController {
 	public void deleteProductById(@PathVariable("id") Integer id_product) {
 		productService.deleteProductById(id_product);
 	}
-}
+} //---> ici se termine ma class
