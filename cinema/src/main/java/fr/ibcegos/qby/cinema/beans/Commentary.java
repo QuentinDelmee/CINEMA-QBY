@@ -41,7 +41,15 @@ public class Commentary {
 	
 	@ManyToOne
 	@JoinColumn(name = "idmovie")
-	private Movie idmovie; 
+	private Movie idmovie;
+
+	public Commentary(Integer rating, String commentary, User iduser, Movie idmovie) {
+		super();
+		this.rating = rating;
+		this.commentary = commentary;
+		this.iduser = iduser;
+		this.idmovie = idmovie;
+	} 
 	
 	
 	

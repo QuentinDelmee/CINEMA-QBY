@@ -56,6 +56,7 @@ public class ProductController {
 	//////////
 	//Effacer tous les produits
 	
+
 	@DeleteMapping("/REST/product")
 	public void deleteAll(Product product) {
 		productService.delete(product);
