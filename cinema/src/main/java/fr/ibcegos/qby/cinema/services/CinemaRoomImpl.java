@@ -27,9 +27,6 @@ public class CinemaRoomImpl implements CinemaRoomService{
 	@Override
 	@Transactional
 	public void create(CinemaRoom cinemaRoom) {
-		for(Seat seat : cinemaRoom.getLstSeats()) {
-			daoSeats.save(seat);
-		}
 		dao.save(cinemaRoom);
 	}
 

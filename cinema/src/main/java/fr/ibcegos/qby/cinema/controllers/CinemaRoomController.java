@@ -24,26 +24,7 @@ public class CinemaRoomController {
 	@Autowired
 	private CinemaRoomService service;
 	
-	@PostConstruct
-	@Transactional
-	public void init() {
-		CinemaRoom RoomA = new CinemaRoom(50,"SalleA","Niveau RDC", "4k");
-		CinemaRoom RoomB = new CinemaRoom(100,"SalleB","Niveau 1", "4k");
-		CinemaRoom RoomC = new CinemaRoom(150,"SalleC","Niveau 1", "4k");
-		
-		Seat a = new Seat(1,"a",true);
-		Seat d = new Seat(10,"b",true);
-		Seat c = new Seat(20,"d",true);
-		
-		RoomA.addSeats(d);
-		RoomB.addSeats(c);
-		RoomC.addSeats(a);
-		
-		service.create(RoomA);
-		service.create(RoomB);
-		service.create(RoomC);
-	}
-		
+
 	//////////
 	//CREATE//
 	//////////

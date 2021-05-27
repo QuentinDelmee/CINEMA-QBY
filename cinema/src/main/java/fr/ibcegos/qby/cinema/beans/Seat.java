@@ -1,6 +1,8 @@
 package fr.ibcegos.qby.cinema.beans;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,9 +41,9 @@ public class Seat {
 	@JsonBackReference
 	private CinemaRoom id_cinema;
 	
-	@OneToMany
+	@OneToMany(mappedBy="id_reservation")
 	@JsonBackReference
-	private Reservation id_reservation;
+	private List<Reservation> allReservations;
 
 	public Seat(Integer seat_number, String row_name, Boolean free) {
 		this.seat_number = seat_number;
