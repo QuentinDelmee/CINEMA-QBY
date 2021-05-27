@@ -45,22 +45,24 @@ public class Purchase {
 	 * @param quantity    the quantity of product which is transacted
 	 * @param id_purchase the overall id of the purchases
 	 */
-	public Purchase(Product id_product, User id_user, LocalDateTime date, Integer quantity, Integer id_purchase) {
+	public Purchase(Product id_product, User id_user, LocalDateTime date, Integer quantity, Integer id_receipt) {
 		super();
 		this.id_product = id_product;
 		this.id_user = id_user;
 		this.date = date;
 		this.quantity = quantity;
-		this.id_purchase = id_purchase;
+		this.id_receipt = id_receipt;
 	}
-
+	
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
 	@Override
 	public String toString() {
-		return "Purchases [id=" + id_purchase + ", id_product=" + id_product + ", id_user=" + id_user + ", date=" + date
-				+ ", quantity=" + quantity + "]";
+		return "Purchase [id_purchase=" + id_purchase + ", id_product=" + id_product + ", id_user=" + id_user
+				+ ", date=" + date + ", quantity=" + quantity + ", id_receipt=" + id_receipt + "]";
 	}
+	
+	
 
 }
