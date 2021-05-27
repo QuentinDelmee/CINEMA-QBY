@@ -56,13 +56,9 @@ public class ProductController {
 	//////////
 	//Effacer tous les produits
 	
-<<<<<<< HEAD
-	@DeleteMapping("/REST/deleteProductById")
-	public void deleteAll(@RequestBody Product product) {
-=======
+
 	@DeleteMapping("/REST/product")
 	public void deleteAll(Product product) {
->>>>>>> 2581c3120336a06d848e1f62f57ac27255b448c8
 		productService.delete(product);
 	}
 	
