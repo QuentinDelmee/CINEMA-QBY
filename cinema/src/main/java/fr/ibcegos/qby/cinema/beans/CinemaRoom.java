@@ -30,59 +30,40 @@ public class CinemaRoom {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idCinema;
+	private Integer id;
 	
-	private String roomname;
-	private Integer roomlevel;
-	private String screensize;
-	private Integer nbseats;
+	private String roomName;
+	private Integer roomLevel;
+	private String screenSize;
+	private Integer nbSeats;
 	
 
-	@OneToMany(mappedBy="idcinema")
+	@OneToMany(targetEntity=Seat.class,mappedBy="id")
 	private List<Seat> lstSeats = new ArrayList<>();
 	
-	@OneToMany(mappedBy="idcinema")
+	@OneToMany(targetEntity=Session.class, mappedBy="id")
 	private List<Session> lstSessions = new ArrayList<>();
 	
-	@OneToMany(mappedBy="idcinema")
+	@OneToMany(targetEntity=Opinion.class, mappedBy="id")
 	private List<Opinion> lstOpinions = new ArrayList<>();
 	
 	
+	public CinemaRoom(String roomName, Integer roomLevel, String screenSize,Integer nbSeats) {
 
-	public CinemaRoom(Integer nbseats, String roomname, Integer roomlevel, String screensize) {
-
-		this.nbseats = nbseats;
-		this.roomname = roomname;
-		this.roomlevel = roomlevel;
-		this.screensize = screensize;
+		this.nbSeats = nbSeats;
+		this.roomName = roomName;
+		this.roomLevel = roomLevel;
+		this.screenSize = screenSize;
 		
 	}
-	
-	
 
-//	public void addSeats(Seat seat) {
-//		//PLUS TARD Rajouter condition pour vérifier capacité
-//		seat.setIdcinema(this);
-//		sDao.save(seat);
-//		
-//	}
 
-	
-	
 	@Override
 	public String toString() {
-		return "Cinemas [idCinema=" + idCinema + ", nbseats=" + nbseats + ", roomname=" + roomname
-				+ ", roomlevel=" + roomlevel + ", screensize=" + screensize + "]";
+		return "CinemaRoom [roomName=" + roomName + ", roomLevel=" + roomLevel + ", screenSize=" + screenSize
+				+ ", nbSeats=" + nbSeats + "]";
 	}
 
 
 
-
-	public CinemaRoom(String roomname, Integer roomlevel, String screensize, Integer nbseats) {
-		this.roomname = roomname;
-		this.roomlevel = roomlevel;
-		this.screensize = screensize;
-		this.nbseats = nbseats;
-	}
-	
 }

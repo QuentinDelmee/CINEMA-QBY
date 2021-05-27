@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,38 +22,33 @@ import lombok.Setter;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer  idproduct ;
-	private String productname ;
+	private Integer  id ;
+	private String productName ;
 	private double price ;
 	private String category ;
-	private String productdescription ;
-
-
-	// Constructeur avec paramètre les attributs de class
+	private String productDescription ;
 	
-	public Product(Integer idproduct, String productname, double price, String category, String productdescription) {
-		this.idproduct = idproduct;
-		this.productname = productname;
+	@ManyToOne
+	@JoinColumn(name = "id")
+	private Purchase idPurchase;
+
+	public Product(String productName, double price, String category, String productDescription) {
+
+		this.productName = productName;
 		this.price = price;
 		this.category = category;
-		this.productdescription = productdescription;
-	}
+		this.productDescription = productDescription;
 
-	// Constructeur avec paramètre sauf id
-	public Product(String productname, double price, String category, String productdescription) {
-		this.productname = productname;
-		this.price = price;
-		this.category = category;
-		this.productdescription = productdescription;
 	}
-
-	// Méthode toString pour accéder aux valeurs 
 
 	@Override
 	public String toString() {
-		return "Product [idproduct=" + idproduct + ", productname=" + productname + ", price=" + price
-				+ ", category=" + category + ", productdescription=" + productdescription + "]";
-	}
+		return "Product [productName=" + productName + ", price=" + price + ", category=" + category
+				+ ", productDescription=" + productDescription + ", idPurchase=" + idPurchase + "]";
+	} 
+	
+	
+
 	
 	
 }

@@ -653,15 +653,14 @@ public class DemoData {
 		List<CinemaRoom> cineRoom = (List<CinemaRoom>) crdao.findAll() ;
 		
 		for (CinemaRoom cinemaRoom : cineRoom) {
-			int tempSize = cinemaRoom.getNbseats() / 32 ;
+			int tempSize = cinemaRoom.getNbSeats() / 32 ;
 			int tempRank = 32 ;
 			
 			for( int i = 0 ; i < tempSize ; ++i )
 			{
 				for( int j = 0 ; j < tempRank ; ++ j )
 				{
-					Seat tempSeat = new Seat(j,Character.toString(65+i).toString(),true) ;
-					tempSeat.setIdcinema(cinemaRoom) ;
+					Seat tempSeat = new Seat(j,Character.toString(65+i).toString(),true,cinemaRoom) ;
 					seadao.save(tempSeat) ;
 				}
 			}
@@ -694,7 +693,7 @@ public class DemoData {
 			pudao.save(new Purchase(tempProduct,tempU,ldt,tempQ,tempTC)) ;
 			
 			rdao.save(new Reservation(tempU, tempSeat , ldt)) ;
-			sesdao.save(new Session(tempCR,tempM,ldt,tempCR.getNbseats()) ) ;
+			sesdao.save(new Session(tempCR,tempM,ldt,tempCR.getNbSeats()) ) ;
 		}
 
 	}

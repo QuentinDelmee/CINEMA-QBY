@@ -27,13 +27,13 @@ import lombok.Setter;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idreservation;
+	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "iduser")
-	private User iduser;
+	@JoinColumn(name = "id")
+	private User idUser;
 	@ManyToOne
-	@JoinColumn ( name = "idseat" )
-	private Seat idseat;
+	@JoinColumn ( name = "id" )
+	private Seat idSeat;
 	private LocalDateTime date;
 
 	/**
@@ -45,20 +45,23 @@ public class Reservation {
 	 * @param date     Date of the reservation which corresponds to the start of a
 	 *                 film session
 	 */
-	public Reservation(User iduser, Seat idseat, LocalDateTime date) {
+
+	public Reservation(User idUser, Seat idSeat, LocalDateTime date) {
 		super();
-		this.iduser = iduser;
-		this.idseat = idseat;
+		this.idUser = idUser;
+		this.idSeat = idSeat;
 		this.date = date;
 	}
+
 
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
+
 	@Override
 	public String toString() {
-		return "Reservations [id=" + idreservation + ", iduser=" + iduser + ", idseat=" + idseat + ", date="
-				+ date + "]";
+		return "Reservation [idUser=" + idUser + ", idSeat=" + idSeat + ", date=" + date + "]";
 	}
+
 
 }
