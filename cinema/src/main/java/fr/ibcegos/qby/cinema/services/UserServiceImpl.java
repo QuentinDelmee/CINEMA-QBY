@@ -2,12 +2,15 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.UserDAO;
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
 
 	@Autowired
@@ -26,9 +29,9 @@ public class UserServiceImpl implements UserService{
 	//////////
 	// GET  //
 	//////////
+	
 	@Override
 	public User getUserId(Integer id_user) {
-		
 		return userDAO.findById(id_user).orElse(null);
 	}
 
@@ -51,8 +54,7 @@ public class UserServiceImpl implements UserService{
 	//////////
 	@Override
 	public void delete(User user) {
-		userDAO.deleteAll();
-		
+		userDAO.deleteAll();	
 	}
 
 	@Override

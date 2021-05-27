@@ -1,9 +1,13 @@
 package fr.ibcegos.qby.cinema.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +31,8 @@ public class User {
 	private Person id_person;
 	private Security_Level  id_sl;
 	
+	@OneToMany(mappedBy = "id_user")
+	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 	
 	// Constructeur avec les attributs de Class comme paramètre
 	public User(Integer id_user, String pseudo, String pwd, Person id_person, Security_Level id_sl) {
