@@ -12,12 +12,15 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import fr.ibcegos.qby.cinema.beans.CinemaRoom;
+import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
 import fr.ibcegos.qby.cinema.beans.Person;
 import fr.ibcegos.qby.cinema.beans.Product;
+import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.beans.SecurityLevel;
 import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
+import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
 import fr.ibcegos.qby.cinema.daos.MovieDAO;
 import fr.ibcegos.qby.cinema.daos.OpinionDAO;
 import fr.ibcegos.qby.cinema.daos.PersonDAO;
@@ -33,8 +36,8 @@ import fr.ibcegos.qby.cinema.daos.UserDAO;
 public class DemoData {
 	@Autowired
 	private CinemaRoomDAO crdao;
-	// @Autowired
-	// private CommentaryDAO cdao ;
+	 @Autowired
+	 private CommentaryDAO cdao ;
 	@Autowired
 	private MovieDAO mdao;
 	@Autowired
@@ -385,7 +388,13 @@ public class DemoData {
 
 	// Liste des différents genres
 	static String[] sexes = { "H", "F", "B", "A", "T" };
+	
+	// List des commentaires aléatoires
+	static String[] comments = { "C'est trop bien!", "C'était pas mal!", "C'était moyen :(", "C'était bofbof :(", "Je me suis fait chier", "C'était de la merde!" } ;
 
+	// Liste des propretés
+	static String[] proprete = {"Très Propre", "Propre", "Passable", "Moyen", "Sale", "Très Sale", "Inadmissible" } ;
+	
 	// Liste de pseudos futuristes
 	static String[] pseudoFutur = { "Aarav", "Aarom", "Abbrahan", "Abrahan", "Ace", "Acsel", "Adahm", "Adahn", "Adit",
 			"Adone", "Adran", "Adrihan", "Adrihel", "Adrihen", "Adriyel", "Adriyen", "Adryan", "Adryel", "Aebram",
@@ -622,7 +631,7 @@ public class DemoData {
 		List<SecurityLevel> allSL = (List<SecurityLevel>) sldao.findAll();
 		Random rand = new Random();
 
-		for (int i = 0; i < 100; ++i) {
+		for (int i = 0; i < 64; ++i) {
 			String tempN = noms[rand.nextInt(noms.length)];
 			String tempP = prenoms[rand.nextInt(prenoms.length)];
 			LocalDate bd = randomDate();
@@ -648,7 +657,12 @@ public class DemoData {
 			
 			for( int i = 0 ; i < tempSize ; ++i )
 			{
-				
+				for( int j = 0 ; j < tempRank ; ++ j )
+				{
+					Seat tempSeat = new Seat(j,Character.toString(65+i).toString(),true) ;
+					tempSeat.setIdcinema(cinemaRoom) ;
+					seadao.save(tempSeat) ;
+				}
 			}
 		}
 	}
@@ -657,13 +671,19 @@ public class DemoData {
 	public void appReadyAssociation(ApplicationReadyEvent event) {
 
 		Random rand = new Random();
-
-		for (int i = 0; i < 100; ++i) {
-			String tempN = noms[rand.nextInt(noms.length)];
-			String tempP = prenoms[rand.nextInt(prenoms.length)];
-			String tempPseudo = pseudoFutur[rand.nextInt(pseudoFutur.length)];
-			LocalDate bd = randomDate();
-
+		List<User> allUsers = (List<User>) udao.findAll() ;
+		List<Movie> allMovies = (List<Movie>) mdao.findAll() ;
+		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll() ;
+		
+		for (int i = 0; i < 10; ++i) {
+			String tempC = comments[rand.nextInt(comments.length)] ;
+			User tempU = allUsers.get(rand.nextInt(allUsers.size())) ;
+			Movie tempM = allMovies.get(rand.nextInt(allMovies.size())) ;
+			CinemaRoom tempCR = allRooms.get(rand.nextint(allRooms.size())) ;
+			String tempP = proprete[rand.nextInt(proprete.length)] ;
+			
+			cdao.save(new Commentary(rand.nextInt(5),tempC,tempU,tempM)) ;
+			odao.save(new Opinion(tempCR,tempU, rand.nextDouble(20), tempP )) ;
 		}
 
 	}
