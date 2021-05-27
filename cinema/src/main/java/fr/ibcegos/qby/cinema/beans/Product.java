@@ -20,37 +20,37 @@ import lombok.Setter;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer  id_product ;
-	private String product_name ;
+	private Integer  idproduct ;
+	private String productname ;
 	private double price ;
 	private String category ;
-	private String product_description ;
+	private String productdescription ;
 
 
 	// Constructeur avec paramètre les attributs de class
 	
-	public Product(Integer id_product, String product_name, double price, String category, String product_description) {
-		this.id_product = id_product;
-		this.product_name = product_name;
+	public Product(Integer idproduct, String productname, double price, String category, String productdescription) {
+		this.idproduct = idproduct;
+		this.productname = productname;
 		this.price = price;
 		this.category = category;
-		this.product_description = product_description;
+		this.productdescription = productdescription;
 	}
 
 	// Constructeur avec paramètre sauf id
-	public Product(String product_name, double price, String category, String product_description) {
-		this.product_name = product_name;
+	public Product(String productname, double price, String category, String productdescription) {
+		this.productname = productname;
 		this.price = price;
 		this.category = category;
-		this.product_description = product_description;
+		this.productdescription = productdescription;
 	}
 
 	// Méthode toString pour accéder aux valeurs 
 
 	@Override
 	public String toString() {
-		return "Product [id_product=" + id_product + ", product_name=" + product_name + ", price=" + price
-				+ ", category=" + category + ", product_description=" + product_description + "]";
+		return "Product [idproduct=" + idproduct + ", productname=" + productname + ", price=" + price
+				+ ", category=" + category + ", productdescription=" + productdescription + "]";
 	}
 	
 	
@@ -61,12 +61,12 @@ public class Product {
  * 
  * 	CREATE TABLE products 
 	(
-		id_product int NOT NULL AUTO_INCREMENT,
-		product_name varchar (50),
+		idproduct int NOT NULL AUTOINCREMENT,
+		productname varchar (50),
 		price decimal (6,2),
 		category varchar (50),
-		product_description text,
-		PRIMARY KEY (id_product)
+		productdescription text,
+		PRIMARY KEY (idproduct)
 	);
  * 
  * 

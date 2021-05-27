@@ -27,28 +27,28 @@ import lombok.Setter;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_reservation;
+	private Integer idreservation;
 	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private User id_user;
+	@JoinColumn(name = "iduser")
+	private User iduser;
 	@ManyToOne
-	@JoinColumn ( name = "id_seat" )
-	private Seat id_seat;
+	@JoinColumn ( name = "idseat" )
+	private Seat idseat;
 	private LocalDateTime date;
 
 	/**
 	 * Constructor of the class, all other functions are automated with Lombok
 	 * 
-	 * @param id_users User which is reserving a seat for a film on a specific
+	 * @param idusers User which is reserving a seat for a film on a specific
 	 *                 session
-	 * @param id_seat  Seat reserved by the user inside the CinemaRoom
+	 * @param idseat  Seat reserved by the user inside the CinemaRoom
 	 * @param date     Date of the reservation which corresponds to the start of a
 	 *                 film session
 	 */
-	public Reservation(User id_user, Seat id_seat, LocalDateTime date) {
+	public Reservation(User iduser, Seat idseat, LocalDateTime date) {
 		super();
-		this.id_user = id_user;
-		this.id_seat = id_seat;
+		this.iduser = iduser;
+		this.idseat = idseat;
 		this.date = date;
 	}
 
@@ -57,7 +57,7 @@ public class Reservation {
 	 */
 	@Override
 	public String toString() {
-		return "Reservations [id=" + id_reservation + ", id_user=" + id_user + ", id_seat=" + id_seat + ", date="
+		return "Reservations [id=" + idreservation + ", iduser=" + iduser + ", idseat=" + idseat + ", date="
 				+ date + "]";
 	}
 

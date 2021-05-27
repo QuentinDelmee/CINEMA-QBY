@@ -31,49 +31,48 @@ import lombok.Setter;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer  id_user;
+	private Integer  iduser;
 	private String pseudo;
 	private String pwd;
 	@OneToOne
-	@JoinColumn(name ="id_person")
-	private Person id_person;
+	@JoinColumn(name ="idperson")
+	private Person idperson;
 	
 	@ManyToOne
-	@JoinColumn(name ="id_sl")
-	@JsonManagedReference
-	private Security_Level  id_sl;
+	@JoinColumn(name ="idsl")
+	private SecurityLevel  idsl;
 	
-	@JsonBackReference
-	@OneToMany(mappedBy = "id_user")
+	
+	@OneToMany(mappedBy = "iduser")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 
-	@JsonBackReference
-	@OneToMany(mappedBy = "id_user")
+	
+	@OneToMany(mappedBy = "iduser")
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 	
-	@JsonBackReference
-	@OneToMany(mappedBy = "id_user")
+	
+	@OneToMany(mappedBy = "iduser")
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 	
-	@JsonBackReference
-	@OneToMany(mappedBy = "id_user")
+	
+	@OneToMany(mappedBy = "iduser")
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
 		
 	// Constructeur avec les attributs de Class comme paramètre
-	public User(Integer id_user, String pseudo, String pwd, Person id_person, Security_Level id_sl) {
-		this.id_user = id_user;
+	public User(Integer iduser, String pseudo, String pwd, Person idperson, SecurityLevel idsl) {
+		this.iduser = iduser;
 		this.pseudo = pseudo;
 		this.pwd = pwd;
-		this.id_person = id_person;
-		this.id_sl = id_sl;
+		this.idperson = idperson;
+		this.idsl = idsl;
 	}
 	
 	// Constructeur avec paramètre sauf id
-	public User(String pseudo, String pwd, Person id_person, Security_Level id_sl) {
+	public User(String pseudo, String pwd, Person idperson, SecurityLevel idsl) {
 		this.pseudo = pseudo;
 		this.pwd = pwd;
-		this.id_person = id_person;
-		this.id_sl = id_sl;
+		this.idperson = idperson;
+		this.idsl = idsl;
 	}
 
 
@@ -82,8 +81,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id_user=" + id_user + ", pseudo=" + pseudo + ", pwd=" + pwd + ", id_person=" + id_person
-				+ ", id_sl=" + id_sl + "]";
+		return "User [iduser=" + iduser + ", pseudo=" + pseudo + ", pwd=" + pwd + ", idperson=" + idperson
+				+ ", idsl=" + idsl + "]";
 	}
 	
 	
@@ -94,14 +93,14 @@ public class User {
 /*
 	CREATE TABLE users 
 	(
-		id_user int NOT NULL AUTO_INCREMENT , 
+		iduser int NOT NULL AUTOINCREMENT , 
 		pseudo varchar (50),
 		pwd varchar (50),
-		id_person int,	
-		id_sl int,
-		PRIMARY KEY (id_users),
-		FOREIGN KEY (id_person) REFERENCES persons(id_person),
-		FOREIGN KEY (id_sl) REFERENCES security_level(id_sl)
+		idperson int,	
+		idsl int,
+		PRIMARY KEY (idusers),
+		FOREIGN KEY (idperson) REFERENCES persons(idperson),
+		FOREIGN KEY (idsl) REFERENCES securitylevel(idsl)
 	);
 
 */

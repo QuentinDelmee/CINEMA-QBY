@@ -2,9 +2,9 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
-import fr.ibcegos.qby.cinema.beans.Security_Level;
+import fr.ibcegos.qby.cinema.beans.SecurityLevel;
 
-public interface Security_LevelService {
+public interface SecurityLevelService {
 	//////////
 	//CREATE//
 	//////////
@@ -13,7 +13,7 @@ public interface Security_LevelService {
 	 * Créer un niveau de sécurité
 	 * @param securityLevel
 	 */
-	public void create(Security_Level  securityLevel);
+	public void create(SecurityLevel  securityLevel);
 	
 		
 	//////////
@@ -21,16 +21,16 @@ public interface Security_LevelService {
 	//////////
 	/**
 	 * Récupérer un niveau de sécurité par son id
-	 * @param id_sl
+	 * @param idsl
 	 * @return
 	 */
-	public Security_Level getSecurityLevelById(Integer id_sl);
+	public SecurityLevel getSecurityLevelById(Integer idsl);
 	
 	/**
 	 * Retourne tous les niveaux de sécurité
 	 * @return
 	 */
-	public List<Security_Level> getAllSecurityLevel();
+	public List<SecurityLevel> getAllSecurityLevel();
 		
 	//////////
 	//UPDATE//
@@ -40,7 +40,7 @@ public interface Security_LevelService {
 	 * @param user
 	 */
 	
-	public void update(Security_Level securityLevel);
+	public void update(SecurityLevel securityLevel);
 		
 	//////////
 	//DELETE//
@@ -49,12 +49,12 @@ public interface Security_LevelService {
 	 * Supprime un niveau de sécurité
 	 * @param user
 	 */
-	public void delete(Security_Level securityLevel);
+	public void delete(SecurityLevel securityLevel);
 	
 	
 	/**
 	 * Supprime un niveau de sécurité par son id
-	 * @param id_user
+	 * @param iduser
 	 */
-	public void deleteById(Integer id_sl);
+	public void deleteById(Integer idsl);
 }

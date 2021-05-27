@@ -25,14 +25,14 @@ import lombok.Setter;
 public class Opinion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_opinion;
+	private Integer idopinion;
 
 	@ManyToOne
-	@JoinColumn(name = "id_cinema")
-	private CinemaRoom id_cinema;
+	@JoinColumn(name = "idcinema")
+	private CinemaRoom idcinema;
 	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private User id_user;
+	@JoinColumn(name = "iduser")
+	private User iduser;
 
 	private Double rating;
 	private String cleanlyness;
@@ -40,15 +40,15 @@ public class Opinion {
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
 	 * 
-	 * @param id_cinema   CinemaRoom the user wants to rate.
-	 * @param id_user     User which rate the CinemaRoom
+	 * @param idcinema   CinemaRoom the user wants to rate.
+	 * @param iduser     User which rate the CinemaRoom
 	 * @param rating      The rating the user will give
 	 * @param cleanlyness User's comment.
 	 */
-	public Opinion(CinemaRoom id_cinema, User id_user, Double rating, String cleanlyness) {
+	public Opinion(CinemaRoom idcinema, User iduser, Double rating, String cleanlyness) {
 		super();
-		this.id_cinema = id_cinema;
-		this.id_user = id_user;
+		this.idcinema = idcinema;
+		this.iduser = iduser;
 		this.rating = rating;
 		this.cleanlyness = cleanlyness;
 	}
@@ -58,7 +58,7 @@ public class Opinion {
 	 */
 	@Override
 	public String toString() {
-		return "Opinion [id_opinion=" + id_opinion + ", id_cinema=" + id_cinema + ", id_user=" + id_user + ", rating="
+		return "Opinion [idopinion=" + idopinion + ", idcinema=" + idcinema + ", iduser=" + iduser + ", rating="
 				+ rating + ", cleanlyness=" + cleanlyness + "]";
 	}
 

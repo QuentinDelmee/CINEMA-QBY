@@ -24,12 +24,12 @@ public class AlgoDate {
 			
 			//Si l'horaire en cours de lecture correspond � l'horaire 
 			//donn� en param�tre de la fonction
-			if(!sessionMovie.getId_date().isBefore(broadcastTime)&&
-			   !sessionMovie.getId_date().isAfter(broadcastTime.plusMinutes(59))
+			if(!sessionMovie.getIddate().isBefore(broadcastTime)&&
+			   !sessionMovie.getIddate().isAfter(broadcastTime.plusMinutes(59))
 			   )
 				{
 					//Ajout de l'ID correspondant au film � partir de la session
-					availableMoviesList.add(sessionMovie.getId_movie());
+					availableMoviesList.add(sessionMovie.getIdmovie());
 				}
 		}
 		

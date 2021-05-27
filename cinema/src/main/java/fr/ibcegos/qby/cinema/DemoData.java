@@ -2,6 +2,7 @@ package fr.ibcegos.qby.cinema;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.beans.Movie;
 import fr.ibcegos.qby.cinema.beans.Product;
-import fr.ibcegos.qby.cinema.beans.Security_Level;
+import fr.ibcegos.qby.cinema.beans.SecurityLevel;
 import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.MovieDAO;
 import fr.ibcegos.qby.cinema.daos.OpinionDAO;
@@ -22,7 +23,7 @@ import fr.ibcegos.qby.cinema.daos.ProductDAO;
 import fr.ibcegos.qby.cinema.daos.PurchaseDAO;
 import fr.ibcegos.qby.cinema.daos.ReservationDAO;
 import fr.ibcegos.qby.cinema.daos.SeatDAO;
-import fr.ibcegos.qby.cinema.daos.Security_LevelDAO;
+import fr.ibcegos.qby.cinema.daos.SecurityLevelDAO;
 import fr.ibcegos.qby.cinema.daos.SessionDAO;
 import fr.ibcegos.qby.cinema.daos.UserDAO;
 
@@ -47,7 +48,7 @@ public class DemoData {
 	@Autowired
 	private SeatDAO seadao;
 	@Autowired
-	private Security_LevelDAO sldao;
+	private SecurityLevelDAO sldao;
 	@Autowired
 	private SessionDAO sesdao;
 	@Autowired
@@ -428,7 +429,7 @@ public class DemoData {
 	 */
 
 	// Liste alphanumérique pour créer les mdp
-	static String mdpLetter = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN123456789_";
+	static String mdpLetter = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN123456789";
 
 	/**
 	 * 
@@ -462,11 +463,11 @@ public class DemoData {
 	@EventListener
 	public void appReadyBasic(ApplicationReadyEvent event) {
 		
-		sldao.save( new Security_Level("NDS Client, accès aux utilisations basiques de réservation et achats.") ) ;
-		sldao.save( new Security_Level("NDS Employé, accès aux utilisations basiques, de ventes et de modifications clients.") );
-		sldao.save( new Security_Level("NDS RH, accès aux utilisations basiques, ajout et suppression d\'employés de NDS 2,3,4.") );
-		sldao.save( new Security_Level("NDS Modérateur, accès aux utilisations basiques, de ventes et de modifications clients, employé et RH.") );
-		sldao.save( new Security_Level("NDS Administrateur, accès total.") );
+		sldao.save( new SecurityLevel("NDS Client, accès aux utilisations basiques de réservation et achats.") ) ;
+		sldao.save( new SecurityLevel("NDS Employé, accès aux utilisations basiques, de ventes et de modifications clients.") );
+		sldao.save( new SecurityLevel("NDS RH, accès aux utilisations basiques, ajout et suppression d\'employés de NDS 2,3,4.") );
+		sldao.save( new SecurityLevel("NDS Modérateur, accès aux utilisations basiques, de ventes et de modifications clients, employé et RH.") );
+		sldao.save( new SecurityLevel("NDS Administrateur, accès total.") );
 		
 		mdao.save( new Movie("Nadia, butterfly","Nadia, butterfly",0,2021,LocalTime.of(1,46,00,00),"Drame",5.00,"Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l\'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision...") );
 		mdao.save( new Movie("Nouvel ordre","New Order",12,2021,LocalTime.of(1,28,00,00),"Drame",5.00,"Un mariage mondain est interrompu par l\'arrivée d\'invités importuns.") );
@@ -538,7 +539,9 @@ public class DemoData {
 	
 	@EventListener
 	public void appReadyAssociation(ApplicationReadyEvent event) {
-
+		
+		//List< SecurityLevel > = (List<SecurityLevel>) sldao.findAll() ;
+		
 		Random rand = new Random();
 
 		for (int i = 0; i < 100; ++i) {

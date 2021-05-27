@@ -30,32 +30,31 @@ public class CinemaRoom {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_Cinema;
+	private Integer idCinema;
 	
-	private String room_name;
-	private Integer room_level;
-	private String screen_size;
-	private Integer nb_seats;
+	private String roomname;
+	private Integer roomlevel;
+	private String screensize;
+	private Integer nbseats;
 	
 
-	@OneToMany(mappedBy="id_cinema")
-	@JsonBackReference
+	@OneToMany(mappedBy="idcinema")
 	private List<Seat> lstSeats = new ArrayList<>();
 	
-	@OneToMany(mappedBy="id_cinema")
+	@OneToMany(mappedBy="idcinema")
 	private List<Session> lstSessions = new ArrayList<>();
 	
-	@OneToMany(mappedBy="id_cinema")
+	@OneToMany(mappedBy="idcinema")
 	private List<Opinion> lstOpinions = new ArrayList<>();
 	
 	
 
-	public CinemaRoom(Integer nb_seats, String room_name, Integer room_level, String screen_size) {
+	public CinemaRoom(Integer nbseats, String roomname, Integer roomlevel, String screensize) {
 
-		this.nb_seats = nb_seats;
-		this.room_name = room_name;
-		this.room_level = room_level;
-		this.screen_size = screen_size;
+		this.nbseats = nbseats;
+		this.roomname = roomname;
+		this.roomlevel = roomlevel;
+		this.screensize = screensize;
 		
 	}
 	
@@ -63,7 +62,7 @@ public class CinemaRoom {
 
 //	public void addSeats(Seat seat) {
 //		//PLUS TARD Rajouter condition pour vérifier capacité
-//		seat.setId_cinema(this);
+//		seat.setIdcinema(this);
 //		sDao.save(seat);
 //		
 //	}
@@ -72,18 +71,18 @@ public class CinemaRoom {
 	
 	@Override
 	public String toString() {
-		return "Cinemas [id_Cinema=" + id_Cinema + ", nb_seats=" + nb_seats + ", room_name=" + room_name
-				+ ", room_level=" + room_level + ", screen_size=" + screen_size + "]";
+		return "Cinemas [idCinema=" + idCinema + ", nbseats=" + nbseats + ", roomname=" + roomname
+				+ ", roomlevel=" + roomlevel + ", screensize=" + screensize + "]";
 	}
 
 
 
 
-	public CinemaRoom(String room_name, Integer room_level, String screen_size, Integer nb_seats) {
-		this.room_name = room_name;
-		this.room_level = room_level;
-		this.screen_size = screen_size;
-		this.nb_seats = nb_seats;
+	public CinemaRoom(String roomname, Integer roomlevel, String screensize, Integer nbseats) {
+		this.roomname = roomname;
+		this.roomlevel = roomlevel;
+		this.screensize = screensize;
+		this.nbseats = nbseats;
 	}
 	
 }
