@@ -27,35 +27,35 @@ import lombok.Setter;
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer  id_person;
-	private String family_name;
-	private String first_name; // on ne devrait pas donner un last name pour avoir un nom complet ??
+	private Integer  idperson;
+	private String familyname;
+	private String firstname; // on ne devrait pas donner un last name pour avoir un nom complet ??
 	private Date date;   	
 	private String genre;
 	private String city;
-	private String e_mail;
+	private String email;
 	
 	
 	
 	// Constructeur avec paramètre
-	public Person(Integer id_person, String family_name, String first_name, Date date, String genre, String city, String e_mail) {
-		this.id_person = id_person;
-		this.family_name = family_name;
-		this.first_name = first_name;
+	public Person(Integer idperson, String familyname, String firstname, Date date, String genre, String city, String email) {
+		this.idperson = idperson;
+		this.familyname = familyname;
+		this.firstname = firstname;
 		this.date = date;
 		this.genre = genre;
 		this.city = city;
-		this.e_mail = e_mail;
+		this.email = email;
 	}
 	
 	// Constructeur avec paramètre sauf id
-		public Person(String family_name, String first_name, Date date, String genre, String city, String e_mail) {
-			this.family_name = family_name;
-			this.first_name = first_name;
+		public Person(String familyname, String firstname, Date date, String genre, String city, String email) {
+			this.familyname = familyname;
+			this.firstname = firstname;
 			this.date = date;
 			this.genre = genre;
 			this.city = city;
-			this.e_mail = e_mail;
+			this.email = email;
 		}
 
 
@@ -63,8 +63,8 @@ public class Person {
 	//Méthode toString pour accéder aux valeurs 
 	@Override
 	public String toString() {
-		return "Person [id_person=" + id_person + ", family_name=" + family_name + ", first_name=" + first_name
-				+ ", date=" + date + ", genre=" + genre + ", city=" + city + ", e_mail=" + e_mail + "]";
+		return "Person [idperson=" + idperson + ", familyname=" + familyname + ", firstname=" + firstname
+				+ ", date=" + date + ", genre=" + genre + ", city=" + city + ", email=" + email + "]";
 	}
 }
 
@@ -72,14 +72,14 @@ public class Person {
  * 
  * CREATE TABLE persons 
 	(
-		id_person int NOT NULL AUTO_INCREMENT,
-		family_name varchar (50),
-		first_name varchar (50),
+		idperson int NOT NULL AUTOINCREMENT,
+		familyname varchar (50),
+		firstname varchar (50),
 		birthdate date,
 		genre varchar (50),
 		city varchar (50),
-		e_mail varchar (50),
-		PRIMARY KEY  (id_personnes)
+		email varchar (50),
+		PRIMARY KEY  (idpersonnes)
 	);
  * 
  * */

@@ -29,28 +29,28 @@ public class Session {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "id_cinema")
-	private CinemaRoom id_cinema;
+	@JoinColumn(name = "idcinema")
+	private CinemaRoom idcinema;
 	@ManyToOne
-	@JoinColumn(name = "id_movie")
-	private Movie id_movie;
-	private LocalDateTime id_date;
-	private Integer seats_left;
+	@JoinColumn(name = "idmovie")
+	private Movie idmovie;
+	private LocalDateTime iddate;
+	private Integer seatsleft;
 
 	/**
 	 * Constructor of the class, all other functions are automated with Lombok
 	 * 
-	 * @param id_cinema  The room in which the film is projected
-	 * @param id_movie   The movie which will be projected
-	 * @param id_date    The starting date of the movie
-	 * @param seats_left The number of seats left in the room
+	 * @param idcinema  The room in which the film is projected
+	 * @param idmovie   The movie which will be projected
+	 * @param iddate    The starting date of the movie
+	 * @param seatsleft The number of seats left in the room
 	 */
-	public Session(CinemaRoom id_cinema, Movie id_movie, LocalDateTime id_date, Integer seats_left) {
+	public Session(CinemaRoom idcinema, Movie idmovie, LocalDateTime iddate, Integer seatsleft) {
 		super();
-		this.id_cinema = id_cinema;
-		this.id_movie = id_movie;
-		this.id_date = id_date;
-		this.seats_left = seats_left;
+		this.idcinema = idcinema;
+		this.idmovie = idmovie;
+		this.iddate = iddate;
+		this.seatsleft = seatsleft;
 	}
 
 	/**
@@ -58,8 +58,8 @@ public class Session {
 	 */
 	@Override
 	public String toString() {
-		return "Session [id=" + id + ", id_cinema=" + id_cinema + ", id_movie=" + id_movie + ", id_date=" + id_date
-				+ ", seats_left=" + seats_left + "]";
+		return "Session [id=" + id + ", idcinema=" + idcinema + ", idmovie=" + idmovie + ", iddate=" + iddate
+				+ ", seatsleft=" + seatsleft + "]";
 	}
 
 }

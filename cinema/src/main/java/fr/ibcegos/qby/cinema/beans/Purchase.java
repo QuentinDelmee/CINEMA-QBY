@@ -24,34 +24,34 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Purchase {
 	@Id
-	private Integer id_purchase;
+	private Integer idpurchase;
 	@ManyToOne
-	@JoinColumn(name = "id_product")
-	private Product id_product;
+	@JoinColumn(name = "idproduct")
+	private Product idproduct;
 	@ManyToOne
-	@JoinColumn(name = "id_user")
-	private User id_user;
+	@JoinColumn(name = "iduser")
+	private User iduser;
 	private LocalDateTime date;
 
 	private Integer quantity;
-	private Integer id_receipt;
+	private Integer idreceipt;
 
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
 	 * 
-	 * @param id_product  product which is transacted
-	 * @param id_users    user which is buying
+	 * @param idproduct  product which is transacted
+	 * @param idusers    user which is buying
 	 * @param date        the exact date at which the transaction occurs
 	 * @param quantity    the quantity of product which is transacted
-	 * @param id_purchase the overall id of the purchases
+	 * @param idpurchase the overall id of the purchases
 	 */
-	public Purchase(Product id_product, User id_user, LocalDateTime date, Integer quantity, Integer id_receipt) {
+	public Purchase(Product idproduct, User iduser, LocalDateTime date, Integer quantity, Integer idreceipt) {
 		super();
-		this.id_product = id_product;
-		this.id_user = id_user;
+		this.idproduct = idproduct;
+		this.iduser = iduser;
 		this.date = date;
 		this.quantity = quantity;
-		this.id_receipt = id_receipt;
+		this.idreceipt = idreceipt;
 	}
 	
 	/**
@@ -59,8 +59,8 @@ public class Purchase {
 	 */
 	@Override
 	public String toString() {
-		return "Purchase [id_purchase=" + id_purchase + ", id_product=" + id_product + ", id_user=" + id_user
-				+ ", date=" + date + ", quantity=" + quantity + ", id_receipt=" + id_receipt + "]";
+		return "Purchase [idpurchase=" + idpurchase + ", idproduct=" + idproduct + ", iduser=" + iduser
+				+ ", date=" + date + ", quantity=" + quantity + ", idreceipt=" + idreceipt + "]";
 	}
 	
 	

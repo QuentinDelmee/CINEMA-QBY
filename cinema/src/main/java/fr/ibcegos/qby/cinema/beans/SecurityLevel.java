@@ -16,31 +16,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 //Création des Class Identiques au Bases de données
-	// Classe "security_level"
+	// Classe "securitylevel"
 
 //Vers le la ligne "54" il y a la table SQL y correspondant
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Security_Level {
+public class SecurityLevel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_sl;
+	private Integer idsl;
 	private String roles;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy = "id_user")
+	@OneToMany(mappedBy = "iduser")
 	private List<User> allUsers = new ArrayList<User>();
 	
 	// Constructeur avec les attributs de Class comme paramètre
-	public Security_Level(Integer id_sl, String roles) {
-		this.id_sl = id_sl;
+	public SecurityLevel(Integer idsl, String roles) {
+		this.idsl = idsl;
 		this.roles = roles;
 	}
 	
 	// Constructeur avec paramètre sauf id
-	public Security_Level(String roles) {
+	public SecurityLevel(String roles) {
 		this.roles = roles;
 	}
 
@@ -49,7 +49,7 @@ public class Security_Level {
 	// Méthode toString pour accéder aux valeurs 
 	@Override
 	public String toString() {
-		return "Security_Level [id_sl=" + id_sl + ", roles=" + roles + "]";
+		return "SecurityLevel [idsl=" + idsl + ", roles=" + roles + "]";
 	}
 	
 }
@@ -58,11 +58,11 @@ public class Security_Level {
 
 /* Ci-dessous la Table y correpondant
  * 
- * 	CREATE TABLE security_level 
+ * 	CREATE TABLE securitylevel 
 	(
-		id_sl int NOT NULL AUTO_INCREMENT,
+		idsl int NOT NULL AUTOINCREMENT,
 		roles varchar (50),
-		PRIMARY KEY (id_sl)
+		PRIMARY KEY (idsl)
 	
 	);
  

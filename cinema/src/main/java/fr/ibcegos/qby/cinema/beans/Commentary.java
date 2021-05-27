@@ -31,19 +31,19 @@ import lombok.Setter;
 public class Commentary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_Commentary;
+	private Integer idCommentary;
 	
 	private Integer rating;
 	private String commentary;
 	
 	@ManyToOne
 	@JsonBackReference
-	private User id_user;
+	private User iduser;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_movie")
+	@JoinColumn(name = "idmovie")
 	@JsonBackReference
-	private Movie id_movie; 
+	private Movie idmovie; 
 	
 	
 	

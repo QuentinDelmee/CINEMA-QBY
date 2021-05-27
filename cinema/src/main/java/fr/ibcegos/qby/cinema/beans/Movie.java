@@ -30,58 +30,58 @@ public class Movie {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_movie;
+	private Integer idmovie;
 	
 	private String title;
-	private String original_title;
+	private String originaltitle;
 	private Integer pegi;
-	private Integer release_date;
-	private LocalTime movie_duration;
-	private String movie_genre;
-	private Double average_rating;
-	private String movie_description;
+	private Integer releasedate;
+	private LocalTime movieduration;
+	private String moviegenre;
+	private Double averagerating;
+	private String moviedescription;
 	
-	@OneToMany(mappedBy="id_movie")
+	@OneToMany(mappedBy="idmovie")
 	@JsonBackReference
 	private List<Commentary> lstCommentarys = new ArrayList<>();
 	
-	@OneToMany(mappedBy="id_movie")
+	@OneToMany(mappedBy="idmovie")
 	@JsonBackReference
 	private List<Session> lstSessions = new ArrayList<>();
 	
 	
 	
-	public Movie(Integer pegi, Double average_rating, LocalTime movie_duration, String title, String original_title,
-			Integer release_date, String movie_genre, String movie_description) {
+	public Movie(Integer pegi, Double averagerating, LocalTime movieduration, String title, String originaltitle,
+			Integer releasedate, String moviegenre, String moviedescription) {
 
 		this.pegi = pegi;
-		this.average_rating = average_rating;
-		this.movie_duration = movie_duration;
+		this.averagerating = averagerating;
+		this.movieduration = movieduration;
 		this.title = title;
-		this.original_title = original_title;
-		this.release_date = release_date;
-		this.movie_genre = movie_genre;
-		this.movie_description = movie_description;
+		this.originaltitle = originaltitle;
+		this.releasedate = releasedate;
+		this.moviegenre = moviegenre;
+		this.moviedescription = moviedescription;
 	}
 
 	@Override
 	public String toString() {
-		return "Movie [id_movie=" + id_movie + ", pegi=" + pegi + ", average_rating=" + average_rating
-				+ ", movie_duration=" + movie_duration + ", title=" + title + ", original_title=" + original_title
-				+ ", release_date=" + release_date + ", movie_genre=" + movie_genre + ", movie_description="
-				+ movie_description + "]";
+		return "Movie [idmovie=" + idmovie + ", pegi=" + pegi + ", averagerating=" + averagerating
+				+ ", movieduration=" + movieduration + ", title=" + title + ", originaltitle=" + originaltitle
+				+ ", releasedate=" + releasedate + ", moviegenre=" + moviegenre + ", moviedescription="
+				+ moviedescription + "]";
 	}
 
-	public Movie(String title, String original_title, Integer pegi, Integer release_date,
-			LocalTime movie_duration, String movie_genre, Double average_rating, String movie_description) {
+	public Movie(String title, String originaltitle, Integer pegi, Integer releasedate,
+			LocalTime movieduration, String moviegenre, Double averagerating, String moviedescription) {
 		this.title = title;
-		this.original_title = original_title;
+		this.originaltitle = originaltitle;
 		this.pegi = pegi;
-		this.release_date = release_date;
-		this.movie_duration = movie_duration;
-		this.movie_genre = movie_genre;
-		this.average_rating = average_rating;
-		this.movie_description = movie_description;
+		this.releasedate = releasedate;
+		this.movieduration = movieduration;
+		this.moviegenre = moviegenre;
+		this.averagerating = averagerating;
+		this.moviedescription = moviedescription;
 	}
 	
 	
