@@ -9,13 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import fr.ibcegos.qby.cinema.daos.SeatDAO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -65,22 +60,14 @@ public class CinemaRoom {
 	}
 	
 	
-<<<<<<< HEAD
+
 //	public void addSeats(Seat seat) {
 //		//PLUS TARD Rajouter condition pour vérifier capacité
 //		seat.setId_cinema(this);
 //		sDao.save(seat);
 //		
 //	}
-=======
-	
-	
-	public void addSeats(Seat seat) {
-		//PLUS TARD Rajouter condition pour vérifier capacité
-		lstSeats.add(seat);
-		seat.setId_cinema(this);
-	}
->>>>>>> d4a8400725edda485e1766fe2683494da62ecf51
+
 	
 	
 	@Override

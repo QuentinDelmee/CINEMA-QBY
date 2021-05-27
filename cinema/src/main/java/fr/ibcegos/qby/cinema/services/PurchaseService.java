@@ -56,6 +56,6 @@ public interface PurchaseService {
 	 */
 	public void deleteById(Integer id_purchase);
 	
-	public List<Purchase> getByReceipt(Integer id_receipt);
-	public void deleteByReceipt(Integer id_receipt);
+//	public List<Purchase> getByReceipt(Integer id_receipt);
+//	public void deleteByReceipt(Integer id_receipt);
 }

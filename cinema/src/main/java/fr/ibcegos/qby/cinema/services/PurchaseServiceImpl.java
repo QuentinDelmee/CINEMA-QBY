@@ -50,16 +50,16 @@ public class PurchaseServiceImpl implements PurchaseService {
 		pdao.deleteById(id_purchase);
 	}
 
-	@Override
-	public List<Purchase> getByReceipt(Integer id_receipt) {
-		// TODO Auto-generated method stub
-		return (List<Purchase>) pdao.findByIdReceipt(id_receipt);
-	}
-
-	@Override
-	public void deleteByReceipt(Integer id_receipt) {
-		// TODO Auto-generated method stub
-		pdao.deleteByIdReceipt(id_receipt);
-	}
+//	@Override
+//	public List<Purchase> getByReceipt(Integer id_receipt) {
+//		// TODO Auto-generated method stub
+//		return (List<Purchase>) pdao.findByIdReceipt(id_receipt);
+//	}
+//
+//	@Override
+//	public void deleteByReceipt(Integer id_receipt) {
+//		// TODO Auto-generated method stub
+//		pdao.deleteByIdReceipt(id_receipt);
+//	}
 
 }
