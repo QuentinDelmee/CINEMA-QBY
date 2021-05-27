@@ -6,7 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -18,9 +20,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "id_seat")
 /**
  * 
  * @author QBY
@@ -37,7 +36,12 @@ public class Seat {
 	private Boolean free;
 	
 	@ManyToOne
-	private CinemaRoom id_cinemaRoom;
+	@JsonBackReference
+	private CinemaRoom id_cinema;
+	
+	@OneToMany
+	@JsonBackReference
+	private Reservation id_reservation;
 
 	public Seat(Integer seat_number, String row_name, Boolean free) {
 		this.seat_number = seat_number;
@@ -48,7 +52,7 @@ public class Seat {
 	@Override
 	public String toString() {
 		return "Seat [id_seat=" + id_seat + ", seat_number=" + seat_number + ", row_name=" + row_name + ", free=" + free
-				+ ", id_cinemaRoom=" + id_cinemaRoom + "]";
+				+ ", id_cinema=" + id_cinema + "]";
 	}
 	
 

@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,13 +30,10 @@ public class Commentary {
 	private Integer rating;
 	private String commentary;
 	
-	//Plusieurs film peuvent avoir plusieurs commentaires
-	//@ManyToMany
-	private Movie movie_id;
+	@ManyToOne
+	@JsonBackReference
+	private User id_user;
 	
-	//Plusieurs film peuvent avoir plusieurs commentaires
-	//@ManyToMany
-	private User user_id;
 	
 	
 }

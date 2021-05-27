@@ -4,7 +4,6 @@ package fr.ibcegos.qby.cinema.beans;
 
 //Vers le la ligne "106" il y a la table SQL y correspondant
 
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

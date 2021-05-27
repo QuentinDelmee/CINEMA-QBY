@@ -29,7 +29,7 @@ public class Purchase {
 	@JoinColumn(name = "id_product")
 	private Product id_product;
 	@ManyToOne
-	@JoinColumn(name = "id_cinema")
+	@JoinColumn(name = "id_user")
 	private User id_user;
 	private LocalDateTime date;
 

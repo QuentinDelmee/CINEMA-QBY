@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -20,9 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "id_Cinema")
+
 /**
  * 
  * @author QBY
@@ -40,9 +39,18 @@ public class CinemaRoom {
 	private String room_level;
 	private String screen_size;
 	
-	
-	@OneToMany(mappedBy="id_cinemaRoom")
+
+	@OneToMany(mappedBy="id_cinema")
+	@JsonBackReference
 	private List<Seat> lstSeats = new ArrayList<>();
+	
+	@OneToMany(mappedBy="id_cinema")
+	private List<Session> lstSessions = new ArrayList<>();
+	
+	@OneToMany(mappedBy="id_cinema")
+	private List<Opinion> lstOpinions = new ArrayList<>();
+	
+	
 
 	public CinemaRoom(Integer nb_seats, String room_name, String room_level, String screen_size) {
 
@@ -57,7 +65,7 @@ public class CinemaRoom {
 	public void addSeats(Seat seat) {
 		//PLUS TARD Rajouter condition pour vérifier capacité
 		lstSeats.add(seat);
-		seat.setId_cinemaRoom(this);
+		seat.setId_cinema(this);
 	}
 	
 	

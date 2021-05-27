@@ -1,12 +1,16 @@
 package fr.ibcegos.qby.cinema.beans;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +40,14 @@ public class Movie {
 	private String release_date;
 	private String movie_genre;
 	private String movie_description;
+	
+	@OneToMany(mappedBy="id_movie")
+	@JsonBackReference
+	private List<Commentary> lstCommentarys = new ArrayList<>();
+	
+	@OneToMany(mappedBy="id_movie")
+	@JsonBackReference
+	private List<Session> lstSessions = new ArrayList<>();
 	
 	public Movie(Integer pegi, Double average_rating, Time movie_duration, String title, String original_title,
 			String release_date, String movie_genre, String movie_description) {
