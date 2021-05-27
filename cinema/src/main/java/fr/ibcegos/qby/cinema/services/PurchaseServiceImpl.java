@@ -23,8 +23,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	@Override
-	public List<Purchase> getPurchase(Integer id_purchase) {
-		return (List<Purchase>) pdao.findByIdPurchase(id_purchase);
+	public Purchase getPurchase(Integer id_purchase) {
+		return pdao.findById(id_purchase).orElse(null);
 	}
 
 	@Override
@@ -47,7 +47,19 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public void deleteById(Integer id_purchase) {
 		// TODO Auto-generated method stub
-		pdao.deleteByIdPurchase(id_purchase);
+		pdao.deleteById(id_purchase);
+	}
+
+	@Override
+	public List<Purchase> getByReceipt(Integer id_receipt) {
+		// TODO Auto-generated method stub
+		return (List<Purchase>) pdao.findByIdReceipt(id_receipt);
+	}
+
+	@Override
+	public void deleteByReceipt(Integer id_receipt) {
+		// TODO Auto-generated method stub
+		pdao.deleteByIdReceipt(id_receipt);
 	}
 
 }

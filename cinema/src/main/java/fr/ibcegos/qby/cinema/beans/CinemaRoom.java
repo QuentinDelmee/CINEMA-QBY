@@ -37,11 +37,10 @@ public class CinemaRoom {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id_Cinema;
 	
-	
-	private Integer nb_seats;
 	private String room_name;
-	private String room_level;
+	private Integer room_level;
 	private String screen_size;
+	private Integer nb_seats;
 	
 
 	@OneToMany(mappedBy="id_cinema")
@@ -56,7 +55,7 @@ public class CinemaRoom {
 	
 	
 
-	public CinemaRoom(Integer nb_seats, String room_name, String room_level, String screen_size) {
+	public CinemaRoom(Integer nb_seats, String room_name, Integer room_level, String screen_size) {
 
 		this.nb_seats = nb_seats;
 		this.room_name = room_name;
@@ -66,18 +65,38 @@ public class CinemaRoom {
 	}
 	
 	
+<<<<<<< HEAD
 //	public void addSeats(Seat seat) {
 //		//PLUS TARD Rajouter condition pour vérifier capacité
 //		seat.setId_cinema(this);
 //		sDao.save(seat);
 //		
 //	}
+=======
+	
+	
+	public void addSeats(Seat seat) {
+		//PLUS TARD Rajouter condition pour vérifier capacité
+		lstSeats.add(seat);
+		seat.setId_cinema(this);
+	}
+>>>>>>> d4a8400725edda485e1766fe2683494da62ecf51
 	
 	
 	@Override
 	public String toString() {
 		return "Cinemas [id_Cinema=" + id_Cinema + ", nb_seats=" + nb_seats + ", room_name=" + room_name
 				+ ", room_level=" + room_level + ", screen_size=" + screen_size + "]";
+	}
+
+
+
+
+	public CinemaRoom(String room_name, Integer room_level, String screen_size, Integer nb_seats) {
+		this.room_name = room_name;
+		this.room_level = room_level;
+		this.screen_size = screen_size;
+		this.nb_seats = nb_seats;
 	}
 	
 }

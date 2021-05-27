@@ -26,7 +26,7 @@ public interface PurchaseService {
 	 * @param id_purchase the id of the purchase searched
 	 * @return Purchase from DB
 	 */
-	public List<Purchase> getPurchase(Integer id_purchase);
+	public Purchase getPurchase(Integer id_purchase);
 
 	/**
 	 * Function to obtain all purchase
@@ -55,4 +55,7 @@ public interface PurchaseService {
 	 * @param id_purchase the id of the purchase we want to delete
 	 */
 	public void deleteById(Integer id_purchase);
+	
+	public List<Purchase> getByReceipt(Integer id_receipt);
+	public void deleteByReceipt(Integer id_receipt);
 }
