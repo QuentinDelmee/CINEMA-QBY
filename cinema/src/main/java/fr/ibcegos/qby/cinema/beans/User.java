@@ -34,6 +34,16 @@ public class User {
 	@OneToMany(mappedBy = "id_user")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 	
+	@OneToMany(mappedBy = "id_user")
+	private List<Commentary> myCommentary = new ArrayList<Commentary>();
+	
+	@OneToMany(mappedBy = "id_user")
+	private List<Purchase> myPurchase = new ArrayList<Purchase>();
+	
+	@OneToMany(mappedBy = "id_user")
+	private List<Reservation> myReservation = new ArrayList<Reservation>();
+	
+	
 	// Constructeur avec les attributs de Class comme paramètre
 	public User(Integer id_user, String pseudo, String pwd, Person id_person, Security_Level id_sl) {
 		this.id_user = id_user;
