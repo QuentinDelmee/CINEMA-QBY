@@ -38,7 +38,7 @@ public class PersonController {
 	}
 	
 	// Récupérer toutes les personnes
-	@GetMapping("/REST/person/all")
+	@GetMapping("/REST/person")
 	public List<Person> getAllPerson(){
 		return personService.getAllPerson();
 	}
@@ -48,7 +48,7 @@ public class PersonController {
 	//UPDATE//
 	//////////
 	// Modifie  une personne 
-	@PutMapping ("/REST/person/update")
+	@PutMapping ("/REST/person")
 	public void updatePerson (@RequestBody Person person) {
 		personService.update(person);
 	}
@@ -58,7 +58,7 @@ public class PersonController {
 	//////////
 	
 	//Supprime  une personne 
-	@DeleteMapping("/REST/person/delete")
+	@DeleteMapping("/REST/person")
 	public void deleteAll (Person person) {
 		personService.delete(person);
 	}
