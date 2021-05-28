@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,15 +27,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
 	@ManyToOne
-	@JoinColumn ( name = "id" )
+	@JoinColumn(name = "id_seat")
 	private Seat idSeat;
 	private LocalDateTime date;
 
@@ -40,10 +44,10 @@ public class Reservation {
 	 * Constructor of the class, all other functions are automated with Lombok
 	 * 
 	 * @param idusers User which is reserving a seat for a film on a specific
-	 *                 session
+	 *                session
 	 * @param idseat  Seat reserved by the user inside the CinemaRoom
-	 * @param date     Date of the reservation which corresponds to the start of a
-	 *                 film session
+	 * @param date    Date of the reservation which corresponds to the start of a
+	 *                film session
 	 */
 
 	public Reservation(User idUser, Seat idSeat, LocalDateTime date) {
@@ -53,15 +57,13 @@ public class Reservation {
 		this.date = date;
 	}
 
-
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
-
 	@Override
 	public String toString() {
-		return "Reservation [idUser=" + idUser + ", idSeat=" + idSeat + ", date=" + date + "]";
+		return "Reservation [id=" + id + ", idUser=" + idUser.getId() + ", idSeat=" + idSeat.getId() + ", date=" + date
+				+ "]";
 	}
-
 
 }

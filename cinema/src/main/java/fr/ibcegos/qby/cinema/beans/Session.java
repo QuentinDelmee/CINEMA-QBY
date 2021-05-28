@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,15 +27,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Session {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_cinema")
 	private CinemaRoom idCinema;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_movie")
 	private Movie idMovie;
 	private LocalDateTime idDate;
 	private Integer seatsLeft;
@@ -53,15 +57,13 @@ public class Session {
 		this.seatsLeft = seatsLeft;
 	}
 
-	
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
-
 	@Override
 	public String toString() {
-		return "Session [idCinema=" + idCinema + ", idMovie=" + idMovie + ", idDate=" + idDate + ", seatsLeft="
-				+ seatsLeft + "]";
+		return "Session [id=" + id + ", idCinema=" + idCinema.getId() + ", idMovie=" + idMovie.getId() + ", idDate="
+				+ idDate + ", seatsLeft=" + seatsLeft + "]";
 	}
 
 }

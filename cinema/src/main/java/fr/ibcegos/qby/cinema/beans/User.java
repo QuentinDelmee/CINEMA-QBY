@@ -13,7 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,23 +38,23 @@ public class User {
 	private String pseudo;
 	private String pwd;
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_person")
 	private Person idPerson;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_security_level")
 	private SecurityLevel idSecurityLevel;
 
-	@OneToMany(mappedBy = "id")
+	@OneToMany(targetEntity = Opinion.class, mappedBy = "id")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 
-	@OneToMany(mappedBy = "id")
+	@OneToMany(targetEntity = Commentary.class, mappedBy = "id")
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 
-	@OneToMany(mappedBy = "id")
+	@OneToMany(targetEntity = Purchase.class, mappedBy = "id")
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 
-	@OneToMany(mappedBy = "id")
+	@OneToMany(targetEntity = Reservation.class, mappedBy = "id")
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
 
 	public User(String pseudo, String pwd, Person idPerson, SecurityLevel idSecurityLevel) {
@@ -64,9 +67,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [pseudo=" + pseudo + ", pwd=" + pwd + ", idPerson=" + idPerson + ", idSecurityLevel="
-				+ idSecurityLevel + ", myOpinions=" + myOpinions + ", myCommentary=" + myCommentary + ", myPurchase="
-				+ myPurchase + ", myReservation=" + myReservation + "]";
+		return "User [id=" + id + ", pseudo=" + pseudo + ", pwd=" + pwd + ", idPerson=" + idPerson.getId()
+				+ ", idSecurityLevel=" + idSecurityLevel.getId() + "]";
 	}
 
 	// Méthode toString pour accéder aux valeurs
