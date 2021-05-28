@@ -1,1 +1,52 @@
 <p>create-movie works!</p>
+<form (ngSubmit)="onSubmit()">
+<div>
+    <mat-form-field appearance="fill" >
+        <mat-label>Title</mat-label>
+        <input matInput name='title' [(ngModel)]="movieJSON.title">
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill" >
+        <mat-label>Original Title</mat-label>
+        <input matInput name='originalTitle' [(ngModel)]="movieJSON.originalTitle">
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>PEGI</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Release Year</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Duration</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Genre</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Rating</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+<button mat-button type="submit">TEST SUBMIT</button>
+</form>

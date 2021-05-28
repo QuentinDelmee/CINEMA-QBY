@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-create-movie',
@@ -7,9 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateMovieComponent implements OnInit {
 
-  constructor() { }
+  
+
+  movieForm: FormGroup = new FormGroup({}) ;
+  movieJSON: any = {
+    "id": 0, 
+    "title": '', 
+    "originalTitle": ''
+  } ;
+  title: string = '' ;
+  originalTitle: string = '' ;
+
+  
+  constructor(private fb: FormBuilder) { 
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): void {
+    console.log("TEST") ;
+    this.movieForm = this.fb.group({
+      title: this.title,
+      originalTitle: this.originalTitle
+    })
+    console.log(this.title);
+    console.log(this.originalTitle);
+    console.log(this.movieForm.value) ;
+    console.log(this.movieJSON) ;
   }
 
 }

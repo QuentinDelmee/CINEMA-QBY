@@ -1,3 +1,5 @@
+import { analyzeAndValidateNgModules } from "@angular/compiler";
+
 export class Movie {
     id:number ;
     title:string ;
