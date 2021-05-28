@@ -15,9 +15,10 @@ import { TimeTableComponent } from './time-table/time-table.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module' ;
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MovieService } from './service/movie.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -39,11 +40,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
