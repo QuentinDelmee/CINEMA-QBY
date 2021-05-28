@@ -41,8 +41,8 @@ import fr.ibcegos.qby.cinema.daos.UserDAO;
 public class DemoData {
 	@Autowired
 	private CinemaRoomDAO crdao;
-	 @Autowired
-	 private CommentaryDAO cdao ;
+	@Autowired
+	private CommentaryDAO cdao;
 	@Autowired
 	private MovieDAO mdao;
 	@Autowired
@@ -393,13 +393,14 @@ public class DemoData {
 
 	// Liste des différents genres
 	static String[] sexes = { "H", "F", "B", "A", "T" };
-	
+
 	// List des commentaires aléatoires
-	static String[] comments = { "C'est trop bien!", "C'était pas mal!", "C'était moyen :(", "C'était bofbof :(", "Je me suis fait chier", "C'était de la merde!" } ;
+	static String[] comments = { "C'est trop bien!", "C'était pas mal!", "C'était moyen :(", "C'était bofbof :(",
+			"Je me suis fait chier", "C'était de la merde!" };
 
 	// Liste des propretés
-	static String[] proprete = {"Très Propre", "Propre", "Passable", "Moyen", "Sale", "Très Sale", "Inadmissible" } ;
-	
+	static String[] proprete = { "Très Propre", "Propre", "Passable", "Moyen", "Sale", "Très Sale", "Inadmissible" };
+
 	// Liste de pseudos futuristes
 	static String[] pseudoFutur = { "Aarav", "Aarom", "Abbrahan", "Abrahan", "Ace", "Acsel", "Adahm", "Adahn", "Adit",
 			"Adone", "Adran", "Adrihan", "Adrihel", "Adrihen", "Adriyel", "Adriyen", "Adryan", "Adryel", "Aebram",
@@ -636,64 +637,62 @@ public class DemoData {
 			String tempN = noms[rand.nextInt(noms.length)];
 			String tempP = prenoms[rand.nextInt(prenoms.length)];
 			LocalDate bd = randomDate();
-			String tempS = sexes[rand.nextInt(sexes.length)] ;
-			String tempV = villes[rand.nextInt(villes.length)] ;
-			String email = tempN+"."+tempP+"@email44.fr" ;
-			
-			Person tempPerson = new Person(tempN,tempP,bd,tempS,tempV,email) ;
-			pedao.save(tempPerson) ;
-			
+			String tempS = sexes[rand.nextInt(sexes.length)];
+			String tempV = villes[rand.nextInt(villes.length)];
+			String email = tempN + "." + tempP + "@email44.fr";
+
+			Person tempPerson = new Person(tempN, tempP, bd, tempS, tempV, email);
+			pedao.save(tempPerson);
+
 			String tempPseudo = pseudoFutur[rand.nextInt(pseudoFutur.length)];
 			int SL = rolesNDS[rand.nextInt(rolesNDS.length)];
-			
-			User tempUser = new User(tempPseudo,createMDP(),tempPerson,allSL.get(SL-1)) ;
-			udao.save(tempUser) ;
+
+			User tempUser = new User(tempPseudo, createMDP(), tempPerson, allSL.get(SL - 1));
+			udao.save(tempUser);
 		}
-		
-		List<CinemaRoom> cineRoom = (List<CinemaRoom>) crdao.findAll() ;
-		
+
+		List<CinemaRoom> cineRoom = (List<CinemaRoom>) crdao.findAll();
+
 		for (CinemaRoom cinemaRoom : cineRoom) {
-			int tempSize = cinemaRoom.getNbSeats() / 32 ;
-			int tempRank = 32 ;
-			
-			for( int i = 0 ; i < tempSize ; ++i )
-			{
-				for( int j = 0 ; j < tempRank ; ++ j )
-				{
-					Seat tempSeat = new Seat(j,Character.toString(65+i).toString(),true,cinemaRoom) ;
-					seadao.save(tempSeat) ;
+			int tempSize = cinemaRoom.getNbSeats() / 32;
+			int tempRank = 32;
+
+			for (int i = 0; i < tempSize; ++i) {
+				for (int j = 0; j < tempRank; ++j) {
+					Seat tempSeat = new Seat(j, Character.toString(65 + i).toString(), true, cinemaRoom);
+					seadao.save(tempSeat);
 				}
 			}
 		}
 
-		List<User> allUsers = (List<User>) udao.findAll() ;
+		List<User> allUsers = (List<User>) udao.findAll();
 		System.out.println(allUsers);
-		List<Movie> allMovies = (List<Movie>) mdao.findAll() ;
+		List<Movie> allMovies = (List<Movie>) mdao.findAll();
 		System.out.println(allMovies);
-		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll() ;
+		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll();
 		System.out.println(allRooms);
-		List<Product> allProducts = (List<Product>) prdao.findAll() ;
+		List<Product> allProducts = (List<Product>) prdao.findAll();
 		System.out.println(allProducts);
-		List<Seat> allSeats = (List<Seat>) seadao.findAll() ;
-		 
+		List<Seat> allSeats = (List<Seat>) seadao.findAll();
+
 		for (int i = 0; i < 10; ++i) {
-			String tempC = comments[rand.nextInt(comments.length)] ;
-			User tempU = allUsers.get(rand.nextInt(allUsers.size())) ;
-			Movie tempM = allMovies.get(rand.nextInt(allMovies.size())) ;
-			CinemaRoom tempCR = allRooms.get(rand.nextInt(allRooms.size())) ;
-			String tempP = proprete[rand.nextInt(proprete.length)] ;
-			Product tempProduct = allProducts.get(rand.nextInt(allProducts.size())) ;
-			LocalDateTime ldt = LocalDateTime.of(randomDate(), LocalTime.of(0, 0)) ;
-			Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size())) ;
-			int tempQ = rand.nextInt(20) ;
-			int tempTC = rand.nextInt(20) ;
-			
-			cdao.save(new Commentary(rand.nextInt(5),tempC,tempU,tempM)) ;
-			odao.save(new Opinion(tempCR,tempU, rand.nextInt(5), tempP )) ;
-			pudao.save(new Purchase(tempProduct,tempU,ldt,tempQ,tempTC)) ;
-			
-			rdao.save(new Reservation(tempU, tempSeat , ldt)) ;
-			sesdao.save(new Session(tempCR,tempM,ldt,tempCR.getNbSeats()) ) ;
+			String tempC = comments[rand.nextInt(comments.length)];
+			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
+			Movie tempM = allMovies.get(rand.nextInt(allMovies.size()));
+			CinemaRoom tempCR = allRooms.get(rand.nextInt(allRooms.size()));
+			String tempP = proprete[rand.nextInt(proprete.length)];
+			Product tempProduct = allProducts.get(rand.nextInt(allProducts.size()));
+			LocalDateTime ldt = LocalDateTime.of(randomDate(), LocalTime.of(0, 0));
+			Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size()));
+			int tempQ = rand.nextInt(20);
+			int tempTC = rand.nextInt(20);
+
+			cdao.save(new Commentary(rand.nextInt(5), tempC, tempU, tempM));
+			odao.save(new Opinion(tempCR, tempU, rand.nextInt(5), tempP));
+			pudao.save(new Purchase(tempProduct, tempU, ldt, tempQ, tempTC));
+
+			rdao.save(new Reservation(tempU, tempSeat, ldt));
+			sesdao.save(new Session(tempCR, tempM, ldt, tempCR.getNbSeats()));
 		}
 
 	}
