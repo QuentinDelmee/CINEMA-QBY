@@ -8,11 +8,14 @@
     <input matInput>
   </mat-form-field>
   
+  <br> <!-- Mauvaise pratique -->
+
   <mat-form-field appearance="fill">
     <mat-label>Confirmer Pseudo</mat-label>
     <input matInput>
   </mat-form-field>
-  <br>
+  
+  <br> <!-- Mauvaise pratique -->
 
 <mat-form-field appearance="fill">
     <mat-label>Enter your password</mat-label>
@@ -22,7 +25,19 @@
     </button>
 </mat-form-field>
 
-<p class ="">Email</p><br>
+<br><!--Très  Mauvaise pratique  -->
+
+<mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+</mat-form-field>
+
+<p class ="">Email</p>
+
+<br> <!--Très Mauvaise pratique -->
 
 <div class="example-container">
     <mat-form-field appearance="fill">
@@ -32,30 +47,22 @@
     </mat-form-field>
   </div>
 
-<br><br><br><br><br><br><br>
+  <br> <!-- Très Mauvaise pratique -->
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+<br><br> <!-- Très Mauvaise pratique -->
+
+
+
 
 <div class="">
     <form onsubmit="">
-    
-
-      
-      <div class="">
-        <p class ="">Email</p>
-        <input id="email" type="text" name="email" placeholder="email ..."/>
-      </div>
-
-      <div class="">
-        <p class ="">Confirmation Email</p>
-        <input id="confirm-email" type="text" name="confirm-email" placeholder="Confirmer email ..."/>
-      </div> 
-      <div class="">
-        <p class ="">Mot de Passe</p>
-        <input id="motdepasse" type="password" name="motdepasse" placeholder="Saisir Mot de Passe ..."/>
-      </div>    
-      <div class="">
-        <p class ="">Confirmer Mot de passe</p>
-        <input id="confirm-motdepasse" type="password" name="confirm-motdepasse" placeholder="Saisir Mot de Passe ..."/>
-      </div> 
       <input type="submit" id='submit' value='Valider' >       
     </form>
 </div> 
