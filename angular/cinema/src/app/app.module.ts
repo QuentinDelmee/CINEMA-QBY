@@ -3,21 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { DataComponent } from './data/data.component';
-import { HowToComeComponent } from './how-to-come/how-to-come.component';
-import { MovieComponent } from './movie/movie.component';
-import { ProfilComponent } from './profil/profil.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { TimeTableComponent } from './time-table/time-table.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './component/home/home.component';
+import { DataComponent } from './component/data/data.component';
+import { HowToComeComponent } from './component/how-to-come/how-to-come.component';
+import { MovieComponent } from './component/movie/movie.component';
+import { ProfilComponent } from './component/profil/profil.component';
+import { ReservationComponent } from './component/reservation/reservation.component';
+import { SignInComponent } from './component/sign-in/sign-in.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { TimeTableComponent } from './component/time-table/time-table.component';
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MaterialModule } from './material.module' ;
+import { MaterialModule } from './module/material.module' ;
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CreateMovieComponent } from './component/movie/create-movie/create-movie.component';
+
 
 
 @NgModule({
@@ -33,17 +35,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     SignUpComponent,
     TimeTableComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CreateMovieComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
