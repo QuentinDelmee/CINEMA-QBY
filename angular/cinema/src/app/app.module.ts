@@ -15,11 +15,10 @@ import { TimeTableComponent } from './time-table/time-table.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module' ;
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -41,13 +40,10 @@ import { MatSelectModule } from '@angular/material/select';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
-    MatInputModule,
-    MatSelectModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

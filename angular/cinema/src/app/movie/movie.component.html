@@ -1,1 +1,6 @@
 <p>movie works!</p>
+
+<div *ngFor="let movie of movies">{{movie | json}}</div>
+
+
+<mat-button-toggle (click)="post()">CLICK TO TEST</mat-button-toggle>
