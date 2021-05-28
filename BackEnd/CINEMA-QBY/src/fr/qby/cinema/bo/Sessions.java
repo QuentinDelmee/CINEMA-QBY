@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Sessions {
-	private Cinemas id_cinema ;
+	private CinemasRoom id_cinema ;
 	private Movies id_movie ;
 	private LocalDateTime id_date ;
 	private int seats_left;
 	
-	public Sessions(Cinemas id_cinema, Movies id_movie, LocalDateTime id_date, int seats_left) {
+	public Sessions(CinemasRoom id_cinema, Movies id_movie, LocalDateTime id_date, int seats_left) {
 		super();
 		this.id_cinema = id_cinema;
 		this.id_movie = id_movie;
@@ -21,11 +21,11 @@ public class Sessions {
 		this.id_date = id_date;
 	}
 
-	public Cinemas getId_cinema() {
+	public CinemasRoom getId_cinema() {
 		return id_cinema;
 	}
 
-	public void setId_cinema(Cinemas id_cinema) {
+	public void setId_cinema(CinemasRoom id_cinema) {
 		this.id_cinema = id_cinema;
 	}
 
