@@ -17,7 +17,7 @@ import lombok.Setter;
  * 
  * Class which allows to stock and manage all purchases from users
  * 
- * @author ib
+ * @author QBY
  *
  */
 @Entity
