@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { DataComponent } from './data/data.component';
-import { HowToComeComponent } from './how-to-come/how-to-come.component';
-import { MovieComponent } from './movie/movie.component';
-import { ProfilComponent } from './profil/profil.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { TimeTableComponent } from './time-table/time-table.component';
+import { HomeComponent } from './component/home/home.component';
+import { DataComponent } from './component/data/data.component';
+import { HowToComeComponent } from './component/how-to-come/how-to-come.component';
+import { MovieComponent } from './component/movie/movie.component';
+import { ProfilComponent } from './component/profil/profil.component';
+import { ReservationComponent } from './component/reservation/reservation.component';
+import { SignInComponent } from './component/sign-in/sign-in.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { TimeTableComponent } from './component/time-table/time-table.component';
 
 const routes: Routes = [
   { path: 'home-page', component: HomeComponent },
