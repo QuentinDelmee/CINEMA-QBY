@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,51 +21,45 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 /**
  * 
  * @author QBY
  *
  */
 public class CinemaRoom {
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	private String roomName;
 	private Integer roomLevel;
 	private String screenSize;
 	private Integer nbSeats;
-	
 
-	@OneToMany(targetEntity=Seat.class,mappedBy="id")
+	@OneToMany(targetEntity = Seat.class, mappedBy = "id")
 	private List<Seat> lstSeats = new ArrayList<>();
-	
-	@OneToMany(targetEntity=Session.class, mappedBy="id")
+
+	@OneToMany(targetEntity = Session.class, mappedBy = "id")
 	private List<Session> lstSessions = new ArrayList<>();
-	
-	@OneToMany(targetEntity=Opinion.class, mappedBy="id")
+
+	@OneToMany(targetEntity = Opinion.class, mappedBy = "id")
 	private List<Opinion> lstOpinions = new ArrayList<>();
-	
-	
-	public CinemaRoom(String roomName, Integer roomLevel, String screenSize,Integer nbSeats) {
+
+	public CinemaRoom(String roomName, Integer roomLevel, String screenSize, Integer nbSeats) {
 
 		this.nbSeats = nbSeats;
 		this.roomName = roomName;
 		this.roomLevel = roomLevel;
 		this.screenSize = screenSize;
-		
-	}
 
+	}
 
 	@Override
 	public String toString() {
-		return "CinemaRoom [roomName=" + roomName + ", roomLevel=" + roomLevel + ", screenSize=" + screenSize
-				+ ", nbSeats=" + nbSeats + "]";
+		return "CinemaRoom [id=" + id + ", roomName=" + roomName + ", roomLevel=" + roomLevel + ", screenSize="
+				+ screenSize + ", nbSeats=" + nbSeats + "]";
 	}
-
-
 
 }

@@ -666,13 +666,9 @@ public class DemoData {
 		}
 
 		List<User> allUsers = (List<User>) udao.findAll();
-		System.out.println(allUsers);
 		List<Movie> allMovies = (List<Movie>) mdao.findAll();
-		System.out.println(allMovies);
 		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll();
-		System.out.println(allRooms);
 		List<Product> allProducts = (List<Product>) prdao.findAll();
-		System.out.println(allProducts);
 		List<Seat> allSeats = (List<Seat>) seadao.findAll();
 
 		for (int i = 0; i < 10; ++i) {

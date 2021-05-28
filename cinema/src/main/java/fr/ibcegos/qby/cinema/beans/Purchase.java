@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,31 +27,31 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Purchase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_product")
 	private Product idProduct;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
-	
+
 	private LocalDateTime date;
 
 	private Integer quantity;
 	private Integer idReceipt;
-	
 
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
 	 * 
 	 * @param idproduct  product which is transacted
 	 * @param idusers    user which is buying
-	 * @param date        the exact date at which the transaction occurs
-	 * @param quantity    the quantity of product which is transacted
+	 * @param date       the exact date at which the transaction occurs
+	 * @param quantity   the quantity of product which is transacted
 	 * @param idpurchase the overall id of the purchases
 	 */
 
@@ -61,18 +64,13 @@ public class Purchase {
 		this.idReceipt = idReceipt;
 	}
 
-
-
-	
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
-
-	
 	@Override
 	public String toString() {
-		return "Purchase [idProduct=" + idProduct + ", idUser=" + idUser + ", date=" + date + ", quantity=" + quantity
-				+ ", idReceipt=" + idReceipt + "]";
+		return "Purchase [id=" + id + ", idProduct=" + idProduct.getId() + ", idUser=" + idUser.getId() + ", date="
+				+ date + ", quantity=" + quantity + ", idReceipt=" + idReceipt + "]";
 	}
 
 }
