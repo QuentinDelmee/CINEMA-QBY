@@ -26,7 +26,7 @@ public class CinemaRoomController {
 	//////////
 	
 	//Création d'une salle de cinema
-	@PostMapping("/REST/salle")
+	@PostMapping("/REST/cinemaroom")
 	public CinemaRoom createCinemaRoom(@RequestBody CinemaRoom cinema) {
 		crservice.create(cinema);
 		return cinema;
@@ -37,13 +37,13 @@ public class CinemaRoomController {
 	//////////
 	
 	//Récupération par l'id d'une salle du cinema
-	@GetMapping("/REST/salle/{id}")
+	@GetMapping("/REST/cinemaroom/{id}")
 	public CinemaRoom getFromId(@PathVariable("id") Integer id) {
 		return crservice.getCinemaRoomById(id);
 	}
 	
 	//Récupération de la liste des salles du cinema
-	@GetMapping("/REST/listesalle")
+	@GetMapping("/REST/cinemaroom")
 	public List<CinemaRoom> getAllCinemasRoom(){
 		return crservice.getAllCinemasRoom();
 	}
@@ -53,7 +53,7 @@ public class CinemaRoomController {
 	//////////
 	
 	//Mise à jour d'une salle de cinema
-	@PutMapping("/REST/salle")
+	@PutMapping("/REST/cinemaroom")
 	public CinemaRoom updateCinemaRoom(@RequestBody CinemaRoom cinema) {
 		crservice.update(cinema);
 		return cinema;
@@ -65,7 +65,7 @@ public class CinemaRoomController {
 	//////////
 	
 	//Suppression cinema par id
-	@DeleteMapping("/REST/salle/{id}")
+	@DeleteMapping("/REST/cinemaroom/{id}")
 	public void deleteCinemaRoomById(@PathVariable("id") Integer id) {
 		crservice.deleteById(id);
 	}

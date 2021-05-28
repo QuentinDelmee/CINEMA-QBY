@@ -1,13 +1,13 @@
 export class User {
-    id;
-    pseudo ="";
-    pwd ="";
+    id:number;
+    pseudo:string;
+    pwd:string;
 
 
-    constructor(id:number, pseudo:string,pwd:string){
-        this.id = id;
-        this.pseudo = pseudo;
-        this.pwd = pwd;
+    constructor(userJSON:any){
+        this.id = userJSON.id;
+        this.pseudo = userJSON.pseudo;
+        this.pwd = userJSON.pwd;
     }
 
     // private Person idPerson;

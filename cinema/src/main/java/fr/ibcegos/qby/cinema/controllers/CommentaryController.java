@@ -26,7 +26,7 @@ public class CommentaryController {
 	//////////
 	
 	//Création d'un commentaire
-	@PostMapping("/REST/commentaire")
+	@PostMapping("/REST/commentary")
 	public Commentary createCommentary(@RequestBody Commentary commentary) {
 		cservice.create(commentary);
 		return commentary;
@@ -37,13 +37,13 @@ public class CommentaryController {
 	//////////
 	
 	//Récupération par l'id d'un commentaire
-	@GetMapping("/REST/commentaire/{id}")
+	@GetMapping("/REST/commentary/{id}")
 	public Commentary getFromId(@PathVariable("id") Integer id) {
 		return cservice.getCommentaryById(id);
 	}
 	
 	//Récupération de la liste des commentaires
-	@GetMapping("/REST/commentaire")
+	@GetMapping("/REST/commentary")
 	public List<Commentary> getAllCommentary(){
 		return cservice.getAllCommentary();
 	}
@@ -53,7 +53,7 @@ public class CommentaryController {
 	//////////
 	
 	//Mise à jour d'un commentaire
-	@PutMapping("/REST/commentaire")
+	@PutMapping("/REST/commentary")
 	public Commentary updateCinemaRoom(@RequestBody Commentary commentary) {
 		cservice.update(commentary);
 		return commentary;
@@ -65,7 +65,7 @@ public class CommentaryController {
 	//////////
 	
 	//Suppression commentaire par id
-	@DeleteMapping("/REST/commentaire/{id}")
+	@DeleteMapping("/REST/commentary/{id}")
 	public void deleteCommentaireById(@PathVariable("id") Integer id) {
 		cservice.deleteById(id);
 	}

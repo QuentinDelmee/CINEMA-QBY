@@ -28,7 +28,7 @@ public class MovieController {
 	//////////
 	
 	//Création d'un film
-	@PostMapping("/REST/film")
+	@PostMapping("/REST/movie")
 	public Movie createMovie(@RequestBody Movie movie) {
 		mservice.create(movie);
 		return movie;
@@ -39,13 +39,13 @@ public class MovieController {
 	//////////
 	
 	//Récupération par l'id d'un film
-	@GetMapping("/REST/film/{id}")
+	@GetMapping("/REST/movie/{id}")
 	public Movie getFromId(@PathVariable("id") Integer id) {
 		return mservice.getMovieById(id);
 	}
 	
 	//Récupération de la liste des films
-	@GetMapping("/REST/film")
+	@GetMapping("/REST/movie")
 	public List<Movie> getAllMovies(){
 		return mservice.getAllMovies();
 	}
@@ -55,7 +55,7 @@ public class MovieController {
 	//////////
 	
 	//Mise à jour d'une salle de cinema
-	@PutMapping("/REST/film")
+	@PutMapping("/REST/movie")
 	public Movie updateMovie(@RequestBody Movie movie) {
 		mservice.update(movie);
 		return movie;
@@ -67,7 +67,7 @@ public class MovieController {
 	//////////
 
 	//Suppression d'un film par son id
-	@DeleteMapping("/REST/film/{id}")
+	@DeleteMapping("/REST/movie/{id}")
 	public void deleteMovieById(@PathVariable("id") Integer id) {
 		mservice.deleteById(id);
 	}

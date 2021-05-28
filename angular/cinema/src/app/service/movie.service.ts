@@ -11,14 +11,14 @@ export class MovieService {
   private moviesUrl: string;
 
   constructor(private http: HttpClient) {
-    this.moviesUrl = 'http://localhost:8080/REST/film';
+    this.moviesUrl = 'http://localhost:8080/REST/movie';
   }
 
   public findAll(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.moviesUrl);
   }
 
-  public save(user: Movie) {
-    return this.http.post<Movie>(this.moviesUrl, user);
+  public save(movie: Movie) {
+    return this.http.post<Movie>(this.moviesUrl, movie);
   }
 }

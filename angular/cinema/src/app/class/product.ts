@@ -1,18 +1,17 @@
 export class Product {
 
-    id;
-    productName ="";
-    price;
-    category ="";
-    productDescription ="";
+    id:number;
+    productName:string;
+    price:number;
+    category:string;
+    productDescription:string;
 
 
-    constructor(id:number,productName:string,price:number,category:string,productDescription:string ){
-        this.id = id;
-        this.productName=productName;
-        this.price=price;
-        this.category=category;
-        this.productDescription=productDescription;
-
+    constructor(productJSON:any){
+        this.id = productJSON.id;
+        this.productName= productJSON.productName;
+        this.price= productJSON.price;
+        this.category= productJSON.category;
+        this.productDescription= productJSON.productDescription;
     }
 }
