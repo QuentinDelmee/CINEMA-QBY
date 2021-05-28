@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateMovieComponent } from './component/movie/create-movie/create-movie.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
