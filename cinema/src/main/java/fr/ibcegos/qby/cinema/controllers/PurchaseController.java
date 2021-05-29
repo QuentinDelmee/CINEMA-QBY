@@ -25,6 +25,7 @@ import fr.ibcegos.qby.cinema.services.PurchaseService;
  *
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class PurchaseController {
 	@Autowired
 	private PurchaseService pservice;

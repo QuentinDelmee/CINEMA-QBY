@@ -15,6 +15,7 @@ import fr.ibcegos.qby.cinema.beans.Person;
 import fr.ibcegos.qby.cinema.services.PersonService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class PersonController {
 	@Autowired PersonService personService;
 	

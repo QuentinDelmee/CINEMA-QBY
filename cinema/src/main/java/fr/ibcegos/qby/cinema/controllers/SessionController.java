@@ -23,6 +23,7 @@ import fr.ibcegos.qby.cinema.services.SessionService;
  *
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class SessionController {
 	@Autowired
 	private SessionService sservice;

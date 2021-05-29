@@ -16,6 +16,7 @@ import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.services.SeatService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class SeatController {
 	
 	@Autowired

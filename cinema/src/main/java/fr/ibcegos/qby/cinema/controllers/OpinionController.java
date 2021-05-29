@@ -26,6 +26,7 @@ import fr.ibcegos.qby.cinema.services.UserService;
  *
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class OpinionController {
 	@Autowired
 	private OpinionService oservice;

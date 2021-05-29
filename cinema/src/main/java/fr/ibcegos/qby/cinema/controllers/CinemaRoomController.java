@@ -15,6 +15,7 @@ import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.services.CinemaRoomService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class CinemaRoomController {
 
 	@Autowired

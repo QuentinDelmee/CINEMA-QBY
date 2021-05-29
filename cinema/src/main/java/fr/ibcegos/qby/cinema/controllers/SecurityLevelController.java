@@ -15,6 +15,7 @@ import fr.ibcegos.qby.cinema.beans.SecurityLevel;
 import fr.ibcegos.qby.cinema.services.SecurityLevelService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class SecurityLevelController {
 	 @Autowired 
 	 private SecurityLevelService securityLevelService;

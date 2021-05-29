@@ -15,6 +15,7 @@ import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.UserService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class UserController {
 	@Autowired
 	private UserService userService;

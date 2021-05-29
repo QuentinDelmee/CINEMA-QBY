@@ -15,6 +15,7 @@ import fr.ibcegos.qby.cinema.beans.Product;
 import fr.ibcegos.qby.cinema.services.ProductService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ProductController {
 	@Autowired
 	public ProductService productService;

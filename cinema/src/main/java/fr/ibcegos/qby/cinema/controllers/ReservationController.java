@@ -23,6 +23,7 @@ import fr.ibcegos.qby.cinema.services.ReservationService;
  *
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class ReservationController {
 	@Autowired
 	private ReservationService rservice;

@@ -16,6 +16,7 @@ import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.services.CommentaryService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class CommentaryController {
 
 	@Autowired
