@@ -1,3 +1,7 @@
+
+
+
+
 <p>create-movie works!</p>
 <form (ngSubmit)="onSubmit()">
 <div>
@@ -15,37 +19,37 @@
 <div>
     <mat-form-field appearance="fill">
         <mat-label>PEGI</mat-label>
-        <input matInput>
+        <input matInput name='pegi' [(ngModel)]="movieJSON.pegi">
     </mat-form-field>
 </div>
 <div>
     <mat-form-field appearance="fill">
         <mat-label>Release Year</mat-label>
-        <input matInput>
+        <input matInput name='releaseDate' [(ngModel)]="movieJSON.releaseDate">
     </mat-form-field>
 </div>
 <div>
     <mat-form-field appearance="fill">
         <mat-label>Duration</mat-label>
-        <input matInput>
+        <input matInput name='movieDuration' [(ngModel)]="movieJSON.movieDuration">
     </mat-form-field>
 </div>
 <div>
     <mat-form-field appearance="fill">
         <mat-label>Genre</mat-label>
-        <input matInput>
+        <input matInput name='movieGenre' [(ngModel)]="movieJSON.movieGenre">
     </mat-form-field>
 </div>
 <div>
     <mat-form-field appearance="fill">
         <mat-label>Rating</mat-label>
-        <input matInput>
+        <input matInput name='averageRating' [(ngModel)]="movieJSON.averageRating">
     </mat-form-field>
 </div>
 <div>
     <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
-        <input matInput>
+        <input matInput name='movieDescription' [(ngModel)]="movieJSON.movieDescription">
     </mat-form-field>
 </div>
 <button mat-button type="submit">TEST SUBMIT</button>

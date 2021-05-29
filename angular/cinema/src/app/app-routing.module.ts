@@ -10,17 +10,19 @@ import { ReservationComponent } from './component/reservation/reservation.compon
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { TimeTableComponent } from './component/time-table/time-table.component';
+import { CreateMovieComponent } from './component/movie/create-movie/create-movie.component';
 
 const routes: Routes = [
   { path: 'home-page', component: HomeComponent },
   { path: 'data-page', component: DataComponent },
   { path: 'how-to-come-page', component: HowToComeComponent },
   { path: 'movie-page', component: MovieComponent },
+  { path: 'movie-page/create', component: CreateMovieComponent },
   { path: 'profil-page', component: ProfilComponent },
   { path: 'reservation-page', component: ReservationComponent },
   { path: 'signin-page', component: SignInComponent },
   { path: 'signup-page', component: SignUpComponent },
-  { path: 'timetable-page', component: TimeTableComponent }
+  { path: 'timetable-page', component: TimeTableComponent },
 ];
 
 @NgModule({

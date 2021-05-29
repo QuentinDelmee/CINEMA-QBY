@@ -14,7 +14,7 @@ export class OpinionService {
     this.opinionUrl = 'http://localhost:8080/REST/opinion';
   }
 
-  public findAll(): Observable<Movie[]> {
+  public findAll(): Observable<Opinion[]> {
     return this.http.get<Opinion[]>(this.opinionUrl);
   }
 

@@ -11,11 +11,7 @@ export class CreateMovieComponent implements OnInit {
   
 
   movieForm: FormGroup = new FormGroup({}) ;
-  movieJSON: any = {
-    "id": 0, 
-    "title": '', 
-    "originalTitle": ''
-  } ;
+  movieJSON: any = {} ;
   title: string = '' ;
   originalTitle: string = '' ;
 

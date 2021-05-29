@@ -4,27 +4,70 @@
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
                 <mat-icon>menu</mat-icon>
             </button>
-            <a mat-stroked-button color="" [routerLink]="['/home-page']">Home</a>
-            <a mat-stroked-button color="" [routerLink]="['/data-page']">Data</a>
-            <a mat-stroked-button color="" [routerLink]="['/how-to-come-page']">How To Come ?</a>
-            <a mat-stroked-button color="" [routerLink]="['/movie-page']">Movies</a>
-            <a mat-stroked-button color="" [routerLink]="['/profil-page']">Your Profile</a>
-            <a mat-stroked-button color="" [routerLink]="['/reservation-page']">Reservation</a>
-            <a mat-stroked-button color="" [routerLink]="['/signin-page']">Sign In Now !</a>
-            <a mat-stroked-button color="" [routerLink]="['/signup-page']">Sign Up Now !</a>
-            <a mat-stroked-button color="" [routerLink]="['/timetable-page']">Session Timetable</a>
+            <a mat-stroked-button color="" [routerLink]="['/home-page']" (click)="updatePage(0)">Home</a>
+            <a mat-stroked-button color="" [routerLink]="['/data-page']" (click)="updatePage(1)">Data</a>
+            <a mat-stroked-button color="" [routerLink]="['/how-to-come-page']" (click)="updatePage(2)">How To Come
+                ?</a>
+            <a mat-stroked-button color="" [routerLink]="['/movie-page']" (click)="updatePage(3)">Movies</a>
+            <a mat-stroked-button color="" [routerLink]="['/profil-page']" (click)="updatePage(4)">Your Profile</a>
+            <a mat-stroked-button color="" [routerLink]="['/reservation-page']" (click)="updatePage(5)">Reservation</a>
+            <a mat-stroked-button color="" [routerLink]="['/signin-page']" (click)="updatePage(6)">Sign In Now !</a>
+            <a mat-stroked-button color="" [routerLink]="['/signup-page']" (click)="updatePage(7)">Sign Up Now !</a>
+            <a mat-stroked-button color="" [routerLink]="['/timetable-page']" (click)="updatePage(8)">Session
+                Timetable</a>
         </div>
     </mat-toolbar>
-    <!-- <nav>
-        <a [routerLink]="['/home-page']">Home</a> |
-        <a [routerLink]="['/data-page']">Data</a> |
-        <a [routerLink]="['/how-to-come-page']">How To Come ?</a> |
-        <a [routerLink]="['/movie-page']">Movies</a> |
-        <a [routerLink]="['/profil-page']">Your Profile</a> |
-        <a [routerLink]="['/reservation-page']">Reservation</a> |
-        <a [routerLink]="['/signin-page']">Sign In Now !</a> |
-        <a [routerLink]="['/signup-page']">Sign Up Now !</a> |
-        <a [routerLink]="['/timetable-page']">Session Timetable</a> |
-    </nav> -->
+
+    <mat-toolbar  color="primary">
+    <div [hidden]="!currentPage[0]">
+        <a mat-stroked-button color="" [routerLink]="['/home-page']">Home</a>
+        <a mat-stroked-button color="" [routerLink]="['/home-page']">Dernière News</a>
+        <a mat-stroked-button color="" [routerLink]="['/home-page']">Dernière Sortie</a>
+        <a mat-stroked-button color="" [routerLink]="['/home-page']">Promotions !</a>
+    </div>
+    <div [hidden]="!currentPage[1]">
+        <a mat-stroked-button color="" [routerLink]="['/data-page']">Data</a>
+        <a mat-stroked-button color="" [routerLink]="['/data-page']">Create Data</a>
+        <a mat-stroked-button color="" [routerLink]="['/data-page']">Update Data</a>
+        <a mat-stroked-button color="" [routerLink]="['/data-page']">Delete Data</a>
+    </div>
+    <div [hidden]="!currentPage[3]">
+        <a mat-stroked-button color="" [routerLink]="['/movie-page']">Movies</a>
+        <a mat-stroked-button color="" [routerLink]="['/movie-page/create']">Create Movie</a>
+        <a mat-stroked-button color="" [routerLink]="['/movie-page']">Update Movie</a>
+        <a mat-stroked-button color="" [routerLink]="['/movie-page']">Delete Movie</a>
+    </div>
+    <div [hidden]="!currentPage[4]">
+        <a mat-stroked-button color="" [routerLink]="['/profil-page']">Profil Person</a>
+        <a mat-stroked-button color="" [routerLink]="['/profil-page']">Create Profil</a>
+        <a mat-stroked-button color="" [routerLink]="['/profil-page']">Update Profil</a>
+        <a mat-stroked-button color="" [routerLink]="['/profil-page']">Delete Profil</a>
+    </div>
+    <div [hidden]="!currentPage[5]">
+        <a mat-stroked-button color="" [routerLink]="['/reservation-page']">Reservation</a>
+        <a mat-stroked-button color="" [routerLink]="['/reservation-page']">Create Reservation</a>
+        <a mat-stroked-button color="" [routerLink]="['/reservation-page']">Update Reservation</a>
+        <a mat-stroked-button color="" [routerLink]="['/reservation-page']">Delete Reservation</a>
+    </div>
+    <div [hidden]="!currentPage[6]">
+        <a mat-stroked-button color="" [routerLink]="['/signin-page']">Sign In !!!</a>
+        <a mat-stroked-button color="" [routerLink]="['/signin-page']">Create User</a>
+        <a mat-stroked-button color="" [routerLink]="['/signin-page']">Update User</a>
+        <a mat-stroked-button color="" [routerLink]="['/signin-page']">Delete User</a>
+    </div>
+    <div [hidden]="!currentPage[7]">
+        <a mat-stroked-button color="" [routerLink]="['/signup-page']">Movies</a>
+        <a mat-stroked-button color="" [routerLink]="['/signup-page']">Create User</a>
+        <a mat-stroked-button color="" [routerLink]="['/signup-page']">Update User</a>
+        <a mat-stroked-button color="" [routerLink]="['/signup-page']">Delete User</a>
+    </div>
+    <div [hidden]="!currentPage[8]">
+        <a mat-stroked-button color="" [routerLink]="['/timetable-page']">Séance</a>
+        <a mat-stroked-button color="" [routerLink]="['/timetable-page']">Create Séance</a>
+        <a mat-stroked-button color="" [routerLink]="['/timetable-page']">Update Séance</a>
+        <a mat-stroked-button color="" [routerLink]="['/timetable-page']">Delete Séance</a>
+    </div>
+    </mat-toolbar>
+
     <p>header works!</p>
 </header>
