@@ -63,9 +63,10 @@ public class UserController {
 	//////////
 	//Log In//
 	//////////
-	@PostMapping("/REST/login")
+	@PostMapping("/REST/user/login")
 	public boolean login(@RequestBody User user) {
 		boolean verif = userService.login(user);
+		System.out.println( user );
 		return verif;
 	}
 	

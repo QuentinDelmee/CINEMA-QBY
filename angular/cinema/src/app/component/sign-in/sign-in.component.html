@@ -11,7 +11,7 @@
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Enter your password</mat-label>
-            <input matInput name='password' [(ngModel)]="signInJSON.password" [type]="hide ? 'password' : 'text'">
+            <input matInput name='pwd' [(ngModel)]="signInJSON.pwd" [type]="hide ? 'password' : 'text'">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

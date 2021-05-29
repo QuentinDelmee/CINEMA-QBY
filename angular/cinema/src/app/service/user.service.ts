@@ -14,11 +14,15 @@ export class UserService {
     this.userUrl = 'http://localhost:8080/REST/user';
   }
 
-  public findAll(): Observable<UserService[]> {
-    return this.http.get<UserService[]>(this.userUrl);
+  public findAll(): Observable<User[]> {
+    return this.http.get<User[]>(this.userUrl);
   }
 
-  public save(user: UserService) {
-    return this.http.post<UserService>(this.userUrl, user);
+  public save(user: User) {
+    return this.http.post<User>(this.userUrl, user);
+  }
+
+  public login(user: User) {
+    return this.http.post<User>((this.userUrl+"/login"), user);
   }
 }
