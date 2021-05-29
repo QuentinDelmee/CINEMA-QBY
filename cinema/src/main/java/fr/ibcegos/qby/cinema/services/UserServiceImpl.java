@@ -63,4 +63,36 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+
+	@Override
+	public boolean login(User user) {
+		
+		System.out.println("Coté web : "+user);
+		boolean verif = false;
+		
+		//Récupération de l'utilisateur de la BDD
+		User tempUser = userDAO.findById(user.getId()).orElse(null);
+		
+		System.out.println("Coté BDD : "+tempUser);
+		
+		String tempUserPwd = tempUser.getPwd();
+		System.out.println( tempUserPwd );
+		
+		
+		
+		String UserPwd = user.getPwd();
+		System.out.println( UserPwd );
+		
+		
+		//Si l'id et le password rentré par l'utilisateur du site sont égales à celui de la BDD
+		if(!((tempUser.getPwd().equalsIgnoreCase(user.getPwd()))) && (tempUser.getId().equals(user.getId()))) {
+			//L'utilisateur peut accèder à son compte
+			verif = false;
+			System.out.println("No");
+		}
+		else {verif = true; System.out.println("YES");}
+		
+		return verif;
+	}
+
 }

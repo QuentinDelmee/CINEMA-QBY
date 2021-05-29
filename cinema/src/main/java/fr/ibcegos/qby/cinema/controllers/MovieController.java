@@ -30,6 +30,7 @@ public class MovieController {
 	//Création d'un film
 	@PostMapping("/REST/movie")
 	public Movie createMovie(@RequestBody Movie movie) {
+		System.out.println(movie);
 		mservice.create(movie);
 		return movie;
 	}

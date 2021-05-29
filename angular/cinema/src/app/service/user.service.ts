@@ -21,4 +21,8 @@ export class UserService {
   public save(user: User) {
     return this.http.post<User>(this.userUrl, user);
   }
+
+  public login(user: User) {
+    return this.http.post<User>((this.userUrl+"/login"), user);
+  }
 }

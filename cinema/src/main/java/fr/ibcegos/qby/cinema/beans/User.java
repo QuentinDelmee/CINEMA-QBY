@@ -64,6 +64,14 @@ public class User {
 		this.idPerson = idPerson;
 		this.idSecurityLevel = idSecurityLevel;
 	}
+	
+	public User(Integer id, String pseudo, String pwd) {
+		
+		this.id = id;
+		this.pseudo = pseudo;
+		this.pwd = pwd;
+
+	}
 
 	@Override
 	public String toString() {
