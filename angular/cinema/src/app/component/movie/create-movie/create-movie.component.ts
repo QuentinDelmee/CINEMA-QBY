@@ -8,30 +8,24 @@ import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/
 })
 export class CreateMovieComponent implements OnInit {
 
-  
+  movieJSON: any = {};
 
-  movieForm: FormGroup = new FormGroup({}) ;
-  movieJSON: any = {} ;
-  title: string = '' ;
-  originalTitle: string = '' ;
-
-  
-  constructor(private fb: FormBuilder) { 
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    console.log("TEST") ;
-    this.movieForm = this.fb.group({
-      title: this.title,
-      originalTitle: this.originalTitle
-    })
-    console.log(this.title);
-    console.log(this.originalTitle);
-    console.log(this.movieForm.value) ;
-    console.log(this.movieJSON) ;
+    console.log("TEST");
+    console.log(this.movieJSON);
+    if( confirm( "Are you sure you want to create this Movie ?") )
+    {
+
+    }
+    else
+    {
+
+    }
   }
 
 }
