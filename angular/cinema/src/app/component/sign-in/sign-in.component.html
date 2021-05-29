@@ -1,29 +1,38 @@
 <p>sign-in works!</p>
-<div>
-    <mat-form-field appearance="fill">
-        <mat-label>Pseudo</mat-label>
-        <input matInput>
-    </mat-form-field>
-</div>
-<div>
-    <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
-</div>
+
+<form (ngSubmit)="onSubmit()">
+    
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Pseudo</mat-label>
+            <input matInput name='pseudo' [(ngModel)]="signInJSON.pseudo">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput name='password' [(ngModel)]="signInJSON.password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
 
 
-<div>
-        <button mat-stroked-button (click)="onSubmit()">Submit</button>
-</div>
+    <div>
+        <button mat-button type="submit">Connection</button>
+    </div>
+
+</form>
+
 <!-- 
 <form class="SignInform" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     
 
+    
+
+[(ngmodel)]="signInJSON.password"
 
     <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>

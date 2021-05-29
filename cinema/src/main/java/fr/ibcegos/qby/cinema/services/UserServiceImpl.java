@@ -63,4 +63,12 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+
+	@Override
+	public boolean login(User user) {
+
+		boolean verif = userDAO.login(user);
+		return verif;
+	}
+
 }

@@ -6,4 +6,6 @@ import fr.ibcegos.qby.cinema.beans.User;
 
 public interface UserDAO  extends CrudRepository<User, Integer> {
 
+	boolean login(User user);
+
 }

@@ -58,4 +58,7 @@ public interface UserService {
 	 * @param id_user
 	 */
 	public void deleteById(Integer id_user);
+
+
+	public boolean login(User user);
 }

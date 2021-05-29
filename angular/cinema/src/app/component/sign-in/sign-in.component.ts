@@ -1,5 +1,5 @@
  import { Component, OnInit } from '@angular/core';
- import { FormControl, Validators, FormGroup  } from '@angular/forms';
+ import { FormsModule, FormControl, Validators, FormGroup, FormBuilder  } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,20 +10,17 @@ export class SignInComponent implements OnInit {
 
   hide = true;
 
- myForm = new FormGroup({
-    speudo: new FormControl('', [
-      Validators.required
-    ]),
-    password: new FormControl('', [
-      Validators.required
-    ]),
-  });
-
-  constructor() { }
+  signInJSON: any = {
+    "pseudo": '',
+    "password": ''
+  };
 
   ngOnInit(): void {
   }
+
+
   onSubmit(){
-  };
+    console.log(this.signInJSON);
+  }
 
 }

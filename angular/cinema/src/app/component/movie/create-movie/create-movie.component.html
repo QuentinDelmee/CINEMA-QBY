@@ -15,13 +15,13 @@
 <div>
     <mat-form-field appearance="fill">
         <mat-label>PEGI</mat-label>
-        <input matInput>
+        <input matInput name='pegi' [(ngModel)]="movieJSON.pegi">
     </mat-form-field>
 </div>
 <div>
     <mat-form-field appearance="fill">
         <mat-label>Release Year</mat-label>
-        <input matInput>
+        <input matInput name='releaseYear' [(ngModel)]="movieJSON.releaseYear">
     </mat-form-field>
 </div>
 <div>
