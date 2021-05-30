@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -38,7 +41,9 @@ public class Reservation {
 	@ManyToOne
 	@JoinColumn(name = "id_seat", referencedColumnName = "id")
 	private Seat idSeat;
-	private LocalDateTime date;
+	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDateTime idDate;
 
 	/**
 	 * Constructor of the class, all other functions are automated with Lombok
@@ -46,15 +51,15 @@ public class Reservation {
 	 * @param idusers User which is reserving a seat for a film on a specific
 	 *                session
 	 * @param idseat  Seat reserved by the user inside the CinemaRoom
-	 * @param date    Date of the reservation which corresponds to the start of a
+	 * @param idDate    Date of the reservation which corresponds to the start of a
 	 *                film session
 	 */
 
-	public Reservation(User idUser, Seat idSeat, LocalDateTime date) {
+	public Reservation(User idUser, Seat idSeat, LocalDateTime idDate) {
 		super();
 		this.idUser = idUser;
 		this.idSeat = idSeat;
-		this.date = date;
+		this.idDate = idDate;
 	}
 
 	/**
@@ -62,7 +67,7 @@ public class Reservation {
 	 */
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id + ", idUser=" + idUser.getId() + ", idSeat=" + idSeat.getId() + ", date=" + date
+		return "Reservation [id=" + id + ", idUser=" + idUser.getId() + ", idSeat=" + idSeat.getId() + ", idDate=" + idDate
 				+ "]";
 	}
 

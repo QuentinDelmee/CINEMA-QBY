@@ -1,14 +1,18 @@
 export class Reservation {
     id:number ;
-    roomName:string ;
-    roomLevel:string;
-    screenSize:number ;
+    idUser: string ;
+    idSeat: string ;
+    idDate:string ;
+    date: string ;
+    time: string ;
 
-    constructor(cinemaRoomJSON:any)
+    constructor(reservationJSON:any)
     {
-        this.id = cinemaRoomJSON.id;
-        this.roomName = cinemaRoomJSON.title ;
-        this.roomLevel = cinemaRoomJSON.originalTitle ;
-        this.screenSize = cinemaRoomJSON.pegi ;
+        this.id = reservationJSON.id;
+        this.idUser = reservationJSON.idUser ;
+        this.idSeat = reservationJSON.idSeat ;
+        this.date = reservationJSON.date ;
+        this.time = reservationJSON.time ;
+        this.idDate = this.date+"T"+this.time ;
     }
 }

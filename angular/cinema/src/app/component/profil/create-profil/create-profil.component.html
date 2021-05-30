@@ -1,1 +1,41 @@
 <p>create-profil works!</p>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill" >
+            <mat-label>Family Name</mat-label>
+            <input matInput name='familyName' [(ngModel)]="personJSON.familyName" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill" >
+            <mat-label>First Name</mat-label>
+            <input matInput name='firstName' [(ngModel)]="personJSON.firstName">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>BirthDate</mat-label>
+            <input matInput name='birthdate' type=date [(ngModel)]="personJSON.birthdate">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Genre/Sexe/Self</mat-label>
+            <input matInput name='genre' [(ngModel)]="personJSON.genre">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Duration</mat-label>
+            <input matInput name='city' [(ngModel)]="personJSON.city">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput name='email' [(ngModel)]="personJSON.email">
+        </mat-form-field>
+    </div>
+    <button mat-button type="submit">TEST SUBMIT</button>
+    </form>
+    

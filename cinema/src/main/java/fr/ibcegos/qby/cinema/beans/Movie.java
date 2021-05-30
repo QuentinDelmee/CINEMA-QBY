@@ -42,6 +42,7 @@ public class Movie {
 	private LocalTime movieDuration;
 	private String movieGenre;
 	private Double averageRating;
+	private String imageUrl;
 
 	@Column(columnDefinition = "text")
 	private String movieDescription;
@@ -65,11 +66,25 @@ public class Movie {
 		this.movieDescription = movieDescription;
 	}
 
+	public Movie(String title, String originalTitle, Integer pegi, Integer releaseDate, LocalTime movieDuration,
+			String movieGenre, Double averageRating, String imageUrl, String movieDescription) {
+		this.title = title;
+		this.originalTitle = originalTitle;
+		this.pegi = pegi;
+		this.releaseDate = releaseDate;
+		this.movieDuration = movieDuration;
+		this.movieGenre = movieGenre;
+		this.averageRating = averageRating;
+		this.imageUrl = imageUrl;
+		this.movieDescription = movieDescription;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", originalTitle=" + originalTitle + ", pegi=" + pegi
 				+ ", releaseDate=" + releaseDate + ", movieDuration=" + movieDuration + ", movieGenre=" + movieGenre
-				+ ", averageRating=" + averageRating + ", movieDescription=" + movieDescription + "]";
+				+ ", averageRating=" + averageRating + ", imageUrl=" + imageUrl + ", movieDescription="
+				+ movieDescription + "]";
 	}
 
 }

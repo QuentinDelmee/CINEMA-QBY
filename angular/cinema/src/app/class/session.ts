@@ -1,16 +1,19 @@
 export class Session {
     id:number;
-    idCinema:number;
-    idMovie:number;
+    idCinema:string;
+    idMovie:string;
     idDate:string;
     seatsLeft:string;
-    // private List<User> allUsers = new ArrayList<User>();
+    date:string;
+    time:string;
 
     constructor(sessionJSON:any){
         this.id = sessionJSON.id;
 		this.idCinema = sessionJSON.idCinema;
 		this.idMovie = sessionJSON.idMovie;
-		this.idDate = sessionJSON.idDate;
+        this.date = sessionJSON.date ;
+        this.time = sessionJSON.time ;
+		this.idDate = this.date + "T" + this.time ;
 		this.seatsLeft = sessionJSON.seatsLeft;
     }
 }
