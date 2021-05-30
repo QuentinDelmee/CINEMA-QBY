@@ -53,7 +53,7 @@ const routes: Routes = [
   { path: 'timetable-page/create', component: CreateTimeTableComponent },
   { path: 'timetable-page/update', component: UpdateTimeTableComponent },
   { path: 'timetable-page/delete', component: DeleteTimeTableComponent },
-  { path: 'user-page/', component: UserComponent }
+  { path: 'user-page/', component: UserComponent },
   { path: 'user-page/create', component: CreateUserComponent },
   { path: 'user-page-page/update', component: UpdateUserComponent },
   { path: 'user-page-page/delete', component: DeleteUserComponent },
