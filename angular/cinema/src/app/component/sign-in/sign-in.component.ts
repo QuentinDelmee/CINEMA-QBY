@@ -30,10 +30,9 @@ export class SignInComponent implements OnInit {
     //Recupération du speudo et split
     let id:any = this.signInJSON.pseudo.split("#",2)
 
-    //Extraction de l'id et affectation au json
+    //Extraction de l'id et pseudo et affectation au json
     this.signInJSON.id = id[1];
-
-    console.log(this.signInJSON);
+    this.signInJSON.pseudo = id[0]
 
     //Création de l'objet User à partir du JSON
     let credentials:User = new User( this.signInJSON );

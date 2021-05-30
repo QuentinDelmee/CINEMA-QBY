@@ -11,11 +11,11 @@ import fr.ibcegos.qby.cinema.beans.Session;
 
 public class AlgoDate {
 	
-	//Cr�ation de la m�thode avec en param�tre une liste de session et un horaire
-	//pour r�cup�rer une liste de film selon une heure pr�cise (Afficher les films entre 20h et 20h59)
+	//Creation de la methode avec en parametre une liste de session et un horaire
+	//pour recuperer une liste de film selon une heure precise (Afficher les films entre 20h et 20h59)
 	public static List<Movie> returnAllMoviesByTime(List<Session> sessionsMoviesList ,LocalDateTime broadcastTime){
 		
-		//Cr�ation de la liste qui r�cup�ra les films �ligible � la demande
+		//Creation de la liste qui recupera les films eligible a la demande
 		List<Movie> availableMoviesList = new ArrayList<Movie>();
 
 		
