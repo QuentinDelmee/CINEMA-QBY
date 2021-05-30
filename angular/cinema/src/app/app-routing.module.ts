@@ -7,8 +7,8 @@ import { HowToComeComponent } from './component/how-to-come/how-to-come.componen
 import { MovieComponent } from './component/movie/movie.component';
 import { ProfilComponent } from './component/profil/profil.component';
 import { ReservationComponent } from './component/reservation/reservation.component';
-import { SignInComponent } from './component/sign-in/sign-in.component';
-import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { SignInComponent } from './component/user/sign-in/sign-in.component';
+import { SignUpComponent } from './component/user/sign-up/sign-up.component';
 import { TimeTableComponent } from './component/time-table/time-table.component';
 import { CreateMovieComponent } from './component/movie/create-movie/create-movie.component';
 import { UpdateMovieComponent } from './component/movie/update-movie/update-movie.component';
@@ -22,6 +22,9 @@ import { DeleteReservationComponent } from './component/reservation/delete-reser
 import { DeleteTimeTableComponent } from './component/time-table/delete-time-table/delete-time-table.component';
 import { UpdateTimeTableComponent } from './component/time-table/update-time-table/update-time-table.component';
 import { CreateTimeTableComponent } from './component/time-table/create-time-table/create-time-table.component';
+import { CreateUser, CreateUserComponent } from './component/user/create-user/create-user.component';
+import { UpdateUser, UpdateUserComponent } from './component/user/update-user/update-user.component';
+import { DeleteUser, DeleteUserComponent } from './component/user/delete-user/delete-user.component';
 
 const routes: Routes = [
   { path: 'home-page', component: HomeComponent },
@@ -45,6 +48,10 @@ const routes: Routes = [
   { path: 'timetable-page/create', component: CreateTimeTableComponent },
   { path: 'timetable-page/update', component: UpdateTimeTableComponent },
   { path: 'timetable-page/delete', component: DeleteTimeTableComponent },
+  { path: 'user-page/create', component: CreateUserComponent },
+  { path: 'user-page-page/update', component: UpdateUserComponent },
+  { path: 'user-page-page/delete', component: DeleteUserComponent },
+  
 ];
 
 @NgModule({

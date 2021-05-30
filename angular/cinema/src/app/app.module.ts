@@ -9,8 +9,8 @@ import { HowToComeComponent } from './component/how-to-come/how-to-come.componen
 import { MovieComponent } from './component/movie/movie.component';
 import { ProfilComponent } from './component/profil/profil.component';
 import { ReservationComponent } from './component/reservation/reservation.component';
-import { SignInComponent } from './component/sign-in/sign-in.component';
-import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { SignInComponent } from './component/user/sign-in/sign-in.component';
+import { SignUpComponent } from './component/user/sign-up/sign-up.component';
 import { TimeTableComponent } from './component/time-table/time-table.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -30,6 +30,10 @@ import { DeleteReservationComponent } from './component/reservation/delete-reser
 import { DeleteTimeTableComponent } from './component/time-table/delete-time-table/delete-time-table.component';
 import { UpdateTimeTableComponent } from './component/time-table/update-time-table/update-time-table.component';
 import { CreateTimeTableComponent } from './component/time-table/create-time-table/create-time-table.component';
+import { UserComponent } from './component/user/user.component';
+import { CreateUserComponent } from './component/user/create-user/create-user.component';
+import { UpdateUserComponent } from './component/user/update-user/update-user.component';
+import { DeleteUserComponent } from './component/user/delete-user/delete-user.component';
 
 
 
@@ -58,7 +62,11 @@ import { CreateTimeTableComponent } from './component/time-table/create-time-tab
     DeleteReservationComponent,
     DeleteTimeTableComponent,
     UpdateTimeTableComponent,
-    CreateTimeTableComponent
+    CreateTimeTableComponent,
+    UserComponent,
+    CreateUserComponent,
+    UpdateUserComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,
