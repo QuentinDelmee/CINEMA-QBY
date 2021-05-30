@@ -29,6 +29,8 @@ export class CreateMovieComponent implements OnInit {
     else {
       console.log("New Movie ABORTED");
     }
+
+    this.movieJSON = {} ;
   }
 
 }
