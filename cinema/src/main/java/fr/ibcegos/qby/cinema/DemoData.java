@@ -642,13 +642,16 @@ public class DemoData {
 			String email = tempN + "." + tempP + "@email44.fr";
 
 			Person tempPerson = new Person(tempN, tempP, bd, tempS, tempV, email);
-			pedao.save(tempPerson);
+			
 
 			String tempPseudo = pseudoFutur[rand.nextInt(pseudoFutur.length)];
 			int SL = rolesNDS[rand.nextInt(rolesNDS.length)];
 
 			User tempUser = new User(tempPseudo, createMDP(), tempPerson, allSL.get(SL - 1));
 			udao.save(tempUser);
+//			pedao.save(tempPerson);
+//			tempPerson.setIdUser(tempUser);
+//			pedao.save(tempPerson);
 		}
 
 		List<CinemaRoom> cineRoom = (List<CinemaRoom>) crdao.findAll();

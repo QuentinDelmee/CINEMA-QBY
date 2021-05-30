@@ -21,4 +21,9 @@ export class SessionService {
   public save(session: Session) {
     return this.http.post<Session>(this.sessionUrl, session);
   }
+
+  public delete(id:number) {
+    return this.http.delete<Session>(this.sessionUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

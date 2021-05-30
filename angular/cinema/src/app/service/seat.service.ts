@@ -21,4 +21,9 @@ export class SeatService {
   public save(seat: Seat) {
     return this.http.post<Seat>(this.seatUrl, seat);
   }
+
+  public delete(id:number) {
+    return this.http.delete<Seat>(this.seatUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

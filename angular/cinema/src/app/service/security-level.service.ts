@@ -21,4 +21,9 @@ export class SecurityLevelService {
   public save(securityLevel: SecurityLevel) {
     return this.http.post<SecurityLevel>(this.securityLevelUrl, securityLevel);
   }
+
+  public delete(id:number) {
+    return this.http.delete<SecurityLevel>(this.securityLevelUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

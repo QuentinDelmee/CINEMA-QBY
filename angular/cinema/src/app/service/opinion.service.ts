@@ -22,4 +22,9 @@ export class OpinionService {
     return this.http.post<Opinion>(this.opinionUrl, opinion);
   }
 
+  public delete(id:number) {
+    return this.http.delete<Opinion>(this.opinionUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
+
 }
