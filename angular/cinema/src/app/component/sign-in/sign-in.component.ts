@@ -12,7 +12,9 @@ export class SignInComponent implements OnInit {
 
   constructor(private userService: UserService){}
 
+  loginStatus:any;
   hide = true;
+  error:string = '';
 
   signInJSON: any = {
     "id":0,
@@ -27,19 +29,45 @@ export class SignInComponent implements OnInit {
 
 
   onSubmit(){
-    //Recupération du speudo et split
-    let id:any = this.signInJSON.pseudo.split("#",2)
 
-    //Extraction de l'id et pseudo et affectation au json
-    this.signInJSON.id = id[1];
-    this.signInJSON.pseudo = id[0]
+    //Vérification de la présence d'un # dans le champ pseudo
+    if(this.signInJSON.pseudo.indexOf('#') > -1){
+      this.error = '';
 
-    //Création de l'objet User à partir du JSON
-    let credentials:User = new User( this.signInJSON );
+      //Recupération du speudo et split
+      let id:any = this.signInJSON.pseudo.split("#",2)
 
-    //Appel du WebService
-    this.userService.login(credentials).subscribe();
+      //Extraction de l'id et pseudo et affectation au json
+      this.signInJSON.pseudo = id[0]
+      this.signInJSON.id = id[1];
+      
 
+      //Création de l'objet User à partir du JSON
+      let credentials:User = new User( this.signInJSON );
+      console.log(credentials);
+
+      //Appel du WebService
+      this.userService.login(credentials).subscribe(data => {this.loginStatus = data;});
+      this.login();
+    }
+    else{this.error = 'Il manque le #'; this.verifForm()}
+  }
+
+  login(){
+    let message:any
+    if(this.loginStatus === true){
+      message = 'Bonjour ' + (this.signInJSON.pseudo);
+      
+    }
+    else{
+      message = 'Bonjour les informations saisi semblent erronées';
+    }
+    return message;
+  }
+
+  verifForm()
+  {
+    return this.error;
   }
 
 }
