@@ -14,7 +14,14 @@ export class MovieComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.movieService.findAll().subscribe(data => { this.movies = data; });
+    this.movieService.findAll().subscribe(data => { this.movies = data; 
+      this.movies.forEach(element => { console.log(element.imageUrl) ;
+        if( element.imageUrl === null || element.imageUrl === "" )
+        {
+          this.movieService.updateURL(element) ;
+        }
+      });});
+    
   }
 
   post(): void {

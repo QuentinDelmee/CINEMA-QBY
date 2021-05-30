@@ -1,1 +1,13 @@
 <p>delete-profil works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Movie to Delete</mat-label>
+    <mat-select [(value)]="selectedPerson">
+      <mat-option *ngFor="let person of persons" [value]="person">
+        {{person.familyName}} {{person.firstName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <form (ngSubmit)="onSubmit()">
+    <button mat-button type="submit">TEST SUBMIT</button>
+    </form>

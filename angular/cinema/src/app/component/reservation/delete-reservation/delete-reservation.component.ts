@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Reservation } from 'src/app/class/reservation';
+import { ReservationService } from 'src/app/service/reservation.service';
 
 @Component({
   selector: 'app-delete-reservation',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteReservationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private reservationService: ReservationService) { }
+
+  selectedReservation: Reservation = new Reservation({});
+
+  reservations: Reservation[] = [];
 
   ngOnInit(): void {
+    this.reservationService.findAll().subscribe(data => { this.reservations = data; });
+  }
+
+  onSubmit(): void{
+    if (confirm("Are you sure you want to delete this Reservation ?")) {
+      console.log(this.selectedReservation) ;
+      this.reservationService.delete(this.selectedReservation.id).subscribe() ;
+    }
+    else {
+      console.log("Delete Reservation ABORTED");
+    }
   }
 
 }

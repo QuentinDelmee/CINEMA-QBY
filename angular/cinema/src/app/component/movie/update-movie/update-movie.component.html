@@ -4,21 +4,21 @@
 <mat-form-field appearance="fill">
     <mat-label>Movie to Update</mat-label>
     <mat-select [(value)]="selectedMovie">
-      <mat-option *ngFor="let movie of movies" [value]="movie">
-        {{movie.title}}
-      </mat-option>
+        <mat-option *ngFor="let movie of movies" [value]="movie">
+            {{movie.title}}
+        </mat-option>
     </mat-select>
-  </mat-form-field>
+</mat-form-field>
 
-  <form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()">
     <div>
-        <mat-form-field appearance="fill" >
+        <mat-form-field appearance="fill">
             <mat-label>Title</mat-label>
             <input matInput name='title' [(ngModel)]="selectedMovie.title" required>
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field appearance="fill" >
+        <mat-form-field appearance="fill">
             <mat-label>Original Title</mat-label>
             <input matInput name='originalTitle' [(ngModel)]="selectedMovie.originalTitle">
         </mat-form-field>
@@ -60,4 +60,4 @@
         </mat-form-field>
     </div>
     <button mat-button type="submit">TEST SUBMIT</button>
-    </form>
+</form>

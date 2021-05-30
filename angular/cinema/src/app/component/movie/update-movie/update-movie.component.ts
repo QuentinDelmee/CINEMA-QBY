@@ -19,7 +19,7 @@ export class UpdateMovieComponent implements OnInit {
     this.movieService.findAll().subscribe(data => { this.movies = data; });
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     if (confirm("Are you sure you want to update this Movie ?")) {
       this.movieService.save(this.selectedMovie).subscribe();
     }

@@ -1,1 +1,39 @@
 <p>update-reservation works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Reservation to Update</mat-label>
+    <mat-select [(value)]="selectedReservation">
+        <mat-option *ngFor="let reservation of reservations" [value]="reservation">
+            {{reservation | json }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>User ID</mat-label>
+            <input matInput name='idUser' [(ngModel)]="selectedReservation.idUser" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>SEAT ID</mat-label>
+            <input matInput name='idSeat' [(ngModel)]="selectedReservation.idSeat">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>DATE</mat-label>
+            <input matInput name='date' [matDatepicker]="picker" [(ngModel)]="selectedReservation.date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>DATE</mat-label>
+            <input matInput name='time' type="time" [(ngModel)]="selectedReservation.time">
+        </mat-form-field>
+    </div>
+    <button mat-button type="submit">TEST SUBMIT</button>
+</form>

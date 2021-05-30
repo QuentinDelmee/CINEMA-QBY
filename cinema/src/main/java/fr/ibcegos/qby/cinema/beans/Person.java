@@ -2,13 +2,15 @@ package fr.ibcegos.qby.cinema.beans;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -30,6 +32,7 @@ public class Person {
 	private Integer id;
 	private String familyName;
 	private String firstName; // on ne devrait pas donner un last name pour avoir un nom complet ??
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate birthdate;
 	private String genre;
 	private String city;

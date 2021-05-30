@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Session } from 'src/app/class/session';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-time-table',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimeTableComponent implements OnInit {
 
-  constructor() { }
+  sessions : Session[] = [];
+
+  constructor(private sessionService: SessionService) { }
 
   ngOnInit(): void {
+    this.sessionService.findAll().subscribe(data => { this.sessions = data; });
   }
 
 }

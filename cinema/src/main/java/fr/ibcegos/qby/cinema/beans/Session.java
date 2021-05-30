@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -38,6 +41,7 @@ public class Session {
 	@ManyToOne
 	@JoinColumn(name = "id_movie")
 	private Movie idMovie;
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDateTime idDate;
 	private Integer seatsLeft;
 

@@ -9,6 +9,7 @@ export class Movie {
     movieDuration:string;
     movieGenre:string;
     averageRating:number;
+    imageUrl:string;
     movieDescription:string;
 
     constructor(movieJSON:any)
@@ -21,6 +22,7 @@ export class Movie {
         this.movieDuration = movieJSON.movieDuration ;
         this.movieGenre = movieJSON.movieGenre ;
         this.averageRating = movieJSON.averageRating ;
+        this.imageUrl = movieJSON.imageUrl ;
         this.movieDescription = movieJSON.movieDescription ;
     }
 }

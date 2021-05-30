@@ -1,1 +1,30 @@
 <p>create-time-table works!</p>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>CINEMA ID</mat-label>
+            <input matInput name='idCinema' [(ngModel)]="sessionJSON.idCinema" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>MOVIE ID</mat-label>
+            <input matInput name='idMovie' [(ngModel)]="sessionJSON.idMovie">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>DATE</mat-label>
+            <input matInput name='date' [matDatepicker]="picker" [(ngModel)]="sessionJSON.date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>TIME</mat-label>
+            <input matInput name='date' type='time' [(ngModel)]="sessionJSON.time">
+        </mat-form-field>
+    </div>
+    <button mat-button type="submit">TEST SUBMIT</button>
+</form>

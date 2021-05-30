@@ -16,6 +16,7 @@ export class CreateMovieComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(): void {
