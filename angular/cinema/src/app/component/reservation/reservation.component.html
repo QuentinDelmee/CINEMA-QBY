@@ -1,2 +1,22 @@
 <p>reservation works!</p>
-<div *ngFor="let resa of reservations">{{resa | json}}</div>
+
+<mat-tab-group>
+    <mat-tab label="Reservation">
+        <div *ngFor="let resa of reservations">{{resa | json}}</div>
+    </mat-tab>
+
+
+
+
+
+    
+    <mat-tab label="Create Reservation">
+        <app-create-reservation></app-create-reservation>
+    </mat-tab>
+    <mat-tab label="Update Reservation">
+        <app-update-reservation></app-update-reservation>
+    </mat-tab>
+    <mat-tab label="Delete Reservation">
+        <app-delete-reservation></app-delete-reservation>
+    </mat-tab>
+</mat-tab-group>

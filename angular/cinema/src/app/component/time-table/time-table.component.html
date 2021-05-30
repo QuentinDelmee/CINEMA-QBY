@@ -1,2 +1,23 @@
 <p>time-table works!</p>
+
+<mat-tab-group>
+    <mat-tab label="Séance">
+        
 <div *ngFor="let session of sessions">{{session | json}}</div>
+    </mat-tab>
+
+
+
+
+
+    
+    <mat-tab label="Create Séance">
+        <app-create-time-table></app-create-time-table>
+    </mat-tab>
+    <mat-tab label="Update Séance">
+        <app-update-time-table></app-update-time-table>
+    </mat-tab>
+    <mat-tab label="Delete Séance">
+        <app-delete-time-table></app-delete-time-table>
+    </mat-tab>
+</mat-tab-group>
