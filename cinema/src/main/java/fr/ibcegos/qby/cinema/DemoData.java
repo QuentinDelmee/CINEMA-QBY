@@ -619,21 +619,21 @@ public class DemoData {
 		prdao.save(new Product("Schweppes 33cl", 1.50, "Boisson", "Votre incontournable boisson Schweppes!"));
 		prdao.save(new Product("Schweppes 50cl", 2.00, "Boisson", "Votre incontournable boisson Schweppes!"));
 
-		crdao.save(new CinemaRoom("Atlantis", 0, "4K", 256));
-		crdao.save(new CinemaRoom("Babylone", 0, "4K", 256));
-		crdao.save(new CinemaRoom("Carthage", 0, "4K", 128));
-		crdao.save(new CinemaRoom("Daedalus", 1, "4K", 256));
-		crdao.save(new CinemaRoom("Eristhem", 1, "4K", 128));
-		crdao.save(new CinemaRoom("Franborg", 1, "4K", 128));
-		crdao.save(new CinemaRoom("Gargantos", 2, "4K", 256));
-		crdao.save(new CinemaRoom("Hermetic", 2, "4K", 128));
-		crdao.save(new CinemaRoom("Istanbul", 2, "2K", 64));
-		crdao.save(new CinemaRoom("Jakarta", 2, "2K", 64));
+		crdao.save(new CinemaRoom("Atlantis", 0, "4K", 128));
+		crdao.save(new CinemaRoom("Babylone", 0, "4K", 128));
+		crdao.save(new CinemaRoom("Carthage", 0, "4K", 64));
+		crdao.save(new CinemaRoom("Daedalus", 1, "4K", 128));
+		crdao.save(new CinemaRoom("Eristhem", 1, "4K", 64));
+		crdao.save(new CinemaRoom("Franborg", 1, "4K", 64));
+		crdao.save(new CinemaRoom("Gargantos", 2, "4K", 128));
+		crdao.save(new CinemaRoom("Hermetic", 2, "4K", 64));
+		crdao.save(new CinemaRoom("Istanbul", 2, "2K", 32));
+		crdao.save(new CinemaRoom("Jakarta", 2, "2K", 32));
 
 		List<SecurityLevel> allSL = (List<SecurityLevel>) sldao.findAll();
 		Random rand = new Random();
 
-		for (int i = 0; i < 64; ++i) {
+		for (int i = 0; i < 32; ++i) {
 			String tempN = noms[rand.nextInt(noms.length)];
 			String tempP = prenoms[rand.nextInt(prenoms.length)];
 			LocalDate bd = randomDate();

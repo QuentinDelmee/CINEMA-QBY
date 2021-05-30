@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { Movie } from 'src/app/class/movie';
 import { MovieService } from 'src/app/service/movie.service';
 
