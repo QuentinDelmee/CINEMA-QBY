@@ -25,4 +25,9 @@ export class UserService {
   public login(user: User) {
     return this.http.post<User>((this.userUrl+"/login"), user);
   }
+
+  public delete(id:number) {
+    return this.http.delete<User>(this.userUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

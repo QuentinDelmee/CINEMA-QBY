@@ -72,6 +72,11 @@ public class MovieController {
 	public void deleteMovieById(@PathVariable("id") Integer id) {
 		mservice.deleteById(id);
 	}
+	
+	@DeleteMapping("/REST/movie")
+	public void deleteMovie(@RequestBody Movie movie) {
+		mservice.delete(movie);
+	}
 
 
 }

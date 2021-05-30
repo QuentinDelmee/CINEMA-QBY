@@ -3,6 +3,7 @@ package fr.ibcegos.qby.cinema.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
@@ -37,12 +36,12 @@ public class User {
 	private Integer id;
 	private String pseudo;
 	private String pwd;
-	@OneToOne
-	@JoinColumn(name = "id_person")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_person", referencedColumnName = "id")
 	private Person idPerson;
 
 	@ManyToOne
-	@JoinColumn(name = "id_security_level")
+	@JoinColumn(name = "id_security_level", referencedColumnName = "id")
 	private SecurityLevel idSecurityLevel;
 
 	@OneToMany(targetEntity = Opinion.class, mappedBy = "id")
@@ -64,9 +63,9 @@ public class User {
 		this.idPerson = idPerson;
 		this.idSecurityLevel = idSecurityLevel;
 	}
-	
+
 	public User(Integer id, String pseudo, String pwd) {
-		
+
 		this.id = id;
 		this.pseudo = pseudo;
 		this.pwd = pwd;

@@ -22,4 +22,9 @@ export class PurchaseService {
   public save(purchase: Purchase) {
     return this.http.post<Purchase>(this.purchaseUrl, purchase);
   }
+
+  public delete(id:number) {
+    return this.http.delete<Purchase>(this.purchaseUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

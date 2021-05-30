@@ -20,7 +20,7 @@ export class MovieComponent implements OnInit {
   post(): void {
     let myJson : any = { "id": 0, "title": "Nadia, butterfly", "originalTitle": "Nadia, butterfly", "pegi": 0, "releaseDate": 2021, "movieDuration": "01:46:00", "movieGenre": "Drame", "averageRating": 5, "movieDescription": "Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision...", "lstCommentarys": [], "lstSessions": [] } ;
     let toPost:Movie = new Movie( myJson ) ;
-    this.movieService.save(toPost).subscribe() ;
+    this.movieService.save(toPost);
   }
 
 }

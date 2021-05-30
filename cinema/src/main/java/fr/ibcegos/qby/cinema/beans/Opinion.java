@@ -32,10 +32,10 @@ public class Opinion {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_cinema")
+	@JoinColumn(name = "id_cinema", referencedColumnName = "id")
 	private CinemaRoom idCinema;
 	@ManyToOne
-	@JoinColumn(name = "id_user")
+	@JoinColumn(name = "id_user", referencedColumnName = "id")
 	private User idUser;
 
 	private Integer rating;

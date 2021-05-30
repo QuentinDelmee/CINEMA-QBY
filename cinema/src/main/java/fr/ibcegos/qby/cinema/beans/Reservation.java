@@ -33,10 +33,10 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "id_user")
+	@JoinColumn(name = "id_user", referencedColumnName = "id")
 	private User idUser;
 	@ManyToOne
-	@JoinColumn(name = "id_seat")
+	@JoinColumn(name = "id_seat", referencedColumnName = "id")
 	private Seat idSeat;
 	private LocalDateTime date;
 

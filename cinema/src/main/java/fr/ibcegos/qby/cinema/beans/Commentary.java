@@ -33,11 +33,11 @@ public class Commentary {
 	private String commentary;
 
 	@ManyToOne
-	@JoinColumn(name = "id_user")
+	@JoinColumn(name = "id_user", referencedColumnName = "id")
 	private User idUser;
 
 	@ManyToOne
-	@JoinColumn(name = "id_movie")
+	@JoinColumn(name = "id_movie", referencedColumnName = "id")
 	private Movie idMovie;
 
 	public Commentary(Integer rating, String commentary, User idUser, Movie idMovie) {

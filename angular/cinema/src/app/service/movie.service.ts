@@ -21,4 +21,9 @@ export class MovieService {
   public save(movie: Movie) {
     return this.http.post<Movie>(this.moviesUrl, movie);
   }
+
+  public delete(id:number) {
+    return this.http.delete<Movie>(this.moviesUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

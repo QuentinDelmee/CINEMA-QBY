@@ -8,17 +8,22 @@ import { Observable } from 'rxjs';
 })
 export class CommentaryService {
 
-  private commentary: string;
+  private commentaryURL: string;
 
   constructor(private http: HttpClient) {
-    this.commentary = 'http://localhost:8080/REST/commentary';
+    this.commentaryURL = 'http://localhost:8080/REST/commentary';
   }
 
   public findAll(): Observable<Commentary[]> {
-    return this.http.get<Commentary[]>(this.commentary);
+    return this.http.get<Commentary[]>(this.commentaryURL);
   }
 
   public save(commentary: Commentary) {
-    return this.http.post<Commentary>(this.commentary, commentary);
+    return this.http.post<Commentary>(this.commentaryURL, commentary);
+  }
+
+  public delete(id:number) {
+    return this.http.delete<Commentary>(this.commentaryURL+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
   }
 }

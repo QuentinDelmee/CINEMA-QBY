@@ -21,4 +21,9 @@ export class CinemaRoomService {
   public save(cinema: CinemaRoom) {
     return this.http.post<CinemaRoom>(this.cinemaRoomUrl, cinema);
   }
+
+  public delete(id:number) {
+    return this.http.delete<CinemaRoom>(this.cinemaRoomUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

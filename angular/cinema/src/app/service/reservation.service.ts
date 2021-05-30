@@ -21,4 +21,9 @@ export class ReservationService {
   public save(reservation: Reservation) {
     return this.http.post<Reservation>(this.reservationUrl, reservation);
   }
+
+  public delete(id:number) {
+    return this.http.delete<Reservation>(this.reservationUrl+ "/"+ id);
+    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  }
 }

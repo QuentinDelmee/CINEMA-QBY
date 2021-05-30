@@ -1,19 +1,22 @@
 export class Person {
-	id:any;
+	id:number;
 	familyName:string;
 	firstName:string;
-	//private LocalDate date;
+	birthdate:string;
 	genre:string;
 	city:string;
 	email:string;
+	idUser:number;
 
 	constructor(personJSON:any){
 		this.id = personJSON.id;
-		this.familyName = personJSON.familyName;
+		this.firstName = personJSON.firstName;
 		this.familyName= personJSON.familyName;
+		this.birthdate= personJSON.birthdate;
 		this.genre = personJSON.genre;
 		this.city = personJSON.city;
 		this.email = personJSON.email;
+		this.idUser = personJSON.idUser;
 	}
 
 

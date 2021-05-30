@@ -38,7 +38,7 @@ public class Seat {
 	private Boolean free;
 
 	@ManyToOne
-	@JoinColumn(name = "id_cinema")
+	@JoinColumn(name = "id_cinema", referencedColumnName = "id")
 	private CinemaRoom idCinema;
 
 	public Seat(Integer seatNumber, String rowName, Boolean free, CinemaRoom idCinema) {
