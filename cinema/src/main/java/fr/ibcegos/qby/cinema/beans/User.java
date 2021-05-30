@@ -75,11 +75,13 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", pseudo=" + pseudo + ", pwd=" + pwd + ", idPerson=" + idPerson.getId()
-				+ ", idSecurityLevel=" + idSecurityLevel.getId() + "]";
+		return "User [pseudo=" + pseudo + ", pwd=" + pwd + "]";
 	}
 
+
+
 	// Méthode toString pour accéder aux valeurs
+	
 
 }
 

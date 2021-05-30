@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService{
 		
 		
 		//Si l'id et le password rentré par l'utilisateur du site sont égales à celui de la BDD
-		if(!((tempUser.getPwd().equalsIgnoreCase(user.getPwd()))) && (tempUser.getId().equals(user.getId()))) {
+		if(!((tempUser.getPwd().equals(user.getPwd()))) && (tempUser.getId().equals(user.getId()))) {
 			//L'utilisateur peut accèder à son compte
 			verif = false;
 			System.out.println("No");
