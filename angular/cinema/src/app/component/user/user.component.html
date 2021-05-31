@@ -1,1 +1,43 @@
 <p>user works!</p>
+<div>
+    <mat-tab-group>
+        <mat-tab label="User">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Person</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users;let i = index">
+                        <td>{{ i }}</td>
+                        <td>{{ user.pseudo}}#{{user.id}}</td>
+                        <td>{{ user.idPerson.familyName}} {{ user.idPerson.firstName }}</td>
+                        <td>
+                            <button (click)="deleteByIdUser(i)">
+                                <i> Delete </i>
+                            </button>
+                            <button>
+                                <i> Edit </i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </mat-tab>
+
+        <mat-tab label="Create User">
+            <app-create-user></app-create-user>
+        </mat-tab>
+        <mat-tab label="Update User">
+            <app-update-user></app-update-user>
+        </mat-tab>
+        <mat-tab label="Delete User">
+            <app-delete-user></app-delete-user>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+

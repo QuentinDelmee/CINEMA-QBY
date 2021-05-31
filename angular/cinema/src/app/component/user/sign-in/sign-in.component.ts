@@ -12,6 +12,7 @@ export class SignInComponent implements OnInit {
 
   constructor(private userService: UserService){}
 
+  message:string = '';
   loginStatus:any;
   hide = true;
   error:string = '';
@@ -24,7 +25,9 @@ export class SignInComponent implements OnInit {
     "idSecurityLevel":0
   };
 
+  
   ngOnInit(): void {
+    this.message = '';
   }
 
 
@@ -47,22 +50,22 @@ export class SignInComponent implements OnInit {
       console.log(credentials);
 
       //Appel du WebService
-      this.userService.login(credentials).subscribe(data => {this.loginStatus = data;});
-      this.login();
+      this.userService.login(credentials).subscribe(data => {this.loginStatus = data;this.login();});
+      
     }
     else{this.error = 'Il manque le #'; this.verifForm()}
   }
 
   login(){
-    let message:any
+    
     if(this.loginStatus === true){
-      message = 'Bonjour ' + (this.signInJSON.pseudo);
+      this.message = 'Bonjour ' + (this.signInJSON.pseudo);
       
     }
     else{
-      message = 'Bonjour les informations saisi semblent erronées';
+      this.message = 'Bonjour les informations saisi semblent erronées';
     }
-    return message;
+    
   }
 
   verifForm()

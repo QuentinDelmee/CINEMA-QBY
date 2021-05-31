@@ -51,6 +51,10 @@ export class HeaderComponent implements OnInit {
       this.currentPage[8] = true;
       this.previousPage = 8;
     }
+    else if (window.location.href.match("user-page")?.length){
+      this.currentPage[9] = true;
+      this.previousPage = 9;
+    }
   }
 
   updatePage(index: number) {

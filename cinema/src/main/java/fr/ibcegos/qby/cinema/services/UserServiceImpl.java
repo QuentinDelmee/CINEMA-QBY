@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.ibcegos.qby.cinema.beans.Person;
 import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.UserDAO;
 @Service
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService{
 	//////////
 	@Override
 	public void create(User user) {
+		if(user.getIdPerson()==null) {
+		user.setIdPerson(new Person());}
 		userDAO.save(user);
 		
 	}
@@ -67,22 +70,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean login(User user) {
 		
-		System.out.println("Coté web : "+user);
 		boolean verif = false;
 		
 		//Récupération de l'utilisateur de la BDD
 		User tempUser = userDAO.findById(user.getId()).orElse(null);
-		
-		System.out.println("Coté BDD : "+tempUser);
-		
-		String tempUserPwd = tempUser.getPwd();
-		System.out.println( tempUserPwd );
-		
-		
-		
-		String UserPwd = user.getPwd();
-		System.out.println( UserPwd );
-		
 		
 		//Si l'id et le password rentré par l'utilisateur du site sont égales à celui de la BDD
 		if(!((tempUser.getPwd().equals(user.getPwd()))) && (tempUser.getId().equals(user.getId()))) {
