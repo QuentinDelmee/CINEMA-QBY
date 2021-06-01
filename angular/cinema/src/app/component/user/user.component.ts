@@ -18,12 +18,13 @@ export class UserComponent implements OnInit {
       });
   }
 
-  deleteByIdUser(i:number){
+  deleteByIdUser(user:User){
 
     //Appel du service delete by id avec en paramètre le User selectionné à partir du tableau => voir service
 
-    if (confirm("Are you sure you want to delete "+ this.users[i].pseudo + " User ?")) {
-      this.userService.deleteById(this.users[i].id).subscribe();
+    if (confirm("Are you sure you want to delete "+ user.pseudo + " User ?")) {
+      console.log(user.id);
+      this.userService.deleteById(user.id);
     }
     else {
       console.log("Delete User ABORTED");

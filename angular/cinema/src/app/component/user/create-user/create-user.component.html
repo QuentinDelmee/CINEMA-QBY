@@ -1,1 +1,33 @@
 <p>create-user works!</p>
+
+
+
+
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill" >
+            <mat-label>Pseudo</mat-label>
+            <input matInput name='pseudo' [(ngModel)]="userJSON.pseudo" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill" >
+            <mat-label>Password</mat-label>
+            <input matInput name='pwd' [(ngModel)]="userJSON.pwd">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-select>
+                <mat-option *ngFor="let role of accountRoles" [value]="role">
+                    {{role.roles}}
+                </mat-option>
+            </mat-select>
+            
+                <mat-label>Level security</mat-label>
+                <input matInput name='level' [(ngModel)]="userJSON.level">
+        </mat-form-field>
+    </div>
+
+    <button mat-button type="submit">Créer l'utilisateur</button>
+    </form>

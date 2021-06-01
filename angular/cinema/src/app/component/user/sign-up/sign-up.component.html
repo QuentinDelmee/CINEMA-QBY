@@ -1,3 +1,5 @@
+<form (ngSubmit)="onSubmit()">
+
 <div class="">
     <h1>FORMULAIRE D'INSCRIPTION</h1>
     <h2>Renseigner les éléments ci-dessous</h2>
@@ -5,21 +7,21 @@
   <p class ="">Pseudo</p>
   <mat-form-field appearance="fill">
     <mat-label>Pseudo</mat-label>
-    <input matInput>
+    <input matInput name='pseudo' [(ngModel)]="userJSON.pseudo" >
   </mat-form-field>
   
   <br> <!-- Mauvaise pratique -->
 
   <mat-form-field appearance="fill">
     <mat-label>Confirmer Pseudo</mat-label>
-    <input matInput>
+    <input matInput >
   </mat-form-field>
   
   <br> <!-- Mauvaise pratique -->
 
 <mat-form-field appearance="fill">
     <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
+    <input matInput [type]="hide ? 'password' : 'text'" name='pwd' [(ngModel)]="userJSON.pwd">
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
@@ -39,17 +41,17 @@
 
 <br> <!--Très Mauvaise pratique -->
 
-<div class="example-container">
+<div>
     <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-label>Enter your email</mat-label >
+      <input matInput placeholder="pat@example.com"  [formControl]="email"  required>
       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   </div>
 
   <br> <!-- Très Mauvaise pratique -->
 
-  <div class="example-container">
+  <div >
     <mat-form-field appearance="fill">
       <mat-label>Confirm your email</mat-label>
       <input matInput placeholder="pat@example.com" [formControl]="email" required>
@@ -59,10 +61,10 @@
 <br><br> <!-- Très Mauvaise pratique -->
 
 
-
-
 <div class="">
     <form onsubmit="">
-      <input type="submit" id='submit' value='Valider' >       
+      <input type="submit" id='submit' value='Valider' (click)="onSubmit()">       
     </form>
 </div> 
+
+</form>
