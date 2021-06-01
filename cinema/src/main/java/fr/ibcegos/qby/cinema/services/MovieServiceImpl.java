@@ -7,19 +7,26 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
-import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
+import fr.ibcegos.qby.cinema.beans.Session;
+import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
 import fr.ibcegos.qby.cinema.daos.MovieDAO;
+import fr.ibcegos.qby.cinema.daos.SessionDAO;
 
 @Service
+@Transactional
 public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	MovieDAO dao;
-	
-	
+	@Autowired
+	CommentaryDAO codao;
+	@Autowired
+	SessionDAO sedao;
+
 	//////////
-	//CREATE//
+	// CREATE//
 	//////////
 	@Override
 	@Transactional
@@ -27,9 +34,8 @@ public class MovieServiceImpl implements MovieService {
 		dao.save(movie);
 	}
 
-	
 	//////////
-	// GET  //
+	// GET //
 	//////////
 	@Override
 	public Movie getMovieById(Integer id_Movie) {
@@ -41,9 +47,8 @@ public class MovieServiceImpl implements MovieService {
 		return (List<Movie>) dao.findAll();
 	}
 
-	
 	//////////
-	//UPDATE//
+	// UPDATE//
 	//////////
 	@Override
 	@Transactional
@@ -52,18 +57,34 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	//////////
-	//DELETE//
+	// DELETE//
 	//////////
 	@Override
 	@Transactional
 	public void delete(Movie movie) {
+//		for (Session session : movie.getLstSessions()) {
+//			sedao.delete(session);
+//		}
+//		for (Commentary comment : movie.getLstCommentarys()) {
+//			codao.delete(comment);
+//		}
 		dao.delete(movie);
 	}
 
 	@Override
 	@Transactional
 	public void deleteById(Integer id_Movie) {
-		dao.deleteById(id_Movie);
+		Movie movie = dao.findById(id_Movie).orElse(null);
+		if (movie != null) {
+//			for (Session session : movie.getLstSessions()) {
+//				System.out.println(movie.getLstSessions().size());
+//				sedao.delete(session);
+//			}
+//			for (Commentary comment : movie.getLstCommentarys()) {
+//				codao.delete(comment);
+//			}
+			dao.delete(movie);
+		}
 	}
 
 }

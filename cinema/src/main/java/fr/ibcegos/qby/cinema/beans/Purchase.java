@@ -37,10 +37,10 @@ public class Purchase {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_product", referencedColumnName = "id")
+	@JoinColumn(name = "id_product")
 	private Product idProduct;
 	@ManyToOne
-	@JoinColumn(name = "id_user", referencedColumnName = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDateTime date;

@@ -38,21 +38,21 @@ public class Seat {
 	private Boolean free;
 
 	@ManyToOne
-	@JoinColumn(name = "id_cinema", referencedColumnName = "id")
-	private CinemaRoom idCinema;
+	@JoinColumn(name = "id_cinema")
+	private CinemaRoom idCinemaRoom;
 
 	public Seat(Integer seatNumber, String rowName, Boolean free, CinemaRoom idCinema) {
 		super();
 		this.seatNumber = seatNumber;
 		this.rowName = rowName;
 		this.free = free;
-		this.idCinema = idCinema;
+		this.idCinemaRoom = idCinema;
 	}
 
 	@Override
 	public String toString() {
 		return "Seat [id=" + id + ", seatNumber=" + seatNumber + ", rowName=" + rowName + ", free=" + free
-				+ ", idCinema=" + idCinema.getId() + "]";
+				+ ", idCinema=" + idCinemaRoom.getId() + "]";
 	}
 
 }

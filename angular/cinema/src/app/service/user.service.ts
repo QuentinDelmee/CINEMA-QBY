@@ -26,8 +26,11 @@ export class UserService {
     return this.http.post<User>((this.userUrl+"/login"), user);
   }
 
-  public delete(id:number) {
-    return this.http.delete<User>(this.userUrl+ "/"+ id);
-    //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
+  //Voir Quentin pour vérifier utilité de faire la condition dans le service à place Ts
+  public deleteById(id:number) {
+    
+      return this.http.delete<User>(this.userUrl+ "/"+ id);
+    
+    
   }
 }

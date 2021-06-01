@@ -37,23 +37,23 @@ public class User {
 	private String pseudo;
 	private String pwd;
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_person", referencedColumnName = "id")
+	@JoinColumn(name = "id_person")
 	private Person idPerson;
 
 	@ManyToOne
-	@JoinColumn(name = "id_security_level", referencedColumnName = "id")
+	@JoinColumn(name = "id_security_level")
 	private SecurityLevel idSecurityLevel;
 
-	@OneToMany(targetEntity = Opinion.class, mappedBy = "id")
+	@OneToMany(targetEntity = Opinion.class, mappedBy = "idUser")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 
-	@OneToMany(targetEntity = Commentary.class, mappedBy = "id")
+	@OneToMany(targetEntity = Commentary.class, mappedBy = "idUser")
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 
-	@OneToMany(targetEntity = Purchase.class, mappedBy = "id")
+	@OneToMany(targetEntity = Purchase.class, mappedBy = "idUser")
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 
-	@OneToMany(targetEntity = Reservation.class, mappedBy = "id")
+	@OneToMany(targetEntity = Reservation.class, mappedBy = "idUser")
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
 
 	public User(String pseudo, String pwd, Person idPerson, SecurityLevel idSecurityLevel) {

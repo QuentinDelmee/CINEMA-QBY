@@ -534,14 +534,15 @@ public class DemoData {
 	@EventListener
 	public void appReadyBasic(ApplicationReadyEvent event) {
 
-		sldao.save(new SecurityLevel("NDS Client, accès aux utilisations basiques de réservation et achats."));
-		sldao.save(new SecurityLevel(
+		sldao.save(new SecurityLevel("Client","NDS Client, accès aux utilisations basiques de réservation et achats."));
+		sldao.save(new SecurityLevel("VIP","NDS Client Premium, accès aux utilisations premium de réservation et achats."));
+		sldao.save(new SecurityLevel("Employee",
 				"NDS Employé, accès aux utilisations basiques, de ventes et de modifications clients."));
-		sldao.save(new SecurityLevel(
+		sldao.save(new SecurityLevel("RH",
 				"NDS RH, accès aux utilisations basiques, ajout et suppression d\'employés de NDS 2,3,4."));
-		sldao.save(new SecurityLevel(
+		sldao.save(new SecurityLevel("Moderator",
 				"NDS Modérateur, accès aux utilisations basiques, de ventes et de modifications clients, employé et RH."));
-		sldao.save(new SecurityLevel("NDS Administrateur, accès total."));
+		sldao.save(new SecurityLevel("Adminstrator","NDS Administrateur, accès total."));
 
 		mdao.save(new Movie("Nadia, butterfly", "Nadia, butterfly", 0, 2021, LocalTime.of(1, 46, 00, 00), "Drame", 5.00, "https://m.media-amazon.com/images/M/MV5BNGFkMDlhZTMtOWU5Zi00YTFmLTkzNTktM2FkYTUzZmU3ZjljXkEyXkFqcGdeQXVyMjUwNDA4OTk@._V1_SX300.jpg"
 				,"Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l\'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision..."));
@@ -650,9 +651,9 @@ public class DemoData {
 //			pedao.save(tempPerson);
 		}
 
-		List<CinemaRoom> cineRoom = (List<CinemaRoom>) crdao.findAll();
+		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll();
 
-		for (CinemaRoom cinemaRoom : cineRoom) {
+		for (CinemaRoom cinemaRoom : allRooms) {
 			int tempSize = cinemaRoom.getNbSeats() / 32;
 			int tempRank = 32;
 
@@ -663,32 +664,46 @@ public class DemoData {
 				}
 			}
 		}
-
+		
+		
 		List<User> allUsers = (List<User>) udao.findAll();
 		List<Movie> allMovies = (List<Movie>) mdao.findAll();
-		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll();
 		List<Product> allProducts = (List<Product>) prdao.findAll();
 		List<Seat> allSeats = (List<Seat>) seadao.findAll();
-
-		for (int i = 0; i < 10; ++i) {
-			String tempC = comments[rand.nextInt(comments.length)];
+		
+		for (CinemaRoom cinemaRoom : allRooms) {
+			
 			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
-			Movie tempM = allMovies.get(rand.nextInt(allMovies.size()));
-			CinemaRoom tempCR = allRooms.get(rand.nextInt(allRooms.size()));
 			String tempP = proprete[rand.nextInt(proprete.length)];
-			Product tempProduct = allProducts.get(rand.nextInt(allProducts.size()));
-			LocalDateTime ldt = LocalDateTime.of(randomDate(), LocalTime.of(0, 0));
-			Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size()));
-			int tempQ = rand.nextInt(20);
-			int tempTC = rand.nextInt(20);
-
-			cdao.save(new Commentary(rand.nextInt(5), tempC, tempU, tempM));
-			odao.save(new Opinion(tempCR, tempU, rand.nextInt(5), tempP));
-			pudao.save(new Purchase(tempProduct, tempU, ldt, tempQ, tempTC));
-
-			rdao.save(new Reservation(tempU, tempSeat, ldt));
-			sesdao.save(new Session(tempCR, tempM, ldt, tempCR.getNbSeats()));
+			odao.save(new Opinion(cinemaRoom, tempU, rand.nextInt(5), tempP));
+			
+			Movie tempM = allMovies.get(rand.nextInt(allMovies.size()));
+			for( int i = 8 ; i < 22 ; i = i+3)
+			{
+				LocalDateTime ldt = LocalDateTime.of(LocalDate.now(),LocalTime.of(i,0)) ;
+				sesdao.save(new Session(cinemaRoom, tempM, ldt, cinemaRoom.getNbSeats()));
+				Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size()));
+				rdao.save(new Reservation(tempU, tempSeat, ldt));
+			}
+			
+			
 		}
 
+		
+		
+		for (Movie movie : allMovies) {
+			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
+			String tempC = comments[rand.nextInt(comments.length)];
+			cdao.save(new Commentary(rand.nextInt(5), tempC, tempU, movie));
+		}
+		
+		for (Product prod : allProducts)
+		{
+			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
+			LocalDateTime ldt = LocalDateTime.of(randomDate(), LocalTime.of(0, 0));
+			int tempQ = rand.nextInt(20);
+			int tempTC = rand.nextInt(20);
+			pudao.save(new Purchase(prod, tempU, ldt, tempQ, tempTC));
+		}
 	}
 }
