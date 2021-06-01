@@ -22,6 +22,7 @@ export class UpdateMovieComponent implements OnInit {
   onSubmit(): void {
     if (confirm("Are you sure you want to update this Movie ?")) {
       this.movieService.save(this.selectedMovie).subscribe();
+      this.ngOnInit() ;
     }
     else {
       console.log("Update Movie ABORTED");

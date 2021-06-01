@@ -7,13 +7,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
@@ -48,9 +48,11 @@ public class Movie {
 	@Column(columnDefinition = "text")
 	private String movieDescription;
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Commentary.class, mappedBy = "idMovie", cascade = CascadeType.ALL)
 	private List<Commentary> lstCommentarys = new ArrayList<>();
-
+	
+	@JsonIgnore
 	@OneToMany(targetEntity = Session.class, mappedBy = "idMovie", cascade = CascadeType.ALL)
 	private List<Session> lstSessions = new ArrayList<>();
 

@@ -1,4 +1,6 @@
-import { analyzeAndValidateNgModules } from "@angular/compiler";
+import { Session } from "./session";
+import { Commentary } from "./commentary";
+
 
 export class Movie {
     id:number ;

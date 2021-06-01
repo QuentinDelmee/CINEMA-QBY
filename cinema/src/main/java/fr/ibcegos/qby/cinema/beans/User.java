@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
@@ -44,15 +45,19 @@ public class User {
 	@JoinColumn(name = "id_security_level")
 	private SecurityLevel idSecurityLevel;
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Opinion.class, mappedBy = "idUser")
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Commentary.class, mappedBy = "idUser")
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Purchase.class, mappedBy = "idUser")
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Reservation.class, mappedBy = "idUser")
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
 

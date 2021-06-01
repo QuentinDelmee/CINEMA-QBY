@@ -1,14 +1,15 @@
 <p>movie works!</p>
-<div>
-    <mat-tab-group>
-        <mat-tab label="Movie">
 
-            <mat-grid-list cols="{{nbColumn}}" rowHeight="600px" gutterSize="{{nbGutterSize}}px" >
+<div>
+    <mat-tab-group >
+        <mat-tab label="Movie" (click)="ngOnInit()">
+
+            <mat-grid-list cols="{{nbColumn}}" rowHeight="512px" gutterSize="{{nbGutterSize}}px" >
 
                 <mat-grid-tile *ngFor="let movie of movies" colspan="{{nbColSpan}}">
-
+                    
                     <mat-card >
-                        <img mat-card-image src="{{movie.imageUrl}}" alt="{{movie.title}}" >
+                        <img mat-card-image src="{{image(movie)}}" alt="{{movie.title}}" >
                         <mat-card-footer>
                             <mat-card-title>{{movie.title}}</mat-card-title>
                             <mat-card-subtitle>Genre: {{movie.movieGenre}}</mat-card-subtitle>

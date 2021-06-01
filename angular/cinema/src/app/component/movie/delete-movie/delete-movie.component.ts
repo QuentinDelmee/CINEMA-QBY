@@ -23,6 +23,7 @@ export class DeleteMovieComponent implements OnInit {
     if (confirm("Are you sure you want to delete this Movie ?")) {
       console.log(this.selectedMovie) ;
       this.movieService.delete(this.selectedMovie.id).subscribe() ;
+      this.ngOnInit() ;
     }
     else {
       console.log("Delete Movie ABORTED");

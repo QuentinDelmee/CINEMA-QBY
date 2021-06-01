@@ -5,8 +5,10 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Pseudo</th>
                         <th>Person</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -15,7 +17,7 @@
                         <td>{{ user.pseudo}}#{{user.id}}</td>
                         <td>{{ user.idPerson.familyName}} {{ user.idPerson.firstName }}</td>
                         <td>
-                            <button (click)="deleteByIdUser(i)">
+                            <button (click)="deleteByIdUser(user.id)">
                                 <i> Delete </i>
                             </button>
                             <button>
