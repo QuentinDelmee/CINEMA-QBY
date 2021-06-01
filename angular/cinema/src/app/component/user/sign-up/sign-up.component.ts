@@ -10,7 +10,7 @@ import { User } from '../../../class/user';
 export class SignUpComponent implements OnInit {
   hide = true;
   
-  userJSON: any = {};
+  userJSON: any = { "idPerson": {} };
 
   constructor(private userService: UserService) { }
 
@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   }
 
   
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email:FormControl = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -31,6 +31,7 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(): void {
     console.log("TEST");
+    this.userJSON.idPerson.email = this.email.value;
     console.log(this.userJSON);
     if (confirm("Are you sure you want to create this User ?")) {
       let toPost: User = new User(this.userJSON);
