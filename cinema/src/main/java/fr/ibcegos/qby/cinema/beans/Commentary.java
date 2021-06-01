@@ -1,6 +1,7 @@
 package fr.ibcegos.qby.cinema.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,11 +34,11 @@ public class Commentary {
 	private String commentary;
 
 	@ManyToOne
-	@JoinColumn(name = "id_user", referencedColumnName = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
 
 	@ManyToOne
-	@JoinColumn(name = "id_movie", referencedColumnName = "id")
+	@JoinColumn(name = "id_movie")
 	private Movie idMovie;
 
 	public Commentary(Integer rating, String commentary, User idUser, Movie idMovie) {
