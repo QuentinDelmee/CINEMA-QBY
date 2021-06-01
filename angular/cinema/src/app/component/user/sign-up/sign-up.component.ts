@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-
+import { UserService } from 'src/app/service/user.service';
+import { User } from '../../../class/user';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -8,7 +9,11 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
   hide = true;
-  constructor() { }
+  
+  userJSON: any = {};
+
+  constructor(private userService: UserService) { }
+
 
   ngOnInit(): void {
   }
@@ -23,6 +28,21 @@ export class SignUpComponent implements OnInit {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+
+  onSubmit(): void {
+    console.log("TEST");
+    console.log(this.userJSON);
+    if (confirm("Are you sure you want to create this User ?")) {
+      let toPost: User = new User(this.userJSON);
+      this.userService.save(toPost).subscribe();
+    }
+    else {
+      console.log("New User ABORTED");
+    }
+
+    this.userJSON = {} ;
+  }
+
 
 
 
