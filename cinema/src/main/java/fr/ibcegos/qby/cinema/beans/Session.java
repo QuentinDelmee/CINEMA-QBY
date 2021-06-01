@@ -3,6 +3,7 @@ package fr.ibcegos.qby.cinema.beans;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,8 +37,8 @@ public class Session {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "id_cinema")
-	private CinemaRoom idCinema;
+	@JoinColumn(name = "id_cinema_room")
+	private CinemaRoom idCinemaRoom;
 	@ManyToOne
 	@JoinColumn(name = "id_movie")
 	private Movie idMovie;
@@ -55,7 +56,7 @@ public class Session {
 	 */
 	public Session(CinemaRoom idCinema, Movie idMovie, LocalDateTime idDate, Integer seatsLeft) {
 		super();
-		this.idCinema = idCinema;
+		this.idCinemaRoom = idCinema;
 		this.idMovie = idMovie;
 		this.idDate = idDate;
 		this.seatsLeft = seatsLeft;
@@ -66,7 +67,7 @@ public class Session {
 	 */
 	@Override
 	public String toString() {
-		return "Session [id=" + id + ", idCinema=" + idCinema.getId() + ", idMovie=" + idMovie.getId() + ", idDate="
+		return "Session [id=" + id + ", idCinema=" + idCinemaRoom.getId() + ", idMovie=" + idMovie.getId() + ", idDate="
 				+ idDate + ", seatsLeft=" + seatsLeft + "]";
 	}
 

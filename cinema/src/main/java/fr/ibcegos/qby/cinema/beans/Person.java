@@ -39,7 +39,7 @@ public class Person {
 	private String email;
 
 	@OneToOne(mappedBy= "idPerson")
-	@JoinColumn(name = "id_user ", referencedColumnName = "id")
+	@JoinColumn(name = "id_user ")
 	private User idUser;
 
 	public Person(String familyName, String firstName, LocalDate birthdate, String genre, String city, String email) {

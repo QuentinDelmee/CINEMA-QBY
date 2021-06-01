@@ -32,10 +32,10 @@ public class Opinion {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_cinema", referencedColumnName = "id")
-	private CinemaRoom idCinema;
+	@JoinColumn(name = "id_cinema_room")
+	private CinemaRoom idCinemaRoom;
 	@ManyToOne
-	@JoinColumn(name = "id_user", referencedColumnName = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
 
 	private Integer rating;
@@ -50,7 +50,7 @@ public class Opinion {
 	 * @param cleanlyness User's comment.
 	 */
 	public Opinion(CinemaRoom idCinema, User idUser, Integer rating, String cleanlyness) {
-		this.idCinema = idCinema;
+		this.idCinemaRoom = idCinema;
 		this.idUser = idUser;
 		this.rating = rating;
 		this.cleanlyness = cleanlyness;
@@ -61,7 +61,7 @@ public class Opinion {
 	 */
 	@Override
 	public String toString() {
-		return "Opinion [id=" + id + ", idCinema=" + idCinema.getId() + ", idUser=" + idUser.getId() + ", rating="
+		return "Opinion [id=" + id + ", idCinema=" + idCinemaRoom.getId() + ", idUser=" + idUser.getId() + ", rating="
 				+ rating + ", cleanlyness=" + cleanlyness + "]";
 	}
 

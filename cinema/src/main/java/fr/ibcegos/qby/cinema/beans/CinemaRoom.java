@@ -3,13 +3,13 @@ package fr.ibcegos.qby.cinema.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -38,13 +38,13 @@ public class CinemaRoom {
 	private String screenSize;
 	private Integer nbSeats;
 
-	@OneToMany(targetEntity = Seat.class, mappedBy = "id")
+	@OneToMany(targetEntity = Seat.class, mappedBy = "idCinemaRoom", cascade = CascadeType.ALL)
 	private List<Seat> lstSeats = new ArrayList<>();
 
-	@OneToMany(targetEntity = Session.class, mappedBy = "id")
+	@OneToMany(targetEntity = Session.class, mappedBy = "idCinemaRoom", cascade = CascadeType.ALL)
 	private List<Session> lstSessions = new ArrayList<>();
 
-	@OneToMany(targetEntity = Opinion.class, mappedBy = "id")
+	@OneToMany(targetEntity = Opinion.class, mappedBy = "idCinemaRoom", cascade = CascadeType.ALL)
 	private List<Opinion> lstOpinions = new ArrayList<>();
 
 	public CinemaRoom(String roomName, Integer roomLevel, String screenSize, Integer nbSeats) {

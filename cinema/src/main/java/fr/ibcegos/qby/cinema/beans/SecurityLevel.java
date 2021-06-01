@@ -30,19 +30,21 @@ public class SecurityLevel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String roles;
+	private String role;
+	private String description;
 
-	@OneToMany(targetEntity = User.class, mappedBy = "id")
+	@OneToMany(targetEntity = User.class, mappedBy = "idSecurityLevel")
 	private List<User> allUsers = new ArrayList<User>();
 
-	public SecurityLevel(String roles) {
+	public SecurityLevel(String roles, String description) {
 		super();
-		this.roles = roles;
+		this.role = roles;
+		this.description = description ;
 	}
 
 	@Override
 	public String toString() {
-		return "SecurityLevel [id=" + id + ", roles=" + roles + "]";
+		return "SecurityLevel [id=" + id + ", role=" + role + ", description=" + description + "]";
 	}
 
 	// Méthode toString pour accéder aux valeurs
