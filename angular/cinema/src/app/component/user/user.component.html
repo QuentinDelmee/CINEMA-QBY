@@ -10,12 +10,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of users;let i = index">
-                        <td>{{ i }}</td>
+                    <tr *ngFor="let user of users;">
                         <td>{{ user.pseudo}}#{{user.id}}</td>
                         <td>{{ user.idPerson.familyName}} {{ user.idPerson.firstName }}</td>
                         <td>
-                            <button (click)="deleteByIdUser(i)">
+                            <button (click)="deleteByIdUser(user)">
                                 <i> Delete </i>
                             </button>
                             <button>

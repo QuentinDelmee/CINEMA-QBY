@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService{
 	//CREATE//
 	//////////
 	@Override
+	@Transactional
 	public void create(User user) {
 		if(user.getIdPerson()==null) {
 		user.setIdPerson(new Person());}
@@ -48,6 +49,7 @@ public class UserServiceImpl implements UserService{
 	//UPDATE//
 	//////////
 	@Override
+	@Transactional
 	public void update(User user) {
 		userDAO.save(user);
 	}
@@ -56,11 +58,13 @@ public class UserServiceImpl implements UserService{
 	//DELETE//
 	//////////
 	@Override
+	@Transactional
 	public void delete(User user) {
 		userDAO.deleteAll();	
 	}
 
 	@Override
+	@Transactional
 	public void deleteById(Integer id_user) {
 		userDAO.deleteById(id_user);
 		

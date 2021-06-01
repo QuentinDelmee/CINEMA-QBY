@@ -28,8 +28,8 @@ export class UserService {
 
   //Voir Quentin pour vérifier utilité de faire la condition dans le service à place Ts
   public deleteById(id:number) {
-    
-      return this.http.delete<User>(this.userUrl+ "/"+ id);
+      console.log('Coté service l id vaut :', id)
+      return this.http.delete<User>(this.userUrl+ "/"+ id).subscribe();
     
     
   }

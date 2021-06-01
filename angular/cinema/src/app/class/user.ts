@@ -1,8 +1,11 @@
+import {Person} from '../class/person'
+
 export class User {
     id:number;
     pseudo:string;
     pwd:string;
-    idPerson:any;
+    idPerson:Person;
+    idSecurityLevel:number;
 
 
     constructor(userJSON:any){
@@ -10,6 +13,7 @@ export class User {
         this.pseudo = userJSON.pseudo;
         this.pwd = userJSON.pwd;
         this.idPerson = userJSON.idPerson;
+        this.idSecurityLevel = userJSON.idSecurityLevel;
 
     }
 
