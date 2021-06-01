@@ -2,12 +2,34 @@
 <div>
     <mat-tab-group>
         <mat-tab label="Movie">
-            <div *ngFor="let movie of movies">{{movie | json}}</div>
+
+            <mat-grid-list cols="{{nbColumn}}" rowHeight="600px" gutterSize="{{nbGutterSize}}px" >
+
+                <mat-grid-tile *ngFor="let movie of movies" colspan="{{nbColSpan}}">
+
+                    <mat-card >
+                        <img mat-card-image src="{{movie.imageUrl}}" alt="{{movie.title}}" >
+                        <mat-card-footer>
+                            <mat-card-title>{{movie.title}}</mat-card-title>
+                            <mat-card-subtitle>Genre: {{movie.movieGenre}}</mat-card-subtitle>
+                        </mat-card-footer>
+
+                      </mat-card>
 
 
-            <mat-button-toggle (click)="post()">CLICK TO TEST</mat-button-toggle>
+
+                </mat-grid-tile>
+            </mat-grid-list>
         </mat-tab>
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 531265e02d19fcb38eed5ada2e4528281e75f26b
         <mat-tab label="Create Movie">
             <app-create-movie></app-create-movie>
         </mat-tab>

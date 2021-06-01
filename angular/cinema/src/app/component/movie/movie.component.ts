@@ -11,6 +11,10 @@ export class MovieComponent implements OnInit {
 
   movies: Movie[] = [];
 
+  nbColumn: number = 12 ;
+  nbColSpan: number = 3 ;
+  nbGutterSize: number = 12 ;
+
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
