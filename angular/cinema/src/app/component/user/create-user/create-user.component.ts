@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../../class/user'
-import {UserService} from '../../../service/user.service'
+import { User } from '../../../class/user'
+import { UserService } from '../../../service/user.service'
 
-import {SecurityLevel} from '../../../class/security-level'
-import {SecurityLevelService} from '../../../service/security-level.service'
+import { SecurityLevel } from '../../../class/security-level'
+import { SecurityLevelService } from '../../../service/security-level.service'
 
 @Component({
   selector: 'app-create-user',
@@ -21,11 +21,14 @@ export class CreateUserComponent implements OnInit {
   constructor(private userService: UserService, private securityLevelService: SecurityLevelService) { }
 
   ngOnInit(): void {
-    /*this.securityLevelService.findAll().subscribe(data => { this.accountRoles = data; 
-    });*/
+    this.securityLevelService.findAll().subscribe(data => {
+      this.accountRoles = data;
+    });
+
+    console.log(this.accountRoles) ;
   }
-  
-  
+
+
   onSubmit(): void {
 
     console.log(this.userJSON);
@@ -41,8 +44,8 @@ export class CreateUserComponent implements OnInit {
       console.log("New User ABORTED");
     }
 
-    this.userJSON = {} ;
-    
+    this.userJSON = {};
+
   }
 
 }

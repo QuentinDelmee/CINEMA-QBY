@@ -1,30 +1,20 @@
-<<<<<<< HEAD
-import {Person} from '../class/person'
-=======
 import { Person } from "./person";
->>>>>>> 7d4de256010cffdcb63aafbf2d4c16f9b56ed8d7
+import { SecurityLevel } from "./security-level";
 
 export class User {
     id:number;
     pseudo:string;
     pwd:string;
     idPerson:Person;
-<<<<<<< HEAD
-    idSecurityLevel:number;
-=======
->>>>>>> 7d4de256010cffdcb63aafbf2d4c16f9b56ed8d7
+    idSecurityLevel:SecurityLevel;
 
 
     constructor(userJSON:any){
         this.id = userJSON.id;
         this.pseudo = userJSON.pseudo;
         this.pwd = userJSON.pwd;
-<<<<<<< HEAD
-        this.idPerson = userJSON.idPerson;
-        this.idSecurityLevel = userJSON.idSecurityLevel;
-=======
         this.idPerson = new Person(userJSON.idPerson);
->>>>>>> 7d4de256010cffdcb63aafbf2d4c16f9b56ed8d7
+        this.idSecurityLevel = new SecurityLevel(userJSON.idSecurityLevel);
 
     }
 

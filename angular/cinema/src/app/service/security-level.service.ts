@@ -11,7 +11,7 @@ export class SecurityLevelService {
   private securityLevelUrl: string;
 
   constructor(private http: HttpClient) {
-    this.securityLevelUrl = 'http://localhost:8080/REST/securitylevel';
+    this.securityLevelUrl = 'http://localhost:8080/REST/securityLevel' ;
   }
 
   public findAll(): Observable<SecurityLevel[]> {

@@ -1,11 +1,13 @@
 export class SecurityLevel {
 
     id:number;
-    roles:string;
+    role:string;
+    description:string;
     // private List<User> allUsers = new ArrayList<User>();
 
     constructor(securityLevelJSON:any){
         this.id = securityLevelJSON.id;
-        this.roles = securityLevelJSON.roles;
+        this.role = securityLevelJSON.role;
+        this.description = securityLevelJSON.description ;
     }
 }
