@@ -11,6 +11,7 @@ import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.daos.SeatDAO;
 
 @Service
+@Transactional
 public class SeatServiceImpl implements SeatService{
 	
 	@Autowired

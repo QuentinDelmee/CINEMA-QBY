@@ -11,6 +11,7 @@ import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
 
 @Service
+@Transactional
 public class CommentaryServiceImpl implements CommentaryService {
 	
 	@Autowired

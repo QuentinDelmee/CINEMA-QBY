@@ -11,7 +11,7 @@ export class UpdateTimeTableComponent implements OnInit {
 
   constructor(private sessionService: SessionService) { }
 
-  selectedSession: Session = new Session({});
+  selectedSession: Session = new Session({ "idCinema":{}, "idMovie":{} }) ;
 
   sessions: Session[] = [];
 

@@ -1,7 +1,10 @@
+import { CinemaRoom } from "./cinema-room";
+import { Movie } from "./movie";
+
 export class Session {
     id:number;
-    idCinema:string;
-    idMovie:string;
+    idCinema:CinemaRoom;
+    idMovie:Movie;
     idDate:string;
     seatsLeft:string;
     date:string;
@@ -9,8 +12,8 @@ export class Session {
 
     constructor(sessionJSON:any){
         this.id = sessionJSON.id;
-		this.idCinema = sessionJSON.idCinema;
-		this.idMovie = sessionJSON.idMovie;
+		this.idCinema = new CinemaRoom(sessionJSON.idCinema);
+		this.idMovie = new Movie(sessionJSON.idMovie);
         this.date = sessionJSON.date ;
         this.time = sessionJSON.time ;
 		this.idDate = this.date + "T" + this.time ;

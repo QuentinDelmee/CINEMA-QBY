@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Movie } from '../class/movie';
 import { Observable } from 'rxjs';
+import { Session } from '../class/session';
+import { Commentary } from '../class/commentary';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +38,15 @@ export class MovieService {
       movie.imageUrl = response.Poster ;
       this.save(movie).subscribe() ;
     })
+  }
+
+  public findAllSessions(id:number)
+  {
+    return this.http.get<Session[]>(this.moviesUrl+"/"+id+"/sessions");
+  }
+
+  public findAllCommentarys(id:number)
+  {
+    return this.http.get<Commentary[]>(this.moviesUrl+"/"+id+"/commentarys");
   }
 }

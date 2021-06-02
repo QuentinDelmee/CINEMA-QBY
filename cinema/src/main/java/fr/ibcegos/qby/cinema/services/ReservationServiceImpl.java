@@ -2,6 +2,8 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.daos.ReservationDAO;
 
 @Service
+@Transactional
 public class ReservationServiceImpl implements ReservationService{
 	@Autowired
 	UserService uservice ;

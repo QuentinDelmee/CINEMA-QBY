@@ -3,6 +3,7 @@ package fr.ibcegos.qby.cinema.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,7 +35,7 @@ public class SecurityLevel {
 	private String description;
 
 	@JsonIgnore
-	@OneToMany(targetEntity = User.class, mappedBy = "idSecurityLevel")
+	@OneToMany(targetEntity = User.class, mappedBy = "idSecurityLevel", cascade=CascadeType.ALL )
 	private List<User> allUsers = new ArrayList<User>();
 
 	public SecurityLevel(String roles, String description) {

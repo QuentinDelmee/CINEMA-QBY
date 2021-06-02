@@ -14,6 +14,7 @@ import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.SeatDAO;
 
 @Service
+@Transactional
 public class CinemaRoomImpl implements CinemaRoomService{
 	
 	@Autowired

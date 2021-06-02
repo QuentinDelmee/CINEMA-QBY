@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CinemaRoom } from 'src/app/class/cinema-room';
+import { Movie } from 'src/app/class/movie';
 import { Session } from 'src/app/class/session';
+import { CinemaRoomService } from 'src/app/service/cinema-room.service';
+import { MovieService } from 'src/app/service/movie.service';
 import { SessionService } from 'src/app/service/session.service';
 
 @Component({
@@ -9,17 +13,20 @@ import { SessionService } from 'src/app/service/session.service';
 })
 export class CreateTimeTableComponent implements OnInit {
 
-  sessionJSON: any = {};
+  sessionJSON: any = { "idCinema":{}, "idMovie":{} };
 
-  constructor(private sessionService: SessionService) { }
+  allRoom: CinemaRoom[] = [];
+  allMovie: Movie[] = [] ;
+
+  constructor(private sessionService: SessionService, private movieService: MovieService, private crService: CinemaRoomService) { }
 
   ngOnInit(): void {
+    this.movieService.findAll().subscribe(data => { this.allMovie = data; });
+    this.crService.findAll().subscribe(data => { this.allRoom = data; });
   }
 
   onSubmit(): void {
-    this.sessionJSON.idUser = { "id":this.sessionJSON.idUser } ;
-    this.sessionJSON.idSeat = { "id":this.sessionJSON.idSeat } ;
-    
+
     if (confirm("Are you sure you want to create this Session ?")) {
       let toPost: Session = new Session(this.sessionJSON);
       this.sessionService.save(toPost).subscribe();

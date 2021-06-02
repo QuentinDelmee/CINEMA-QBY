@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -29,11 +27,11 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String productName;
-	private double price;
+	private Double price;
 	private String category;
 	private String productDescription;
 
-	public Product(String productName, double price, String category, String productDescription) {
+	public Product(String productName, Double price, String category, String productDescription) {
 
 		this.productName = productName;
 		this.price = price;

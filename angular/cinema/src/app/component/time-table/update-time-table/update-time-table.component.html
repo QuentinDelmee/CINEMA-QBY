@@ -12,13 +12,13 @@
     <div>
         <mat-form-field appearance="fill">
             <mat-label>CINEMAROOM ID</mat-label>
-            <input matInput name='idCinema' [(ngModel)]="selectedSession.idCinema" required>
+            <input matInput name='idCinema' [(ngModel)]="selectedSession.idCinema.roomName" required>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field appearance="fill">
             <mat-label>MOVIE ID</mat-label>
-            <input matInput name='idMovie' [(ngModel)]="selectedSession.idMovie">
+            <input matInput name='idMovie' [(ngModel)]="selectedSession.idMovie.title" required>
         </mat-form-field>
     </div>
     <div>
