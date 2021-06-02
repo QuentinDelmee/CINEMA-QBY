@@ -3,7 +3,6 @@ package fr.ibcegos.qby.cinema.services;
 import java.util.List;
 
 import fr.ibcegos.qby.cinema.beans.Reservation;
-import fr.ibcegos.qby.cinema.beans.Reservation;
 
 /**
  * 

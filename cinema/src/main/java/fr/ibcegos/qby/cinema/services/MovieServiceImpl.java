@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
 import fr.ibcegos.qby.cinema.beans.Session;

@@ -2,7 +2,6 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
-import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.beans.Commentary;
 
 public interface CommentaryService {
