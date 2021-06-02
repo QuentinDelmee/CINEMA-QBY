@@ -17,17 +17,4 @@ export class User {
         this.idSecurityLevel = new SecurityLevel(userJSON.idSecurityLevel);
 
     }
-
-    // private Person idPerson;
-
-    // private SecurityLevel idSecurityLevel;
-
-    // private List<Opinion> myOpinions = new ArrayList<Opinion>();
-
-    // private List<Commentary> myCommentary = new ArrayList<Commentary>();
-
-    // private List<Purchase> myPurchase = new ArrayList<Purchase>();
-
-    // private List<Reservation> myReservation = new ArrayList<Reservation>();
-
 }

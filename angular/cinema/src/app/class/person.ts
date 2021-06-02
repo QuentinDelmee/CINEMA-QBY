@@ -22,7 +22,4 @@ export class Person {
 
 
 
-    
-
-    // private User idUser;
 }

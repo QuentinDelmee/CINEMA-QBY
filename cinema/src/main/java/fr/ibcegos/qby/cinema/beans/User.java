@@ -46,19 +46,19 @@ public class User {
 	private SecurityLevel idSecurityLevel;
 
 	@JsonIgnore
-	@OneToMany(targetEntity = Opinion.class, mappedBy = "idUser")
+	@OneToMany(targetEntity = Opinion.class, mappedBy = "idUser", cascade = CascadeType.ALL)
 	private List<Opinion> myOpinions = new ArrayList<Opinion>();
 
 	@JsonIgnore
-	@OneToMany(targetEntity = Commentary.class, mappedBy = "idUser")
+	@OneToMany(targetEntity = Commentary.class, mappedBy = "idUser", cascade = CascadeType.ALL)
 	private List<Commentary> myCommentary = new ArrayList<Commentary>();
 
 	@JsonIgnore
-	@OneToMany(targetEntity = Purchase.class, mappedBy = "idUser")
+	@OneToMany(targetEntity = Purchase.class, mappedBy = "idUser", cascade = CascadeType.ALL)
 	private List<Purchase> myPurchase = new ArrayList<Purchase>();
 
 	@JsonIgnore
-	@OneToMany(targetEntity = Reservation.class, mappedBy = "idUser")
+	@OneToMany(targetEntity = Reservation.class, mappedBy = "idUser", cascade = CascadeType.ALL)
 	private List<Reservation> myReservation = new ArrayList<Reservation>();
 
 	public User(String pseudo, String pwd, Person idPerson, SecurityLevel idSecurityLevel) {

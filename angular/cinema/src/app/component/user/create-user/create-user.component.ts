@@ -14,8 +14,9 @@ export class CreateUserComponent implements OnInit {
 
   accountRoles: SecurityLevel[] = [];
 
-  test = new SecurityLevel(1,);
-  userJSON: any = {};
+  userJSON: any = { "idPerson": {}, "idSecurityLevel": {} };
+
+
 
 
   constructor(private userService: UserService, private securityLevelService: SecurityLevelService) { }
@@ -24,21 +25,18 @@ export class CreateUserComponent implements OnInit {
     this.securityLevelService.findAll().subscribe(data => {
       this.accountRoles = data;
     });
-
-    console.log(this.accountRoles) ;
   }
 
 
   onSubmit(): void {
 
-    console.log(this.userJSON);
     if (confirm("Are you sure you want to create this User ?")) {
 
       //Affectation du json à l'objet user
       let toPost: User = new User(this.userJSON);
 
       //appel du service pour créer le user
-      this.userJSON.save(toPost).subscribe();
+      this.userService.save(toPost).subscribe();
     }
     else {
       console.log("New User ABORTED");
