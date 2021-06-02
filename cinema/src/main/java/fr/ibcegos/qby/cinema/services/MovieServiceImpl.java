@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
 import fr.ibcegos.qby.cinema.beans.Session;
@@ -85,6 +86,18 @@ public class MovieServiceImpl implements MovieService {
 //			}
 			dao.delete(movie);
 		}
+	}
+
+	@Override
+	public List<Commentary> findCommentaryMovie(Integer id_Movie) {
+		// TODO Auto-generated method stub
+		return dao.findById(id_Movie).orElse(new Movie()).getLstCommentarys() ;
+	}
+
+	@Override
+	public List<Session> findSessionMovie(Integer id_Movie) {
+		// TODO Auto-generated method stub
+		return dao.findById(id_Movie).orElse(new Movie()).getLstSessions() ;
 	}
 
 }

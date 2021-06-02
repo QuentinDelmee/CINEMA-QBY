@@ -3,6 +3,7 @@ package fr.ibcegos.qby.cinema.services;
 import java.util.List;
 
 import fr.ibcegos.qby.cinema.beans.SecurityLevel;
+import fr.ibcegos.qby.cinema.beans.User;
 
 public interface SecurityLevelService {
 	//////////
@@ -57,4 +58,7 @@ public interface SecurityLevelService {
 	 * @param iduser
 	 */
 	public void deleteById(Integer idsl);
+	
+	
+	public List<User> findUserSecurityLevel(Integer idsl) ;
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ibcegos.qby.cinema.beans.CinemaRoom;
+import fr.ibcegos.qby.cinema.beans.Opinion;
 import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.SeatDAO;
@@ -70,5 +71,21 @@ public class CinemaRoomImpl implements CinemaRoomService{
 	@Transactional
 	public void deleteById(Integer id_Cinema) {
 		dao.deleteById(id_Cinema);
+	}
+
+
+
+	@Override
+	public List<Seat> getSeatCinemaRoom(Integer id_Cinema) {
+		// TODO Auto-generated method stub
+		return dao.findById(id_Cinema).orElse(new CinemaRoom()).getLstSeats() ;
+	}
+
+
+
+	@Override
+	public List<Opinion> getOpinionCinemaRoom(Integer id_Cinema) {
+		// TODO Auto-generated method stub
+		return dao.findById(id_Cinema).orElse(new CinemaRoom()).getLstOpinions() ;
 	}
 }

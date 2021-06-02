@@ -69,4 +69,24 @@ public class UserController {
 		return verif;
 	}
 	
+	@GetMapping("/REST/user/{id}/opinions")
+	public void findSeatCinemaRoom(@PathVariable("id") Integer id) {
+		userService.getSeatCinemaRoom(id);
+	}
+	
+	@GetMapping("/REST/user/{id}/commentarys")
+	public void findOpinionCinemaRoom(@PathVariable("id") Integer id) {
+		userService.getSeatCinemaRoom(id);
+	}
+	
+	@GetMapping("/REST/user/{id}/reservations")
+	public void findSeatCinemaRoom(@PathVariable("id") Integer id) {
+		userService.getSeatCinemaRoom(id);
+	}
+	
+	@GetMapping("/REST/user/{id}/purchases")
+	public void findOpinionCinemaRoom(@PathVariable("id") Integer id) {
+		userService.getSeatCinemaRoom(id);
+	}
+	
 }

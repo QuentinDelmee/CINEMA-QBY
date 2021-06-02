@@ -3,6 +3,8 @@ package fr.ibcegos.qby.cinema.services;
 import java.util.List;
 
 import fr.ibcegos.qby.cinema.beans.CinemaRoom;
+import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.Seat;
 
 /**
  * Gestion des salles de cinemas
@@ -61,4 +63,8 @@ public interface CinemaRoomService {
 	 * @param id_Cinema
 	 */
 	public void deleteById(Integer id_Cinema);
+	
+	
+	public List<Seat> getSeatCinemaRoom(Integer id_Cinema);
+	public List<Opinion> getOpinionCinemaRoom(Integer id_Cinema);
 }

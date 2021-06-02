@@ -72,4 +72,14 @@ public class CinemaRoomController {
 		crservice.deleteById(id);
 	}
 	
+	
+	@GetMapping("/REST/cinemaroom/{id}/seats")
+	public void findSeatCinemaRoom(@PathVariable("id") Integer id) {
+		crservice.getSeatCinemaRoom(id);
+	}
+	
+	@GetMapping("/REST/cinemaroom/{id}/opinions")
+	public void findOpinionCinemaRoom(@PathVariable("id") Integer id) {
+		crservice.getSeatCinemaRoom(id);
+	}
 }

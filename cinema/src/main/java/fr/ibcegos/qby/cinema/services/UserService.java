@@ -2,6 +2,10 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
+import fr.ibcegos.qby.cinema.beans.Commentary;
+import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.User;
 
 
@@ -61,4 +65,9 @@ public interface UserService {
 
 
 	public boolean login(User user);
+	
+	public List<Opinion> findOpinionUser(Integer id_user);
+	public List<Commentary> findCommentaryUser(Integer id_user);
+	public List<Purchase> findPurchaseUser(Integer id_user);
+	public List<Reservation> findReservationUser(Integer id_user);
 }

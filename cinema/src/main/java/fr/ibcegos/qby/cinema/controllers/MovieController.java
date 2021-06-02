@@ -77,6 +77,16 @@ public class MovieController {
 	public void deleteMovie(@RequestBody Movie movie) {
 		mservice.delete(movie);
 	}
+	
+	@GetMapping("/REST/movie/{id}/commentarys")
+	public void findCommentarysMovie(@PathVariable("id") Integer id) {
+		mservice.findCommentaryMovie(id);
+	}
+	
+	@GetMapping("/REST/movie/{id}/sessions")
+	public void findSessionsMovie(@PathVariable("id") Integer id) {
+		mservice.findSessionMovie(id);
+	}
 
 
 }

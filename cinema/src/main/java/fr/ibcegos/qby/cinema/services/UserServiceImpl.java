@@ -7,7 +7,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.ibcegos.qby.cinema.beans.CinemaRoom;
+import fr.ibcegos.qby.cinema.beans.Commentary;
+import fr.ibcegos.qby.cinema.beans.Opinion;
 import fr.ibcegos.qby.cinema.beans.Person;
+import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.UserDAO;
 @Service
@@ -88,6 +93,34 @@ public class UserServiceImpl implements UserService{
 		else {verif = true; System.out.println("YES");}
 		
 		return verif;
+	}
+
+
+	@Override
+	public List<Opinion> findOpinionUser(Integer id_user) {
+		// TODO Auto-generated method stub
+		return userDAO.findById(id_user).orElse(new User()).getMyOpinions() ;
+	}
+
+
+	@Override
+	public List<Commentary> findCommentaryUser(Integer id_user) {
+		// TODO Auto-generated method stub
+		return userDAO.findById(id_user).orElse(new User()).getMyCommentary() ;
+	}
+
+
+	@Override
+	public List<Purchase> findPurchaseUser(Integer id_user) {
+		// TODO Auto-generated method stub
+		return userDAO.findById(id_user).orElse(new User()).getMyPurchase() ;
+	}
+
+
+	@Override
+	public List<Reservation> findReservationUser(Integer id_user) {
+		// TODO Auto-generated method stub
+		return userDAO.findById(id_user).orElse(new User()).getMyReservation() ;
 	}
 
 }
