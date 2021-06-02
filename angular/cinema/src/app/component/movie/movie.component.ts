@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Movie } from '../../class/movie';
 import { MovieService } from '../../service/movie.service'
 
@@ -9,22 +9,25 @@ import { MovieService } from '../../service/movie.service'
 })
 export class MovieComponent implements OnInit {
 
-  
+
 
   movies: Movie[] = [];
 
   nbColumn: number = 12;
   nbColSpan: number = 3;
-  nbGutterSize: number = 12;
+  nbGutterSize: number = 24;
+  innerWidth: number = 1440;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    this.onResize() ;
     this.movieService.findAll().subscribe(data => {
       this.movies = data;
       this.movies.forEach(element => {
         console.log(element.imageUrl);
-        if (element.imageUrl === null || element.imageUrl === "" || element.imageUrl === "N/A") {
+        if (!element.imageUrl || element.imageUrl === "" || element.imageUrl === "N/A") {
           this.movieService.updateURL(element);
         }
       });
@@ -39,10 +42,44 @@ export class MovieComponent implements OnInit {
   }
 
   image(movie: Movie): string {
-    if (movie.imageUrl === "N/A" || movie.imageUrl === null || movie.imageUrl === "" ) {
-      return '../../../assets/img/image-not-found.png' ;
+    if (movie.imageUrl === "N/A" || !movie.imageUrl || movie.imageUrl === "") {
+      return '../../../assets/img/image-not-found.png';
     }
     else { return movie.imageUrl; }
   }
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    this.updateColumn();
+  }
+
+  updateColumn(): void {
+    if (this.innerWidth > 1240 ) {
+      this.nbColumn = 12;
+      this.nbColSpan = 3;
+      this.nbGutterSize = 24;
+    }
+    else if( this.innerWidth > 904)
+    {
+      this.nbColumn = 12;
+      this.nbColSpan = 4;
+      this.nbGutterSize = 24;
+    }
+    else if( this.innerWidth > 599 )
+    {
+      this.nbColumn = 8;
+      this.nbColSpan = 4;
+      this.nbGutterSize = 24;
+    }
+    else
+    {
+      this.nbColumn = 4;
+      this.nbColSpan = 2;
+      this.nbGutterSize = 16;
+    }
+  }
+
 
 }

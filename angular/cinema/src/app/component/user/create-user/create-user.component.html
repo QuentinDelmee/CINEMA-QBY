@@ -18,7 +18,7 @@
     </div>
     <div>
         <mat-form-field appearance="fill" >
-            <mat-select [(ngModel)]="userJSON.idSecurityLevel" name="SecurityLevel">
+            <mat-select [(value)]="userJSON.idSecurityLevel" name="SecurityLevel">
                 <mat-option *ngFor="let role of accountRoles" [value]="role">
                     {{role.role}}
                 </mat-option>

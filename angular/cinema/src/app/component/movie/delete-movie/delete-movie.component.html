@@ -3,7 +3,7 @@
 <mat-form-field appearance="fill">
     <mat-label>Movie to Delete</mat-label>
     <mat-select [(value)]="selectedMovie">
-      <mat-option *ngFor="let movie of movies" [value]="movie">
+      <mat-option *ngFor="let movie of movies;index i" [value]="movie">
         {{movie.title}}
       </mat-option>
     </mat-select>
