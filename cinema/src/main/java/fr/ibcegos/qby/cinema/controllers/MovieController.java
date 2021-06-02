@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
+import fr.ibcegos.qby.cinema.beans.Session;
 import fr.ibcegos.qby.cinema.services.MovieService;
 
 
@@ -79,13 +81,13 @@ public class MovieController {
 	}
 	
 	@GetMapping("/REST/movie/{id}/commentarys")
-	public void findCommentarysMovie(@PathVariable("id") Integer id) {
-		mservice.findCommentaryMovie(id);
+	public List<Commentary> findCommentarysMovie(@PathVariable("id") Integer id) {
+		return mservice.findCommentaryMovie(id);
 	}
 	
 	@GetMapping("/REST/movie/{id}/sessions")
-	public void findSessionsMovie(@PathVariable("id") Integer id) {
-		mservice.findSessionMovie(id);
+	public List<Session> findSessionsMovie(@PathVariable("id") Integer id) {
+		return mservice.findSessionMovie(id);
 	}
 
 

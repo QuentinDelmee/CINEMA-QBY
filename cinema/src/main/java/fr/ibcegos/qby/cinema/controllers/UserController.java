@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.ibcegos.qby.cinema.beans.Commentary;
+import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.UserService;
 
@@ -70,23 +74,23 @@ public class UserController {
 	}
 	
 	@GetMapping("/REST/user/{id}/opinions")
-	public void findSeatCinemaRoom(@PathVariable("id") Integer id) {
-		userService.getSeatCinemaRoom(id);
+	public List<Opinion> findOpinionUser(@PathVariable("id") Integer id) {
+		return userService.findOpinionUser(id);
 	}
 	
 	@GetMapping("/REST/user/{id}/commentarys")
-	public void findOpinionCinemaRoom(@PathVariable("id") Integer id) {
-		userService.getSeatCinemaRoom(id);
+	public List<Commentary> findCommentaryUser(@PathVariable("id") Integer id) {
+		return userService.findCommentaryUser(id);
 	}
 	
 	@GetMapping("/REST/user/{id}/reservations")
-	public void findSeatCinemaRoom(@PathVariable("id") Integer id) {
-		userService.getSeatCinemaRoom(id);
+	public List<Reservation> findReservationUser(@PathVariable("id") Integer id) {
+		return userService.findReservationUser(id);
 	}
 	
 	@GetMapping("/REST/user/{id}/purchases")
-	public void findOpinionCinemaRoom(@PathVariable("id") Integer id) {
-		userService.getSeatCinemaRoom(id);
+	public List<Purchase> findPurchaseUser(@PathVariable("id") Integer id) {
+		return userService.findPurchaseUser(id);
 	}
 	
 }

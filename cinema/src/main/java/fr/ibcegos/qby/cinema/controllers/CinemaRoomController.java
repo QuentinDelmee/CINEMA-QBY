@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.CinemaRoom;
+import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.services.CinemaRoomService;
 
 @RestController
@@ -74,12 +76,12 @@ public class CinemaRoomController {
 	
 	
 	@GetMapping("/REST/cinemaroom/{id}/seats")
-	public void findSeatCinemaRoom(@PathVariable("id") Integer id) {
-		crservice.getSeatCinemaRoom(id);
+	public List<Seat> findSeatCinemaRoom(@PathVariable("id") Integer id) {
+		return crservice.getSeatCinemaRoom(id);
 	}
 	
 	@GetMapping("/REST/cinemaroom/{id}/opinions")
-	public void findOpinionCinemaRoom(@PathVariable("id") Integer id) {
-		crservice.getSeatCinemaRoom(id);
+	public List<Opinion> findOpinionCinemaRoom(@PathVariable("id") Integer id) {
+		return crservice.getOpinionCinemaRoom(id);
 	}
 }
