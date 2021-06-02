@@ -16,18 +16,22 @@ export class DeleteMovieComponent implements OnInit {
   movies: Movie[] = [];
 
   ngOnInit(): void {
-    this.movieService.findAll().subscribe(data => { this.movies = data; });
+    this.findAll() ;
   }
 
   onSubmit(): void{
     if (confirm("Are you sure you want to delete this Movie ?")) {
       console.log(this.selectedMovie) ;
       this.movieService.delete(this.selectedMovie.id).subscribe() ;
-      this.ngOnInit() ;
     }
     else {
       console.log("Delete Movie ABORTED");
     }
+  }
+
+  findAll()
+  {
+    this.movieService.findAll().subscribe(data => { this.movies = data; });
   }
 
 }
