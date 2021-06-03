@@ -49,7 +49,7 @@ public class Seat {
 	@Override
 	public String toString() {
 		return "Seat [id=" + id + ", seatNumber=" + seatNumber + ", rowName=" + rowName + ", free=" + free
-				+ ", idCinema=" + idCinemaRoom.getId() + "]";
+				+ ", idCinemaRoom=" + idCinemaRoom.getId() + "]";
 	}
 
 }

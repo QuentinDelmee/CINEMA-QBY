@@ -30,7 +30,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,6 +40,9 @@ public class Reservation {
 	@ManyToOne
 	@JoinColumn(name = "id_seat")
 	private Seat idSeat;
+	@ManyToOne
+	@JoinColumn(name = "id_movie")
+	private Movie idMovie;
 	
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDateTime idDate;
@@ -55,10 +57,11 @@ public class Reservation {
 	 *                film session
 	 */
 
-	public Reservation(User idUser, Seat idSeat, LocalDateTime idDate) {
+	public Reservation(User idUser, Seat idSeat, Movie idMovie, LocalDateTime idDate) {
 		super();
 		this.idUser = idUser;
 		this.idSeat = idSeat;
+		this.idMovie = idMovie ;
 		this.idDate = idDate;
 	}
 
@@ -67,8 +70,8 @@ public class Reservation {
 	 */
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id + ", idUser=" + idUser.getId() + ", idSeat=" + idSeat.getId() + ", idDate=" + idDate
-				+ "]";
+		return "Reservation [id=" + id + ", idUser=" + idUser + ", idSeat=" + idSeat + ", idMovie=" + idMovie
+				+ ", idDate=" + idDate + "]";
 	}
 
 }

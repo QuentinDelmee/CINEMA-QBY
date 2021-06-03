@@ -1,5 +1,7 @@
+import { CinemaRoom } from "./cinema-room";
+
 export class Opinion {
-    idCinema:number;
+    idCinemaRoom:CinemaRoom;
     idUser:number;
     rating:number;
     cleanlyness:string;
@@ -9,10 +11,9 @@ export class Opinion {
     constructor(opinionJSON:any)
     {
         this.id = opinionJSON.id;
-        this.idCinema = opinionJSON.idCinema;
+        this.idCinemaRoom = new CinemaRoom(opinionJSON.idCinemaRoom);
 		this.idUser = opinionJSON.idUser;
 		this.rating = opinionJSON.rating;
 		this.cleanlyness = opinionJSON.cleanlyness;
-        this.id = 0 ;
     }
 }

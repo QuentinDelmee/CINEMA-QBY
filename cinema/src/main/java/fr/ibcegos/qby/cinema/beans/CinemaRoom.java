@@ -22,7 +22,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 /**
  * 
  * @author QBY
@@ -39,9 +38,9 @@ public class CinemaRoom {
 	private String screenSize;
 	private Integer nbSeats;
 
+	@JsonIgnore
 	@OneToMany(targetEntity = Seat.class, mappedBy = "idCinemaRoom", cascade = CascadeType.ALL)
 	private List<Seat> lstSeats = new ArrayList<>();
-
 	@JsonIgnore
 	@OneToMany(targetEntity = Session.class, mappedBy = "idCinemaRoom", cascade = CascadeType.ALL)
 	private List<Session> lstSessions = new ArrayList<>();

@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
+import { Session } from 'src/app/class/session';
+import { Movie } from 'src/app/class/movie';
 import { Reservation } from 'src/app/class/reservation';
+import { Seat } from 'src/app/class/seat';
+import { User } from 'src/app/class/user';
+import { CinemaRoom } from 'src/app/class/cinema-room' ;
+import { MovieService } from 'src/app/service/movie.service';
 import { ReservationService } from 'src/app/service/reservation.service';
+import { UserService } from 'src/app/service/user.service';
+import { CinemaRoomService } from 'src/app/service/cinema-room.service';
 
 @Component({
   selector: 'app-create-reservation',
@@ -9,17 +17,22 @@ import { ReservationService } from 'src/app/service/reservation.service';
 })
 export class CreateReservationComponent implements OnInit {
 
-  reservationJSON: any = {};
+  reservationJSON: any = { "idUser":{}, "idSeat":{ "idCinemaRoom":{} }, "idMovie":{}};
 
-  constructor(private reservationService: ReservationService) { }
+  allUser: User[] = [] ;
+  allMovie: Movie[] = [] ;
+  allSeat: Seat[] = [] ;
+  allSession: Session[] = [] ;
+
+  constructor(private reservationService: ReservationService,private userService:UserService, private movieService:MovieService, private crService:CinemaRoomService) { }
 
   ngOnInit(): void {
+    this.userService.findAll().subscribe( data => { this.allUser = data ;}) ;
+    this.movieService.findAll().subscribe( data => { this.allMovie = data;}) ;
   }
 
   onSubmit(): void {
-    this.reservationJSON.idUser = { "id":this.reservationJSON.idUser } ;
-    this.reservationJSON.idSeat = { "id":this.reservationJSON.idSeat } ;
-    
+
     if (confirm("Are you sure you want to create this Reservation ?")) {
       let toPost: Reservation = new Reservation(this.reservationJSON);
       this.reservationService.save(toPost).subscribe();
@@ -27,6 +40,15 @@ export class CreateReservationComponent implements OnInit {
     else {
       console.log("New Reservation ABORTED");
     }
+  }
+
+  updateMovie(movie:Movie): void{
+    this.movieService.findAllSessions(movie.id).subscribe( data => { this.allSession = data ;} ) ;
+
+  }
+  updateSession(session:Session): void{
+    
+    this.crService.getAllSeats(session.idCinemaRoom.id).subscribe(  data => { this.allSeat = data ; }) ;
   }
 
 }

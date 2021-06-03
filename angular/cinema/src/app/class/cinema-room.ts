@@ -8,8 +8,8 @@ export class CinemaRoom {
     constructor(cinemaRoomJSON:any)
     {
         this.id = cinemaRoomJSON.id;
-        this.roomName = cinemaRoomJSON.title ;
-        this.roomLevel = cinemaRoomJSON.originalTitle ;
-        this.screenSize = cinemaRoomJSON.pegi ;
+        this.roomName = cinemaRoomJSON.roomName ;
+        this.roomLevel = cinemaRoomJSON.roomLevel ;
+        this.screenSize = cinemaRoomJSON.screenSize ;
     }
 }

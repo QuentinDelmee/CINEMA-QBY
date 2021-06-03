@@ -30,7 +30,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Purchase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +42,7 @@ public class Purchase {
 	@JoinColumn(name = "id_user")
 	private User idUser;
 	@DateTimeFormat(iso = ISO.DATE)
-	private LocalDateTime date;
+	private LocalDateTime idDate;
 
 	private Integer quantity;
 	private Integer idReceipt;
@@ -62,7 +61,7 @@ public class Purchase {
 		super();
 		this.idProduct = idProduct;
 		this.idUser = idUser;
-		this.date = date;
+		this.idDate = date;
 		this.quantity = quantity;
 		this.idReceipt = idReceipt;
 	}
@@ -73,7 +72,7 @@ public class Purchase {
 	@Override
 	public String toString() {
 		return "Purchase [id=" + id + ", idProduct=" + idProduct.getId() + ", idUser=" + idUser.getId() + ", date="
-				+ date + ", quantity=" + quantity + ", idReceipt=" + idReceipt + "]";
+				+ idDate + ", quantity=" + quantity + ", idReceipt=" + idReceipt + "]";
 	}
 
 }

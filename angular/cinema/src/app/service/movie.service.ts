@@ -40,12 +40,12 @@ export class MovieService {
     })
   }
 
-  public findAllSessions(id:number)
+  public findAllSessions(id:number): Observable<Session[]> 
   {
     return this.http.get<Session[]>(this.moviesUrl+"/"+id+"/sessions");
   }
 
-  public findAllCommentarys(id:number)
+  public findAllCommentarys(id:number): Observable<Commentary[]>
   {
     return this.http.get<Commentary[]>(this.moviesUrl+"/"+id+"/commentarys");
   }

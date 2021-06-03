@@ -11,7 +11,7 @@ export class DeleteReservationComponent implements OnInit {
 
   constructor(private reservationService: ReservationService) { }
 
-  selectedReservation: Reservation = new Reservation({});
+  selectedReservation: any = { "idUser":{}, "idSeat":{}, "idMovie":{}};
 
   reservations: Reservation[] = [];
 

@@ -1,12 +1,26 @@
-<p>delete-reservation works!</p>
-<mat-form-field appearance="fill">
-    <mat-label>Movie to Delete</mat-label>
-    <mat-select [(value)]="selectedReservation">
-      <mat-option *ngFor="let reservation of reservations" [value]="reservation">
-        {{reservation | json}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<mat-tab label="Reservation">
+  <table mat-table [dataSource]="reservations" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="FILM">
+          <th mat-header-cell *matHeaderCellDef> FILM </th>
+          <td mat-cell *matCellDef="let resa"> {{resa.idMovie.title}} </td>
+      </ng-container>
+      <ng-container matColumnDef="DATE">
+          <th mat-header-cell *matHeaderCellDef> DATE </th>
+          <td mat-cell *matCellDef="let resa"> {{resa.idDate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="USER">
+          <th mat-header-cell *matHeaderCellDef> USER </th>
+          <td mat-cell *matCellDef="let resa"> {{resa.idUser.pseudo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="SEAT">
+          <th mat-header-cell *matHeaderCellDef> SEAT </th>
+          <td mat-cell *matCellDef="let resa"> {{resa.idSeat.rowName}}{{resa.idSeat.seatNumber}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['FILM', 'DATE', 'USER', 'SEAT'];"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['FILM', 'DATE', 'USER', 'SEAT'];"></tr>
+  </table>
 
   <form (ngSubmit)="onSubmit()">
     <button mat-button type="submit">TEST SUBMIT</button>

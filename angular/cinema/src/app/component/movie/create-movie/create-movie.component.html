@@ -2,7 +2,7 @@
 
 
 
-<p>create-movie works!</p>
+
 <form (ngSubmit)="onSubmit()">
 <div>
     <mat-form-field appearance="fill" >
@@ -52,5 +52,5 @@
         <input matInput name='movieDescription' [(ngModel)]="movieJSON.movieDescription">
     </mat-form-field>
 </div>
-<button mat-button type="submit">TEST SUBMIT</button>
+<button mat-raised-button color="primary" type="submit">TEST SUBMIT</button>
 </form>

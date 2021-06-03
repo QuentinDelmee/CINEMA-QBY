@@ -1,10 +1,12 @@
+import { CinemaRoom } from "./cinema-room";
+
 export class Seat {
 
     id:number
     seatNumber:number ;
     rowName:string ;
     free:boolean;
-    idCinema:number ;
+    idCinemaRoom:CinemaRoom ;
 
     constructor(seatJSON:any)
     {
@@ -12,6 +14,6 @@ export class Seat {
         this.seatNumber = seatJSON.seatNumber;
 		this.rowName = seatJSON.rowName;
 		this.free = seatJSON.free;
-		this.idCinema = seatJSON.idCinema;
+		this.idCinemaRoom = new CinemaRoom(seatJSON.idCinema);
     }
 }

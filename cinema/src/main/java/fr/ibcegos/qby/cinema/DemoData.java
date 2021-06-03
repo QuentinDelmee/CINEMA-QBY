@@ -687,7 +687,7 @@ public class DemoData {
 				LocalDateTime ldt = LocalDateTime.of(LocalDate.now(),LocalTime.of(i,0)) ;
 				sesdao.save(new Session(cinemaRoom, tempM, ldt, cinemaRoom.getNbSeats()));
 				Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size()));
-				rdao.save(new Reservation(tempU, tempSeat, ldt));
+				rdao.save(new Reservation(tempU, tempSeat,tempM, ldt));
 			}
 			
 			

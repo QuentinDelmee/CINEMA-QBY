@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
+import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.beans.Session;
 import fr.ibcegos.qby.cinema.services.MovieService;
 

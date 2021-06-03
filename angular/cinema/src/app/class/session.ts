@@ -3,7 +3,7 @@ import { Movie } from "./movie";
 
 export class Session {
     id:number;
-    idCinema:CinemaRoom;
+    idCinemaRoom:CinemaRoom ;
     idMovie:Movie;
     idDate:string;
     seatsLeft:string;
@@ -11,8 +11,19 @@ export class Session {
     time:string;
 
     constructor(sessionJSON:any){
-        this.id = sessionJSON.id;
-		this.idCinema = new CinemaRoom(sessionJSON.idCinema);
+        this.id = sessionJSON?.id ;
+		this.idCinemaRoom = new CinemaRoom(sessionJSON.idCinema);
+		this.idMovie = new Movie(sessionJSON.idMovie);
+        this.date = sessionJSON.date ;
+        this.time = sessionJSON.time ;
+		this.idDate = this.date + "T" + this.time ;
+		this.seatsLeft = sessionJSON.seatsLeft;
+    }
+
+    setJSON(sessionJSON:any)
+    {
+        this.id = sessionJSON?.id ;
+		this.idCinemaRoom = new CinemaRoom(sessionJSON.idCinema);
 		this.idMovie = new Movie(sessionJSON.idMovie);
         this.date = sessionJSON.date ;
         this.time = sessionJSON.time ;
