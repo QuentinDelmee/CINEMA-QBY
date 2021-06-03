@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Quizz } from '../../class/quizz'
-import { QuizzService } from '../../service/quizz.service'
+import { Quizz } from '../../../class/quizz'
+import { QuizzService } from '../../../service/quizz.service'
+
 
 @Component({
-  selector: 'app-quizz',
-  templateUrl: './quizz.component.html',
-  styleUrls: ['./quizz.component.scss']
+  selector: 'app-quizz-on-phone',
+  templateUrl: './quizz-on-phone.component.html',
+  styleUrls: ['./quizz-on-phone.component.scss']
 })
-export class QuizzComponent implements OnInit {
+export class QuizzOnPhoneComponent implements OnInit {
 
   constructor(private quizzService: QuizzService) { }
 

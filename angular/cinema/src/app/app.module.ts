@@ -35,6 +35,7 @@ import { CreateUserComponent } from './component/user/create-user/create-user.co
 import { UpdateUserComponent } from './component/user/update-user/update-user.component';
 import { DeleteUserComponent } from './component/user/delete-user/delete-user.component';
 import { QuizzComponent } from './component/quizz/quizz.component';
+import { QuizzOnPhoneComponent } from './component/quizz/quizz-on-phone/quizz-on-phone.component';
 
 
 
@@ -68,7 +69,8 @@ import { QuizzComponent } from './component/quizz/quizz.component';
     CreateUserComponent,
     UpdateUserComponent,
     DeleteUserComponent,
-    QuizzComponent
+    QuizzComponent,
+    QuizzOnPhoneComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<p>quizz-on-phone works!</p>
+
+<mat-card>
+    {{currentQuizz.theme}}
+</mat-card>
+<div>
+    <mat-card>
+        {{currentQuizz.question}}
+        <span matBadge="{{nbStatus}}"></span>
+        <mat-progress-spinner value = "{{progressBar}}" mode="determinate"></mat-progress-spinner>
+    </mat-card>        
+</div>
+
+<mat-card>Proposition : {{currentQuizz.answer1}} ou {{currentQuizz.answer2}} ou {{currentQuizz.answer3}} ou {{currentQuizz.answer4}}</mat-card>
+
+<mat-card>Réponse : {{showAnswer}} <p> {{answer}} </p> </mat-card>
