@@ -1,5 +1,4 @@
-import { Session } from "./session";
-import { Commentary } from "./commentary";
+import { MovieService } from "../service/movie.service";
 
 
 export class Movie {

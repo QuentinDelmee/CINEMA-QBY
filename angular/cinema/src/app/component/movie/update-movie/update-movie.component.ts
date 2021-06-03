@@ -13,20 +13,24 @@ export class UpdateMovieComponent implements OnInit {
 
   selectedMovie: Movie = new Movie({});
 
-  movies: Movie[] = [];
+  moviesString: any = localStorage.getItem('movies');
+  movies: Movie[] = JSON.parse(this.moviesString);
 
   ngOnInit(): void {
-    this.movieService.findAll().subscribe(data => { this.movies = data; });
   }
 
   onSubmit(): void {
     if (confirm("Are you sure you want to update this Movie ?")) {
       this.movieService.save(this.selectedMovie).subscribe();
-      this.ngOnInit() ;
     }
     else {
       console.log("Update Movie ABORTED");
     }
+
+    this.selectedMovie = new Movie({});
   }
 
+  persist(key: string, value: any) {
+    localStorage.setItem(key, value);
+  }
 }

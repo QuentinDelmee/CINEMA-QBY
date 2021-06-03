@@ -1,6 +1,6 @@
 <div>
-    <mat-tab-group >
-        <mat-tab label="Movie" (click)="ngOnInit()">
+    <mat-tab-group selectedIndex="{{savedTab}}" (selectedIndexChange)="updateTab($event)">
+        <mat-tab label="Movie">
 
             <mat-grid-list cols="{{nbColumn}}" rowHeight="512px" gutterSize="{{nbGutterSize}}px" >
 

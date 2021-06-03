@@ -27,7 +27,7 @@ export class CreateReservationComponent implements OnInit {
   constructor(private reservationService: ReservationService,private userService:UserService, private movieService:MovieService, private crService:CinemaRoomService) { }
 
   ngOnInit(): void {
-    this.userService.findAll().subscribe( data => { this.allUser = data ;}) ;
+    //this.userService.findAll().subscribe( data => { this.allUser = data ;}) ;
     this.movieService.findAll().subscribe( data => { this.allMovie = data;}) ;
   }
 

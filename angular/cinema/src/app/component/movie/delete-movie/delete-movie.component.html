@@ -3,13 +3,10 @@
 <mat-form-field appearance="fill">
   <mat-label>Movie to Delete</mat-label>
   <mat-select [(value)]="selectedMovie">
-    <mat-option *ngFor="let movie of movies;index i" [value]="movie">
+    <mat-option *ngFor="let movie of movies; let index = index ; trackBy:trackMovie ;" [value]="{ 'movie':movie, 'index':index}">
       {{movie.title}}
     </mat-option>
   </mat-select>
 </mat-form-field>
-
-
-   
     <button mat-button type="submit">TEST SUBMIT</button>
 </form>

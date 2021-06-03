@@ -9,10 +9,13 @@ import { MovieService } from '../../service/movie.service'
 })
 export class MovieComponent implements OnInit {
 
+  /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
 
+  moviesString: any = localStorage.getItem('movies');
+  movies: Movie[] = JSON.parse(this.moviesString);
+  savedTab: number = Number(sessionStorage.getItem('movieTab'));
 
-  movies: Movie[] = [];
-
+  /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
   nbColumn: number = 12;
   nbColSpan: number = 3;
   nbGutterSize: number = 24;
@@ -21,24 +24,32 @@ export class MovieComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.innerWidth = window.innerWidth;
-    this.onResize() ;
-    this.movieService.findAll().subscribe(data => {
-      this.movies = data;
-      this.movies.forEach(element => {
-        console.log(element.imageUrl);
-        if (!element.imageUrl || element.imageUrl === "" || element.imageUrl === "N/A") {
-          this.movieService.updateURL(element);
-        }
-      });
-    });
-
+    this.onResize();
+    if (this.movies === null) {
+      console.log("Test");
+      this.findAllMovie();
+    }
   }
 
-  post(): void {
-    let myJson: any = { "id": 0, "title": "Nadia, butterfly", "originalTitle": "Nadia, butterfly", "pegi": 0, "releaseDate": 2021, "movieDuration": "01:46:00", "movieGenre": "Drame", "averageRating": 5, "movieDescription": "Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision...", "lstCommentarys": [], "lstSessions": [] };
-    let toPost: Movie = new Movie(myJson);
-    this.movieService.save(toPost);
+  findAllMovie() {
+    this.movieService.findAll().subscribe(data => {
+      this.movies = data;
+      this.updateImage();
+      localStorage.setItem("movies", JSON.stringify(this.movies));
+    });
+  }
+
+  updateImage() {
+    this.movies.forEach(element => {
+      if (!element.imageUrl || element.imageUrl === "" || element.imageUrl === "N/A") {
+        this.movieService.updateURL(element);
+      }
+    });
+  }
+
+  updateTab(index: number): void {
+    sessionStorage.setItem("movieTab", index.toString());
+    console.log(sessionStorage.getItem("movieTab"));
   }
 
   image(movie: Movie): string {
@@ -48,6 +59,7 @@ export class MovieComponent implements OnInit {
     else { return movie.imageUrl; }
   }
 
+  /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
 
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -56,25 +68,22 @@ export class MovieComponent implements OnInit {
   }
 
   updateColumn(): void {
-    if (this.innerWidth > 1240 ) {
+    if (this.innerWidth > 1240) {
       this.nbColumn = 12;
       this.nbColSpan = 3;
       this.nbGutterSize = 24;
     }
-    else if( this.innerWidth > 904)
-    {
+    else if (this.innerWidth > 904) {
       this.nbColumn = 12;
       this.nbColSpan = 4;
       this.nbGutterSize = 24;
     }
-    else if( this.innerWidth > 599 )
-    {
+    else if (this.innerWidth > 599) {
       this.nbColumn = 8;
       this.nbColSpan = 4;
       this.nbGutterSize = 24;
     }
-    else
-    {
+    else {
       this.nbColumn = 4;
       this.nbColSpan = 2;
       this.nbGutterSize = 16;
