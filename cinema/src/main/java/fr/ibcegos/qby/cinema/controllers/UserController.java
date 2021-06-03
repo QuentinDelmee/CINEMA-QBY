@@ -1,6 +1,10 @@
 package fr.ibcegos.qby.cinema.controllers;
 
+import java.security.Principal;
+import java.util.Base64;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Commentary;
@@ -67,12 +72,19 @@ public class UserController {
 	//////////
 	//Log In//
 	//////////
-	@PostMapping("/REST/user/login")
+	@RequestMapping("/REST/user/login")
 	public boolean login(@RequestBody User user) {
 		boolean verif = userService.login(user);
 		return verif;
 	}
-	
+//	@RequestMapping("/user")
+//    public Principal user(HttpServletRequest request) {
+//        String authToken = request.getHeader("Authorization")
+//          .substring("Basic".length()).trim();
+//        return () ->  new String(Base64.getDecoder()
+//          .decode(authToken)).split(":")[0];
+//    }
+//	
 	@GetMapping("/REST/user/{id}/opinions")
 	public List<Opinion> findOpinionUser(@PathVariable("id") Integer id) {
 		return userService.findOpinionUser(id);
