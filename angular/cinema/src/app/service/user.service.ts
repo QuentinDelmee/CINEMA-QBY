@@ -15,7 +15,7 @@ export class UserService {
   }
 
   public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.userUrl);
+    return this.http.get<User[]>(this.userUrl) ;
   }
 
   public save(user: User) {
@@ -28,7 +28,6 @@ export class UserService {
 
   //Voir Quentin pour vérifier utilité de faire la condition dans le service à place Ts
   public deleteById(id:number) {
-      console.log('Coté service l id vaut :', id)
       return this.http.delete<User>(this.userUrl+ "/"+ id).subscribe();
     
     

@@ -10,7 +10,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of users;">
+                    <tr *ngFor="let user of users; let index = index ; trackBy:track ;">
                         <td>{{ user.pseudo}}#{{user.id}}</td>
                         <td>{{ user.idPerson.familyName}} {{ user.idPerson.firstName }}</td>
                         <td>

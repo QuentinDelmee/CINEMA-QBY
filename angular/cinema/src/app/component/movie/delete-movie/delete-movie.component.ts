@@ -11,27 +11,35 @@ export class DeleteMovieComponent implements OnInit {
 
   constructor(private movieService: MovieService) { }
 
-  selectedMovie: Movie = new Movie({});
+  selectedMovie: any = { "movie":{} , "index":-1};
 
   movies: Movie[] = [];
 
   ngOnInit(): void {
     this.findAll() ;
+    
   }
 
   onSubmit(): void{
     if (confirm("Are you sure you want to delete this Movie ?")) {
       console.log(this.selectedMovie) ;
-      this.movieService.delete(this.selectedMovie.id).subscribe() ;
+      this.movieService.delete(this.selectedMovie.movie.id).subscribe() ;
+      this.movies.splice(this.selectedMovie.index,1);
     }
     else {
       console.log("Delete Movie ABORTED");
     }
+    this.selectedMovie = { "movie":{} , "index":-1};
   }
 
   findAll()
   {
     this.movieService.findAll().subscribe(data => { this.movies = data; });
+  }
+
+  trackMovie(index:number,movie:Movie)
+  {
+    return movie.id ;
   }
 
 }
