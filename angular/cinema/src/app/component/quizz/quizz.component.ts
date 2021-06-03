@@ -94,7 +94,6 @@ export class QuizzComponent implements OnInit {
       } else {
         //Compteur à réinitialisé
         this.restartTimer();
-
         //Affichage de la reponse et début compte à rebour pour l'affichage du resultat
         this.startTimerForResult();
       }
@@ -107,8 +106,8 @@ export class QuizzComponent implements OnInit {
     this.answer = this.currentQuizz.explanation
     this.time = 10;
     this.interval = setInterval(() => {
-      if(this.time > 0) {
-        this.time--;
+      if(this.progressBar < 100) {
+        this.progressBar+=10;
 
       } else {
         this.showAnswer = "";
@@ -121,6 +120,5 @@ export class QuizzComponent implements OnInit {
 
 restartTimer(){
   clearInterval(this.interval)
-  this.progressBar = 100;
 }
 }

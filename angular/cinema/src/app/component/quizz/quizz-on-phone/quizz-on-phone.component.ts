@@ -87,6 +87,8 @@ export class QuizzOnPhoneComponent implements OnInit {
     
   }
 
+  test(){ console.log("clique :) ")};
+  
   //Fonction pour lancer compte à rebour pour rechercher
   startTimerForSearch() {
     this.interval = setInterval(() => {

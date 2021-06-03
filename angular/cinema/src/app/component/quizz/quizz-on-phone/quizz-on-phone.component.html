@@ -1,16 +1,19 @@
 <p>quizz-on-phone works!</p>
 
+
+
 <mat-card>
     {{currentQuizz.theme}}
 </mat-card>
-<div>
-    <mat-card>
-        {{currentQuizz.question}}
-        <span matBadge="{{nbStatus}}"></span>
-        <mat-progress-spinner value = "{{progressBar}}" mode="determinate"></mat-progress-spinner>
-    </mat-card>        
-</div>
+<mat-card>
+    {{currentQuizz.question}}
+</mat-card>        
 
-<mat-card>Proposition : {{currentQuizz.answer1}} ou {{currentQuizz.answer2}} ou {{currentQuizz.answer3}} ou {{currentQuizz.answer4}}</mat-card>
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile><mat-card>{{currentQuizz.answer1}}</mat-card></mat-grid-tile>
+    <mat-grid-tile><mat-card>{{currentQuizz.answer2}}</mat-card></mat-grid-tile>
+    <mat-grid-tile><mat-card>{{currentQuizz.answer3}}</mat-card></mat-grid-tile>
+    <mat-grid-tile><mat-card (click)="test()">{{currentQuizz.answer4}}</mat-card></mat-grid-tile>
+  </mat-grid-list>
 
 <mat-card>Réponse : {{showAnswer}} <p> {{answer}} </p> </mat-card>
