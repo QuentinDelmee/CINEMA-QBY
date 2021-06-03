@@ -9,14 +9,16 @@ import { ReservationService } from 'src/app/service/reservation.service';
 })
 export class DeleteReservationComponent implements OnInit {
 
-  constructor(private reservationService: ReservationService) { }
+  constructor(private reservationService: ReservationService) { 
+      this.reservationService.findAll().subscribe(data => { this.reservations = data; });
+  }
 
   selectedReservation: any = { "idUser":{}, "idSeat":{}, "idMovie":{}};
 
   reservations: Reservation[] = [];
 
   ngOnInit(): void {
-    this.reservationService.findAll().subscribe(data => { this.reservations = data; });
+    
   }
 
   onSubmit(): void{
@@ -27,6 +29,18 @@ export class DeleteReservationComponent implements OnInit {
     else {
       console.log("Delete Reservation ABORTED");
     }
+  }
+
+  delete(resa:Reservation,index:number)
+  {
+    if (confirm("Are you sure you want to delete this Reservation ?")) {
+      this.reservations.slice(index);
+      this.reservationService.delete(resa.id).subscribe() ;
+    }
+    else {
+      console.log("Delete Reservation ABORTED");
+    }
+    
   }
 
 }

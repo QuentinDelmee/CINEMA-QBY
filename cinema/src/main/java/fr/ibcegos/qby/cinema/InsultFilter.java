@@ -8,6 +8,7 @@ import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
 
 public class InsultFilter {
+<<<<<<< HEAD
 
 	
 	
@@ -30,4 +31,7 @@ public class InsultFilter {
 		
 		return comment;
 	} 
+=======
+	
+>>>>>>> 5376c0cba3bc0cb3f1c41c3ba3355f0ec0d2bc86
 }
