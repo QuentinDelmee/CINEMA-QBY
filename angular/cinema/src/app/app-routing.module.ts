@@ -33,6 +33,7 @@ import { SignInComponent } from './component/user/sign-in/sign-in.component';
 import { SignUpComponent } from './component/user/sign-up/sign-up.component';
 
 import { QuizzComponent } from './component/quizz/quizz.component'
+import { QuizzOnPhoneComponent } from './component/quizz/quizz-on-phone/quizz-on-phone.component'
 
 
 const routes: Routes = [
@@ -62,6 +63,7 @@ const routes: Routes = [
   { path: 'user-page/signin', component: SignInComponent },
   { path: 'user-page/signup', component: SignUpComponent },
   { path: 'quizz-page', component: QuizzComponent},
+  { path: 'quizz-page/quizz-on-phone', component: QuizzOnPhoneComponent},
 
 ];
 
