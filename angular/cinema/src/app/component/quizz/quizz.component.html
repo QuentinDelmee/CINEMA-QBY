@@ -1,18 +1,38 @@
 <p>quizz works!</p>
 
-
+<table>
+    <thead>
+        <tr>
+            <th>quizz</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let q of quizz;">
+            <td>{{q.question}}</td>
+        </tr>
+    </tbody>
+</table>
+            <mat-card>
+                {{currentQuizz.theme}}
+            </mat-card>
+            <div>
+                <mat-card>
+                    {{currentQuizz.question}}
+                    <span matBadgePosition='above' matBadge="{{nbStatus}}"></span>
+                    <p>{{time}} Secondes restantes....</p>
+                </mat-card>        
+            </div>
  
-            <mat-card name='ts-question' [(ngModel)]="quizz">{{quizz}}</mat-card>
- 
-            <button (click)="onSubmit(1)" mat-raised-button color="{{maVariable}}" name='ts-choix1'>{{test}}</button>
+            <button (click)="onSubmit(1)" mat-raised-button color='{{btnColor1}}'>{{currentQuizz.answer1}}</button>
 
-            <button (click)="onSubmit(2)" mat-raised-button color="primary" name='ts-choix2'>Primary</button>
+            <button (click)="onSubmit(2)" mat-raised-button color="{{btnColor2}}">{{currentQuizz.answer2}}</button>
 
-            <button (click)="onSubmit(3)" mat-raised-button color="primary" name='ts-choix3'>Primary</button>
+            <button (click)="onSubmit(3)" mat-raised-button color="{{btnColor3}}">{{currentQuizz.answer3}}</button>
 
-            <button (click)="onSubmit(4)" mat-raised-button color="primary" name='ts-choix4'>Primary</button>
+            <button (click)="onSubmit(4)" mat-raised-button color="{{btnColor4}}">{{currentQuizz.answer4}}</button>
 
 
-            <mat-card name='ts-answer' >Reponse</mat-card>
+            <mat-card name='ts-answer' >{{answer}}</mat-card>
+            
 
  

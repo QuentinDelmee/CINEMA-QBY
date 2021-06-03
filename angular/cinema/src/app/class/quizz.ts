@@ -6,13 +6,14 @@ export class Quizz {
     answer2:string;
     answer3:string;
     answer4:string;
-    trueAnswer:string;
+    trueAnswer:number;
     explanation:string;
     wikiUrl:string;
 
 
     constructor(quizzJSON:any){
         this.id = quizzJSON.id;
+        this.theme = quizzJSON.theme;
         this.question = quizzJSON.question
         this.answer1 = quizzJSON.answer1
         this.answer2 = quizzJSON.answer2
