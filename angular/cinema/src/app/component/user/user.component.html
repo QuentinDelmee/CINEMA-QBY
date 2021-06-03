@@ -2,7 +2,6 @@
     <mat-tab-group>
 
         <mat-tab label="User">
-<<<<<<< HEAD
             <table mat-table [dataSource]="users" class="mat-elevation-z8">
                 
                 <ng-container matColumnDef="USER">
@@ -30,31 +29,6 @@
                 <tr mat-header-row *matHeaderRowDef="['USER','PERSON','DELETE'];"></tr>
                 <tr mat-row *matRowDef="let row; columns: ['USER','PERSON','DELETE'];"></tr>
 
-=======
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pseudo</th>
-                        <th>Person</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users; let index = index ; trackBy:track ;">
-                        <td>{{ user.pseudo}}#{{user.id}}</td>
-                        <td>{{ user.idPerson.familyName}} {{ user.idPerson.firstName }}</td>
-                        <td>
-                            <button (click)="deleteByIdUser(user)">
-                                <i> Delete </i>
-                            </button>
-                            <button>
-                                <i> Edit </i>
-                            </button>
-                        </td>
-                    </tr>
-                    
-                </tbody>
->>>>>>> 9f870b867cc9e4d3a96f4c4f0e58f7aa74c46827
             </table>
         </mat-tab>
 
