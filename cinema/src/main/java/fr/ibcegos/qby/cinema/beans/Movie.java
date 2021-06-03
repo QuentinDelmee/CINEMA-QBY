@@ -56,7 +56,7 @@ public class Movie {
 	private List<Session> lstSessions = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToMany(targetEntity = Session.class, mappedBy = "idMovie", cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Reservation.class, mappedBy = "idMovie", cascade = CascadeType.ALL)
 	private List<Reservation> lstReservation = new ArrayList<>();
 	
 	public Movie(String title, String originalTitle, Integer pegi, Integer releaseDate, LocalTime movieDuration,

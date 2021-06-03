@@ -1,14 +1,15 @@
-<p>delete-movie works!</p>
-
-<mat-form-field appearance="fill">
-    <mat-label>Movie to Delete</mat-label>
-    <mat-select [(value)]="selectedMovie">
-      <mat-option *ngFor="let movie of movies;index i" [value]="movie">
-        {{movie.title}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
 
   <form (ngSubmit)="onSubmit()">
+<mat-form-field appearance="fill">
+  <mat-label>Movie to Delete</mat-label>
+  <mat-select [(value)]="selectedMovie">
+    <mat-option *ngFor="let movie of movies;index i" [value]="movie">
+      {{movie.title}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+   
     <button mat-button type="submit">TEST SUBMIT</button>
-    </form>
+</form>
