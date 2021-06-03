@@ -32,6 +32,8 @@ import { DeleteUserComponent } from './component/user/delete-user/delete-user.co
 import { SignInComponent } from './component/user/sign-in/sign-in.component';
 import { SignUpComponent } from './component/user/sign-up/sign-up.component';
 
+import { QuizzComponent } from './component/quizz/quizz.component'
+
 
 const routes: Routes = [
   { path: 'home-page', component: HomeComponent },
@@ -59,6 +61,7 @@ const routes: Routes = [
   { path: 'user-page-page/delete', component: DeleteUserComponent },
   { path: 'user-page/signin', component: SignInComponent },
   { path: 'user-page/signup', component: SignUpComponent },
+  { path: 'quizz-page', component: QuizzComponent},
 
 ];
 

@@ -1,0 +1,18 @@
+<p>quizz works!</p>
+
+
+ 
+            <mat-card name='ts-question' [(ngModel)]="quizz">{{quizz}}</mat-card>
+ 
+            <button (click)="onSubmit(1)" mat-raised-button color="{{maVariable}}" name='ts-choix1'>{{test}}</button>
+
+            <button (click)="onSubmit(2)" mat-raised-button color="primary" name='ts-choix2'>Primary</button>
+
+            <button (click)="onSubmit(3)" mat-raised-button color="primary" name='ts-choix3'>Primary</button>
+
+            <button (click)="onSubmit(4)" mat-raised-button color="primary" name='ts-choix4'>Primary</button>
+
+
+            <mat-card name='ts-answer' >Reponse</mat-card>
+
+ 

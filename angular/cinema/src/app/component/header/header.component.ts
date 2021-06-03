@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
       this.currentPage[1] = true;
       this.previousPage = 1;
     }
-    else if (window.location.href.match("how-to-come-page-page")?.length){
+    else if (window.location.href.match("how-to-come-page")?.length){
       this.currentPage[2] = true;
       this.previousPage = 2;
     }
@@ -54,6 +54,10 @@ export class HeaderComponent implements OnInit {
     else if (window.location.href.match("user-page")?.length){
       this.currentPage[9] = true;
       this.previousPage = 9;
+    }
+    else if (window.location.href.match("quizz-page")?.length){
+      this.currentPage[10] = true;
+      this.previousPage = 10;
     }
   }
 

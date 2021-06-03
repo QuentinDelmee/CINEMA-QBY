@@ -34,6 +34,7 @@ import { UserComponent } from './component/user/user.component';
 import { CreateUserComponent } from './component/user/create-user/create-user.component';
 import { UpdateUserComponent } from './component/user/update-user/update-user.component';
 import { DeleteUserComponent } from './component/user/delete-user/delete-user.component';
+import { QuizzComponent } from './component/quizz/quizz.component';
 
 
 
@@ -66,7 +67,8 @@ import { DeleteUserComponent } from './component/user/delete-user/delete-user.co
     UserComponent,
     CreateUserComponent,
     UpdateUserComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    QuizzComponent
   ],
   imports: [
     BrowserModule,
