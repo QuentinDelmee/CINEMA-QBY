@@ -59,4 +59,7 @@ public interface PersonService {
 	 * @param id_user
 	 */
 	public void deleteById(Integer id_user);
+	
+	
+	public boolean isEmailFree(String email);
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Quizz } from '../../class/quizz'
-import { QuizzService } from '../../service/quizz.service'
+import { Quizz } from '../../../class/quizz'
+import { QuizzService } from '../../../service/quizz.service'
 
 @Component({
   selector: 'app-quizz',

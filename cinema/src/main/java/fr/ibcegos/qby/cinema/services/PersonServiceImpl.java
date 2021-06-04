@@ -50,6 +50,12 @@ public class PersonServiceImpl implements PersonService{
 		personDAO.deleteById(id_user);
 	}
 
+	@Override
+	public boolean isEmailFree(String email) {
+		List<Person> result = personDAO.findByEmail(email) ;
+		return (result.size() == 0);
+	}
+
 
 
 

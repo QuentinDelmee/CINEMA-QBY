@@ -1,15 +1,35 @@
 <header>
-    <mat-toolbar color="primary">
+    <img mat-card-image src="http://www.quatuor-france.fr/wp-content/themes/options/images/skins/headers/full_width/header-jetBlack.jpg" alt="Header Image">
+    <mat-toolbar *ngIf="currentAccess==0"  color="primary">
         <div>
             <a mat-stroked-button color="" [routerLink]="['/home-page']" (click)="updatePage(0)">Home</a>
-            <a mat-stroked-button color="" [routerLink]="['/movie-page']" (click)="updatePage(3)">Movies</a>
-            <a mat-stroked-button color="" [routerLink]="['/profil-page']" (click)="updatePage(4)">Your Profile</a>
-            <a mat-stroked-button color="" [routerLink]="['/reservation-page']" (click)="updatePage(5)">Reservation</a>
-            <a mat-stroked-button color="" [routerLink]="['/user-page/signin']" (click)="updatePage(6)">Sign In Now !</a>
-            <a mat-stroked-button color="" [routerLink]="['/user-page/signup']" (click)="updatePage(7)">Sign Up Now !</a>
-            <a mat-stroked-button color="" [routerLink]="['/timetable-page']" (click)="updatePage(8)">Session</a>
-            <a mat-stroked-button color="" [routerLink]="['/user-page/']" (click)="updatePage(9)">User</a>
-            <a mat-stroked-button color="" [routerLink]="['/quizz-page/']" (click)="updatePage(9)">Quizz</a>
+            <a mat-stroked-button color="" [routerLink]="['/movie-page']" (click)="updatePage(1)">Movies</a>
+            <a mat-stroked-button color="" [routerLink]="['/timetable-page']" (click)="updatePage(2)">Session</a>
+            <a mat-stroked-button color="" [routerLink]="['/user-page/signin']" (click)="updatePage(3)">Sign In Now !</a>
+            <a mat-stroked-button color="" [routerLink]="['/user-page/signup']" (click)="updatePage(4)">Sign Up Now !</a>
+            <a mat-stroked-button color="" [routerLink]="['/quizz-page/']" (click)="updatePage(5)">Quizz</a>
+        </div>
+    </mat-toolbar>
+
+    <mat-toolbar *ngIf="currentAccess==1"  color="primary">
+        <div>
+            <a mat-stroked-button color="" [routerLink]="['/home-page']" (click)="updatePage(0)">Home</a>
+            <a mat-stroked-button color="" [routerLink]="['/movie-page']" (click)="updatePage(1)">Movies</a>
+            <a mat-stroked-button color="" [routerLink]="['/timetable-page']" (click)="updatePage(2)">Session</a>
+            <a mat-stroked-button color="" [routerLink]="['/user/profil-page']" (click)="updatePage(6)">My Profil</a>
+            <a mat-stroked-button color="" [routerLink]="['/user/reservation-page']" (click)="updatePage(7)">Sign Up Now !</a>
+            <a mat-stroked-button color="" [routerLink]="['/quizz-page/']" (click)="updatePage(8)">Quizz</a>
+        </div>
+    </mat-toolbar>
+
+    <mat-toolbar *ngIf="currentAccess==6"  color="primary">
+        <div>
+            <a mat-stroked-button color="" [routerLink]="['/home-page']" (click)="updatePage(0)">Home ADMIN</a>
+            <a mat-stroked-button color="" [routerLink]="['/movie-page']" (click)="updatePage(1)">Movies ADMIN</a>
+            <a mat-stroked-button color="" [routerLink]="['/timetable-page']" (click)="updatePage(2)">Session ADMIN</a>
+            <a mat-stroked-button color="" [routerLink]="['/admin/all-user-page']" (click)="updatePage(9)">All Profil ADMIN</a>
+            <a mat-stroked-button color="" [routerLink]="['/user/reservation-page']" (click)="updatePage(10)">Reservation ADMIN</a>
+            <a mat-stroked-button color="" [routerLink]="['/admin/data-page']" (click)="updatePage(11)">Quizz ADMIN</a>
         </div>
     </mat-toolbar>
 </header>

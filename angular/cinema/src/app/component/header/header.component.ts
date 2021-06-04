@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,9 @@ export class HeaderComponent implements OnInit {
 
   currentPage: boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
   previousPage: number = 0;
+
+  stringAccess: any = sessionStorage.getItem('access') ;
+  currentAccess:number =  Number(this.stringAccess) ;
 
   ngOnInit(): void {
     if (window.location.href.match("home-page")?.length) {
