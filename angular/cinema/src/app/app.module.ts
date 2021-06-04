@@ -38,6 +38,7 @@ import { ProductComponent } from './component/visitor/product/product.component'
 import { CreateProductComponent } from './component/admin/create-product/create-product.component';
 import { UpdateProductComponent } from './component/admin/update-product/update-product.component';
 import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
+import { AllUserComponent } from './component/admin/all-user/all-user.component';
 
 
 
@@ -68,6 +69,7 @@ import { DeleteProductComponent } from './component/admin/delete-product/delete-
     CreateUserComponent,
     UpdateUserComponent,
     DeleteUserComponent,
+    AllUserComponent,
     QuizzComponent,
     QuizzOnPhoneComponent,
     AdminComponent,

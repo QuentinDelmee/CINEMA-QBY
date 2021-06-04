@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor()
   {
-    this.persist('access','0');
+    this.persist('access','1');
   }
 
   persist(key:string,value:any)

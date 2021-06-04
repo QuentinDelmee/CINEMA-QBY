@@ -35,6 +35,7 @@ import { AdminComponent } from './component/admin/admin.component';
 import { CreateProductComponent } from './component/admin/create-product/create-product.component';
 import { UpdateProductComponent } from './component/admin/update-product/update-product.component';
 import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
+import { AllUserComponent } from './component/admin/all-user/all-user.component';
 
 let access: number = Number(sessionStorage.getItem('access'));
 
@@ -100,7 +101,7 @@ else if (access == 6) {
   { path: 'admin/timetable/create', component: CreateTimeTableComponent },
   { path: 'admin/timetable/update', component: UpdateTimeTableComponent },
   { path: 'admin/timetable/delete', component: DeleteTimeTableComponent },
-  { path: 'admin/user/all', component: UserComponent },
+  { path: 'admin/user/all', component: AllUserComponent },
   { path: 'admin/user/create', component: CreateUserComponent },
   { path: 'admin/user/update', component: UpdateUserComponent },
   { path: 'admin/user/delete', component: DeleteUserComponent },
