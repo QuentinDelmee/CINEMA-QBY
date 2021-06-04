@@ -21,9 +21,11 @@ export class QuizzComponent implements OnInit {
   //Stockage des quizz récupéré de la bdd
   quizz: Quizz[] = [];
 
-  //
-  trueAnswer:string = '';
+
+  //Contient l'unique réponse parmis les propositions
   showAnswer = '';
+
+  //contiendra la valeur de explanation
   answer = '';
 
   //Récupération du quizz en cours avec accès au données (Questions/Réponses ...) 

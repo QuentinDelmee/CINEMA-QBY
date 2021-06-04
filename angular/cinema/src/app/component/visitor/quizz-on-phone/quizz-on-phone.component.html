@@ -10,10 +10,12 @@
 </mat-card>        
 
 <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile><button mat-raised-button color="primary">{{currentQuizz.answer1}}</button></mat-grid-tile>
-    <mat-grid-tile><button mat-raised-button color="primary">{{currentQuizz.answer2}}</button></mat-grid-tile>
-    <mat-grid-tile><button mat-raised-button color="primary">{{currentQuizz.answer3}}</button></mat-grid-tile>
-    <mat-grid-tile><button mat-raised-button color="primary">{{currentQuizz.answer4}}</button></mat-grid-tile>
-  </mat-grid-list>
+    <mat-grid-tile><button (click)="choiceUser(1)" mat-raised-button color="{{colorTab[0]}}">{{currentQuizz.answer1}}</button></mat-grid-tile>
+    <mat-grid-tile><button (click)="choiceUser(2)" mat-raised-button color="{{colorTab[1]}}">{{currentQuizz.answer2}}</button></mat-grid-tile>
+    <mat-grid-tile><button (click)="choiceUser(3)" mat-raised-button color="{{colorTab[2]}}">{{currentQuizz.answer3}}</button></mat-grid-tile>
+    <mat-grid-tile><button (click)="choiceUser(4)" mat-raised-button color="{{colorTab[3]}}">{{currentQuizz.answer4}}</button></mat-grid-tile>
+</mat-grid-list>
 
-<mat-card>Réponse : {{showAnswer}} <p> {{answer}} </p> </mat-card>
+<mat-card>Réponse : {{showAnswer}} <p> {{explanation}} </p> </mat-card>
+<button mat-fab color="primary" [hidden]="nextBtnVisibility" (click)="nextQuizz()"><mat-icon>navigate_next</mat-icon></button>
+

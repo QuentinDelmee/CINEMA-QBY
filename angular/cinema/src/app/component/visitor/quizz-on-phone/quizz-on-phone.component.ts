@@ -12,27 +12,30 @@ export class QuizzOnPhoneComponent implements OnInit {
 
   constructor(private quizzService: QuizzService) { }
 
-  progressBar:number = 100;
-  score:number = 0;
-  //Permet de récupérer le nombre du quizz en cours
+  colorTab: string[] = ['primary', 'primary', 'primary', 'primary']
+  nextBtnVisibility:boolean = true;
 
-  //Numéro du quizz
-  nbStatus:number = 0;
+
+
+  score: number = 0;
+
+  //Numéro actuel du quizz
+  nbStatus: number = 0;
 
   //Stockage des quizz récupéré de la bdd
   quizz: Quizz[] = [];
 
   //
-  trueAnswer:string = '';
+  trueAnswer: string = '';
   showAnswer = '';
-  answer = '';
+  explanation = '';
 
   //Récupération du quizz en cours avec accès au données (Questions/Réponses ...) 
-  currentQuizz:Quizz = new Quizz({});
+  currentQuizz: Quizz = new Quizz({});
 
   //Variables pour les temporisations
-  time:number = 10;
-  interval:any ;
+  time: number = 10;
+  interval: any;
 
   /////////////////////////////////
   //         FUNCTIONS           //
@@ -46,84 +49,80 @@ export class QuizzOnPhoneComponent implements OnInit {
     })
   }
 
-  shuffleArray(arr:any) {
+  shuffleArray(arr: any) {
     arr.sort(() => Math.random() - 0.5);
   }
 
 
 
-  nextQuizz(){
-    if(this.nbStatus < this.quizz.length){
+  nextQuizz() {
+    if (this.nbStatus < this.quizz.length) {
+      this.nextBtnVisibility = true;
+      this.btnInitColor();
       this.currentQuizz = this.quizz[this.nbStatus];
       this.nbStatus++
-      this.startTimerForSearch()
+      this.showAnswer = '';
+      this.explanation = '';
     }
   }
 
-  correction(){
-    switch(this.currentQuizz.trueAnswer) { 
 
-    case 1: { 
+  choiceUser(nb: number) {
+    if (this.currentQuizz.trueAnswer === nb) {
+      console.log('yes !');
+    }
+    else {
+      console.log('no :(')
+    }
+
+    this.correction(nb);
+  }
+
+
+  correction(nb:number) {
+    this.nextBtnVisibility = false;
+    const answer:number = this.currentQuizz.trueAnswer ;
+
+    if( nb === answer )
+    {
+      this.colorTab[nb-1] = 'accent' ;
+    }
+    else{
+      this.colorTab[nb-1] = 'warn' ;
+      this.colorTab[answer-1] = 'accent' ;
+    }
+
+      switch(this.currentQuizz.trueAnswer) { 
+
+      case 1: {
         this.showAnswer = this.currentQuizz.answer1;
         break; 
-    } 
-    case 2: { 
-      this.showAnswer = this.currentQuizz.answer2; 
-        break; 
-    }
-    case 3: { 
-      this.showAnswer = this.currentQuizz.answer3;
-      break; 
-    } 
-    case 4: { 
-      this.showAnswer = this.currentQuizz.answer4;
-      break; 
-    } 
-      default: { 
-         //statements; 
-         break; 
       } 
-   } 
-    
-  }
-
-  test(){ console.log("clique :) ")};
-  
-  //Fonction pour lancer compte à rebour pour rechercher
-  startTimerForSearch() {
-    this.interval = setInterval(() => {
-      if(this.progressBar > 0) {
-        this.progressBar -= 10;
-      } else {
-        //Compteur à réinitialisé
-        this.restartTimer();
-
-        //Affichage de la reponse et début compte à rebour pour l'affichage du resultat
-        this.startTimerForResult();
+      case 2: { 
+        this.showAnswer = this.currentQuizz.answer2; 
+        break; 
       }
-    },1000)
-  }
-
-  //Fonction pour lancer compte à rebour pour afficher la réponse
-  startTimerForResult() {
-    this.correction();
-    this.answer = this.currentQuizz.explanation
-    this.time = 10;
-    this.interval = setInterval(() => {
-      if(this.time > 0) {
-        this.time--;
-
-      } else {
-        this.showAnswer = "";
-        this.answer = "";
-        this.restartTimer();
-        this.nextQuizz();
+      case 3: { 
+        this.showAnswer = this.currentQuizz.answer3;
+        break; 
+      } 
+      case 4: {
+        this.showAnswer = this.currentQuizz.answer4;
+        break; 
+      } 
+      default: { 
+        break; 
       }
-    },1000)
+
+     }
+    this.explanation = this.currentQuizz.explanation;
+
   }
 
-restartTimer(){
-  clearInterval(this.interval)
-  this.progressBar = 100;
-}
+
+  btnInitColor() {
+    this.colorTab = ['primary', 'primary', 'primary', 'primary']
+  }
+
+
 }
