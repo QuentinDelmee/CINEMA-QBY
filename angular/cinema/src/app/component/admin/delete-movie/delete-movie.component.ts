@@ -11,13 +11,12 @@ export class DeleteMovieComponent implements OnInit {
 
   constructor(private movieService: MovieService) { }
 
-  selectedMovie: any = { "movie":{} , "index":-1};
+  selectedMovie: any = { "movie":{} , "index":-1 };
 
   movies: Movie[] = [];
 
   ngOnInit(): void {
     this.findAll() ;
-    
   }
 
   onSubmit(): void{

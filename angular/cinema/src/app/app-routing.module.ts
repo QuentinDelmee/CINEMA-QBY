@@ -31,32 +31,72 @@ import { SignUpComponent } from './component/visitor/sign-up/sign-up.component';
 
 import { QuizzComponent } from './component/visitor/quizz/quizz.component'
 import { QuizzOnPhoneComponent } from './component/visitor/quizz-on-phone/quizz-on-phone.component'
+import { AdminComponent } from './component/admin/admin.component';
+import { CreateProductComponent } from './component/admin/create-product/create-product.component';
+import { UpdateProductComponent } from './component/admin/update-product/update-product.component';
+import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
 
+let access: number = Number(sessionStorage.getItem('access'));
 
-const routes: Routes = [
-  /* VISITOR SECTION */
-  { path: 'home-page', component: HomeComponent },
-  { path: 'movie-page', component: MovieComponent },
-  { path: 'timetable-page', component: TimeTableComponent },
-  { path: 'signin', component: SignInComponent },
-  { path: 'signup', component: SignUpComponent },
-  { path: 'quizz-page', component: QuizzComponent},
-  { path: 'quizz-on-phone', component: QuizzOnPhoneComponent},
-  { path: 'how-to-come-page', component: HowToComeComponent },
-// 'movie-page/description
+let routes:Routes = [] ;
 
- 
+if (access == 0) {
+  routes = [
 
-  /* USER SECTION */
-  { path: 'user/profil', component: ProfilComponent },
-  { path: 'user/profil/update', component: UpdateProfilComponent },
-  { path: 'user/reservation', component: ReservationComponent },
-  { path: 'user/reservation/create', component: CreateReservationComponent },
-  { path: 'user/reservation/delete', component: DeleteReservationComponent },
-  
-  
-  
+    /* VISITOR SECTION */
+    { path: '', component: HomeComponent },
+    { path: 'home-page', component: HomeComponent },
+    { path: 'movie-page', component: MovieComponent },
+    { path: 'timetable-page', component: TimeTableComponent },
+    { path: 'signin', component: SignInComponent },
+    { path: 'signup', component: SignUpComponent },
+    { path: 'quizz-page', component: QuizzComponent },
+    { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
+    { path: 'how-to-come-page', component: HowToComeComponent },
+    // 'movie-page/description
+  ] ;
+}
+else if (access == 1) {
+  routes = [
+    /* VISITOR SECTION */
+    { path: '', component: HomeComponent },
+    { path: 'home-page', component: HomeComponent },
+    { path: 'movie-page', component: MovieComponent },
+    { path: 'timetable-page', component: TimeTableComponent },
+    { path: 'signin', component: SignInComponent },
+    { path: 'signup', component: SignUpComponent },
+    { path: 'quizz-page', component: QuizzComponent },
+    { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
+    { path: 'how-to-come-page', component: HowToComeComponent },
+
+    /* USER SECTION */
+    { path: 'user/profil', component: ProfilComponent },
+    { path: 'user/profil/update', component: UpdateProfilComponent },
+    { path: 'user/reservation', component: ReservationComponent },
+    { path: 'user/reservation/create', component: CreateReservationComponent },
+    { path: 'user/reservation/delete', component: DeleteReservationComponent },
+  ] ;
+}
+else if (access == 6) {
+  routes = [
+    { path: '', component: AdminComponent },
+    { path: 'home-page', component: HomeComponent },
+    { path: 'movie-page', component: MovieComponent },
+    { path: 'timetable-page', component: TimeTableComponent },
+    { path: 'signin', component: SignInComponent },
+    { path: 'signup', component: SignUpComponent },
+    { path: 'quizz-page', component: QuizzComponent },
+    { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
+    { path: 'how-to-come-page', component: HowToComeComponent },
+
+    /* USER SECTION */
+    { path: 'user/profil', component: ProfilComponent },
+    { path: 'user/profil/update', component: UpdateProfilComponent },
+    { path: 'user/reservation', component: ReservationComponent },
+    { path: 'user/reservation/create', component: CreateReservationComponent },
+    { path: 'user/reservation/delete', component: DeleteReservationComponent },
   /* ADMIN SECTION */
+  { path: 'admin', component: AdminComponent },
   { path: 'admin/timetable/create', component: CreateTimeTableComponent },
   { path: 'admin/timetable/update', component: UpdateTimeTableComponent },
   { path: 'admin/timetable/delete', component: DeleteTimeTableComponent },
@@ -67,12 +107,16 @@ const routes: Routes = [
   { path: 'admin/movie/create', component: CreateMovieComponent },
   { path: 'admin/movie/update', component: UpdateMovieComponent },
   { path: 'admin/movie/delete', component: DeleteMovieComponent },
+  { path: 'admin/product/create', component: CreateProductComponent },
+  { path: 'admin/product/update', component: UpdateProductComponent },
+  { path: 'admin/product/delete', component: DeleteProductComponent },
   { path: 'admin/data', component: DataComponent },
 
 ];
+}
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+  @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }
