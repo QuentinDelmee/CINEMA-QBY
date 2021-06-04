@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Movie } from '../../class/movie';
-import { MovieService } from '../../service/movie.service'
+import { Movie } from '../../../class/movie';
+import { MovieService } from '../../../service/movie.service'
 
 @Component({
   selector: 'app-movie',
@@ -25,10 +25,7 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.onResize();
-    if (this.movies === null) {
-      console.log("Test");
-      this.findAllMovie();
-    }
+    this.findAllMovie();
   }
 
   findAllMovie() {
