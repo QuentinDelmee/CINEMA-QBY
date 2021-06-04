@@ -11,12 +11,11 @@ export class DeleteMovieComponent implements OnInit {
 
   constructor(private movieService: MovieService) { }
 
-  selectedMovie: any = { "movie":{} , "index":-1 };
-
+  selectedMovie: any = { "movie":{} , "index":-1 } ;
   movies: Movie[] = [];
 
   ngOnInit(): void {
-    this.findAll() ;
+    this.findAllMovie() ;
   }
 
   onSubmit(): void{
@@ -31,9 +30,19 @@ export class DeleteMovieComponent implements OnInit {
     this.selectedMovie = { "movie":{} , "index":-1};
   }
 
-  findAll()
-  {
-    this.movieService.findAll().subscribe(data => { this.movies = data; });
+  findAllMovie() {
+    this.movieService.findAll().subscribe(data => {
+      this.movies = data;
+      this.updateImage();
+    });
+  }
+
+  updateImage() {
+    this.movies.forEach(element => {
+      if (!element.imageUrl || element.imageUrl === "" || element.imageUrl === "N/A") {
+        this.movieService.updateURL(element);
+      }
+    });
   }
 
   trackMovie(index:number,movie:Movie)

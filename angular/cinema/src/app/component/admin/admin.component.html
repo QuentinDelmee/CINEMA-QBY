@@ -28,9 +28,10 @@
                 <mat-card-subtitle>Create / Update / Delete Product</mat-card-subtitle>
             </mat-card-header>
 
-            <button mat-raised-button color="primary">Create Product</button>
-            <button mat-raised-button color="primary">Update Product</button>
-            <button mat-raised-button color="primary">Delete Product</button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/product/create']">Create Product</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/product/update']">Update Product</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/product/delete']">Delete Product</a></button>
+
 
           </mat-card>
 
