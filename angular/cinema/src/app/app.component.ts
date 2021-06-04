@@ -23,11 +23,11 @@ export class AppComponent {
 
   constructor(private movieS:MovieService,private sessionS:SessionService,private quizzS:QuizzService,private cinemaRoomS:CinemaRoomService, private seatS:SeatService, private productS:ProductService)
   {
-    this.persist('access','6');
+    this.persist('access','1');
   }
 
   persist(key:string,value:any)
   {
-    localStorage.setItem(key,value);
+    sessionStorage.setItem(key,value);
   }
 }
