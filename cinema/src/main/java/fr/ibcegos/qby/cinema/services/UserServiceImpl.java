@@ -13,6 +13,7 @@ import fr.ibcegos.qby.cinema.beans.Person;
 import fr.ibcegos.qby.cinema.beans.Purchase;
 import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.User;
+import fr.ibcegos.qby.cinema.daos.SecurityLevelDAO;
 import fr.ibcegos.qby.cinema.daos.UserDAO;
 
 @Service
@@ -21,17 +22,21 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDAO userDAO;
+	@Autowired
+	SecurityLevelDAO slDAO; 
 
 	//////////
 	// CREATE//
 	//////////
 	@Override
 	@Transactional
-	public void create(User user) {
+	public User create(User user) {
 		if (user.getIdPerson() == null) {
 			user.setIdPerson(new Person());
 		}
+		user.setIdSecurityLevel( slDAO.findById(1).orElse(null) );
 		userDAO.save(user);
+		return user;
 
 	}
 

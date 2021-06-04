@@ -1,70 +1,47 @@
-<form (ngSubmit)="onSubmit()">
+<mat-card>
+  <mat-card-content>
 
-<div class="">
-    <h1>FORMULAIRE D'INSCRIPTION</h1>
-    <h2>Renseigner les éléments ci-dessous</h2>
-  </div>
-  <p class ="">Pseudo</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Pseudo</mat-label>
-    <input matInput name='pseudo' [(ngModel)]="userJSON.pseudo" >
-  </mat-form-field>
-  
-  <br> <!-- Mauvaise pratique -->
+    <mat-card-header>
+        <mat-icon>face</mat-icon>
+    </mat-card-header>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Confirmer Pseudo</mat-label>
-    <input matInput >
-  </mat-form-field>
-  
-  <br> <!-- Mauvaise pratique -->
+    <form (ngSubmit)="onSubmit()">
 
-<mat-form-field appearance="fill">
-    <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'" name='pwd' [(ngModel)]="userJSON.pwd">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-</mat-form-field>
+    <div class="">
+        <h1>Register Form</h1>
+        <h3>Please, Could you complete required informations bellow</h3>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Pseudo</mat-label>
+        <input matInput name='pseudo' [(ngModel)]="userJSON.pseudo" >
+      </mat-form-field>
 
-<br><!--Très  Mauvaise pratique  -->
-
-<mat-form-field appearance="fill">
-    <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-</mat-form-field>
-
-<p class ="">Email</p>
-
-<br> <!--Très Mauvaise pratique -->
-
-<div>
+      
     <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label >
-      <input matInput placeholder="pat@example.com"  [formControl]="email"  required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" name='pwd' [(ngModel)]="userJSON.pwd">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
     </mat-form-field>
-  </div>
 
-  <br> <!-- Très Mauvaise pratique -->
-
-  <div >
-    <mat-form-field appearance="fill">
-      <mat-label>Confirm your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </div>
-<br><br> <!-- Très Mauvaise pratique -->
+    <p class ="">Email</p>
 
 
-<div class="">
-    <form onsubmit="">
-      <input type="submit" id='submit' value='Valider' (click)="onSubmit()">       
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label >
+          <input matInput placeholder="pat@example.com"  [formControl]="email"  required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+    <div>
+      <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Create my Account</button>       
+    </div> 
+
     </form>
-</div> 
 
-</form>
+
+  </mat-card-content>
+</mat-card>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
 import { User } from '../../../class/user';
 @Component({
@@ -9,8 +9,8 @@ import { User } from '../../../class/user';
 })
 export class SignUpComponent implements OnInit {
   hide = true;
-  
-  userJSON: any = { "idPerson": {} };
+
+  userJSON: any = { "idPerson": {}, "idSecurityLevel": {} };
 
   constructor(private userService: UserService) { }
 
@@ -18,8 +18,8 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  email:FormControl = new FormControl('', [Validators.required, Validators.email]);
+
+  email: FormControl = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -41,11 +41,11 @@ export class SignUpComponent implements OnInit {
       console.log("New User ABORTED");
     }
 
-    this.userJSON = {} ;
+    this.userJSON = {};
   }
 
 
 
 
-  
+
 }
