@@ -11,8 +11,7 @@ export class MovieComponent implements OnInit {
 
   /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
 
-  moviesString: any = localStorage.getItem('movies');
-  movies: Movie[] = JSON.parse(this.moviesString);
+  movies: Movie[] = [] ;
   savedTab: number = Number(sessionStorage.getItem('movieTab'));
 
   /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
@@ -32,7 +31,6 @@ export class MovieComponent implements OnInit {
     this.movieService.findAll().subscribe(data => {
       this.movies = data;
       this.updateImage();
-      localStorage.setItem("movies", JSON.stringify(this.movies));
     });
   }
 

@@ -12,11 +12,25 @@ export class UpdateMovieComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   selectedMovie: Movie = new Movie({});
-
-  moviesString: any = localStorage.getItem('movies');
-  movies: Movie[] = JSON.parse(this.moviesString);
+  movies: Movie[] = []
 
   ngOnInit(): void {
+    this.findAllMovie() ;
+  }
+  
+  findAllMovie() {
+    this.movieService.findAll().subscribe(data => {
+      this.movies = data;
+      this.updateImage();
+    });
+  }
+
+  updateImage() {
+    this.movies.forEach(element => {
+      if (!element.imageUrl || element.imageUrl === "" || element.imageUrl === "N/A") {
+        this.movieService.updateURL(element);
+      }
+    });
   }
 
   onSubmit(): void {

@@ -34,6 +34,10 @@ import { DeleteUserComponent } from './component/admin/delete-user/delete-user.c
 import { QuizzComponent } from './component/visitor/quizz/quizz.component';
 import { QuizzOnPhoneComponent } from './component/visitor/quizz-on-phone/quizz-on-phone.component';
 import { AdminComponent } from './component/admin/admin.component';
+import { ProductComponent } from './component/visitor/product/product.component';
+import { CreateProductComponent } from './component/admin/create-product/create-product.component';
+import { UpdateProductComponent } from './component/admin/update-product/update-product.component';
+import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
 
 
 
@@ -66,7 +70,11 @@ import { AdminComponent } from './component/admin/admin.component';
     DeleteUserComponent,
     QuizzComponent,
     QuizzOnPhoneComponent,
-    AdminComponent
+    AdminComponent,
+    ProductComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
+    DeleteProductComponent
   ],
   imports: [
     BrowserModule,

@@ -30,6 +30,8 @@ export class SignInComponent implements OnInit {
    this.message = '';
  }
 
+ messagePseudo:string = "Votre Pseudo # Votre ID"
+
 
  onSubmit(){
 
@@ -50,7 +52,7 @@ export class SignInComponent implements OnInit {
      console.log(credentials);
 
      //Appel du WebService
-     this.userService.login(credentials).subscribe(data => {this.loginStatus = data;this.login();});
+     this.userService.login(credentials).subscribe(data => {this.loginStatus = data; console.log(data) ; this.login();});
      
    }
    else{this.error = 'Il manque le #'; this.verifForm()}

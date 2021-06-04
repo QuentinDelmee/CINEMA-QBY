@@ -1,35 +1,35 @@
 <mat-card>
     <mat-card-content>
-
+        <mat-card-header>
+            <mat-icon>face</mat-icon>
+        </mat-card-header>
         <form (ngSubmit)="onSubmit()">
-            
-            <div>
+
+
                 <mat-form-field appearance="fill">
                     <mat-label>Pseudo</mat-label>
-                    <input matInput placeholder="Pseudo#44(id)" matInput name='pseudo' [(ngModel)]="signInJSON.pseudo" required>
+                    <input matInput placeholder="Pseudo#44(id)" matInput name='pseudo' [(ngModel)]="signInJSON.pseudo"
+                        required>
+                        <mat-hint>{{messagePseudo}}</mat-hint>
                 </mat-form-field>
-                
-            </div>
 
-            <div>
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your password</mat-label>
-                    <input matInput name='pwd' [(ngModel)]="signInJSON.pwd" [type]="hide ? 'password' : 'text'" required>
+                    <input matInput name='pwd' [(ngModel)]="signInJSON.pwd" [type]="hide ? 'password' : 'text'"
+                        required>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
-            </div>
+
 
 
             <div>
-                <button mat-button type="submit">Login</button>
+                <button mat-raised-button color="primary" type="submit">Login</button>
             </div>
-
-
-            <a mat-flat-button routerLink="user-page/signup" class="btn btn-link">Register Now</a>
         </form>
+        <button mat-raised-button color="primary"><a mat-stroked-button routerLink="/signup">Register Now</a></button>
     </mat-card-content>
 </mat-card>
 

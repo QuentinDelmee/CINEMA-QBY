@@ -1,1 +1,76 @@
 <p>admin works!</p>
+
+
+<mat-grid-list cols="2" gutterSize="12px" >
+
+    <mat-grid-tile>
+        
+        <mat-card class=".mat-app-background">
+            <mat-card-header>
+                <mat-card-title>Movie Administration</mat-card-title>
+                <mat-card-subtitle>Create / Update / Delete Movie</mat-card-subtitle>
+            </mat-card-header>
+
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/movie/create']">Create Movie</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/movie/update']">Update Movie</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/movie/delete']">Delete Movie</a></button>
+
+          </mat-card>
+
+
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+        
+        <mat-card class=".mat-app-background">
+            <mat-card-header>
+                <mat-card-title>Product Administration</mat-card-title>
+                <mat-card-subtitle>Create / Update / Delete Product</mat-card-subtitle>
+            </mat-card-header>
+
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/product/create']">Create Product</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/product/update']">Update Product</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/product/delete']">Delete Product</a></button>
+
+
+          </mat-card>
+
+
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+        
+        <mat-card class=".mat-app-background">
+            <mat-card-header>
+                <mat-card-title>User Administration</mat-card-title>
+                <mat-card-subtitle>Create / Update / Delete User</mat-card-subtitle>
+            </mat-card-header>
+
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/user/create']">Create User</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/user/update']">Update User</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/user/delete']">Delete User</a></button>
+
+          </mat-card>
+
+
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+        
+        <mat-card class=".mat-app-background">
+            <mat-card-header>
+                <mat-card-title>TimeTable Administration</mat-card-title>
+                <mat-card-subtitle>Create / Update / Delete Movie</mat-card-subtitle>
+            </mat-card-header>
+
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/timetable/create']">Create TimeTable</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/timetable/update']">Update TimeTable</a></button>
+            <button mat-raised-button color="primary"><a mat-stroked-button color="" [routerLink]="['/admin/timetable/delete']">Delete TimeTable</a></button>
+
+
+          </mat-card>
+
+
+
+    </mat-grid-tile>
+</mat-grid-list>
