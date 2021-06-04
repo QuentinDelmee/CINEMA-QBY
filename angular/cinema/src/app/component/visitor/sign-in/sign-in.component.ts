@@ -16,13 +16,14 @@ export class SignInComponent implements OnInit {
  loginStatus:any;
  hide = true;
  error:string = '';
+ hintPseudo:string = 'test';
 
  signInJSON: any = {
    "id":0,
    "pseudo": '',
    "pwd": '',
-   "idPerson":0,
-   "idSecurityLevel":0
+   "idPerson": {},
+   "idSecurityLevel": {}
  };
 
  

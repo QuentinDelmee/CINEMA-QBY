@@ -8,9 +8,8 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Pseudo</mat-label>
-                    <input matInput placeholder="Pseudo#44(id)" matInput name='pseudo' [(ngModel)]="signInJSON.pseudo"
-                        required>
-                        <mat-hint>{{messagePseudo}}</mat-hint>
+                    <input matInput placeholder="Pseudo#44(id)" matInput name='pseudo' [(ngModel)]="signInJSON.pseudo"required/>
+                    <mat-error>{{hintPseudo}}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">

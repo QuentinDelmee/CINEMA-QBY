@@ -1,1 +1,35 @@
+  mat-card {
+    max-width: 400px;
+    margin: 24px auto;
+    text-align: center;
+  }
+  
+  mat-form-field {
+    display: block;
+    margin : auto ;
+    margin-bottom : 8px ;
+  }
 
+  mat-card-header {
+    height: 128px ;
+    margin: 8px ;
+  }
+
+  mat-card-header mat-icon{
+    margin: auto;
+    transform: scale(5) ;
+  }
+
+  a:hover {
+    color:whitesmoke ;
+  }
+
+  a {
+    width : 100% ;
+  }
+
+  button {
+    margin : auto ;
+    margin-top : 8px ;
+    width : 200px;
+  }

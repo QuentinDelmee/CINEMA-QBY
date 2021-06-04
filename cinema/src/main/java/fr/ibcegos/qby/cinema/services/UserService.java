@@ -19,7 +19,7 @@ public interface UserService {
 	 * @param user
 	 * @return 
 	 */
-	public boolean create(User user);
+	public User create(User user);
 	
 		
 	//////////
