@@ -17,8 +17,9 @@ public interface UserService {
 	/**
 	 * Créer un utilisateur
 	 * @param user
+	 * @return 
 	 */
-	public void create(User user);
+	public boolean create(User user);
 	
 		
 	//////////
