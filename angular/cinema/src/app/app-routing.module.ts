@@ -36,6 +36,7 @@ import { CreateProductComponent } from './component/admin/create-product/create-
 import { UpdateProductComponent } from './component/admin/update-product/update-product.component';
 import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
 import { AllUserComponent } from './component/admin/all-user/all-user.component';
+import { ProductComponent } from './component/visitor/product/product.component';
 
 let access: number = Number(sessionStorage.getItem('access'));
 
@@ -46,9 +47,10 @@ if (access == 0) {
 
     /* VISITOR SECTION */
     { path: '', component: HomeComponent },
-    { path: 'home-page', component: HomeComponent },
-    { path: 'movie-page', component: MovieComponent },
-    { path: 'timetable-page', component: TimeTableComponent },
+    { path: 'home', component: HomeComponent },
+    { path: 'movie', component: MovieComponent },
+    { path: 'timetable', component: TimeTableComponent },
+    { path: 'products', component: ProductComponent},
     { path: 'signin', component: SignInComponent },
     { path: 'signup', component: SignUpComponent },
     { path: 'quizz-page', component: QuizzComponent },
@@ -61,16 +63,16 @@ else if (access == 1) {
   routes = [
     /* VISITOR SECTION */
     { path: '', component: HomeComponent },
-    { path: 'home-page', component: HomeComponent },
-    { path: 'movie-page', component: MovieComponent },
-    { path: 'timetable-page', component: TimeTableComponent },
-    { path: 'signin', component: SignInComponent },
-    { path: 'signup', component: SignUpComponent },
+    { path: 'home', component: HomeComponent },
+    { path: 'movie', component: MovieComponent },
+    { path: 'timetable', component: TimeTableComponent },
+    { path: 'products', component: ProductComponent},
     { path: 'quizz-page', component: QuizzComponent },
     { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
     { path: 'how-to-come-page', component: HowToComeComponent },
 
     /* USER SECTION */
+    { path: 'user', component: UserComponent },
     { path: 'user/profil', component: ProfilComponent },
     { path: 'user/profil/update', component: UpdateProfilComponent },
     { path: 'user/reservation', component: ReservationComponent },

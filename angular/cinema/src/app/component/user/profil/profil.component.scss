@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+  }
+
+  mat-card {
+    height: 100vh;
+  }
+
+button {
+  margin: 8px ;
+}
+
+mat-card-title {
+    text-align: center;
+}
+  
+mat-card-header {
+    height: 64px ;
+  margin: 8px ;
+}
+
+mat-card-content {
+    text-align: center;
+}
+
+ mat-icon {
+    position : absolute ;
+    margin: 48px ;
+    transform: scale(5);
+  }
+
+  a {
+    width:100%;
+  }
+
+  a:hover{
+    color:whitesmoke ;
+  }

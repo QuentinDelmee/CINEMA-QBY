@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/app/class/person';
+import { User } from 'src/app/class/user';
 import { PersonService } from 'src/app/service/person.service';
 
 @Component({
@@ -9,12 +10,12 @@ import { PersonService } from 'src/app/service/person.service';
 })
 export class ProfilComponent implements OnInit {
 
-  persons : Person[] = [];
+  user:User = new User( {"id":42,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{} ,"idSecurityLevel":{}} )
 
   constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
-    this.personService.findAll().subscribe(data => { this.persons = data; });
+
   }
 
 
