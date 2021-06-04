@@ -23,21 +23,7 @@ export class AppComponent {
 
   constructor(private movieS:MovieService,private sessionS:SessionService,private quizzS:QuizzService,private cinemaRoomS:CinemaRoomService, private seatS:SeatService, private productS:ProductService)
   {
-    let movies:Movie[] ;
-    movieS.findAll().subscribe(data => { movies = data ; this.persist('movies',JSON.stringify(movies))}) ;
-    let sessions:Session[] ;
-    sessionS.findAll().subscribe(data => { sessions = data ; this.persist('sessions',JSON.stringify(sessions))});
-    let quizz:Quizz[] ; 
-    quizzS.findAll().subscribe(data => { quizz = data ; this.persist('quizz',JSON.stringify(quizz))}) ;
-    let cinemaRoom:CinemaRoom[] ; 
-    cinemaRoomS.findAll().subscribe(data => { cinemaRoom = data ; this.persist('cinemaRoom',JSON.stringify(cinemaRoom))}) ;
-    let seats:Seat[] ;
-    seatS.findAll().subscribe(data => { seats = data ; this.persist('seats',JSON.stringify(seats))}) ;
-    let products:Product[] ;
-    productS.findAll().subscribe(data => { products = data ; this.persist('products',JSON.stringify(products))}) ;
-
-    this.persist('access','0');
-
+    this.persist('access','6');
   }
 
   persist(key:string,value:any)

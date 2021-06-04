@@ -1,42 +1,23 @@
-<mat-tab-group>
-    <mat-tab label="Séance">
-        <table mat-table [dataSource]="sessions" class="mat-elevation-z8">
 
-            <ng-container matColumnDef="FILM">
-                <th mat-header-cell *matHeaderCellDef> FILM </th>
-                <td mat-cell *matCellDef="let session"> {{session.idMovie.title}} </td>
-            </ng-container>
-            <ng-container matColumnDef="DATE">
-                <th mat-header-cell *matHeaderCellDef> DATE </th>
-                <td mat-cell *matCellDef="let session"> {{session.idDate}} </td>
-            </ng-container>
-            <ng-container matColumnDef="CINEMA ROOM">
-                <th mat-header-cell *matHeaderCellDef> CINEMA ROOM </th>
-                <td mat-cell *matCellDef="let session"> {{session.idCinemaRoom.roomName}} </td>
-            </ng-container>
-            <ng-container matColumnDef="SEAT">
-                <th mat-header-cell *matHeaderCellDef> SEAT LEFT </th>
-                <td mat-cell *matCellDef="let session "> {{session.seatsLeft </td>
-            </ng-container>
+<table mat-table [dataSource]="sessions" class="mat-elevation-z8">
 
-            <tr mat-header-row *matHeaderRowDef="['FILM', 'DATE', 'CINEMA ROOM', 'SEAT'];"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['FILM', 'DATE', 'USER', 'SEAT'];"></tr>
-        </table>
-<div *ngFor="let session of sessions">{{session | json}}</div>
-    </mat-tab>
+    <ng-container matColumnDef="FILM">
+        <th mat-header-cell *matHeaderCellDef> FILM </th>
+        <td mat-cell *matCellDef="let session"> {{session.idMovie.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="DATE">
+        <th mat-header-cell *matHeaderCellDef> DATE </th>
+        <td mat-cell *matCellDef="let session"> {{session.idDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="CINEMA ROOM">
+        <th mat-header-cell *matHeaderCellDef> CINEMA ROOM </th>
+        <td mat-cell *matCellDef="let session"> {{session.idCinemaRoom.roomName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="SEAT">
+        <th mat-header-cell *matHeaderCellDef> SEAT LEFT </th>
+        <td mat-cell *matCellDef="let session "> {{session.seatsLeft}} </td>
+    </ng-container>
 
-
-
-
-
-    
-    <mat-tab label="Create Séance">
-        <app-create-time-table></app-create-time-table>
-    </mat-tab>
-    <mat-tab label="Update Séance">
-        <app-update-time-table></app-update-time-table>
-    </mat-tab>
-    <mat-tab label="Delete Séance">
-        <app-delete-time-table></app-delete-time-table>
-    </mat-tab>
-</mat-tab-group>
+    <tr mat-header-row *matHeaderRowDef="['FILM', 'DATE', 'CINEMA ROOM', 'SEAT'];"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['FILM', 'DATE', 'CINEMA ROOM', 'SEAT'];"></tr>
+</table>

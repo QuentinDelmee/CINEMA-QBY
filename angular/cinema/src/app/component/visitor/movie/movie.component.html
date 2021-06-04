@@ -1,6 +1,4 @@
-<div>
-    <mat-tab-group selectedIndex="{{savedTab}}" (selectedIndexChange)="updateTab($event)">
-        <mat-tab label="Movie">
+
 
             <mat-grid-list cols="{{nbColumn}}" rowHeight="512px" gutterSize="{{nbGutterSize}}px" >
 
@@ -19,21 +17,4 @@
 
                 </mat-grid-tile>
             </mat-grid-list>
-        </mat-tab>
-
-
-
-
-
-
-        <mat-tab label="Create Movie">
-            <app-create-movie></app-create-movie>
-        </mat-tab>
-        <mat-tab label="Update Movie">
-            <app-update-movie></app-update-movie>
-        </mat-tab>
-        <mat-tab label="Delete Movie">
-            <app-delete-movie></app-delete-movie>
-        </mat-tab>
-    </mat-tab-group>
-</div>
+        
