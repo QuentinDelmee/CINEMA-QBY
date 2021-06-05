@@ -22,6 +22,10 @@ export class MovieService {
     return this.http.get<Movie[]>(this.moviesUrl);
   }
 
+  public findById(index:number): Observable<Movie> {
+    return this.http.get<Movie>(this.moviesUrl+"/"+index);
+  }
+
   public save(movie: Movie) {
     return this.http.post<Movie>(this.moviesUrl, movie);
   }

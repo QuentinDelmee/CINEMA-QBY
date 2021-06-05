@@ -43,6 +43,7 @@ import { CreatePurchaseComponent } from './component/admin/create-purchase/creat
 import { UpdatePurchaseComponent } from './component/admin/update-purchase/update-purchase.component';
 import { OpinionComponent } from './component/user/opinion/opinion.component';
 import { CommentaryComponent } from './component/user/commentary/commentary.component';
+import { DescriptionMovieComponent } from './component/visitor/description-movie/description-movie.component';
 
 let access: number = Number(sessionStorage.getItem('access'));
 
@@ -51,6 +52,7 @@ let routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'movie', component: MovieComponent },
+  { path: 'movie/description', component: DescriptionMovieComponent },
   { path: 'timetable', component: TimeTableComponent },
   { path: 'products', component: ProductComponent },
   { path: 'signin', component: SignInComponent },

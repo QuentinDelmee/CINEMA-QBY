@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from '../../../class/movie';
 import { MovieService } from '../../../service/movie.service'
 
@@ -20,7 +21,7 @@ export class MovieComponent implements OnInit {
   nbGutterSize: number = 24;
   innerWidth: number = 1440;
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService,private router:Router) { }
 
   ngOnInit(): void {
     this.onResize();
@@ -52,6 +53,11 @@ export class MovieComponent implements OnInit {
       return '../../../assets/img/image-not-found.png';
     }
     else { return movie.imageUrl; }
+  }
+
+  redirect(movie:Movie)
+  {
+
   }
 
   /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */

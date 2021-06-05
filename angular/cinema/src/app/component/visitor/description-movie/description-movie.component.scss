@@ -1,0 +1,44 @@
+button {
+    margin: 8px;
+}
+
+mat-card-title {
+    text-align: center;
+}
+
+mat-card-header {
+    height: 64px;
+    margin: 8px;
+}
+
+.app-qby-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.app-qby-content {
+    height:90%;
+    width:100%;
+}
+mat-icon {
+    position: absolute;
+    margin: 48px;
+    transform: scale(5);
+}
+
+a {
+    width: 100%;
+}
+
+a:hover {
+    color: whitesmoke;
+}
+
+img {
+    max-width: 400px;
+}
+
+table {
+    width: 100%;
+    margin-top: 24px;
+  }

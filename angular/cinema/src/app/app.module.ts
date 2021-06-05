@@ -45,6 +45,7 @@ import { CreatePurchaseComponent } from './component/admin/create-purchase/creat
 import { UpdatePurchaseComponent } from './component/admin/update-purchase/update-purchase.component';
 import { CommentaryComponent } from './component/user/commentary/commentary.component';
 import { OpinionComponent } from './component/user/opinion/opinion.component';
+import { DescriptionMovieComponent } from './component/visitor/description-movie/description-movie.component';
 
 
 
@@ -89,6 +90,7 @@ import { OpinionComponent } from './component/user/opinion/opinion.component';
     UpdatePurchaseComponent,
     CommentaryComponent,
     OpinionComponent,
+    DescriptionMovieComponent,
   ],
   imports: [
     BrowserModule,

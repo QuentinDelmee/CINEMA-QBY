@@ -1,0 +1,141 @@
+<mat-card class="app-qby-title">
+    <mat-card-header>
+        <mat-icon> local_movies</mat-icon>
+    </mat-card-header>
+
+
+    <mat-card-content>
+        <mat-card-title>Film Description : {{movie.title}}</mat-card-title>
+        <button mat-raised-button color="primary">
+            <a mat-stroked-button color="" [routerLink]="['/movie']">Return</a>
+        </button>
+    </mat-card-content>
+</mat-card>
+<mat-grid-list cols="3" rowHeight="512px" gutterSize="24px">
+
+    <mat-grid-tile colspan="1">
+        <mat-card class="app-qby-content">
+            <mat-card-content>
+                <img mat-card-image src="{{movie.imageUrl}}">
+            </mat-card-content>
+        </mat-card>
+
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+        <mat-card class="app-qby-content">
+            <mat-card-title>{{movie.title}} {{movie.averageRating}}/5 </mat-card-title>
+            <mat-card-subtitle>
+                Genre : {{movie.movieGenre}}
+            </mat-card-subtitle>
+            <mat-card-content>
+                Duration : {{movie.movieDuration}}
+            </mat-card-content>
+            <mat-card-content>
+                Description : {{movie.movieDescription}}
+            </mat-card-content>
+
+            <table mat-table [dataSource]="comments" matSort>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Pseudo </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idUser.pseudo}} </td>
+                </ng-container>
+        
+                <!-- Progress Column -->
+                <ng-container matColumnDef="progress">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+                    <td mat-cell *matCellDef="let row"> {{row.rating}}</td>
+                </ng-container>
+        
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+                    <td mat-cell *matCellDef="let row"> {{row.commentary}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="2">
+        <mat-card class="app-qby-content">
+            <table mat-table [dataSource]="sessions" matSort>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Day </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idDate | date : 'fullDate'}} </td>
+                </ng-container>
+        
+                <!-- Progress Column -->
+                <ng-container matColumnDef="progress">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Hour </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idDate | date : 'fullTime'}}</td>
+                </ng-container>
+        
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Room </th>
+                    <td mat-cell *matCellDef="let row"> {{row.idCinemaRoom.roomName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fruit">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Room </th>
+                    <td mat-cell *matCellDef="let row"> {{row.seatsLeft}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="['id', 'name', 'progress', 'fruit']"></tr>
+                <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'progress', 'fruit'];"></tr>
+            </table>
+
+        </mat-card>
+
+
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+        <mat-card class="app-qby-content">
+            <mat-card-title>{{movie.title}} {{movie.averageRating}}/5 </mat-card-title>
+            <mat-card-subtitle>
+                Genre : {{movie.movieGenre}}
+            </mat-card-subtitle>
+            <mat-card-content>
+                Duration : {{movie.movieDuration}}
+            </mat-card-content>
+            <mat-card-content>
+                Description : {{movie.movieDescription}}
+            </mat-card-content>
+        </mat-card>
+
+    </mat-grid-tile>
+</mat-grid-list>
+<!-- 
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="comments" matSort>
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pseudo </th>
+            <td mat-cell *matCellDef="let row"> {{row.idUser.pseudo}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="progress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+            <td mat-cell *matCellDef="let row"> {{row.rating}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+            <td mat-cell *matCellDef="let row"> {{row.commentary}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div> -->
