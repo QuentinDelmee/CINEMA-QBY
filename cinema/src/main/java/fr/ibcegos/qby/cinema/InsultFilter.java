@@ -9,14 +9,14 @@ public class InsultFilter {
 	String commentaire4 = "Merd j'ai pas aimé";
 	String commentaire5 = "Me rd e j'ai pas aimé";
 	
-	static String filter(String comment) {
+	public String filter(String comment) {
 		
 		//Dictionnaire de gros mots
 		String[] myList2 = {"shit","fuck","vilain","chier"};
 		
 		for(String insult:myList2) {
 			if(comment.contains(insult)) {
-				comment.replaceAll(insult, "*");
+				comment.replace(insult, "*");
 			}
 		}
 		
