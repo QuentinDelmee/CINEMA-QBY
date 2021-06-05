@@ -9,7 +9,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Pseudo</mat-label>
                     <input matInput placeholder="Pseudo#44(id)" matInput name='pseudo' [formControl]="pseudo" required/>
-                    <mat-error>{{getErrorMessageEmail()}}</mat-error>
+                    <mat-error>{{getErrorMessage()}}</mat-error>
                     <mat-hint>{{error}}</mat-hint>
                 </mat-form-field>
 
@@ -21,7 +21,7 @@
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
-                    <mat-error>{{getErrorMessageEmail()}}</mat-error>
+                    <mat-error>{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
 
 

@@ -24,7 +24,7 @@ export class SignInComponent implements OnInit {
   pwd = new FormControl('', [Validators.required]);
   pseudo = new FormControl('', [Validators.required]);
   
-  getErrorMessageEmail() {
+  getErrorMessage() {
 
     if (this.pwd.hasError('required')) {
       return 'You must enter a value';
@@ -100,9 +100,9 @@ export class SignInComponent implements OnInit {
       });
 
       //window.location.reload() ;
-
-
-
+    }
+    else{
+      alert('Login or password are wrong please try again with correct informations !')
     }
 
   }
