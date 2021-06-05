@@ -26,7 +26,11 @@ export class HeaderComponent implements OnInit {
       this.currentPage[1] = true;
       this.previousPage = 1;
     }
-    else if (window.location.href.match("timetable-page")?.length){
+    else if (window.location.href.match("timetable")?.length){
+      this.currentPage[2] = true;
+      this.previousPage = 2;
+    }
+    else if (window.location.href.match("product")?.length){
       this.currentPage[2] = true;
       this.previousPage = 2;
     }

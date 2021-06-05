@@ -1,2 +1,28 @@
+<mat-card>
+        <mat-card-header>
+                <mat-icon>face</mat-icon>
+        </mat-card-header>
 
-        <div *ngFor="let person of persons">{{person | json}}</div>
+
+        <mat-card-content>
+                <mat-card-title>Your Profil Informations</mat-card-title>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user']">Return</a>
+                </button>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user/profil/update']">Update Profile</a>
+                </button>
+                <mat-divider></mat-divider>
+                <table class="mat-elevation-z8">
+                        <tr>
+                                <td>Your Pseudo</td>
+                                <td>{{user.pseudo}}#{{user.id}}</td>
+                        </tr>
+                    </table>
+        </mat-card-content>
+
+
+        <mat-card-footer>
+        </mat-card-footer>
+
+</mat-card>
