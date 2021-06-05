@@ -11,7 +11,8 @@ export class AppComponent {
 
   constructor()
   {
-    this.persist('access','1');
+    if( sessionStorage.getItem('access') === null )
+      this.persist('access','0');
   }
 
   persist(key:string,value:any)

@@ -41,65 +41,26 @@ import { UpdatePasswordComponent } from './component/user/update-password/update
 
 let access: number = Number(sessionStorage.getItem('access'));
 
-let routes:Routes = [] ;
-
-if (access == 0) {
-  routes = [
-
-    /* VISITOR SECTION */
-    { path: '', component: HomeComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'movie', component: MovieComponent },
-    { path: 'timetable', component: TimeTableComponent },
-    { path: 'products', component: ProductComponent},
-    { path: 'signin', component: SignInComponent },
-    { path: 'signup', component: SignUpComponent },
-    { path: 'quizz-page', component: QuizzComponent },
-    { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
-    { path: 'how-to-come-page', component: HowToComeComponent },
-    // 'movie-page/description
-  ] ;
-}
-else if (access == 1) {
-  routes = [
-    /* VISITOR SECTION */
-    { path: '', component: HomeComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'movie', component: MovieComponent },
-    { path: 'timetable', component: TimeTableComponent },
-    { path: 'products', component: ProductComponent},
-    { path: 'quizz-page', component: QuizzComponent },
-    { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
-    { path: 'how-to-come-page', component: HowToComeComponent },
-
-    /* USER SECTION */
-    { path: 'user', component: UserComponent },
-    { path: 'user/password', component: UpdatePasswordComponent },
-    { path: 'user/profil', component: ProfilComponent },
-    { path: 'user/profil/update', component: UpdateProfilComponent },
-    { path: 'user/reservation', component: ReservationComponent },
-    { path: 'user/reservation/create', component: CreateReservationComponent },
-    { path: 'user/reservation/delete', component: DeleteReservationComponent },
-  ] ;
-}
-else if (access == 6) {
-  routes = [
-    { path: '', component: AdminComponent },
-    { path: 'home-page', component: HomeComponent },
-    { path: 'movie-page', component: MovieComponent },
-    { path: 'timetable-page', component: TimeTableComponent },
-    { path: 'signin', component: SignInComponent },
-    { path: 'signup', component: SignUpComponent },
-    { path: 'quizz-page', component: QuizzComponent },
-    { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
-    { path: 'how-to-come-page', component: HowToComeComponent },
-
-    /* USER SECTION */
-    { path: 'user/profil', component: ProfilComponent },
-    { path: 'user/profil/update', component: UpdateProfilComponent },
-    { path: 'user/reservation', component: ReservationComponent },
-    { path: 'user/reservation/create', component: CreateReservationComponent },
-    { path: 'user/reservation/delete', component: DeleteReservationComponent },
+let routes: Routes = [
+  /* VISITOR SECTION */
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'movie', component: MovieComponent },
+  { path: 'timetable', component: TimeTableComponent },
+  { path: 'products', component: ProductComponent },
+  { path: 'signin', component: SignInComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'quizz-page', component: QuizzComponent },
+  { path: 'quizz-on-phone', component: QuizzOnPhoneComponent },
+  { path: 'how-to-come', component: HowToComeComponent },
+  /* USER SECTION */
+  { path: 'user', component: UserComponent },
+  { path: 'user/password', component: UpdatePasswordComponent },
+  { path: 'user/profil', component: ProfilComponent },
+  { path: 'user/profil/update', component: UpdateProfilComponent },
+  { path: 'user/reservation', component: ReservationComponent },
+  { path: 'user/reservation/create', component: CreateReservationComponent },
+  { path: 'user/reservation/delete', component: DeleteReservationComponent },
   /* ADMIN SECTION */
   { path: 'admin', component: AdminComponent },
   { path: 'admin/timetable/create', component: CreateTimeTableComponent },
@@ -118,10 +79,9 @@ else if (access == 6) {
   { path: 'admin/data', component: DataComponent },
 
 ];
-}
 
-  @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-  })
-  export class AppRoutingModule { }
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

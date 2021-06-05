@@ -10,7 +10,9 @@ import { PersonService } from 'src/app/service/person.service';
 })
 export class ProfilComponent implements OnInit {
 
-  user:User = new User( {"id":42,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{"id":42,"firstName":"Quentin","familyName":"Delmée","birthdate":"1991-03-09","genre":"Male","city":"Nantes","email":"quentin.delmee@qby.fr",} ,"idSecurityLevel":{"id":42,"role":"client","description":"blablabla"}} )
+  stringUser:any = sessionStorage.getItem('currentUser') ;
+  user:User = JSON.parse(this.stringUser) ;
+  //user:User = new User( {"id":42,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{"id":42,"firstName":"Quentin","familyName":"Delmée","birthdate":"1991-03-09","genre":"Male","city":"Nantes","email":"quentin.delmee@qby.fr",} ,"idSecurityLevel":{"id":42,"role":"client","description":"blablabla"}} )
 
   constructor(private personService: PersonService) { }
 

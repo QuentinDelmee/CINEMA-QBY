@@ -18,6 +18,11 @@ export class UserService {
     this.userUrl = 'http://localhost:8080/REST/user';
   }
 
+  public findById(id:number)
+  {
+    return this.http.get<User>(this.userUrl+"/"+id) ;
+  }
+
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl) ;
   }

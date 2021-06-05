@@ -11,7 +11,9 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class DeleteReservationComponent implements OnInit {
 
-  user:User = new User( {"id":56,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{"id":57,"firstName":"Quentin","familyName":"Delmée","birthdate":"1991-03-09","genre":"Male","city":"Nantes","email":"quentin.delmee@qby.fr",} ,"idSecurityLevel":{"id":42,"role":"client","description":"blablabla"}} )
+  stringUser:any = sessionStorage.getItem('currentUser') ;
+  user:User = JSON.parse(this.stringUser) ;
+  //user:User = new User( {"id":56,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{"id":57,"firstName":"Quentin","familyName":"Delmée","birthdate":"1991-03-09","genre":"Male","city":"Nantes","email":"quentin.delmee@qby.fr",} ,"idSecurityLevel":{"id":42,"role":"client","description":"blablabla"}} )
 
 
   constructor(private userService: UserService, private reservationService:ReservationService) { 
