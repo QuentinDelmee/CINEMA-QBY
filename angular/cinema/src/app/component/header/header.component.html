@@ -2,16 +2,16 @@
     <img mat-card-image src="http://www.quatuor-france.fr/wp-content/themes/options/images/skins/headers/full_width/header-jetBlack.jpg" alt="Header Image">
     <mat-toolbar color="primary">
         <div>
-            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/home']" (click)="updatePage(0)">Home</a>
-            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/movie']" (click)="updatePage(1)">Movies</a>
-            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/timetable']" (click)="updatePage(2)">Session</a>
-            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/products']" (click)="updatePage(3)">Let's Shop</a>
-            <a mat-stroked-button *ngIf="currentAccess==0" color="" [routerLink]="['/signin']" (click)="updatePage(4)">Sign In Now !</a>
-            <a mat-stroked-button *ngIf="currentAccess==0" color="" [routerLink]="['/signup']" (click)="updatePage(5)">Sign Up Now !</a>
-            <a mat-stroked-button *ngIf="currentAccess==1" color="" [routerLink]="['/user']" (click)="updatePage(7)">My Account</a>
-            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess == 1" color="" [routerLink]="['/quizz-page/']" (click)="updatePage(6)">Quizz</a>
-            <a mat-stroked-button *ngIf="currentAccess==6" color="" [routerLink]="['/admin']" (click)="updatePage(8)">CINEMA ADMINISTRATION</a>
-            <a mat-stroked-button *ngIf="currentAccess>=1" color="" [routerLink]="['']" (click)="logout()">Logout</a>
+            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/home']">Home</a>
+            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/movie']">Movies</a>
+            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/timetable']">Session</a>
+            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/products']">Let's Shop</a>
+            <a mat-stroked-button *ngIf="currentAccess==0" color="" [routerLink]="['/signin']">Sign In Now !</a>
+            <a mat-stroked-button *ngIf="currentAccess==0" color="" [routerLink]="['/signup']">Sign Up Now !</a>
+            <a mat-stroked-button *ngIf="currentAccess==1" color="" [routerLink]="['/user']">My Account</a>
+            <a mat-stroked-button *ngIf="currentAccess==0 || currentAccess==1" color="" [routerLink]="['/quizz-page/']">Quizz</a>
+            <a mat-stroked-button *ngIf="currentAccess==6" color="" [routerLink]="['/admin']">CINEMA ADMINISTRATION</a>
+            <a mat-stroked-button *ngIf="currentAccess==1 || currentAccess==6" color="" [routerLink]="['']" (click)="logout()">Logout</a>
             
         </div>
     </mat-toolbar>
