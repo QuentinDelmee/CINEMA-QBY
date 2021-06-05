@@ -27,8 +27,8 @@ export class UserService {
     return this.http.get<User[]>(this.userUrl) ;
   }
 
-  public isEmailFree(email:string) {
-    return this.http.post<boolean>(this.userUrl+"/", email);
+  public isEmailFree(user:User) {
+    return this.http.post<boolean>(this.userUrl+"/verif", user);
   }
   
   public save(user: User) {

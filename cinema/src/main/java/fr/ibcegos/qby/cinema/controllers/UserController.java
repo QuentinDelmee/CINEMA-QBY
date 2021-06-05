@@ -20,7 +20,6 @@ import fr.ibcegos.qby.cinema.beans.Opinion;
 import fr.ibcegos.qby.cinema.beans.Purchase;
 import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.User;
-import fr.ibcegos.qby.cinema.services.PersonService;
 import fr.ibcegos.qby.cinema.services.UserService;
 
 @RestController
@@ -28,8 +27,6 @@ import fr.ibcegos.qby.cinema.services.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private PersonService personService;
 	
 	
 	//////////
@@ -40,10 +37,10 @@ public class UserController {
 		return userService.create(user);
 	}
 	
-	@RequestMapping("/REST/user/")
-	public boolean isEmailFree(@RequestBody String email)
+	@PostMapping("/REST/user/verif")
+	public Integer createUserVerif(@RequestBody User user)
 	{
-		return personService.isEmailFree(email) ;
+		return userService.createVerif(user) ;
 	}
 	
 	

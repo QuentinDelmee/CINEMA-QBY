@@ -29,7 +29,6 @@ import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
 import fr.ibcegos.qby.cinema.daos.MovieDAO;
 import fr.ibcegos.qby.cinema.daos.OpinionDAO;
-import fr.ibcegos.qby.cinema.daos.PersonDAO;
 import fr.ibcegos.qby.cinema.daos.ProductDAO;
 import fr.ibcegos.qby.cinema.daos.PurchaseDAO;
 import fr.ibcegos.qby.cinema.daos.QuizzDAO;
@@ -49,8 +48,6 @@ public class DemoData {
 	private MovieDAO mdao;
 	@Autowired
 	private OpinionDAO odao;
-	@Autowired
-	private PersonDAO pedao;
 	@Autowired
 	private ProductDAO prdao;
 	@Autowired

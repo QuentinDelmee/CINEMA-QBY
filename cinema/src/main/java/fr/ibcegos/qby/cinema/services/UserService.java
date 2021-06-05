@@ -20,7 +20,7 @@ public interface UserService {
 	 * @return 
 	 */
 	public User create(User user);
-	
+	public Integer createVerif(User user);
 		
 	//////////
 	// GET  //
