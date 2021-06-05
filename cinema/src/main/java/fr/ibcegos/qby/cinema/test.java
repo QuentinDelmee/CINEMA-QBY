@@ -5,14 +5,14 @@ import java.util.regex.*;
 public class test {
 	
 public static String filter(String comment) {
-		
+	comment = comment.toLowerCase();
 	
 		//Dictionnaire de gros mots
 		String[] myList2 = {"shit","fuck","vilain","chier","merde"};
 		
 		for(String insult:myList2) {
 			
-			if(comment.toLowerCase().contains(insult)) {
+			if(comment.contains(insult)) {
 				
 				String replace = "";
 				for(int i = 0; i< insult.length(); i++) {
@@ -25,7 +25,7 @@ public static String filter(String comment) {
 		return comment;
 	}
 	public static void main(String[] args) {
-		String commentaire = "merde j'ai pas aimé";
+		String commentaire = "mErde espece de vilain";
 		System.out.println(filter(commentaire));
 
 	}

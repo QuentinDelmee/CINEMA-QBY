@@ -49,5 +49,26 @@ public class Commentary {
 		return "Commentary [id=" + id + ", rating=" + rating + ", commentary=" + commentary + ", idUser="
 				+ idUser.getId() + ", idMovie=" + idMovie.getId() + "]";
 	}
+	
+	public Commentary filter(Commentary comment) {
+		String commentary = comment.commentary;
+		
+			//Dictionnaire de gros mots
+			String[] myList2 = {"shit","fuck","vilain","chier","merde"};
+			
+			for(String insult:myList2) {
+				
+				if(commentary.contains(insult)) {
+					
+					String replace = "";
+					for(int i = 0; i< insult.length(); i++) {
+						replace += "*";
+					}
+					commentary = commentary.replace(insult, replace);
+				}
+			}
+			comment.commentary = commentary;
+			return comment;
+		}
 
 }
