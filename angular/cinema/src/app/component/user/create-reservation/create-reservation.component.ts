@@ -17,6 +17,9 @@ import { CinemaRoomService } from 'src/app/service/cinema-room.service';
 })
 export class CreateReservationComponent implements OnInit {
 
+  stringUser:any = sessionStorage.getItem('currentUser') ;
+  user:User = JSON.parse(this.stringUser) ;
+
   reservationJSON: any = { "idUser":{}, "idSeat":{ "idCinemaRoom":{} }, "idMovie":{}};
 
   allUser: User[] = [] ;
