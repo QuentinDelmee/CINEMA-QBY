@@ -22,7 +22,7 @@
         <mat-label hintLabel="Min 6 characters">Enter your password</mat-label>
         <input matInput #input minlength="6" [type]="hide ? 'password' : 'text'" name='pwd' [formControl]="pwd" required>
         <mat-hint align="end">{{input.value?.length || 0}}/6 minimum</mat-hint>
-        <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error> 
+
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>

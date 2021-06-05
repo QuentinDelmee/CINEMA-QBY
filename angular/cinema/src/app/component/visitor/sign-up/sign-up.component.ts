@@ -10,9 +10,11 @@ import { Person } from '../../../class/person'
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+
+  errorEmail:boolean = false;
   
   email = new FormControl('', [Validators.required, Validators.email]);
-  pwd = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  pwd = new FormControl('', [Validators.required]);
   pseudo = new FormControl('', [Validators.required]);
 
   getErrorMessageEmail() {
@@ -50,6 +52,8 @@ export class SignUpComponent implements OnInit {
       "idPerson": {"email":this.email.value}
       };
 
+    //Vérification du formulaire (clairement à améliorer ...)
+    if(this.pwd.value.length > 5 && this.pseudo.value.length > 0 && !this.email.hasError('email') ){
     //Appel du service pour vérifier si l'email est déja utilisé
     this.userService.isEmailFree(this.email.value).subscribe(data => {this.emailFree = data;
 
@@ -57,12 +61,16 @@ export class SignUpComponent implements OnInit {
     if(this.emailFree){
         console.log(userJSON);
         let toPost: User = new User(userJSON);
-        this.userService.save(toPost).subscribe();
+        this.userService.save(toPost).subscribe(data => {
+          
+        });
         userJSON = {};
         this.email = new FormControl('', [Validators.required, Validators.email]);
   }
   else{ alert('This email : '+ this.email.value + ' is already use, please try again with another !')}
   ;});
+}
+else{}
 }
 
 
