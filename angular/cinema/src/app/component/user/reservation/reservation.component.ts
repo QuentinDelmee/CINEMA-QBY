@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from 'src/app/class/reservation';
+import { User } from 'src/app/class/user';
 import { ReservationService } from 'src/app/service/reservation.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-reservation',
@@ -9,12 +11,19 @@ import { ReservationService } from 'src/app/service/reservation.service';
 })
 export class ReservationComponent implements OnInit {
 
-  reservations : Reservation[] = [];
+  user:User = new User( {"id":56,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{"id":57,"firstName":"Quentin","familyName":"Delmée","birthdate":"1991-03-09","genre":"Male","city":"Nantes","email":"quentin.delmee@qby.fr",} ,"idSecurityLevel":{"id":42,"role":"client","description":"blablabla"}} )
 
-  constructor(private reservationService: ReservationService) { }
+
+  constructor(private userService: UserService, private reservationService:ReservationService) { 
+      
+  }
+
+  selectedReservation: any = { "idUser":{}, "idSeat":{}, "idMovie":{}};
+
+  reservations: Reservation[] = [];
 
   ngOnInit(): void {
-    this.reservationService.findAll().subscribe(data => { this.reservations = data; });
+    this.userService.findReservations(this.user.id).subscribe(data => { this.reservations = data; });
   }
 
 }

@@ -1,0 +1,48 @@
+table {
+    width: 100%;
+  }
+  
+  mat-card {
+    min-height: 100vh;
+  }
+  
+  button {
+    margin: 8px;
+  }
+  
+  mat-card-title {
+    text-align: center;
+  }
+  
+  mat-card-header {
+    height: 64px;
+    margin: 8px;
+  }
+  
+  mat-card-content {
+    text-align: center;
+  }
+  
+  mat-card-header mat-icon {
+    position: absolute;
+    margin: 48px;
+    transform: scale(5);
+  }
+  
+  a {
+    width: 100%;
+  }
+  
+  a:hover {
+    color: whitesmoke;
+  }
+
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }

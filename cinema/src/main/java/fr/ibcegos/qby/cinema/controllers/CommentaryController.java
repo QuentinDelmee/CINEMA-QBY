@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Commentary;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.CommentaryService;
+import fr.ibcegos.qby.cinema.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -21,6 +23,8 @@ public class CommentaryController {
 
 	@Autowired
 	private CommentaryService cservice;
+	@Autowired 
+	private UserService uservice ;
 	
 	//////////
 	//CREATE//
@@ -49,8 +53,16 @@ public class CommentaryController {
 		return cservice.getAllCommentary();
 	}
 	
+	@GetMapping("/REST/commentary/user/{id}")
+	public List<Commentary> getUserCommentary(@PathVariable Integer id ){
+		
+		User idUser = uservice.getUserId(id);
+		return cservice.getCommentaryByUser(idUser);
+		
+	}
+	
 	//////////
-	//UPDATE//
+	//UPDATE//	
 	//////////
 	
 	//Mise à jour d'un commentaire

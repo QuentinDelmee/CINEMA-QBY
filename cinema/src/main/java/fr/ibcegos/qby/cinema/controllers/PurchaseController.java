@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.PurchaseService;
+import fr.ibcegos.qby.cinema.services.UserService;
 
 /**
  * Controller class for Purchase with basic CRUDs Mapping
@@ -29,6 +31,8 @@ import fr.ibcegos.qby.cinema.services.PurchaseService;
 public class PurchaseController {
 	@Autowired
 	private PurchaseService pservice;
+	@Autowired 
+	private UserService uservice ;
 
 	/**
 	 * Initialization function to potentially add data in DB
@@ -46,8 +50,8 @@ public class PurchaseController {
 	 * @return the Purchase found in the DB (null if absent)
 	 */
 	@GetMapping("/REST/purchase/{id}")
-	public List<Purchase> getFromId(@PathVariable("id") Integer id) {
-		return (List<Purchase>) pservice.getPurchase(id);
+	public Purchase getFromId(@PathVariable("id") Integer id) {
+		return pservice.getPurchase(id);
 	}
 
 	/**
@@ -58,6 +62,13 @@ public class PurchaseController {
 	@GetMapping("/REST/purchase")
 	public List<Purchase> getAll() {
 		return pservice.getAllPurchase();
+	}
+	
+	@GetMapping("/REST/purchase/user/{id}")
+	public List<Purchase> getUserPurchase(@PathVariable("id") Integer id) {
+		
+		User idUser = uservice.getUserId(id);
+		return pservice.getUserPurchase(idUser);
 	}
 	
 	/**

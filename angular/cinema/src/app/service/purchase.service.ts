@@ -27,4 +27,9 @@ export class PurchaseService {
     return this.http.delete<Purchase>(this.purchaseUrl+ "/"+ id);
     //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
   }
+
+  public findUser(idUser:number)
+  {
+    return this.http.get<Purchase[]>(this.purchaseUrl+"/user/"+idUser);
+  }
 }

@@ -23,7 +23,7 @@ import { UpdateMovieComponent } from './component/admin/update-movie/update-movi
 import { DeleteMovieComponent } from './component/admin/delete-movie/delete-movie.component';
 import { UpdateProfilComponent } from './component/user/update-profil/update-profil.component';
 import { CreateReservationComponent } from './component/user/create-reservation/create-reservation.component';
-import { DeleteReservationComponent } from './component/admin/delete-reservation/delete-reservation.component';
+import { DeleteReservationComponent } from './component/user/delete-reservation/delete-reservation.component';
 import { DeleteTimeTableComponent } from './component/admin/delete-time-table/delete-time-table.component';
 import { UpdateTimeTableComponent } from './component/admin/update-time-table/update-time-table.component';
 import { CreateTimeTableComponent } from './component/admin/create-time-table/create-time-table.component';
@@ -39,6 +39,7 @@ import { CreateProductComponent } from './component/admin/create-product/create-
 import { UpdateProductComponent } from './component/admin/update-product/update-product.component';
 import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
 import { AllUserComponent } from './component/admin/all-user/all-user.component';
+import { UpdatePasswordComponent } from './component/user/update-password/update-password.component';
 
 
 
@@ -66,6 +67,7 @@ import { AllUserComponent } from './component/admin/all-user/all-user.component'
     UpdateTimeTableComponent,
     CreateTimeTableComponent,
     UserComponent,
+    UpdatePasswordComponent,
     CreateUserComponent,
     UpdateUserComponent,
     DeleteUserComponent,

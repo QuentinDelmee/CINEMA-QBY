@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.CinemaRoomService;
 import fr.ibcegos.qby.cinema.services.OpinionService;
 import fr.ibcegos.qby.cinema.services.UserService;
@@ -64,6 +65,13 @@ public class OpinionController {
 	@GetMapping("/REST/opinion")
 	public List<Opinion> getAll() {
 		return oservice.getAllOpinion();
+	}
+	
+	@GetMapping("/REST/opinion/user/{id}")
+	public List<Opinion> getFromUser(@PathVariable("id") Integer id) {
+		
+		User idUser = uservice.getUserId(id);
+		return oservice.getUserOpinion(idUser);
 	}
 
 	/**

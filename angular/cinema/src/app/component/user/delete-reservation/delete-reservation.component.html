@@ -1,3 +1,19 @@
+<mat-card>
+    <mat-card-header>
+                <mat-icon>event</mat-icon>
+        </mat-card-header>
+
+
+        <mat-card-content>
+                <mat-card-title>Delete My Reservations</mat-card-title>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user']">Return</a>
+                </button>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user/reservation']">View Reservation</a>
+                </button>
+                <mat-divider></mat-divider>
+
 <table mat-table [dataSource]="reservations" class="mat-elevation-z8">
 
     <ng-container matColumnDef="FILM">
@@ -32,3 +48,5 @@
 <form (ngSubmit)="onSubmit()">
     <button mat-button type="submit">TEST SUBMIT</button>
 </form>
+</mat-card-content>
+</mat-card>

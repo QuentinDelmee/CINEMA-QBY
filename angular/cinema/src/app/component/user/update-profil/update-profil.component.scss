@@ -1,0 +1,58 @@
+form {
+    min-width: 50%;
+    margin: auto ;
+    margin-top: 24px ;
+    border-collapse: collapse;
+  }
+  
+  .app-qby-border {
+    width : 0px ;
+    border-right: solid 1px;
+    border-left: solid 1px ;
+  }
+
+  td {
+    text-align: left;
+    padding: 24px ;
+  }
+
+  tr:hover{
+    border-top: 1px solid ;
+    border-bottom: 1px solid ;
+    border-color: currentColor;
+  }
+
+  mat-card {
+    height: 100vh;
+  }
+
+button {
+  margin: 8px ;
+}
+
+mat-card-title {
+    text-align: center;
+}
+  
+mat-card-header {
+    height: 64px ;
+  margin: 8px ;
+}
+
+mat-card-content {
+    text-align: center;
+}
+
+ mat-icon {
+    position : absolute ;
+    margin: 48px ;
+    transform: scale(5);
+  }
+
+  a {
+    width:100%;
+  }
+
+  a:hover{
+    color:whitesmoke ;
+  }

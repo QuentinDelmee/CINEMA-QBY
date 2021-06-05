@@ -16,7 +16,43 @@
                 <table class="mat-elevation-z8">
                         <tr>
                                 <td>Your Pseudo</td>
+                                <td>:</td>
                                 <td>{{user.pseudo}}#{{user.id}}</td>
+                        </tr>
+                        <tr>
+                                <td>Your Email</td>
+                                <td>:</td>
+                                <td>{{user.idPerson.email}}</td>
+                        </tr>
+                        <tr>
+                                <td>Your Role</td>
+                                <td>:</td>
+                                <td>{{user.idSecurityLevel.role}}</td>
+                        </tr>
+                        <tr>
+                                <td>Your FirstName</td>
+                                <td>:</td>
+                                <td>{{user.idPerson.firstName}}</td>
+                        </tr>
+                        <tr>
+                                <td>Your FamilyName</td>
+                                <td>:</td>
+                                <td>{{user.idPerson.familyName}}</td>
+                        </tr>
+                        <tr>
+                                <td>Your BirthDate</td>
+                                <td>:</td>
+                                <td>{{user.idPerson.birthdate | date : 'fullDate'  }}</td>
+                        </tr>
+                        <tr>
+                                <td>Your Genre</td>
+                                <td>:</td>
+                                <td>{{user.idPerson.genre}}</td>
+                        </tr>
+                        <tr>
+                                <td>Your City</td>
+                                <td>:</td>
+                                <td>{{user.idPerson.city}}</td>
                         </tr>
                     </table>
         </mat-card-content>

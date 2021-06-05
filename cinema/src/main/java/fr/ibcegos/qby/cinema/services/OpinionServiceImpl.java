@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.OpinionDAO;
 
 @Service
@@ -51,5 +52,11 @@ public class OpinionServiceImpl implements OpinionService{
 	public void deleteById(Integer id_opinion) {
 		// TODO Auto-generated method stub
 		odao.deleteById(id_opinion);
+	}
+
+	@Override
+	public List<Opinion> getUserOpinion(User idUser) {
+		// TODO Auto-generated method stub
+		return odao.findByIdUser(idUser);
 	}
 }

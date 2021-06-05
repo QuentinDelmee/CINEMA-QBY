@@ -26,4 +26,9 @@ export class CommentaryService {
     return this.http.delete<Commentary>(this.commentaryURL+ "/"+ id);
     //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
   }
+
+  public findUser(idUser:number)
+  {
+    return this.http.get<Commentary[]>(this.commentaryURL+"/user/"+idUser);
+  }
 }

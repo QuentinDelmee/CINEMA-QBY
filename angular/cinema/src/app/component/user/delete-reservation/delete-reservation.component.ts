@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from 'src/app/class/reservation';
+import { User } from 'src/app/class/user';
 import { ReservationService } from 'src/app/service/reservation.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-delete-reservation',
@@ -9,8 +11,11 @@ import { ReservationService } from 'src/app/service/reservation.service';
 })
 export class DeleteReservationComponent implements OnInit {
 
-  constructor(private reservationService: ReservationService) { 
-      this.reservationService.findAll().subscribe(data => { this.reservations = data; });
+  user:User = new User( {"id":56,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{"id":57,"firstName":"Quentin","familyName":"Delmée","birthdate":"1991-03-09","genre":"Male","city":"Nantes","email":"quentin.delmee@qby.fr",} ,"idSecurityLevel":{"id":42,"role":"client","description":"blablabla"}} )
+
+
+  constructor(private userService: UserService, private reservationService:ReservationService) { 
+      
   }
 
   selectedReservation: any = { "idUser":{}, "idSeat":{}, "idMovie":{}};
@@ -18,7 +23,7 @@ export class DeleteReservationComponent implements OnInit {
   reservations: Reservation[] = [];
 
   ngOnInit(): void {
-    
+    this.userService.findReservations(this.user.id).subscribe(data => { this.reservations = data; });
   }
 
   onSubmit(): void{

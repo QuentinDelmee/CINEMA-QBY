@@ -15,7 +15,7 @@ import { UpdateProfilComponent } from './component/user/update-profil/update-pro
 
 import { ReservationComponent } from './component/user/reservation/reservation.component';
 import { CreateReservationComponent } from './component/user/create-reservation/create-reservation.component';
-import { DeleteReservationComponent } from './component/admin/delete-reservation/delete-reservation.component';
+import { DeleteReservationComponent } from './component/user/delete-reservation/delete-reservation.component';
 
 import { TimeTableComponent } from './component/visitor/time-table/time-table.component';
 import { DeleteTimeTableComponent } from './component/admin/delete-time-table/delete-time-table.component';
@@ -37,6 +37,7 @@ import { UpdateProductComponent } from './component/admin/update-product/update-
 import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
 import { AllUserComponent } from './component/admin/all-user/all-user.component';
 import { ProductComponent } from './component/visitor/product/product.component';
+import { UpdatePasswordComponent } from './component/user/update-password/update-password.component';
 
 let access: number = Number(sessionStorage.getItem('access'));
 
@@ -73,6 +74,7 @@ else if (access == 1) {
 
     /* USER SECTION */
     { path: 'user', component: UserComponent },
+    { path: 'user/password', component: UpdatePasswordComponent },
     { path: 'user/profil', component: ProfilComponent },
     { path: 'user/profil/update', component: UpdateProfilComponent },
     { path: 'user/reservation', component: ReservationComponent },

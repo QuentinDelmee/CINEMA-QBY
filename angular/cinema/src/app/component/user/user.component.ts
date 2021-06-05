@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../class/user'
-import { UserService } from '../../service/user.service'
 
 @Component({
   selector: 'app-user',
@@ -11,8 +9,7 @@ export class UserComponent implements OnInit {
 
   hover:string = 'primary' ;
 
-  constructor(private userService: UserService) { 
-    //this.userService.findAll().then( data => { this.users = data }).catch( error => { console.log("Promise rejected with Error: ", error)})
+  constructor() { 
   }
 
 

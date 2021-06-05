@@ -27,4 +27,9 @@ export class OpinionService {
     //this.http.request('delete', this.moviesUrl+ "/"+ movie.id) ;
   }
 
+  public findUser(idUser:number)
+  {
+    return this.http.get<Opinion[]>(this.opinionUrl+"/user/"+idUser);
+  }
+
 }

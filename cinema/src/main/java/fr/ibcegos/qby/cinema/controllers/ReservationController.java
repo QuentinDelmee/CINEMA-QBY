@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Reservation;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.ReservationService;
+import fr.ibcegos.qby.cinema.services.UserService;
 
 /**
  * Controller class for Reservation with basic CRUDs Mapping
@@ -28,6 +30,8 @@ import fr.ibcegos.qby.cinema.services.ReservationService;
 public class ReservationController {
 	@Autowired
 	private ReservationService rservice;
+	@Autowired 
+	private UserService uservice ;
 
 	/**
 	 * Initialization function to potentially add data in DB
@@ -56,6 +60,12 @@ public class ReservationController {
 	@GetMapping("/REST/reservation")
 	public List<Reservation> getAll() {
 		return rservice.getAllReservation();
+	}
+	
+	@GetMapping("/REST/reservation/user")
+	public List<Reservation> getUserReservation(@PathVariable Integer id) {
+		User idUser = uservice.getUserId(id);
+		return rservice.getUserReservation(idUser);
 	}
 
 	/**

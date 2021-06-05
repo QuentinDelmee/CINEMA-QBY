@@ -634,7 +634,15 @@ public class DemoData {
 
 		List<SecurityLevel> allSL = (List<SecurityLevel>) sldao.findAll();
 		Random rand = new Random();
-
+		
+		
+		User ME1 = new User("MoshGoss","azertyuiop",new Person("Delmée","Quentin",LocalDate.of(1991, 3, 9), "H", "Nantes","Quentin.Delmee@QBY.fr"),allSL.get(0));
+		User ME2 = new User("DocKantum","azertyuiop",new Person("Delmée","Quentin",LocalDate.of(1991, 3, 9), "H", "Nantes","Quentin.Delmee@QBY.fr"),allSL.get(5));
+		
+		udao.save(ME1);
+		udao.save(ME2);
+		
+		
 		for (int i = 0; i < 32; ++i) {
 			String tempN = noms[rand.nextInt(noms.length)];
 			String tempP = prenoms[rand.nextInt(prenoms.length)];
@@ -680,7 +688,7 @@ public class DemoData {
 			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
 			String tempP = proprete[rand.nextInt(proprete.length)];
 			odao.save(new Opinion(cinemaRoom, tempU, rand.nextInt(5), tempP));
-			
+			odao.save(new Opinion(cinemaRoom,ME1, rand.nextInt(5),tempP));
 			Movie tempM = allMovies.get(rand.nextInt(allMovies.size()));
 			for( int i = 8 ; i < 22 ; i = i+3)
 			{
@@ -688,6 +696,7 @@ public class DemoData {
 				sesdao.save(new Session(cinemaRoom, tempM, ldt, cinemaRoom.getNbSeats()));
 				Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size()));
 				rdao.save(new Reservation(tempU, tempSeat,tempM, ldt));
+				rdao.save(new Reservation(ME1, tempSeat,tempM, ldt));
 			}
 			
 			
@@ -699,6 +708,7 @@ public class DemoData {
 			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
 			String tempC = comments[rand.nextInt(comments.length)];
 			cdao.save(new Commentary(rand.nextInt(5), tempC, tempU, movie));
+			cdao.save(new Commentary(rand.nextInt(5), tempC, ME1, movie));
 		}
 		
 		for (Product prod : allProducts)
@@ -708,6 +718,7 @@ public class DemoData {
 			int tempQ = rand.nextInt(20);
 			int tempTC = rand.nextInt(20);
 			pudao.save(new Purchase(prod, tempU, ldt, tempQ, tempTC));
+			pudao.save(new Purchase(prod, ME1, ldt, tempQ, tempTC));
 		}
 		
 		
