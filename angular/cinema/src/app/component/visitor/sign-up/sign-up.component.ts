@@ -1,27 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { UserService } from 'src/app/service/user.service';
+import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { UserService } from '../../../service/user.service';
 import { User } from '../../../class/user';
+import { Person } from '../../../class/person'
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  hide = true;
+  
+  email = new FormControl('', [Validators.required, Validators.email]);
+  pwd = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  pseudo = new FormControl('', [Validators.required]);
 
-  userJSON: any = { "idPerson": {}, "idSecurityLevel": {} };
+  getErrorMessageEmail() {
 
-  constructor(private userService: UserService) { }
-
-
-  ngOnInit(): void {
-  }
-
-
-  email: FormControl = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
@@ -29,23 +24,46 @@ export class SignUpComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  onSubmit(): void {
-    console.log("TEST");
-    this.userJSON.idPerson.email = this.email.value;
-    console.log(this.userJSON);
-    if (confirm("Are you sure you want to create this User ?")) {
-      let toPost: User = new User(this.userJSON);
-      this.userService.save(toPost).subscribe();
-    }
-    else {
-      console.log("New User ABORTED");
-    }
+  //Variable pour afficher le mdp
+  hide = true;
+ 
+  personJSON:any = {};
+  persone:Person = new Person(this.personJSON);
 
-    this.userJSON = {};
+  
+
+  emailFree:any;
+
+  constructor(private userService: UserService) { }
+
+
+  ngOnInit(): void {
   }
 
+  onSubmit(): void {
+
+    let userJSON:any = {
+      "id":0,
+      "idSecurityLevel": {},
+      "pseudo": this.pseudo.value,
+      "pwd": this.pwd.value,
+      "idPerson": {"email":this.email.value}
+      };
+
+    //Appel du service pour vérifier si l'email est déja utilisé
+    this.userService.isEmailFree(this.email.value).subscribe(data => {this.emailFree = data;
 
 
+    if(this.emailFree){
+        console.log(userJSON);
+        let toPost: User = new User(userJSON);
+        this.userService.save(toPost).subscribe();
+        userJSON = {};
+        this.email = new FormControl('', [Validators.required, Validators.email]);
+  }
+  else{ alert('This email : '+ this.email.value + ' is already use, please try again with another !')}
+  ;});
+}
 
 
 }

@@ -5,7 +5,7 @@
         <mat-icon>face</mat-icon>
     </mat-card-header>
 
-    <form (ngSubmit)="onSubmit()">
+    <form>
 
     <div class="">
         <h1>Register Form</h1>
@@ -13,26 +13,29 @@
       </div>
       <mat-form-field appearance="fill">
         <mat-label>Pseudo</mat-label>
-        <input matInput name='pseudo' [(ngModel)]="userJSON.pseudo" >
+        <input matInput name='pseudo' [formControl]="pseudo" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error> 
       </mat-form-field>
 
       
     <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" name='pwd' [(ngModel)]="userJSON.pwd">
+        <mat-label hintLabel="Min 6 characters">Enter your password</mat-label>
+        <input matInput #input minlength="6" [type]="hide ? 'password' : 'text'" name='pwd' [formControl]="pwd" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/6 minimum</mat-hint>
+        <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error> 
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
 
-    <p class ="">Email</p>
+    <p>Email</p>
 
 
       <div>
         <mat-form-field appearance="fill">
-          <mat-label>Enter your email</mat-label >
-          <input matInput placeholder="pat@example.com"  [formControl]="email"  required>
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-label>Enter your email</mat-label >
+          <input matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error> 
         </mat-form-field>
       </div>
 

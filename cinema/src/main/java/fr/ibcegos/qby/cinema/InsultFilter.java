@@ -21,7 +21,7 @@ public class InsultFilter {
 	public String filter(String comment) {
 		
 		//Dictionnaire de gros mots
-		String[] myList2 = {"merde","putain","connard"};
+		String[] myList2 = {"shit","fuck","vilain"};
 		
 		for(String insult:myList2) {
 			if(comment.contains(insult)) {

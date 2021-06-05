@@ -16,6 +16,6 @@
     <mat-grid-tile><button (click)="choiceUser(4)" mat-raised-button color="{{colorTab[3]}}">{{currentQuizz.answer4}}</button></mat-grid-tile>
 </mat-grid-list>
 
-<mat-card>Réponse : {{showAnswer}} <p> {{explanation}} </p> </mat-card>
+<mat-card>{{verif}} {{showAnswer}} <p> {{explanation}} </p> </mat-card>
 <button mat-fab color="primary" [hidden]="nextBtnVisibility" (click)="nextQuizz()"><mat-icon>navigate_next</mat-icon></button>
 

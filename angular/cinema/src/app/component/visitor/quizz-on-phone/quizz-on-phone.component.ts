@@ -16,7 +16,7 @@ export class QuizzOnPhoneComponent implements OnInit {
   nextBtnVisibility:boolean = true;
 
 
-
+  verif: string = '';
   score: number = 0;
 
   //Numéro actuel du quizz
@@ -69,10 +69,10 @@ export class QuizzOnPhoneComponent implements OnInit {
 
   choiceUser(nb: number) {
     if (this.currentQuizz.trueAnswer === nb) {
-      console.log('yes !');
+      this.verif = 'Good job ! Answer was : ';
     }
     else {
-      console.log('no :(')
+      this.verif = 'Sorry not correct, the correct answer was : ';
     }
 
     this.correction(nb);
