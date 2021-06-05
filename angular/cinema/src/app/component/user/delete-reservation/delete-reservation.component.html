@@ -14,7 +14,7 @@
                 </button>
                 <mat-divider></mat-divider>
 
-<table mat-table [dataSource]="reservations" class="mat-elevation-z8">
+<table mat-table [dataSource]="reservations" [trackBy]="trackReservation" class="mat-elevation-z8">
 
     <ng-container matColumnDef="FILM">
         <th mat-header-cell *matHeaderCellDef> FILM </th>

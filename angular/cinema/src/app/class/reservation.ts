@@ -14,9 +14,9 @@ export class Reservation {
     constructor(reservationJSON:any)
     {
         this.id = reservationJSON.id;
-        this.idUser = new User(reservationJSON.idUser) ;
-        this.idSeat = new Seat(reservationJSON.idSeat) ;
-        this.idMovie = new Movie(reservationJSON.idMovie) ;
+        this.idUser = reservationJSON.idUser ;
+        this.idSeat = reservationJSON.idSeat ;
+        this.idMovie = reservationJSON.idMovie ;
         this.date = reservationJSON.date ;
         this.time = reservationJSON.time ;
         this.idDate = this.date+"T"+this.time ;

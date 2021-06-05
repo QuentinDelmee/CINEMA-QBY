@@ -1,6 +1,8 @@
 package fr.ibcegos.qby.cinema.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -103,6 +105,16 @@ public class UserController {
 	@GetMapping("/REST/user/{id}/reservations")
 	public List<Reservation> findReservationUser(@PathVariable("id") Integer id) {
 		return userService.findReservationUser(id);
+	}
+	
+	@GetMapping("/REST/user/{id}/reservations/futur")
+	public List<Reservation> getUserFutureReservation(@PathVariable Integer id) {
+
+		return (userService.findReservationUser(id)
+				.stream()
+				.filter( elem -> elem.getIdDate()
+				.isAfter(LocalDateTime.now() ))
+				.collect(Collectors.toList()));
 	}
 	
 	@GetMapping("/REST/user/{id}/purchases")

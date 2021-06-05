@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
-import { filter } from 'rxjs/internal/operators' ;
+import { Router, RoutesRecognized, NavigationEnd  } from '@angular/router';
+import { filter } from 'rxjs/internal/operators';
+import { SignInComponent } from '../visitor/sign-in/sign-in.component';
 
 @Component({
   selector: 'app-header',
@@ -9,23 +10,7 @@ import { filter } from 'rxjs/internal/operators' ;
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router, private ref: ChangeDetectorRef) {
-  //   router.events
-  //  .pipe(filter(event => event instanceof RoutesRecognized))
-  //  .subscribe((event) => {
-  //     console.log(event);
-  //     const stringUser: any = sessionStorage.getItem('currentUser');
-  //     console.log("TEST");
-  //     if (stringUser) {
-  //       this.currentAccess = Number(sessionStorage.getItem('access'));
-  //       this.access = [false,false,false,false,false,false,false] ;
-  //       this.access[this.currentAccess] = true ;
-  //     }
-  //     else {
-  //       this.access = [true,false,false,false,false,false,false] ;
-  //     }
-  //   })
-   this.ref.markForCheck() ;
+  constructor(private router: Router) {
   }
 
   currentPage: boolean[] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
@@ -34,8 +19,8 @@ export class HeaderComponent implements OnInit {
   stringAccess: any = sessionStorage.getItem('access');
   currentAccess: number = Number(this.stringAccess);
 
-  access:boolean[] = [true,false,false,false,false,false,false] ;
-  
+  access: boolean[] = [true, false, false, false, false, false, false];
+
 
   persist(key: string, value: any) {
     sessionStorage.setItem(key, value);
@@ -47,7 +32,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+        this.currentAccess = Number(sessionStorage.getItem('access')) ;
+        
+    });
 
     if (window.location.href.match("home")?.length) {
       this.currentPage[0] = true;

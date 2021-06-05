@@ -6,6 +6,8 @@ export class Purchase {
     idProduct:Product ;
     idUser:User;
     idDate:string ;
+    quantity:number;
+    idReceipt:number;
     date:string ;
     time: string ;
 
@@ -15,6 +17,8 @@ export class Purchase {
         this.idProduct = new Product(cinemaRoomJSON.idProduct) ;
         this.idUser = new User(cinemaRoomJSON.idUser) ;
         this.idDate = cinemaRoomJSON.idDate ;
+        this.quantity = cinemaRoomJSON.quantity ;
+        this.idReceipt = cinemaRoomJSON.idReceipt ;
         this.date = cinemaRoomJSON.data ;
         this.time = cinemaRoomJSON.time ;
     }

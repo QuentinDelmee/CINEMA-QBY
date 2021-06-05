@@ -63,4 +63,9 @@ export class UserService {
   {
     return this.http.get<Reservation[]>(this.userUrl+"/"+id+"/reservations") ;
   }
+
+  public findFutureReservations(id:number)
+  {
+    return this.http.get<Reservation[]>(this.userUrl+"/"+id+"/reservations/futur") ;
+  }
 }

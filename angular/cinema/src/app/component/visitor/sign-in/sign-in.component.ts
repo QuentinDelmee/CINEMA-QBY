@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule, FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../class/user'
 import { UserService } from '../../../service/user.service';
@@ -11,7 +10,7 @@ import { UserService } from '../../../service/user.service';
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private route:Router, private userService: UserService) { }
+  constructor(private route: Router, private userService: UserService) { }
 
   message: string = '';
   loginStatus: any;
@@ -70,13 +69,20 @@ export class SignInComponent implements OnInit {
       this.userService.findById(this.signInJSON.id).subscribe(data => {
         currentUser = data;
         sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
-        sessionStorage.setItem("access", currentUser.idSecurityLevel.id.toString());
+        const access: number = currentUser.idSecurityLevel.id;
+        sessionStorage.setItem("access", access.toString());
+        if (access < 6) {
+          this.route.navigate(['/user']);
+        }
+        else {
+          this.route.navigate(['/admin']);
+        }
       });
 
       //window.location.reload() ;
-      this.route.navigate(['/user']);
 
-      
+
+
     }
     else {
       this.message = 'Bonjour les informations saisi semblent erronées';

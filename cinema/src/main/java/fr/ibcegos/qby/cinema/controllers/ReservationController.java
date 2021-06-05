@@ -1,6 +1,8 @@
 package fr.ibcegos.qby.cinema.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
@@ -62,7 +64,7 @@ public class ReservationController {
 		return rservice.getAllReservation();
 	}
 	
-	@GetMapping("/REST/reservation/user")
+	@GetMapping("/REST/reservation/user/{id}")
 	public List<Reservation> getUserReservation(@PathVariable Integer id) {
 		User idUser = uservice.getUserId(id);
 		return rservice.getUserReservation(idUser);
