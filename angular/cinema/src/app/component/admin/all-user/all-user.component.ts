@@ -9,35 +9,42 @@ import { UserService } from '../../../service/user.service'
 })
 export class AllUserComponent implements OnInit {
 
-  constructor(private userService: UserService) { 
-    //this.userService.findAll().then( data => { this.users = data }).catch( error => { console.log("Promise rejected with Error: ", error)})
-  }
+  constructor(private userService: UserService) { }
 
-  users: User[] = [];
+  selectedUser:User = new User({ "idPerson":{}, "idSecurityLevel":{} }) ;
+  users:User[] = [] ;
+
+  //user:User = new User( {"id":56,"pseudo":"MoshGoss","pwd":"azertyuiop","idPerson":{"id":57,"firstName":"Quentin","familyName":"Delmée","birthdate":"1991-03-09","genre":"Male","city":"Nantes","email":"quentin.delmee@qby.fr",} ,"idSecurityLevel":{"id":42,"role":"client","description":"blablabla"}} )
+
 
   ngOnInit(): void {
-    this.userService.findAll().subscribe(data => {
-      this.users = data;
-    });
-    
-  } 
+    this.findAll() ;
+  }
 
-  deleteByIdUser(user: User) {
+  findAll()
+  {
+    this.userService.findAll().subscribe( data => { this.users = data ; console.log(data) })
+  }
 
-    //Appel du service delete by id avec en paramètre le User selectionné à partir du tableau => voir service
-
-    if (confirm("Are you sure you want to delete " + user.pseudo + " User ?")) {
-      console.log(user.id);
-      this.userService.deleteById(user.id);
-      this.users.splice(0,1);
+  onSubmit(): void{
+    if (confirm("Are you sure you want to update this Person ?")) {
+      this.userService.save(this.selectedUser).subscribe();
+      window.location.reload() ;
     }
     else {
-      console.log("Delete User ABORTED");
+      console.log("Update Person ABORTED");
     }
   }
 
-  track(index: number, user: User) {
-    return user.id;
+  delete(user:User,index:number) {
+    if (confirm("Are you sure you want to delete this Person ?")) {
+      this.userService.deleteById(user.id);
+      this.users.splice(index,1);
+      window.location.reload() ;
+    }
+    else {
+      console.log("Delete Person ABORTED");
+    }
   }
 
 }

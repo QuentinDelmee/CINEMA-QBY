@@ -43,8 +43,4 @@ export class UpdateMovieComponent implements OnInit {
 
     this.selectedMovie = new Movie({});
   }
-
-  persist(key: string, value: any) {
-    localStorage.setItem(key, value);
-  }
 }

@@ -28,4 +28,22 @@ export class DeleteTimeTableComponent implements OnInit {
       console.log("Delete Session ABORTED");
     }
   }
+
+  delete(session:Session,index:number)
+  {
+    if (confirm("Are you sure you want to delete this Reservation ?")) {
+      this.sessions.splice(index,1);
+      this.sessionService.delete(session.id).subscribe() ;
+      window.location.reload() ;
+    }
+    else {
+      console.log("Delete Reservation ABORTED");
+    }
+    
+  }
+
+  trackSession(index:number,resa:Session)
+  {
+    return resa.id ;
+  }
 }

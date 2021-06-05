@@ -1,0 +1,21 @@
+mat-card {
+    height: 100%;
+    width: 100%;
+}
+
+img {
+    height: 50%;
+}
+
+mat-grid-tile:hover {
+    transform: scale(1.05) ;
+    cursor:pointer
+}
+
+mat-card-content {
+    height: 35%;
+}
+mat-card-footer {
+    text-align: right;
+    margin:auto;
+}

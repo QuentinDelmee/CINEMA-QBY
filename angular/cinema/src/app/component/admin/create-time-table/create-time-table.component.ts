@@ -17,6 +17,9 @@ export class CreateTimeTableComponent implements OnInit {
 
   allRoom: CinemaRoom[] = [];
   allMovie: Movie[] = [] ;
+  allTime: string[] = ["08:00:00","11:00:00","14:00:00","17:00:00","20:00:00"]
+
+  sessionTime:string = "" ;
 
   constructor(private sessionService: SessionService, private movieService: MovieService, private crService: CinemaRoomService) { }
 
@@ -26,10 +29,17 @@ export class CreateTimeTableComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log(this.sessionTime);
 
     if (confirm("Are you sure you want to create this Session ?")) {
-      let toPost: Session = new Session(this.sessionJSON);
-      this.sessionService.save(toPost).subscribe();
+
+        this.allTime.forEach( elem => { 
+          console.log(elem) ;
+          this.sessionJSON.time = elem ;
+          let toPost: Session = this.sessionJSON;
+        this.sessionService.save(toPost).subscribe();
+        });
+        
     }
     else {
       console.log("New Session ABORTED");

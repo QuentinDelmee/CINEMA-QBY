@@ -24,7 +24,7 @@ import { CreateTimeTableComponent } from './component/admin/create-time-table/cr
 
 import { UserComponent } from './component/user/user.component';
 import { CreateUserComponent } from './component/admin/create-user/create-user.component';
-import { UpdateUserComponent } from './component/user/update-user/update-user.component';
+import { UpdateUserComponent } from './component/admin/update-user/update-user.component';
 import { DeleteUserComponent } from './component/admin/delete-user/delete-user.component';
 import { SignInComponent } from './component/visitor/sign-in/sign-in.component';
 import { SignUpComponent } from './component/visitor/sign-up/sign-up.component';

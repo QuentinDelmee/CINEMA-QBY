@@ -36,7 +36,15 @@ public class UserServiceImpl implements UserService {
 		if (user.getIdPerson() == null) {
 			user.setIdPerson(new Person());
 		}
-		user.setIdSecurityLevel( slDAO.findById(1).orElse(null) );
+		if( user.getIdSecurityLevel() == null )
+		{
+			user.setIdSecurityLevel( slDAO.findById(1).orElse(null) );
+		}
+		else
+		{
+			int SL = user.getIdSecurityLevel().getId() ;
+			user.setIdSecurityLevel( slDAO.findById(SL).orElse(null) );
+		}
 		userDAO.save(user);
 		return user;
 	}

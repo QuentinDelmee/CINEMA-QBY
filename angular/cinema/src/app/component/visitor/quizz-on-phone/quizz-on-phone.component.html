@@ -1,12 +1,7 @@
-<p>quizz-on-phone works!</p>
-
-
-
 <mat-card>
-    {{currentQuizz.theme}}
-</mat-card>
-<mat-card>
-    {{currentQuizz.question}}
+    <mat-card-subtitle>Thèmes: {{currentQuizz.theme}}</mat-card-subtitle>
+    <mat-card-title>Question {{nbStatus}}/{{quizz.length}}: {{currentQuizz.question}} </mat-card-title> 
+    <mat-card-title> </mat-card-title>
 </mat-card>        
 
 <mat-grid-list cols="2" rowHeight="2:1">
@@ -17,5 +12,6 @@
 </mat-grid-list>
 
 <mat-card>{{verif}} {{showAnswer}} <p> {{explanation}} </p> </mat-card>
+<div>
 <button mat-fab color="primary" [hidden]="nextBtnVisibility" (click)="nextQuizz()"><mat-icon>navigate_next</mat-icon></button>
-
+</div>
