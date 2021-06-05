@@ -58,6 +58,7 @@ export class SignUpComponent implements OnInit {
 
           console.log(userJSON);
           alert("Your Full Pseudo is :" + userJSON.pseudo + '#' + this.emailFree)
+          this.route.navigate(['/signin']);
           // let toPost: User = new User(userJSON);
 
           // let currentUser: User;
