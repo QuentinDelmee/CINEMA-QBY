@@ -25,7 +25,7 @@ export class DeleteReservationComponent implements OnInit {
   reservations: Reservation[] = [];
 
   ngOnInit(): void {
-    this.userService.findReservations(this.user.id).subscribe(data => { this.reservations = data; });
+    this.userService.findFutureReservations(this.user.id).subscribe(data => { this.reservations = data; });
   }
 
   onSubmit(): void{
@@ -41,13 +41,19 @@ export class DeleteReservationComponent implements OnInit {
   delete(resa:Reservation,index:number)
   {
     if (confirm("Are you sure you want to delete this Reservation ?")) {
-      this.reservations.slice(index);
+      this.reservations.splice(index,1);
       this.reservationService.delete(resa.id).subscribe() ;
+      window.location.reload() ;
     }
     else {
       console.log("Delete Reservation ABORTED");
     }
     
+  }
+
+  trackReservation(index:number,resa:Reservation)
+  {
+    return resa.id ;
   }
 
 }

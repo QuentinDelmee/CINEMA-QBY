@@ -62,7 +62,7 @@ public class ReservationController {
 		return rservice.getAllReservation();
 	}
 	
-	@GetMapping("/REST/reservation/user")
+	@GetMapping("/REST/reservation/user/{id}")
 	public List<Reservation> getUserReservation(@PathVariable Integer id) {
 		User idUser = uservice.getUserId(id);
 		return rservice.getUserReservation(idUser);

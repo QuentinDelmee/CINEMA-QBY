@@ -29,7 +29,6 @@ import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
 import fr.ibcegos.qby.cinema.daos.MovieDAO;
 import fr.ibcegos.qby.cinema.daos.OpinionDAO;
-import fr.ibcegos.qby.cinema.daos.PersonDAO;
 import fr.ibcegos.qby.cinema.daos.ProductDAO;
 import fr.ibcegos.qby.cinema.daos.PurchaseDAO;
 import fr.ibcegos.qby.cinema.daos.QuizzDAO;
@@ -49,8 +48,6 @@ public class DemoData {
 	private MovieDAO mdao;
 	@Autowired
 	private OpinionDAO odao;
-	@Autowired
-	private PersonDAO pedao;
 	@Autowired
 	private ProductDAO prdao;
 	@Autowired
@@ -682,14 +679,15 @@ public class DemoData {
 		List<Movie> allMovies = (List<Movie>) mdao.findAll();
 		List<Product> allProducts = (List<Product>) prdao.findAll();
 		List<Seat> allSeats = (List<Seat>) seadao.findAll();
-		
+		int count = 0 ;
 		for (CinemaRoom cinemaRoom : allRooms) {
 			
 			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
 			String tempP = proprete[rand.nextInt(proprete.length)];
 			odao.save(new Opinion(cinemaRoom, tempU, rand.nextInt(5), tempP));
 			odao.save(new Opinion(cinemaRoom,ME1, rand.nextInt(5),tempP));
-			Movie tempM = allMovies.get(rand.nextInt(allMovies.size()));
+			Movie tempM = allMovies.get(count);
+			++count ;
 			for( int i = 8 ; i < 22 ; i = i+3)
 			{
 				LocalDateTime ldt = LocalDateTime.of(LocalDate.now(),LocalTime.of(i,0)) ;

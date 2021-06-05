@@ -1,12 +1,5 @@
 package fr.ibcegos.qby.cinema;
 
-import java.util.ArrayList;
-
-import org.apache.tomcat.jni.User;
-
-import fr.ibcegos.qby.cinema.beans.Commentary;
-import fr.ibcegos.qby.cinema.beans.Movie;
-
 public class InsultFilter {
 
 	

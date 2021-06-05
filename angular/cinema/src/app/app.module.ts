@@ -40,6 +40,11 @@ import { UpdateProductComponent } from './component/admin/update-product/update-
 import { DeleteProductComponent } from './component/admin/delete-product/delete-product.component';
 import { AllUserComponent } from './component/admin/all-user/all-user.component';
 import { UpdatePasswordComponent } from './component/user/update-password/update-password.component';
+import { PurchaseComponent } from './component/user/purchase/purchase.component';
+import { CreatePurchaseComponent } from './component/admin/create-purchase/create-purchase.component';
+import { UpdatePurchaseComponent } from './component/admin/update-purchase/update-purchase.component';
+import { CommentaryComponent } from './component/user/commentary/commentary.component';
+import { OpinionComponent } from './component/user/opinion/opinion.component';
 
 
 
@@ -78,7 +83,12 @@ import { UpdatePasswordComponent } from './component/user/update-password/update
     ProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
-    DeleteProductComponent
+    DeleteProductComponent,
+    PurchaseComponent,
+    CreatePurchaseComponent,
+    UpdatePurchaseComponent,
+    CommentaryComponent,
+    OpinionComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,8 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO;
 	@Autowired
 	SecurityLevelDAO slDAO; 
+	@Autowired
+	PersonService personService ;
 
 	//////////
 	// CREATE//
@@ -37,7 +39,26 @@ public class UserServiceImpl implements UserService {
 		user.setIdSecurityLevel( slDAO.findById(1).orElse(null) );
 		userDAO.save(user);
 		return user;
-
+	}
+	
+	@Override
+	@Transactional
+	public Integer createVerif(User user)
+	{
+		if (user.getIdPerson() == null) {
+			user.setIdPerson(new Person());
+			user.setIdSecurityLevel( slDAO.findById(1).orElse(null) );
+			userDAO.save(user);
+			return user.getId() ;
+		}
+		else if( personService.isEmailFree(user.getIdPerson().getEmail() ))
+		{
+			user.setIdSecurityLevel( slDAO.findById(1).orElse(null) );
+			userDAO.save(user);
+			return user.getId() ;
+		}
+		
+		return 0 ;
 	}
 
 	//////////

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Opinion;
 import fr.ibcegos.qby.cinema.beans.User;
-import fr.ibcegos.qby.cinema.services.CinemaRoomService;
 import fr.ibcegos.qby.cinema.services.OpinionService;
 import fr.ibcegos.qby.cinema.services.UserService;
 
@@ -34,8 +33,6 @@ public class OpinionController {
 	private OpinionService oservice;
 	@Autowired
 	private UserService uservice;
-	@Autowired
-	private CinemaRoomService crservice;
 
 	/**
 	 * Initialization function to potentially add data in DB

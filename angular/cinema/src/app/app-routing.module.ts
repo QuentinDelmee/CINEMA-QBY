@@ -38,6 +38,11 @@ import { DeleteProductComponent } from './component/admin/delete-product/delete-
 import { AllUserComponent } from './component/admin/all-user/all-user.component';
 import { ProductComponent } from './component/visitor/product/product.component';
 import { UpdatePasswordComponent } from './component/user/update-password/update-password.component';
+import { PurchaseComponent } from './component/user/purchase/purchase.component';
+import { CreatePurchaseComponent } from './component/admin/create-purchase/create-purchase.component';
+import { UpdatePurchaseComponent } from './component/admin/update-purchase/update-purchase.component';
+import { OpinionComponent } from './component/user/opinion/opinion.component';
+import { CommentaryComponent } from './component/user/commentary/commentary.component';
 
 let access: number = Number(sessionStorage.getItem('access'));
 
@@ -61,6 +66,9 @@ let routes: Routes = [
   { path: 'user/reservation', component: ReservationComponent },
   { path: 'user/reservation/create', component: CreateReservationComponent },
   { path: 'user/reservation/delete', component: DeleteReservationComponent },
+  { path: 'user/purchase', component: PurchaseComponent },
+  { path: 'user/comment', component: CommentaryComponent },
+  { path: 'user/opinion', component: OpinionComponent },
   /* ADMIN SECTION */
   { path: 'admin', component: AdminComponent },
   { path: 'admin/timetable/create', component: CreateTimeTableComponent },
@@ -77,6 +85,8 @@ let routes: Routes = [
   { path: 'admin/product/update', component: UpdateProductComponent },
   { path: 'admin/product/delete', component: DeleteProductComponent },
   { path: 'admin/data', component: DataComponent },
+  { path: 'admin/purchase/create', component: CreatePurchaseComponent },
+  { path: 'admin/purchase/update', component: UpdatePurchaseComponent },
 
 ];
 

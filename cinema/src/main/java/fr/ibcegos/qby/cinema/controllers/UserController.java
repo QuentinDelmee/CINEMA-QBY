@@ -1,6 +1,8 @@
 package fr.ibcegos.qby.cinema.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +20,6 @@ import fr.ibcegos.qby.cinema.beans.Opinion;
 import fr.ibcegos.qby.cinema.beans.Purchase;
 import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.User;
-import fr.ibcegos.qby.cinema.services.PersonService;
 import fr.ibcegos.qby.cinema.services.UserService;
 
 @RestController
@@ -26,8 +27,6 @@ import fr.ibcegos.qby.cinema.services.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private PersonService personService;
 	
 	
 	//////////
@@ -38,10 +37,10 @@ public class UserController {
 		return userService.create(user);
 	}
 	
-	@RequestMapping("/REST/user/")
-	public boolean isEmailFree(@RequestBody String email)
+	@PostMapping("/REST/user/verif")
+	public Integer createUserVerif(@RequestBody User user)
 	{
-		return personService.isEmailFree(email) ;
+		return userService.createVerif(user) ;
 	}
 	
 	
@@ -103,6 +102,16 @@ public class UserController {
 	@GetMapping("/REST/user/{id}/reservations")
 	public List<Reservation> findReservationUser(@PathVariable("id") Integer id) {
 		return userService.findReservationUser(id);
+	}
+	
+	@GetMapping("/REST/user/{id}/reservations/futur")
+	public List<Reservation> getUserFutureReservation(@PathVariable Integer id) {
+
+		return (userService.findReservationUser(id)
+				.stream()
+				.filter( elem -> elem.getIdDate()
+				.isAfter(LocalDateTime.now() ))
+				.collect(Collectors.toList()));
 	}
 	
 	@GetMapping("/REST/user/{id}/purchases")

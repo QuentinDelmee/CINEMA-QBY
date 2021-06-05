@@ -20,7 +20,7 @@ export class CreateReservationComponent implements OnInit {
   stringUser:any = sessionStorage.getItem('currentUser') ;
   user:User = JSON.parse(this.stringUser) ;
 
-  reservationJSON: any = { "idUser":{}, "idSeat":{ "idCinemaRoom":{} }, "idMovie":{}};
+  reservationJSON: any = { "idUser":{}, "idSeat":{}, "idMovie":{} };
 
   allUser: User[] = [] ;
   allMovie: Movie[] = [] ;
@@ -37,7 +37,9 @@ export class CreateReservationComponent implements OnInit {
   onSubmit(): void {
 
     if (confirm("Are you sure you want to create this Reservation ?")) {
-      let toPost: Reservation = new Reservation(this.reservationJSON);
+      this.reservationJSON.idUser = this.user ;
+      let toPost: Reservation = this.reservationJSON;
+      console.log(toPost) ;
       this.reservationService.save(toPost).subscribe();
     }
     else {
