@@ -13,6 +13,7 @@ export class SignInComponent implements OnInit {
 
   constructor(private route:Router, private userService: UserService) { }
 
+
   message: string = '';
   loginStatus: any;
   hide = true;
@@ -20,12 +21,23 @@ export class SignInComponent implements OnInit {
   hintPseudo: string = 'test';
 
 
-  signInJSON: any = {
-    "id": 0,
-    "pseudo": '',
-    "pwd": '',
-    "idPerson": {},
-    "idSecurityLevel": {}
+  pwd = new FormControl('', [Validators.required]);
+  pseudo = new FormControl('', [Validators.required]);
+  
+  getErrorMessageEmail() {
+
+    if (this.pwd.hasError('required')) {
+      return 'You must enter a value';
+    }
+    if (this.pseudo.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return ;
+  }
+
+
+  userJSON: any = {
   };
 
 
@@ -38,36 +50,43 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
 
+     this.userJSON = {
+      "id":0,
+      "idSecurityLevel": {},
+      "pseudo": this.pseudo.value,
+      "pwd": this.pwd.value,
+      "idPerson": {}
+      };
+
     //Vérification de la présence d'un # dans le champ pseudo
-    if (this.signInJSON.pseudo.indexOf('#') > -1) {
+    if (this.userJSON.pseudo.indexOf('#') > -1) {
       this.error = '';
 
       //Recupération du speudo et split
-      let id: any = this.signInJSON.pseudo.split("#", 2)
+      let id: any = this.userJSON.pseudo.split("#", 2)
 
       //Extraction de l'id et pseudo et affectation au json
-      this.signInJSON.pseudo = id[0]
-      this.signInJSON.id = id[1];
+      this.userJSON.pseudo = id[0]
+      this.userJSON.id = id[1];
 
 
       //Création de l'objet User à partir du JSON
-      let credentials: User = new User(this.signInJSON);
+      let credentials: User = new User(this.userJSON);
       console.log(credentials);
 
       //Appel du WebService
-      this.userService.login(credentials).subscribe(data => { this.loginStatus = data; console.log(data); this.login(); });
+      this.userService.login(credentials).subscribe(data => { this.loginStatus = data; this.login(); });
 
     }
-    else { this.error = 'Il manque le #'; this.verifForm() }
+    else { this.error = 'Il manque le #'; }
   }
 
   login() {
 
-    if (this.loginStatus === true) {
-      this.message = 'Bonjour ' + (this.signInJSON.pseudo);
+    if (this.loginStatus) {
 
       let currentUser: User;
-      this.userService.findById(this.signInJSON.id).subscribe(data => {
+      this.userService.findById(this.userJSON.id).subscribe(data => {
         currentUser = data;
         sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
         sessionStorage.setItem("access", currentUser.idSecurityLevel.id.toString());
@@ -78,14 +97,7 @@ export class SignInComponent implements OnInit {
 
       
     }
-    else {
-      this.message = 'Bonjour les informations saisi semblent erronées';
-    }
 
-  }
-
-  verifForm() {
-    return this.error;
   }
 
 }

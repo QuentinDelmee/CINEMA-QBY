@@ -8,18 +8,20 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Pseudo</mat-label>
-                    <input matInput placeholder="Pseudo#44(id)" matInput name='pseudo' [(ngModel)]="signInJSON.pseudo"required/>
-                    <mat-error>{{hintPseudo}}</mat-error>
+                    <input matInput placeholder="Pseudo#44(id)" matInput name='pseudo' [formControl]="pseudo" required/>
+                    <mat-error>{{getErrorMessageEmail()}}</mat-error>
+                    <mat-hint>{{error}}</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your password</mat-label>
-                    <input matInput name='pwd' [(ngModel)]="signInJSON.pwd" [type]="hide ? 'password' : 'text'"
+                    <input matInput name='pwd' [formControl]="pwd" [type]="hide ? 'password' : 'text'"
                         required>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
+                    <mat-error>{{getErrorMessageEmail()}}</mat-error>
                 </mat-form-field>
 
 
