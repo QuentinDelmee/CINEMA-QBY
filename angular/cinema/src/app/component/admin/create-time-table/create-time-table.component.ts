@@ -13,7 +13,7 @@ import { SessionService } from 'src/app/service/session.service';
 })
 export class CreateTimeTableComponent implements OnInit {
 
-  sessionJSON: any = { "idCinema":{}, "idMovie":{} };
+  sessionJSON: any = { "idCinemaRoom":{}, "idMovie":{} };
 
   allRoom: CinemaRoom[] = [];
   allMovie: Movie[] = [] ;
@@ -36,6 +36,8 @@ export class CreateTimeTableComponent implements OnInit {
         this.allTime.forEach( elem => { 
           console.log(elem) ;
           this.sessionJSON.time = elem ;
+          this.sessionJSON.idDate = this.sessionJSON.date +"T"+this.sessionJSON.time ;
+          this.sessionJSON.seatsLeft = this.sessionJSON.idCinemaRoom.nbSeats ;
           let toPost: Session = this.sessionJSON;
         this.sessionService.save(toPost).subscribe();
         });

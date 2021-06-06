@@ -4,6 +4,7 @@ export class CinemaRoom {
     roomName:string ;
     roomLevel:string;
     screenSize:number ;
+    nbSeats:number;
 
     constructor(cinemaRoomJSON:any)
     {
@@ -11,5 +12,6 @@ export class CinemaRoom {
         this.roomName = cinemaRoomJSON.roomName ;
         this.roomLevel = cinemaRoomJSON.roomLevel ;
         this.screenSize = cinemaRoomJSON.screenSize ;
+        this.nbSeats = cinemaRoomJSON.nbSeats ;
     }
 }
