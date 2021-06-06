@@ -1,1 +1,17 @@
-<p>product works!</p>
+<mat-grid-list cols="{{nbColumn}}" rowHeight="512px" gutterSize="{{nbGutterSize}}px">
+
+    <mat-grid-tile *ngFor="let product of products" colspan="{{nbColSpan}}">
+        
+            <mat-card class=".mat-app-background">
+                <img mat-card-image src="{{image(product)}}" alt="{{product.productName}}">
+                <mat-card-content>
+                    <mat-card-title>{{product.productName}}</mat-card-title>
+                    <mat-card-subtitle>Category: {{product.category}}</mat-card-subtitle>
+                    <mat-card-content>Description : {{product.productDescription}}</mat-card-content>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-title>Price: {{product.price}}€</mat-card-title>
+                </mat-card-footer>
+            </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

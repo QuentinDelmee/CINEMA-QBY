@@ -1,1 +1,41 @@
-<p>update-product works!</p>
+<mat-card>
+    <mat-card-title> Update Product Informations :</mat-card-title>
+    <mat-form-field appearance="fill">
+        <mat-label>Product to Update</mat-label>
+        <mat-select [(value)]="selectedProduct">
+            <mat-option *ngFor="let product of products" [value]="product">
+                {{product.productName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-card-header>
+        
+    </mat-card-header>
+<form (ngSubmit)="onSubmit()">
+<div>
+    <mat-form-field appearance="fill" >
+        <mat-label>Product Name</mat-label>
+        <input matInput name='required' [(ngModel)]="selectedProduct.productName" required>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill" >
+        <mat-label>Category</mat-label>
+        <input matInput name='category' [(ngModel)]="selectedProduct.category">
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput name='price' [(ngModel)]="selectedProduct.price" required>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput name='productDescription' [(ngModel)]="selectedProduct.productDescription">
+    </mat-form-field>
+</div>
+<button mat-raised-button color="primary" type="submit">SUBMIT PRODUCT</button>
+</form>
+</mat-card>

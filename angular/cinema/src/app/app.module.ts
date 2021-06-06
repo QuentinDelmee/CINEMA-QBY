@@ -29,7 +29,7 @@ import { UpdateTimeTableComponent } from './component/admin/update-time-table/up
 import { CreateTimeTableComponent } from './component/admin/create-time-table/create-time-table.component';
 import { UserComponent } from './component/user/user.component';
 import { CreateUserComponent } from './component/admin/create-user/create-user.component';
-import { UpdateUserComponent } from './component/user/update-user/update-user.component';
+import { UpdateUserComponent } from './component/admin/update-user/update-user.component';
 import { DeleteUserComponent } from './component/admin/delete-user/delete-user.component';
 import { QuizzComponent } from './component/visitor/quizz/quizz.component';
 import { QuizzOnPhoneComponent } from './component/visitor/quizz-on-phone/quizz-on-phone.component';

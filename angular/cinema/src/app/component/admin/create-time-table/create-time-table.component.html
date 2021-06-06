@@ -1,9 +1,11 @@
-<p>create-time-table works!</p>
+<mat-card>
+  
+    <mat-card-title>Create Movie Sessions</mat-card-title>
 <form (ngSubmit)="onSubmit()">
     <div>
         <mat-form-field appearance="fill">
             <mat-label>Cinema Room</mat-label>
-            <mat-select [(value)]="sessionJSON.idCinema">
+            <mat-select [(value)]="sessionJSON.idCinemaRoom">
                 <mat-option *ngFor="let room of allRoom" [value]="room">
                     {{ room.roomName }}
                 </mat-option>
@@ -12,7 +14,7 @@
     </div>
     <div>
         <mat-form-field appearance="fill">
-            <mat-label>Movie</mat-label>
+            <mat-label>Session Movie</mat-label>
             <mat-select [(value)]="sessionJSON.idMovie">
                 <mat-option *ngFor="let movie of allMovie" [value]="movie">
                     {{ movie.title }}
@@ -22,15 +24,23 @@
     </div>
     <div>
         <mat-form-field appearance="fill" >
-            <mat-label>DATE</mat-label>
+            <mat-label>Session Date</mat-label>
             <input matInput name='date' type=date [(ngModel)]="sessionJSON.date">
         </mat-form-field>
     </div>
-    <div>
+    <!-- <div>
         <mat-form-field appearance="fill">
-            <mat-label>TIME</mat-label>
-            <input matInput name='date' type='time' [(ngModel)]="sessionJSON.time">
-        </mat-form-field>
-    </div>
-    <button mat-button type="submit">SUBMIT NEW SESSION</button>
+            <mat-label>Session Hour</mat-label>
+            <mat-select [(value)]="sessionTime">
+              <mat-option *ngFor="let time of allTime; let index = index ;"
+                [value]="time">
+                {{time}}
+              </mat-option>
+              <mat-option [value]="allTime"> ALL HOUR</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div> -->
+    <button mat-raised-button color="primary" type="submit">SUBMIT NEW SESSION</button>
 </form>
+
+</mat-card>
