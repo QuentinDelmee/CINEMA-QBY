@@ -51,7 +51,7 @@ public class Commentary {
 	}
 	
 	public Commentary filter(Commentary comment) {
-		String commentary = comment.commentary;
+		String commentary = comment.commentary.toLowerCase();
 		
 			//Dictionnaire de gros mots
 			String[] myList2 = {"shit","fuck","vilain","chier","merde"};

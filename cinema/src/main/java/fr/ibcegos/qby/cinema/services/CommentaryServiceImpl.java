@@ -25,6 +25,7 @@ public class CommentaryServiceImpl implements CommentaryService {
 	@Override
 	public void create(Commentary commentary) {
 		commentary = commentary.filter(commentary);
+		System.out.println(commentary.getCommentary());
 		dao.save(commentary);
 	}
 	
