@@ -11,26 +11,26 @@ export class DeleteProductComponent implements OnInit {
 
   constructor(private productService: ProductService) { }
 
-  selectedProduct: any = { "movie":{} , "index":-1 } ;
+  selectedProduct: any = { "poduct": {} , "index":-1 };
   products: Product[] = [];
 
   ngOnInit(): void {
-    this.findAllMovie() ;
+    this.findAllProduct() ;
   }
 
   onSubmit(): void{
-    if (confirm("Are you sure you want to delete this Movie ?")) {
+    if (confirm("Are you sure you want to delete this Product ?")) {
       console.log(this.selectedProduct) ;
-      this.productService.delete(this.selectedProduct.movie.id).subscribe() ;
+      this.productService.delete(this.selectedProduct.product.id).subscribe() ;
       this.products.splice(this.selectedProduct.index,1);
     }
     else {
-      console.log("Delete Movie ABORTED");
+      console.log("Delete Product ABORTED");
     }
-    this.selectedProduct = { "movie":{} , "index":-1};
+    this.selectedProduct = new Product({});
   }
 
-  findAllMovie() {
+  findAllProduct() {
     this.productService.findAll().subscribe(data => {
       this.products = data;
     });

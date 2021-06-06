@@ -7,7 +7,7 @@
             </mat-card>
         </mat-grid-tile>
         <mat-grid-tile colspan="3">
-            <table mat-table [dataSource]="sessions[index]" class="mat-elevation-z8">
+            <table mat-table [dataSource]="sessions[index]" class="mat-elevation-z8" (click)="redirection()"> 
 
                 <ng-container matColumnDef="FILM">
                     <th mat-header-cell *matHeaderCellDef> FILM </th>

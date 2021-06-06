@@ -22,7 +22,7 @@ export class CreateMovieComponent implements OnInit {
     if (confirm("Are you sure you want to create this Movie ?")) {
       let toPost: Movie = new Movie(this.movieJSON);
       this.movieService.save(toPost).subscribe();
-      this.movieService.updateURL(toPost);
+      //this.movieService.updateURL(toPost);
     }
     else {
       console.log("New Movie ABORTED");

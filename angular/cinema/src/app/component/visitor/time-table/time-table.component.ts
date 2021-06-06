@@ -56,6 +56,23 @@ export class TimeTableComponent implements OnInit {
     else { return movie.imageUrl; }
   }
 
+  redirection()
+  {
+    const access:number = Number(sessionStorage.getItem('access')) ;
+    if( access == 0 )
+    {
+      this.router.navigate(['/signin']);
+    }
+    else if( access == 1 )
+    {
+      this.router.navigate(['/user/reservation/create']) ;
+    }
+    else
+    {
+      this.router.navigate([''])
+    }
+  }
+
   /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
 
   @HostListener('window:resize', ['$event'])
