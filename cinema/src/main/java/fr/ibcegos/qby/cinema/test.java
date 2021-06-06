@@ -1,6 +1,4 @@
 package fr.ibcegos.qby.cinema;
-import java.io.*;
-import java.util.regex.*;
 
 public class test {
 	
