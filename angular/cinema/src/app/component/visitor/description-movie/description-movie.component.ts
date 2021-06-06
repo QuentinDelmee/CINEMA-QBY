@@ -30,8 +30,7 @@ export class DescriptionMovieComponent implements OnInit {
       }
       );
     this.findMovie();
-    this.findComment();
-    this.findSession()    
+    
   }
 
   findSession()
@@ -54,6 +53,8 @@ export class DescriptionMovieComponent implements OnInit {
     this.movieService.findById(this.movie.id).subscribe(data => {
       this.movie = data;
       this.updateImage();
+      this.findComment();
+      this.findSession()    
     });
   }
 
