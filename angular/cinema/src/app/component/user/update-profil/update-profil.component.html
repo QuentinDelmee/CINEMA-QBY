@@ -1,0 +1,64 @@
+
+<mat-card>
+    <mat-card-header>
+                <mat-icon>face</mat-icon>
+        </mat-card-header>
+
+
+        <mat-card-content>
+                <mat-card-title>Update Your Profil Informations</mat-card-title>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user']">Return</a>
+                </button>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user/profil/']">View Profile</a>
+                </button>
+                <mat-divider></mat-divider>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Your Pseudo</mat-label>
+            <input matInput name='pseudo' [(ngModel)]="user.pseudo" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput name='email' [(ngModel)]="user.idPerson.email" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Family Name</mat-label>
+            <input matInput name='familyName' [(ngModel)]="user.idPerson.familyName">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput name='firstName' [(ngModel)]="user.idPerson.firstName">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>BirthDate</mat-label>
+            <input matInput name='birthdate' type=date [(ngModel)]="user.idPerson.birthdate">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Genre/Sexe/Self</mat-label>
+            <input matInput name='genre' [(ngModel)]="user.idPerson.genre">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput name='city' [(ngModel)]="user.idPerson.city">
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Update Profile</button>
+</form>
+</mat-card-content>
+</mat-card>

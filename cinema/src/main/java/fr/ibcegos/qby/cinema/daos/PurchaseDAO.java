@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.User;
 
 /**
  * Interface DAO to manage Purchase DataBase
@@ -13,6 +14,8 @@ import fr.ibcegos.qby.cinema.beans.Purchase;
  *
  */
 public interface PurchaseDAO extends CrudRepository<Purchase, Integer> {
+	
+	public List<Purchase> findByIdUser(User idUser);
 
 //	/**
 //	 * Function to get all purchase with same id in DB

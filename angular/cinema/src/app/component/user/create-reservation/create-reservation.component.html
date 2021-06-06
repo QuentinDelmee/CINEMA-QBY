@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-header>
+                <mat-icon>euro_symbol</mat-icon>
+        </mat-card-header>
+
+
+        <mat-card-content>
+                <mat-card-title>Book a Reservation !</mat-card-title>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user']">Return</a>
+                </button>
+                <mat-divider></mat-divider>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Movie</mat-label>
+            <mat-select [(value)]="reservationJSON.idMovie">
+                <mat-option *ngFor="let movie of allMovie" [value]="movie" (click)="updateMovie(movie)">
+                    {{ movie.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Séance</mat-label>
+            <mat-select [(value)]="reservationJSON.idDate">
+                <mat-option *ngFor="let session of allSession" [value]="session.idDate" (click)="updateSession(session)"> 
+                    {{ session.idDate | date :'full' }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Seat</mat-label>
+            <mat-select [(value)]="reservationJSON.idSeat">
+                <mat-option *ngFor="let seat of allSeat" [value]="seat">
+                    {{ seat.rowName }} {{ seat.seatNumber }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit">SUBMIT NEW SESSION</button>
+</form>
+</mat-card-content>
+</mat-card>

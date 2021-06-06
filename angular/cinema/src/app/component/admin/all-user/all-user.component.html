@@ -1,0 +1,105 @@
+<mat-grid-list cols="4" gutterSize="12px" rowHeight="100vh">
+
+    <mat-grid-tile colspan="1">
+        <mat-card>
+            <mat-card-title>Update Selected User</mat-card-title>
+            <mat-card-content>
+                <form (ngSubmit)="onSubmit()">
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Your Pseudo</mat-label>
+                            <input matInput name='pseudo' [(ngModel)]="selectedUser.pseudo" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput name='email' [(ngModel)]="selectedUser.idPerson.email" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Family Name</mat-label>
+                            <input matInput name='familyName' [(ngModel)]="selectedUser.idPerson.familyName">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <input matInput name='firstName' [(ngModel)]="selectedUser.idPerson.firstName">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>BirthDate</mat-label>
+                            <input matInput name='birthdate' type=date [(ngModel)]="selectedUser.idPerson.birthdate">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Genre/Sexe/Self</mat-label>
+                            <input matInput name='genre' [(ngModel)]="selectedUser.idPerson.genre">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>City</mat-label>
+                            <input matInput name='city' [(ngModel)]="selectedUser.idPerson.city">
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-raised-button color="primary" type="submit">Update Profile</button>                    
+                </form>
+            </mat-card-content>
+        </mat-card>
+
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+        <mat-card>
+        <div class="mat-elevation-z8 app-qby-table" >
+            <table mat-table [dataSource]="users" class="">
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef>ID</th>
+                  <td mat-cell *matCellDef="let element">{{element.id}}</td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="pseudo">
+                  <th mat-header-cell *matHeaderCellDef>Pseudo</th>
+                  <td mat-cell *matCellDef="let element">{{element.pseudo}}</td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="familyName">
+                  <th mat-header-cell *matHeaderCellDef>Family Name</th>
+                  <td mat-cell *matCellDef="let element">{{element.idPerson.familyName}}</td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="firstName">
+                  <th mat-header-cell *matHeaderCellDef>First Name</th>
+                  <td mat-cell *matCellDef="let element">{{element.idPerson.firstName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="DELETE">
+                    <th mat-header-cell *matHeaderCellDef> DELETE </th>
+                    <td mat-cell *matCellDef="let element; let i = index">
+                        <button mat-mini-fab color="primary" (click)="delete(element, i)" aria-label="Example icon button with a delete icon">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="['id','pseudo','familyName','firstName', 'DELETE']; sticky: true"></tr>
+                <tr
+                    mat-row
+                    (click)="selectedUser = row"
+                    *matRowDef="let row; columns: ['id','pseudo','familyName','firstName', 'DELETE'];"
+                ></tr>
+              </table>
+
+            </div>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

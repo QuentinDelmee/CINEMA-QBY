@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Reservation;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.ReservationService;
+import fr.ibcegos.qby.cinema.services.UserService;
 
 /**
  * Controller class for Reservation with basic CRUDs Mapping
@@ -23,9 +26,12 @@ import fr.ibcegos.qby.cinema.services.ReservationService;
  *
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class ReservationController {
 	@Autowired
 	private ReservationService rservice;
+	@Autowired 
+	private UserService uservice ;
 
 	/**
 	 * Initialization function to potentially add data in DB
@@ -54,6 +60,12 @@ public class ReservationController {
 	@GetMapping("/REST/reservation")
 	public List<Reservation> getAll() {
 		return rservice.getAllReservation();
+	}
+	
+	@GetMapping("/REST/reservation/user/{id}")
+	public List<Reservation> getUserReservation(@PathVariable Integer id) {
+		User idUser = uservice.getUserId(id);
+		return rservice.getUserReservation(idUser);
 	}
 
 	/**

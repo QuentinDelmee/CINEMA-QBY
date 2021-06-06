@@ -2,8 +2,9 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
-import fr.ibcegos.qby.cinema.beans.CinemaRoom;
+import fr.ibcegos.qby.cinema.beans.Commentary;
 import fr.ibcegos.qby.cinema.beans.Movie;
+import fr.ibcegos.qby.cinema.beans.Session;
 
 /**
  * Gestion des films du cinema
@@ -62,4 +63,8 @@ public interface MovieService {
 	 * @param id_Movie
 	 */
 	public void deleteById(Integer id_Movie);
+	
+	
+	public List<Commentary> findCommentaryMovie(Integer id_Movie);
+	public List<Session> findSessionMovie(Integer id_Movie);
 }

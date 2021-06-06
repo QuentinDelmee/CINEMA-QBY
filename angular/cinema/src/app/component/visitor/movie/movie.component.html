@@ -1,0 +1,18 @@
+<mat-grid-list cols="{{nbColumn}}" rowHeight="512px" gutterSize="{{nbGutterSize}}px">
+
+    <mat-grid-tile *ngFor="let movie of movies" colspan="{{nbColSpan}}">
+        
+            <mat-card class=".mat-app-background" (click)="redirect(movie)">
+                <a [routerLink]="['/movie/description']" [queryParams]="{idFilm: movie.id}">
+                <img mat-card-image src="{{image(movie)}}" alt="{{movie.title}}">
+                </a>
+
+                <mat-card-footer>
+                    <mat-card-title>{{movie.title}}</mat-card-title>
+                    <mat-card-subtitle>Genre: {{movie.movieGenre}}</mat-card-subtitle>
+                </mat-card-footer>
+            </mat-card>
+       
+
+    </mat-grid-tile>
+</mat-grid-list>

@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ibcegos.qby.cinema.beans.Commentary;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
 
 @Service
+@Transactional
 public class CommentaryServiceImpl implements CommentaryService {
 	
 	@Autowired
@@ -22,6 +24,8 @@ public class CommentaryServiceImpl implements CommentaryService {
 	//////////
 	@Override
 	public void create(Commentary commentary) {
+		commentary = commentary.filter(commentary);
+		System.out.println(commentary.getCommentary());
 		dao.save(commentary);
 	}
 	
@@ -63,6 +67,12 @@ public class CommentaryServiceImpl implements CommentaryService {
 	@Override
 	public void deleteById(Integer id_Commentary) {
 		dao.deleteById(id_Commentary);
+	}
+
+	@Override
+	public List<Commentary> getCommentaryByUser(User idUser) {
+		// TODO Auto-generated method stub
+		return dao.findByIdUser(idUser);
 	}
 
 }

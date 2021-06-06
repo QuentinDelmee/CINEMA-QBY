@@ -3,20 +3,21 @@ package fr.ibcegos.qby.cinema.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 //Création des Class Identiques au Bases de données
-	// Classe "securitylevel"
+// Classe "securitylevel"
 
 //Vers le la ligne "54" il y a la table SQL y correspondant
 @Entity
@@ -27,43 +28,34 @@ public class SecurityLevel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String roles;
-	
-	@OneToMany(mappedBy = "id")
+	private String role;
+	private String description;
+
+	@JsonIgnore
+	@OneToMany(targetEntity = User.class, mappedBy = "idSecurityLevel", cascade=CascadeType.ALL )
 	private List<User> allUsers = new ArrayList<User>();
 
-
-	public SecurityLevel(String roles) {
+	public SecurityLevel(String roles, String description) {
 		super();
-		this.roles = roles;
+		this.role = roles;
+		this.description = description ;
 	}
-
 
 	@Override
 	public String toString() {
-		return "SecurityLevel [roles=" + roles + ", allUsers=" + allUsers + "]";
+		return "SecurityLevel [id=" + id + ", role=" + role + ", description=" + description + "]";
 	}
 
+	// Méthode toString pour accéder aux valeurs
 
-	
-	// Méthode toString pour accéder aux valeurs 
-
-
-
-
-	
 }
 
-
-
-/* Ci-dessous la Table y correpondant
+/*
+ * Ci-dessous la Table y correpondant
  * 
- * 	CREATE TABLE securitylevel 
-	(
-		idsl int NOT NULL AUTOINCREMENT,
-		roles varchar (50),
-		PRIMARY KEY (idsl)
-	
-	);
- 
+ * CREATE TABLE securitylevel ( idsl int NOT NULL AUTOINCREMENT, roles varchar
+ * (50), PRIMARY KEY (idsl)
+ * 
+ * );
+ * 
  */

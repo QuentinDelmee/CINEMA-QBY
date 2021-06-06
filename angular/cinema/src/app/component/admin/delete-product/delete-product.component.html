@@ -1,0 +1,23 @@
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Delete Product Informations :</mat-card-title>
+        </mat-card-header>
+  
+        <form (ngSubmit)="onSubmit()">
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Product to Delete</mat-label>
+              <mat-select [(value)]="selectedProduct">
+                <mat-option *ngFor="let product of products; let index = index ; trackBy:trackProduct ;"
+                  [value]="{ 'product':product, 'index':index}">
+                  {{product.productName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-raised-button color="primary" type="submit">PRESS TO DELETE</button>
+          </div>
+        </form>
+      </mat-card>

@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.ibcegos.qby.cinema.beans.Opinion;
-import fr.ibcegos.qby.cinema.services.CinemaRoomService;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.services.OpinionService;
 import fr.ibcegos.qby.cinema.services.UserService;
 
@@ -26,13 +27,12 @@ import fr.ibcegos.qby.cinema.services.UserService;
  *
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class OpinionController {
 	@Autowired
 	private OpinionService oservice;
 	@Autowired
 	private UserService uservice;
-	@Autowired
-	private CinemaRoomService crservice;
 
 	/**
 	 * Initialization function to potentially add data in DB
@@ -62,6 +62,13 @@ public class OpinionController {
 	@GetMapping("/REST/opinion")
 	public List<Opinion> getAll() {
 		return oservice.getAllOpinion();
+	}
+	
+	@GetMapping("/REST/opinion/user/{id}")
+	public List<Opinion> getFromUser(@PathVariable("id") Integer id) {
+		
+		User idUser = uservice.getUserId(id);
+		return oservice.getUserOpinion(idUser);
 	}
 
 	/**

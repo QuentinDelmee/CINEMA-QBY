@@ -1,0 +1,85 @@
+<mat-grid-list cols="2" gutterSize="12px" rowHeight="100vh">
+
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title> Choose Movie :</mat-card-title>
+                <mat-card-subtitle>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Movie to Update</mat-label>
+                        <mat-select [(value)]="selectedMovie">
+                            <mat-option *ngFor="let movie of movies" [value]="movie">
+                                {{movie.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{selectedMovie.imageUrl}}" alt="{{selectedMovie.title}}">
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title> Update Movie Informations :</mat-card-title>
+                <mat-card-subtitle>
+
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <form (ngSubmit)="onSubmit()">
+
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input matInput name='title' [(ngModel)]="selectedMovie.title" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Original Title</mat-label>
+                        <input matInput name='originalTitle' [(ngModel)]="selectedMovie.originalTitle">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>PEGI</mat-label>
+                        <input matInput name='pegi' [(ngModel)]="selectedMovie.pegi">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Release Year</mat-label>
+                        <input matInput name='releaseYear' [(ngModel)]="selectedMovie.releaseDate">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Duration</mat-label>
+                        <input matInput name='movieDuration' [(ngModel)]="selectedMovie.movieDuration">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Genre</mat-label>
+                        <input matInput name='movieGenre' [(ngModel)]="selectedMovie.movieGenre">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Rating</mat-label>
+                        <input matInput name='averageRating' [(ngModel)]="selectedMovie.averageRating">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput name='movieDescription'
+                            [(ngModel)]="selectedMovie.movieDescription"></textarea>
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary" type="submit">SUBMIT UPDATE</button>
+            </form>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

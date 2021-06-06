@@ -2,12 +2,17 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ibcegos.qby.cinema.beans.SecurityLevel;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.SecurityLevelDAO;
+
 @Service
+@Transactional
 public class SecurityLevelServiceImpl implements SecurityLevelService{
 
 	@Autowired
@@ -44,5 +49,11 @@ public class SecurityLevelServiceImpl implements SecurityLevelService{
 	@Override
 	public void deleteById(Integer idsl) {
 		securityLevelDAO.deleteById(idsl);
+	}
+
+	@Override
+	public List<User> findUserSecurityLevel(Integer idsl) {
+		// TODO Auto-generated method stub
+		return securityLevelDAO.findById(idsl).orElse(new SecurityLevel()).getAllUsers() ;
 	}
 }

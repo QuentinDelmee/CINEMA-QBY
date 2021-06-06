@@ -24,19 +24,18 @@ public class Commentary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	private Integer rating;
 	private String commentary;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_movie")
 	private Movie idMovie;
 
-	
 	public Commentary(Integer rating, String commentary, User idUser, Movie idMovie) {
 
 		this.rating = rating;
@@ -44,16 +43,32 @@ public class Commentary {
 		this.idUser = idUser;
 		this.idMovie = idMovie;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "Commentary [rating=" + rating + ", commentary=" + commentary + ", idUser=" + idUser + ", idMovie="
-				+ idMovie + "]";
+		return "Commentary [id=" + id + ", rating=" + rating + ", commentary=" + commentary + ", idUser="
+				+ idUser.getId() + ", idMovie=" + idMovie.getId() + "]";
 	}
-
-
-
-
 	
+	public Commentary filter(Commentary comment) {
+		String commentary = comment.commentary.toLowerCase();
+		
+			//Dictionnaire de gros mots
+			String[] myList2 = {"shit","fuck","vilain","chier","merde"};
+			
+			for(String insult:myList2) {
+				
+				if(commentary.contains(insult)) {
+					
+					String replace = "";
+					for(int i = 0; i< insult.length(); i++) {
+						replace += "*";
+					}
+					commentary = commentary.replace(insult, replace);
+				}
+			}
+			comment.commentary = commentary;
+			return comment;
+		}
+
 }

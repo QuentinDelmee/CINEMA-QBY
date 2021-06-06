@@ -2,8 +2,8 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
-import fr.ibcegos.qby.cinema.beans.CinemaRoom;
 import fr.ibcegos.qby.cinema.beans.Commentary;
+import fr.ibcegos.qby.cinema.beans.User;
 
 public interface CommentaryService {
 
@@ -32,6 +32,8 @@ public interface CommentaryService {
 	 * @return
 	 */
 	public Commentary getCommentaryById(Integer id_Commentary);
+	
+	public List<Commentary> getCommentaryByUser(User idUser);
 	
 	/**
 	 * Retourne tous les commentaires d'un film

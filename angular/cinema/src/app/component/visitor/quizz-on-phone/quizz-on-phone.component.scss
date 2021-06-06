@@ -1,0 +1,23 @@
+button {
+  min-width: 200px;
+  min-height: 100px;
+  padding : 10px ;
+  border-radius : 50px ;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+mat-card {
+  min-height: 100px ;
+  margin-bottom: 24px ;
+}
+
+mat-card-title {
+  margin-bottom: 24px ;
+}
+
+div {
+  text-align: right;
+}

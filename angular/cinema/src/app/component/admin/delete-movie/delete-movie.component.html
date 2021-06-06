@@ -1,0 +1,38 @@
+<mat-grid-list cols="2" gutterSize="12px" rowHeight="800px">
+
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> Choose Movie :</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{selectedMovie.movie.imageUrl}}" alt="{{selectedMovie.movie.title}}">
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> Delete Movie Informations :</mat-card-title>
+        <mat-card-subtitle>
+
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <form (ngSubmit)="onSubmit()">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Movie to Delete</mat-label>
+            <mat-select [(value)]="selectedMovie">
+              <mat-option *ngFor="let movie of movies; let index = index ; trackBy:trackMovie ;"
+                [value]="{ 'movie':movie, 'index':index}">
+                {{movie.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" type="submit">PRESS TO DELETE</button>
+        </div>
+      </form>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

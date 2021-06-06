@@ -3,6 +3,7 @@ package fr.ibcegos.qby.cinema.services;
 import java.util.List;
 
 import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.User;
 
 /**
  * 
@@ -55,4 +56,6 @@ public interface OpinionService {
 	 * @param id_opinion the id of the opinion we want to delete
 	 */
 	public void deleteById(Integer id_opinion);
+
+	public List<Opinion> getUserOpinion(User idUser);
 }

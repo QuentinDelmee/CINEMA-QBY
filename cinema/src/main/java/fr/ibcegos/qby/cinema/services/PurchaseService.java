@@ -3,6 +3,7 @@ package fr.ibcegos.qby.cinema.services;
 import java.util.List;
 
 import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.User;
 
 /**
  * 
@@ -55,6 +56,8 @@ public interface PurchaseService {
 	 * @param id_purchase the id of the purchase we want to delete
 	 */
 	public void deleteById(Integer id_purchase);
+
+	public List<Purchase> getUserPurchase(User idUser);
 	
 //	public List<Purchase> getByReceipt(Integer id_receipt);
 //	public void deleteByReceipt(Integer id_receipt);

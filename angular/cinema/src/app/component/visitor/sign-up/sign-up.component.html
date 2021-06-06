@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-content>
+
+    <mat-card-header>
+        <mat-icon>face</mat-icon>
+    </mat-card-header>
+
+    <form>
+
+    <div class="">
+        <h1>Register Form</h1>
+        <h3>Please, Could you complete required informations bellow</h3>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Pseudo</mat-label>
+        <input matInput name='pseudo' [formControl]="pseudo" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error> 
+      </mat-form-field>
+
+      
+    <mat-form-field appearance="fill">
+        <mat-label hintLabel="Min 6 characters">Enter your password</mat-label>
+        <input matInput #input minlength="6" [type]="hide ? 'password' : 'text'" name='pwd' [formControl]="pwd" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/6 minimum</mat-hint>
+
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <p>Email</p>
+
+
+      <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label >
+          <input matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error> 
+        </mat-form-field>
+      </div>
+
+    <div>
+      <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Create my Account</button>       
+    </div> 
+
+    </form>
+
+
+  </mat-card-content>
+</mat-card>

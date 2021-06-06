@@ -3,7 +3,6 @@ package fr.ibcegos.qby.cinema.services;
 import java.util.List;
 
 import fr.ibcegos.qby.cinema.beans.Person;
-import fr.ibcegos.qby.cinema.beans.User;
 
 public interface PersonService {
 	
@@ -60,4 +59,7 @@ public interface PersonService {
 	 * @param id_user
 	 */
 	public void deleteById(Integer id_user);
+	
+	
+	public boolean isEmailFree(String email);
 }

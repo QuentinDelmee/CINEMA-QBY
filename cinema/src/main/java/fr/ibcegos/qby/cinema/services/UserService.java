@@ -2,6 +2,10 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
+import fr.ibcegos.qby.cinema.beans.Commentary;
+import fr.ibcegos.qby.cinema.beans.Opinion;
+import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.User;
 
 
@@ -13,9 +17,10 @@ public interface UserService {
 	/**
 	 * Créer un utilisateur
 	 * @param user
+	 * @return 
 	 */
-	public void create(User user);
-	
+	public User create(User user);
+	public Integer createVerif(User user);
 		
 	//////////
 	// GET  //
@@ -58,4 +63,12 @@ public interface UserService {
 	 * @param id_user
 	 */
 	public void deleteById(Integer id_user);
+
+
+	public boolean login(User user);
+	
+	public List<Opinion> findOpinionUser(Integer id_user);
+	public List<Commentary> findCommentaryUser(Integer id_user);
+	public List<Purchase> findPurchaseUser(Integer id_user);
+	public List<Reservation> findReservationUser(Integer id_user);
 }

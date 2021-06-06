@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,12 +31,15 @@ public class Session {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	@ManyToOne
-	@JoinColumn(name = "id")
-	private CinemaRoom idCinema;
+	@JoinColumn(name = "id_cinema_room", referencedColumnName = "id")
+	private CinemaRoom idCinemaRoom;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_movie", referencedColumnName = "id")
 	private Movie idMovie;
+	
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDateTime idDate;
 	private Integer seatsLeft;
 
@@ -47,21 +53,19 @@ public class Session {
 	 */
 	public Session(CinemaRoom idCinema, Movie idMovie, LocalDateTime idDate, Integer seatsLeft) {
 		super();
-		this.idCinema = idCinema;
+		this.idCinemaRoom = idCinema;
 		this.idMovie = idMovie;
 		this.idDate = idDate;
 		this.seatsLeft = seatsLeft;
 	}
 
-	
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
-
 	@Override
 	public String toString() {
-		return "Session [idCinema=" + idCinema + ", idMovie=" + idMovie + ", idDate=" + idDate + ", seatsLeft="
-				+ seatsLeft + "]";
+		return "Session [id=" + id + ", idCinema=" + idCinemaRoom.getId() + ", idMovie=" + idMovie.getId() + ", idDate="
+				+ idDate + ", seatsLeft=" + seatsLeft + "]";
 	}
 
 }

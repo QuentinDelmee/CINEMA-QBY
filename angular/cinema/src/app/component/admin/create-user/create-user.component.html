@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title> Add User Informations :</mat-card-title>
+    </mat-card-header>
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill" >
+            <mat-label>Pseudo</mat-label>
+            <input matInput name='pseudo' [(ngModel)]="userJSON.pseudo" required>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill" >
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name='pwd' [(ngModel)]="userJSON.pwd">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill" >
+            <mat-select [(value)]="userJSON.idSecurityLevel" name="SecurityLevel">
+                <mat-option *ngFor="let role of accountRoles" [value]="role">
+                    {{role.role}}
+                </mat-option>
+            </mat-select>
+            
+                <mat-label>Level security</mat-label>
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Créer l'utilisateur</button>
+    </form>

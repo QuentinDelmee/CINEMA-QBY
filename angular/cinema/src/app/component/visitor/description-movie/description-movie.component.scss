@@ -1,0 +1,68 @@
+button {
+    margin: 8px;
+}
+
+mat-card-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+mat-card-header {
+    height: 64px;
+    margin: 8px;
+}
+
+.app-qby-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.app-qby-content {
+    height:90%;
+    width:100%;
+    text-align: center;
+}
+mat-icon {
+    position: absolute;
+    margin: 48px;
+    transform: scale(5);
+}
+
+a {
+    width: 100%;
+}
+
+a:hover {
+    color: whitesmoke;
+}
+
+img {
+    max-width: 400px;
+}
+
+table {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+
+  .app-qby-table {
+    width: 100%;
+    height: 60%;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  

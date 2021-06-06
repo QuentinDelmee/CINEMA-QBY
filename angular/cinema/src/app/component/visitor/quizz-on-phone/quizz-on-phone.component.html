@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-subtitle>Thèmes: {{currentQuizz.theme}}</mat-card-subtitle>
+    <mat-card-title>Question {{nbStatus}}/{{quizz.length}}: {{currentQuizz.question}} </mat-card-title> 
+    <mat-card-title> </mat-card-title>
+</mat-card>        
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile><button (click)="choiceUser(1)" mat-raised-button color="{{colorTab[0]}}">{{currentQuizz.answer1}}</button></mat-grid-tile>
+    <mat-grid-tile><button (click)="choiceUser(2)" mat-raised-button color="{{colorTab[1]}}">{{currentQuizz.answer2}}</button></mat-grid-tile>
+    <mat-grid-tile><button (click)="choiceUser(3)" mat-raised-button color="{{colorTab[2]}}">{{currentQuizz.answer3}}</button></mat-grid-tile>
+    <mat-grid-tile><button (click)="choiceUser(4)" mat-raised-button color="{{colorTab[3]}}">{{currentQuizz.answer4}}</button></mat-grid-tile>
+</mat-grid-list>
+
+<mat-card>{{verif}} {{showAnswer}} <p> {{explanation}} </p> </mat-card>
+<div>
+<button mat-fab color="primary" [hidden]="nextBtnVisibility" (click)="nextQuizz()"><mat-icon>navigate_next</mat-icon></button>
+</div>

@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +20,7 @@ import lombok.Setter;
  * 
  * Class which allows to stock and manage all purchases from users
  * 
- * @author ib
+ * @author QBY
  *
  */
 @Entity
@@ -28,27 +31,26 @@ public class Purchase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_product")
 	private Product idProduct;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
-	
-	private LocalDateTime date;
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDateTime idDate;
 
 	private Integer quantity;
 	private Integer idReceipt;
-	
 
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
 	 * 
 	 * @param idproduct  product which is transacted
 	 * @param idusers    user which is buying
-	 * @param date        the exact date at which the transaction occurs
-	 * @param quantity    the quantity of product which is transacted
+	 * @param date       the exact date at which the transaction occurs
+	 * @param quantity   the quantity of product which is transacted
 	 * @param idpurchase the overall id of the purchases
 	 */
 
@@ -56,23 +58,18 @@ public class Purchase {
 		super();
 		this.idProduct = idProduct;
 		this.idUser = idUser;
-		this.date = date;
+		this.idDate = date;
 		this.quantity = quantity;
 		this.idReceipt = idReceipt;
 	}
 
-
-
-	
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
-
-	
 	@Override
 	public String toString() {
-		return "Purchase [idProduct=" + idProduct + ", idUser=" + idUser + ", date=" + date + ", quantity=" + quantity
-				+ ", idReceipt=" + idReceipt + "]";
+		return "Purchase [id=" + id + ", idProduct=" + idProduct.getId() + ", idUser=" + idUser.getId() + ", date="
+				+ idDate + ", quantity=" + quantity + ", idReceipt=" + idReceipt + "]";
 	}
 
 }

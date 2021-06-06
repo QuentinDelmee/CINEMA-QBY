@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,39 +32,43 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
 	@ManyToOne
-	@JoinColumn ( name = "id" )
+	@JoinColumn(name = "id_seat")
 	private Seat idSeat;
-	private LocalDateTime date;
+	@ManyToOne
+	@JoinColumn(name = "id_movie")
+	private Movie idMovie;
+	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDateTime idDate;
 
 	/**
 	 * Constructor of the class, all other functions are automated with Lombok
 	 * 
 	 * @param idusers User which is reserving a seat for a film on a specific
-	 *                 session
+	 *                session
 	 * @param idseat  Seat reserved by the user inside the CinemaRoom
-	 * @param date     Date of the reservation which corresponds to the start of a
-	 *                 film session
+	 * @param idDate    Date of the reservation which corresponds to the start of a
+	 *                film session
 	 */
 
-	public Reservation(User idUser, Seat idSeat, LocalDateTime date) {
+	public Reservation(User idUser, Seat idSeat, Movie idMovie, LocalDateTime idDate) {
 		super();
 		this.idUser = idUser;
 		this.idSeat = idSeat;
-		this.date = date;
+		this.idMovie = idMovie ;
+		this.idDate = idDate;
 	}
-
 
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
-
 	@Override
 	public String toString() {
-		return "Reservation [idUser=" + idUser + ", idSeat=" + idSeat + ", date=" + date + "]";
+		return "Reservation [id=" + id + ", idUser=" + idUser + ", idSeat=" + idSeat + ", idMovie=" + idMovie
+				+ ", idDate=" + idDate + "]";
 	}
-
 
 }

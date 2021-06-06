@@ -2,13 +2,17 @@ package fr.ibcegos.qby.cinema.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.User;
 import fr.ibcegos.qby.cinema.daos.PurchaseDAO;
 
 @Service
+@Transactional
 public class PurchaseServiceImpl implements PurchaseService {
 	@Autowired
 	UserService uservice;
@@ -48,6 +52,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public void deleteById(Integer id_purchase) {
 		// TODO Auto-generated method stub
 		pdao.deleteById(id_purchase);
+	}
+
+	@Override
+	public List<Purchase> getUserPurchase(User idUser) {
+		// TODO Auto-generated method stub
+		return pdao.findByIdUser(idUser);
 	}
 
 //	@Override

@@ -28,41 +28,37 @@ public class Opinion {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
-	private CinemaRoom idCinema;
+	@JoinColumn(name = "id_cinema_room")
+	private CinemaRoom idCinemaRoom;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_user")
 	private User idUser;
 
 	private Integer rating;
 	private String cleanlyness;
 
-
 	/**
 	 * Constructor of the class, all other function are automated with Lombok
 	 * 
-	 * @param idcinema   CinemaRoom the user wants to rate.
-	 * @param iduser     User which rate the CinemaRoom
+	 * @param idcinema    CinemaRoom the user wants to rate.
+	 * @param iduser      User which rate the CinemaRoom
 	 * @param rating      The rating the user will give
 	 * @param cleanlyness User's comment.
 	 */
 	public Opinion(CinemaRoom idCinema, User idUser, Integer rating, String cleanlyness) {
-		this.idCinema = idCinema;
+		this.idCinemaRoom = idCinema;
 		this.idUser = idUser;
 		this.rating = rating;
 		this.cleanlyness = cleanlyness;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Opinion [idCinema=" + idCinema + ", idUser=" + idUser + ", rating=" + rating + ", cleanlyness="
-				+ cleanlyness + "]";
-	}
-
 	/**
 	 * Function which returns a JSON string of the class.
 	 */
+	@Override
+	public String toString() {
+		return "Opinion [id=" + id + ", idCinema=" + idCinemaRoom.getId() + ", idUser=" + idUser.getId() + ", rating="
+				+ rating + ", cleanlyness=" + cleanlyness + "]";
+	}
 
-	
 }

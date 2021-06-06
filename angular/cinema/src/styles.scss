@@ -3,5 +3,47 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@media all and (max-width: 599px )
+{
+  body {
+    max-width: 599px ;
+    margin-left: 16px ;
+    margin-right: 16px ;
+  }
+}
+
+@media all and (min-width: 600px )
+{
+  body {
+    max-width: 840px ;
+    margin-left: 32px ;
+    margin-right: 32px ;
+  }
+}
+
+
+@media all and (min-width: 905px )
+{
+  body {
+    max-width: 840px ;
+    margin: auto ;
+  }
+}
+
+@media all and (min-width: 1240) {
+  body {
+    max-width: 1040px ;
+    margin-left: 200px ;
+    margin-right: 200px ;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  body {
+    max-width: 1040px ;
+    margin: auto ;
+  }
+}
+
+// /* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';

@@ -19,6 +19,7 @@ import fr.ibcegos.qby.cinema.beans.Opinion;
 import fr.ibcegos.qby.cinema.beans.Person;
 import fr.ibcegos.qby.cinema.beans.Product;
 import fr.ibcegos.qby.cinema.beans.Purchase;
+import fr.ibcegos.qby.cinema.beans.Quizz;
 import fr.ibcegos.qby.cinema.beans.Reservation;
 import fr.ibcegos.qby.cinema.beans.Seat;
 import fr.ibcegos.qby.cinema.beans.SecurityLevel;
@@ -28,9 +29,9 @@ import fr.ibcegos.qby.cinema.daos.CinemaRoomDAO;
 import fr.ibcegos.qby.cinema.daos.CommentaryDAO;
 import fr.ibcegos.qby.cinema.daos.MovieDAO;
 import fr.ibcegos.qby.cinema.daos.OpinionDAO;
-import fr.ibcegos.qby.cinema.daos.PersonDAO;
 import fr.ibcegos.qby.cinema.daos.ProductDAO;
 import fr.ibcegos.qby.cinema.daos.PurchaseDAO;
+import fr.ibcegos.qby.cinema.daos.QuizzDAO;
 import fr.ibcegos.qby.cinema.daos.ReservationDAO;
 import fr.ibcegos.qby.cinema.daos.SeatDAO;
 import fr.ibcegos.qby.cinema.daos.SecurityLevelDAO;
@@ -48,8 +49,6 @@ public class DemoData {
 	@Autowired
 	private OpinionDAO odao;
 	@Autowired
-	private PersonDAO pedao;
-	@Autowired
 	private ProductDAO prdao;
 	@Autowired
 	private PurchaseDAO pudao;
@@ -63,160 +62,162 @@ public class DemoData {
 	private SessionDAO sesdao;
 	@Autowired
 	private UserDAO udao;
+	@Autowired
+	private QuizzDAO qdao ;
 
 	static String[] prenoms = { "Aaliyah", "Aaron", "Abby", "Abd", "Abdallah", "Abdel", "Abdelaziz", "Abdelkader",
 			"Abdellah", "Abderrahmane", "Abdou", "Abdoul", "Abdoul-Aziz", "Abdoulaye", "Abdourahmane", "Abdramane",
-			"Abdullah", "Abel", "Abiga�l", "Abiga�lle", "Abigail", "Abiga�l", "Abishan", "Abou", "Aboubacar",
+			"Abdullah", "Abel", "Abigaël", "Abigaëlle", "Abigail", "Abigaïl", "Abishan", "Abou", "Aboubacar",
 			"Aboubakar", "Abraham", "Aby", "Achille", "Achraf", "Ada", "Adam", "Adama", "Adame", "Adams", "Adan",
-			"Adel", "Ad�la�de", "Ad�le", "Ad�lie", "Adeline", "Adem", "Aden", "Adib", "Adil", "Adja", "Adnane",
-			"Adonis", "Adrian", "Adriana", "Adriano", "Adriel", "Adrien", "Aedan", "Agatha", "Agathe", "Agla�", "Agn�s",
-			"Aharon", "Ahmad", "Ahmed", "Aicha", "A�cha", "A�da", "Aidan", "A�dan", "Aiden", "A�den", "A�ko", "Aim�",
-			"Aim�e", "A�na", "A�nhoa", "Aisha", "A�sha", "A�ssa", "Aissata", "A�ssata", "Aissatou", "A�ssatou", "A�ss�",
-			"Akram", "Aksel", "Akshaya", "Aksil", "Alaa", "Ala�a", "Alain", "Alan", "Alana", "Alassane", "Alba",
-			"Alban", "Albane", "Alb�ric", "Albert", "Albertine", "Albin", "Aldo", "Alec", "Alejandro", "Aleksandar",
+			"Adel", "Adélaïde", "Adèle", "Adélie", "Adeline", "Adem", "Aden", "Adib", "Adil", "Adja", "Adnane",
+			"Adonis", "Adrian", "Adriana", "Adriano", "Adriel", "Adrien", "Aedan", "Agatha", "Agathe", "Aglaé", "Agnès",
+			"Aharon", "Ahmad", "Ahmed", "Aicha", "Aïcha", "Aïda", "Aidan", "Aïdan", "Aiden", "Aïden", "Aïko", "Aimé",
+			"Aimée", "Aïna", "Aïnhoa", "Aisha", "Aïsha", "Aïssa", "Aissata", "Aïssata", "Aissatou", "Aïssatou", "Aïssé",
+			"Akram", "Aksel", "Akshaya", "Aksil", "Alaa", "Alaïa", "Alain", "Alan", "Alana", "Alassane", "Alba",
+			"Alban", "Albane", "Albéric", "Albert", "Albertine", "Albin", "Aldo", "Alec", "Alejandro", "Aleksandar",
 			"Aleksandra", "Alessandra", "Alessandro", "Alessia", "Alessio", "Alex", "Alexander", "Alexandra",
 			"Alexandre", "Alexane", "Alexi", "Alexia", "Alexie", "Alexis", "Alexy", "Alfred", "Alhassane", "Ali",
-			"Alia", "Alice", "Alicia", "Ali�nor", "Alima", "Alina", "Aline", "Aliocha", "Aliou", "Alioune", "Alisha",
-			"Alison", "Alissa", "Alistair", "Alix", "Alixe", "Aliya", "Aliyah", "Aliza", "Aliz�e", "Allan", "Allegra",
-			"Allya", "Alma", "Alo�s", "Alon", "Alone", "Aloys", "Alpha", "Alphonse", "Alth�a", "Alvin", "Aly", "Alya",
-			"Alyah", "Alycia", "Alyssa", "Alyssia", "Alysson", "Amadou", "Ama�l", "Amaia", "Amal", "Amalia", "Amanda",
+			"Alia", "Alice", "Alicia", "Aliénor", "Alima", "Alina", "Aline", "Aliocha", "Aliou", "Alioune", "Alisha",
+			"Alison", "Alissa", "Alistair", "Alix", "Alixe", "Aliya", "Aliyah", "Aliza", "Alizée", "Allan", "Allegra",
+			"Allya", "Alma", "Aloïs", "Alon", "Alone", "Aloys", "Alpha", "Alphonse", "Althéa", "Alvin", "Aly", "Alya",
+			"Alyah", "Alycia", "Alyssa", "Alyssia", "Alysson", "Amadou", "Amaël", "Amaia", "Amal", "Amalia", "Amanda",
 			"Amandine", "Amani", "Amar", "Amara", "Amaury", "Amaya", "Ambre", "Ambrine", "Ambroise", "Amel", "Amelia",
-			"Am�lia", "Am�lie", "Amicie", "Amin", "Amina", "Aminata", "Amine", "Amir", "Amira", "Amjad", "Amos", "Amy",
-			"Ana", "Anabelle", "Ana�", "Ana�", "Anael", "Ana�l", "Anaelle", "Ana�lle", "Anais", "Ana�s", "Anas",
-			"Anass", "Anastasia", "Anatole", "Anaya", "Andr�", "Andrea", "Andr�a", "Andreas", "Andr�as", "Andrei",
-			"Andr�s", "Andrew", "Andria", "Andy", "Anes", "Ange", "Angel", "Angela", "Ang�le", "Angelica", "Angelina",
-			"Ang�lina", "Ang�line", "Ang�lique", "Angelo", "Angie", "Ania", "Anir", "Anis", "Anissa", "Anita", "Anjali",
-			"Anna", "Anna-Rose", "Annabelle", "Anna�lle", "Anne", "Anne-Laure", "Anne-Lise", "Anne-Marie",
+			"Amélia", "Amélie", "Amicie", "Amin", "Amina", "Aminata", "Amine", "Amir", "Amira", "Amjad", "Amos", "Amy",
+			"Ana", "Anabelle", "Anaé", "Anaë", "Anael", "Anaël", "Anaelle", "Anaëlle", "Anais", "Anaïs", "Anas",
+			"Anass", "Anastasia", "Anatole", "Anaya", "André", "Andrea", "Andréa", "Andreas", "Andréas", "Andrei",
+			"Andrés", "Andrew", "Andria", "Andy", "Anes", "Ange", "Angel", "Angela", "Angèle", "Angelica", "Angelina",
+			"Angélina", "Angéline", "Angélique", "Angelo", "Angie", "Ania", "Anir", "Anis", "Anissa", "Anita", "Anjali",
+			"Anna", "Anna-Rose", "Annabelle", "Annaëlle", "Anne", "Anne-Laure", "Anne-Lise", "Anne-Marie",
 			"Anne-Sophie", "Anouchka", "Anouck", "Anouk", "Anselme", "Anta", "Anthony", "Antoine", "Antoinette",
 			"Anton", "Antoni", "Antonia", "Antonin", "Antonio", "Antony", "Anya", "Apolline", "Appoline", "April",
-			"Archibald", "Arda", "Ari", "Aria", "Ariana", "Ariane", "Ari�", "Ariel", "Arielle", "Arij", "Aris",
-			"Aristide", "Arlo", "Arman", "Armance", "Armand", "Armel", "Armelle", "Arnaud", "Arno", "Aron", "Ars�ne",
-			"Arslan", "Arslane", "Art�mis", "Arthur", "Arthus", "Arto", "Artur", "Artus", "Arwa", "Arwen", "Ary",
+			"Archibald", "Arda", "Ari", "Aria", "Ariana", "Ariane", "Arié", "Ariel", "Arielle", "Arij", "Aris",
+			"Aristide", "Arlo", "Arman", "Armance", "Armand", "Armel", "Armelle", "Arnaud", "Arno", "Aron", "Arsène",
+			"Arslan", "Arslane", "Artémis", "Arthur", "Arthus", "Arto", "Artur", "Artus", "Arwa", "Arwen", "Ary",
 			"Arya", "Ashley", "Asia", "Asma", "Asmaa", "Assa", "Assad", "Asser", "Assetou", "Assia", "Assil", "Assiya",
-			"Assiyah", "Assya", "Astou", "Astr�e", "Astrid", "Ath�na", "Ath�na�s", "Aubin", "Aude", "Audrey", "Auguste",
-			"Augustin", "Augustine", "Aure", "Aurel", "Aur�le", "Aurelia", "Aur�lia", "Aur�lie", "Aur�lien", "Auriane",
-			"Aurore", "Auxane", "Auxence", "Ava", "Avi", "Aviel", "Aviga�l", "Avital", "Avril", "Awa", "Axel", "Axelle",
+			"Assiyah", "Assya", "Astou", "Astrée", "Astrid", "Athéna", "Athénaïs", "Aubin", "Aude", "Audrey", "Auguste",
+			"Augustin", "Augustine", "Aure", "Aurel", "Aurèle", "Aurelia", "Aurélia", "Aurélie", "Aurélien", "Auriane",
+			"Aurore", "Auxane", "Auxence", "Ava", "Avi", "Aviel", "Avigaïl", "Avital", "Avril", "Awa", "Axel", "Axelle",
 			"Aya", "Ayaan", "Ayah", "Ayala", "Ayan", "Ayana", "Aydan", "Ayden", "Ayem", "Ayla", "Aylan", "Aylane",
 			"Ayleen", "Aylin", "Ayline", "Ayman", "Aymane", "Aymar", "Aymen", "Aymeric", "Ayna", "Ayoub", "Ayrton",
-			"Aysha", "Azad", "Az�lie", "Aziz", "Baba", "Babacar", "Badis", "Bafod�", "Bahia", "Bakary", "Balkis",
-			"Balthazar", "Baptiste", "Barbara", "Barnab�", "Barth�lemy", "Barth�l�my", "Basil", "Basile", "Basma",
-			"Bastian", "Bastien", "Baudouin", "Baya", "Beatrice", "B�atrice", "Bella", "Ben", "B�n�dicte", "Benjamin",
-			"Benoit", "Beno�t", "B�r�nice", "Bernard", "Bertille", "B�ryl", "Bettina", "Betty", "Beya", "Bianca",
+			"Aysha", "Azad", "Azélie", "Aziz", "Baba", "Babacar", "Badis", "Bafodé", "Bahia", "Bakary", "Balkis",
+			"Balthazar", "Baptiste", "Barbara", "Barnabé", "Barthélemy", "Barthélémy", "Basil", "Basile", "Basma",
+			"Bastian", "Bastien", "Baudouin", "Baya", "Beatrice", "Béatrice", "Bella", "Ben", "Bénédicte", "Benjamin",
+			"Benoit", "Benoît", "Bérénice", "Bernard", "Bertille", "Béryl", "Bettina", "Betty", "Beya", "Bianca",
 			"Bilal", "Bilel", "Billal", "Billie", "Billy", "Binta", "Bintou", "Blaise", "Blanche", "Blandine",
 			"Blessing", "Bogdan", "Bonnie", "Boris", "Bosco", "Boubacar", "Boubou", "Bouchra", "Bradley", "Brahim",
 			"Brandon", "Brayan", "Briac", "Brian", "Brice", "Brieuc", "Brune", "Bruno", "Bryan", "Caleb", "Cali",
-			"Calie", "Calista", "Calixte", "Calvin", "Calypso", "Camelia", "Cam�lia", "Cameron", "Camil", "Camila",
+			"Calie", "Calista", "Calixte", "Calvin", "Calypso", "Camelia", "Camélia", "Cameron", "Camil", "Camila",
 			"Camilia", "Camilla", "Camille", "Camillia", "Camilo", "Candice", "Capucine", "Cara", "Carine", "Carl",
 			"Carla", "Carlos", "Carlotta", "Carmen", "Carolina", "Caroline", "Cassandra", "Cassandre", "Cassidy",
-			"Cassie", "Cassiop�e", "Castille", "Cataleya", "Catalina", "Catherine", "C�cile", "Cecilia", "C�cilia",
-			"C�dric", "Celeste", "C�leste", "C�lestin", "C�lestine", "Celia", "C�lia", "C�lian", "Celina", "C�lina",
-			"Celine", "C�line", "C�lya", "Cerise", "C�sar", "Chad", "Chaden", "Chahine", "Chahinez", "Cha�", "Chaima",
-			"Cha�ma", "Chana", "Chanel", "Charl�ne", "Charles", "Charlie", "Charline", "Charlize", "Charlotte",
-			"Charly", "Chayma", "Cheick", "Cheick-Oumar", "Cheikh", "Chelsea", "Ch�rine", "Cheyenne", "Chiara",
-			"Chirine", "Chlo�", "Chlo�", "Chmouel", "Chris", "Christ", "Christelle", "Christian", "Christina",
+			"Cassie", "Cassiopée", "Castille", "Cataleya", "Catalina", "Catherine", "Cécile", "Cecilia", "Cécilia",
+			"Cédric", "Celeste", "Céleste", "Célestin", "Célestine", "Celia", "Célia", "Célian", "Celina", "Célina",
+			"Celine", "Céline", "Célya", "Cerise", "César", "Chad", "Chaden", "Chahine", "Chahinez", "Chaï", "Chaima",
+			"Chaïma", "Chana", "Chanel", "Charlène", "Charles", "Charlie", "Charline", "Charlize", "Charlotte",
+			"Charly", "Chayma", "Cheick", "Cheick-Oumar", "Cheikh", "Chelsea", "Chérine", "Cheyenne", "Chiara",
+			"Chirine", "Chloé", "Chloë", "Chmouel", "Chris", "Christ", "Christelle", "Christian", "Christina",
 			"Christine", "Christophe", "Christopher", "Ciara", "Cindy", "Claire", "Clara", "Clarence", "Clarisse",
-			"Claudia", "Cl�a", "Cl�lia", "Cl�lie", "Cl�mence", "Cl�ment", "Cl�mentine", "Cl�o", "Cl�oph�e", "Clo�",
+			"Claudia", "Cléa", "Clélia", "Clélie", "Clémence", "Clément", "Clémentine", "Cléo", "Cléophée", "Cloé",
 			"Clothilde", "Clotilde", "Clovis", "Colas", "Colette", "Colin", "Coline", "Colomban", "Colombe",
-			"Colombine", "C�me", "Constance", "Constant", "Constantin", "Coralie", "Coraline", "Corentin", "Corto",
+			"Colombine", "Côme", "Constance", "Constant", "Constantin", "Coralie", "Coraline", "Corentin", "Corto",
 			"Cosima", "Coumba", "Cristiano", "Curtis", "Cynthia", "Cyprien", "Cyrian", "Cyriaque", "Cyrielle", "Cyril",
 			"Cyrille", "Cyrine", "Cyrus", "Dado", "Dahlia", "Dali", "Dalia", "Dalil", "Dalla", "Dalva", "Dalya",
-			"Damian", "Damien", "Dan", "Dana", "Dana�", "Dani", "Dania", "Daniel", "Daniela", "Daniella", "Danny",
-			"Dante", "Dany", "Danyl", "Daoud", "Daouda", "Daphn�", "Daphn�e", "Daria", "Darine", "Dario", "Darius",
-			"Darren", "David", "Dayan", "Dayana", "Dayane", "Deborah", "D�borah", "Delia", "D�lia", "Delphine", "D�lya",
+			"Damian", "Damien", "Dan", "Dana", "Danaé", "Dani", "Dania", "Daniel", "Daniela", "Daniella", "Danny",
+			"Dante", "Dany", "Danyl", "Daoud", "Daouda", "Daphné", "Daphnée", "Daria", "Darine", "Dario", "Darius",
+			"Darren", "David", "Dayan", "Dayana", "Dayane", "Deborah", "Déborah", "Delia", "Délia", "Delphine", "Délya",
 			"Demba", "Denis", "Deniz", "Deva", "Diaba", "Diaby", "Diana", "Diane", "Diego", "Dieynaba", "Dimitri",
-			"Dina", "Diogo", "Divine", "Djamila", "Djena", "Djeneba", "Dj�n�ba", "Djenna", "Djibril", "Dominique",
+			"Dina", "Diogo", "Divine", "Djamila", "Djena", "Djeneba", "Djénéba", "Djenna", "Djibril", "Dominique",
 			"Domitille", "Donatien", "Donia", "Dora", "Dorian", "Doriane", "Doron", "Dounia", "Dov", "Dramane", "Driss",
-			"Dune", "Dylan", "Dyna", "Eddy", "Eden", "�den", "Edgar", "Edgard", "Edmond", "Edouard", "�douard",
-			"Eduard", "Eduardo", "Edward", "Edwin", "Eglantine", "Eileen", "El", "Ela", "El�a", "�l�a", "Eleanor",
-			"El�anor", "El�anore", "�l�anore", "Elena", "El�na", "�l�na", "El�onore", "�l�onore", "Elhadj", "Eli",
-			"�li", "Elia", "�lia", "Eliahou", "Eliakim", "Elian", "Eliana", "Eliane", "Elias", "�lias", "Elie", "�lie",
-			"Eliel", "Eli�s", "Eliette", "Elif", "Elijah", "Elikya", "Elina", "�lina", "Eline", "�line", "Elinor",
-			"Elio", "�lio", "Elior", "Eliora", "Eliot", "�liot", "Eliott", "�liott", "Elisa", "�lisa", "Elisabeth",
-			"�lisabeth", "Elise", "�lise", "Elisheva", "Elissa", "Eliza", "Elizabeth", "Ella", "Ellie", "Elliot",
-			"Elliott", "Elly", "Eloan", "Eloane", "Elodie", "�lodie", "Eloi", "�loi", "Elo�se", "�lo�se", "Elon",
+			"Dune", "Dylan", "Dyna", "Eddy", "Eden", "Éden", "Edgar", "Edgard", "Edmond", "Edouard", "Édouard",
+			"Eduard", "Eduardo", "Edward", "Edwin", "Eglantine", "Eileen", "El", "Ela", "Eléa", "Éléa", "Eleanor",
+			"Eléanor", "Eléanore", "Éléanore", "Elena", "Eléna", "Éléna", "Eléonore", "Éléonore", "Elhadj", "Eli",
+			"Éli", "Elia", "Élia", "Eliahou", "Eliakim", "Elian", "Eliana", "Eliane", "Elias", "Élias", "Elie", "Élie",
+			"Eliel", "Eliès", "Eliette", "Elif", "Elijah", "Elikya", "Elina", "Élina", "Eline", "Éline", "Elinor",
+			"Elio", "Élio", "Elior", "Eliora", "Eliot", "Éliot", "Eliott", "Éliott", "Elisa", "Élisa", "Elisabeth",
+			"Élisabeth", "Elise", "Élise", "Elisheva", "Elissa", "Eliza", "Elizabeth", "Ella", "Ellie", "Elliot",
+			"Elliott", "Elly", "Eloan", "Eloane", "Elodie", "Élodie", "Eloi", "Éloi", "Eloïse", "Éloïse", "Elon",
 			"Elona", "Elone", "Elora", "Elouan", "Elsa", "Elvire", "Ely", "Elya", "Elyan", "Elyana", "Elyas", "Elyes",
-			"Ely�s", "Elyna", "Elyne", "�lyne", "Elyo", "Elyssa", "Ema", "Emeline", "�meline", "Emeric", "Emi", "Emie",
-			"�mie", "Emil", "Emile", "�mile", "Emilia", "Emilie", "�milie", "Emilien", "Emilio", "Emily", "Emir",
-			"Emma", "Emmanuel", "Emmanuella", "Emmanuelle", "Emmie", "Emmy", "Emna", "Emy", "Ena�l", "En�a", "Eneko",
-			"Enguerrand", "Ennio", "Enola", "Enora", "�nora", "Enzo", "Ephra�m", "Eren", "Eric", "�ric", "Erik",
-			"Erika", "Erin", "Erine", "Ernest", "Ernestine", "Erwan", "Erwann", "Eryne", "Esa�e", "Esma", "Esm�e",
-			"Esra", "Esteban", "Est�ban", "Estelle", "Esther", "Ethan", "�than", "Ethann", "Ethel", "Etienne",
-			"�tienne", "Eug�ne", "Eug�nie", "Eulalie", "Eunice", "Eurydice", "Eva", "�va", "Eva-Rose", "Evan", "Evann",
-			"Eve", "�ve", "Evelyne", "Evy", "Ewan", "Ewen", "Ewenn", "Eya", "Eyad", "Eyal", "Eydel", "Eyden", "Eymen",
-			"Eytan", "Eythan", "�z�chiel", "Ezio", "Ezra", "Fabien", "Fabio", "Fabrice", "Fadi", "Fady", "Fa�l", "Fahd",
-			"Faith", "Fallou", "Fanny", "Fanta", "Fantin", "Fantine", "Farah", "Fares", "Far�s", "Farouk", "Fatiha",
+			"Elyès", "Elyna", "Elyne", "Élyne", "Elyo", "Elyssa", "Ema", "Emeline", "Émeline", "Emeric", "Emi", "Emie",
+			"Émie", "Emil", "Emile", "Émile", "Emilia", "Emilie", "Émilie", "Emilien", "Emilio", "Emily", "Emir",
+			"Emma", "Emmanuel", "Emmanuella", "Emmanuelle", "Emmie", "Emmy", "Emna", "Emy", "Enaël", "Enéa", "Eneko",
+			"Enguerrand", "Ennio", "Enola", "Enora", "Énora", "Enzo", "Ephraïm", "Eren", "Eric", "Éric", "Erik",
+			"Erika", "Erin", "Erine", "Ernest", "Ernestine", "Erwan", "Erwann", "Eryne", "Esaïe", "Esma", "Esmée",
+			"Esra", "Esteban", "Estéban", "Estelle", "Esther", "Ethan", "Éthan", "Ethann", "Ethel", "Etienne",
+			"Étienne", "Eugène", "Eugénie", "Eulalie", "Eunice", "Eurydice", "Eva", "Éva", "Eva-Rose", "Evan", "Evann",
+			"Eve", "Ève", "Evelyne", "Evy", "Ewan", "Ewen", "Ewenn", "Eya", "Eyad", "Eyal", "Eydel", "Eyden", "Eymen",
+			"Eytan", "Eythan", "Ézéchiel", "Ezio", "Ezra", "Fabien", "Fabio", "Fabrice", "Fadi", "Fady", "Faël", "Fahd",
+			"Faith", "Fallou", "Fanny", "Fanta", "Fantin", "Fantine", "Farah", "Fares", "Farès", "Farouk", "Fatiha",
 			"Fatim", "Fatima", "Fatima-Zahra", "Fatimata", "Fatma", "Fatou", "Fatouma", "Fatoumata", "Faustine",
-			"Federico", "F�licie", "F�licien", "F�licit�", "Felix", "F�lix", "Ferdinand", "Feriel", "F�riel", "Ferima",
+			"Federico", "Félicie", "Félicien", "Félicité", "Felix", "Félix", "Ferdinand", "Feriel", "Fériel", "Ferima",
 			"Feryel", "Filip", "Filipe", "Fiona", "Firas", "Firdaous", "Firdaws", "Flavia", "Flavie", "Flavien",
-			"Flavio", "Fleur", "Flora", "Flore", "Florence", "Florent", "Florentin", "Florian", "Floriane", "Fod�",
-			"Foucauld", "France", "Francesca", "Francesco", "Francis", "Franck", "Fran�ois", "Fran�oise", "Franklin",
-			"Fr�d�ric", "Frida", "Gabin", "Gabriel", "Gabriela", "Gabriele", "Gabriella", "Gabrielle", "Gad", "Gael",
-			"Ga�l", "Ga�lle", "Ga�tan", "Ga�tan", "Ga�tane", "Gaia", "Ga�a", "Gala", "Gaoussou", "Garance", "Gary",
-			"Gaspar", "Gaspard", "Gaston", "Gatien", "Gauthier", "Gautier", "Gaye", "Gemma", "Genevi�ve", "Geoffrey",
+			"Flavio", "Fleur", "Flora", "Flore", "Florence", "Florent", "Florentin", "Florian", "Floriane", "Fodé",
+			"Foucauld", "France", "Francesca", "Francesco", "Francis", "Franck", "François", "Françoise", "Franklin",
+			"Frédéric", "Frida", "Gabin", "Gabriel", "Gabriela", "Gabriele", "Gabriella", "Gabrielle", "Gad", "Gael",
+			"Gaël", "Gaëlle", "Gaétan", "Gaëtan", "Gaëtane", "Gaia", "Gaïa", "Gala", "Gaoussou", "Garance", "Gary",
+			"Gaspar", "Gaspard", "Gaston", "Gatien", "Gauthier", "Gautier", "Gaye", "Gemma", "Geneviève", "Geoffrey",
 			"Geoffroy", "George", "Georges", "Georgia", "Germain", "Giacomo", "Gianni", "Gilles", "Gina", "Giorgia",
-			"Giovanni", "Gis�le", "Giulia", "Giulian", "Giuliana", "Giulio", "Gladys", "Gloria", "Gonzague", "Goundo",
-			"Grace", "Gr�ce", "Gr�goire", "Gr�gory", "Greta", "Guilhem", "Guillaume", "Guillemette", "Gustave",
-			"Gustavo", "Guy", "Gwena�lle", "Gwendal", "Gwendoline", "Habib", "Habiba", "Haby", "Hadassa", "Hadja",
-			"Hadriel", "Hadrien", "Hafsa", "Ha�", "Ha�m", "Hajar", "Hakim", "Halima", "Halimatou", "Hamady", "Hamed",
-			"Hamidou", "Hamza", "Hana", "Hanaa", "Hanae", "Hana�", "Hania", "Hanna", "Hannah", "Hanya", "Haris",
+			"Giovanni", "Gisèle", "Giulia", "Giulian", "Giuliana", "Giulio", "Gladys", "Gloria", "Gonzague", "Goundo",
+			"Grace", "Grâce", "Grégoire", "Grégory", "Greta", "Guilhem", "Guillaume", "Guillemette", "Gustave",
+			"Gustavo", "Guy", "Gwenaëlle", "Gwendal", "Gwendoline", "Habib", "Habiba", "Haby", "Hadassa", "Hadja",
+			"Hadriel", "Hadrien", "Hafsa", "Haï", "Haïm", "Hajar", "Hakim", "Halima", "Halimatou", "Hamady", "Hamed",
+			"Hamidou", "Hamza", "Hana", "Hanaa", "Hanae", "Hanaé", "Hania", "Hanna", "Hannah", "Hanya", "Haris",
 			"Harold", "Haron", "Haroun", "Harouna", "Haroune", "Harry", "Hasna", "Hassan", "Hassane", "Hatem",
-			"Hatouma", "Hava", "Hawa", "Haya", "Hayden", "Hector", "Hedi", "H�di", "Heidi", "Helena", "H�l�na",
-			"H�l�na", "H�l�ne", "H�lie", "H�lio", "H�lios", "Hella", "H�lo�se", "Henri", "Henriette", "Henry",
+			"Hatouma", "Hava", "Hawa", "Haya", "Hayden", "Hector", "Hedi", "Hédi", "Heidi", "Helena", "Héléna",
+			"Hélèna", "Hélène", "Hélie", "Hélio", "Hélios", "Hella", "Héloïse", "Henri", "Henriette", "Henry",
 			"Hermance", "Hermine", "Hermione", "Hiba", "Hicham", "Hidaya", "Hillel", "Hind", "Hippolyte", "Hocine",
-			"Honor�", "Honorine", "Hope", "Horace", "Hortense", "Houda", "Hubert", "Hugo", "Hugues", "Hussein", "Ian",
+			"Honoré", "Honorine", "Hope", "Horace", "Hortense", "Houda", "Hubert", "Hugo", "Hugues", "Hussein", "Ian",
 			"Ianis", "Iban", "Ibrahim", "Ibrahima", "Ibtissam", "Ida", "Idan", "Idir", "Idris", "Idriss", "Idrissa",
 			"Igor", "Ihsan", "Ikram", "Ikrame", "Ilan", "Ilana", "Ilef", "Ilhan", "Ilian", "Iliana", "Iliane", "Ilias",
-			"Ilies", "Ilina", "Ilona", "Ilya", "Ilyan", "Ilyana", "Ilyane", "Ilyas", "Ilyass", "Ilyes", "Ily�s",
-			"Ilyess", "Imad", "Iman", "Imane", "Imani", "Imany", "Imen", "Imene", "Im�ne", "Imran", "Imr�n", "Imrane",
-			"Ina", "Inaya", "Inayah", "India", "Ines", "In�s", "In�s", "In�s", "Ingrid", "Inna", "Inza", "Ioana",
-			"Iona", "Ir�ne", "Irina", "Iris", "Isaac", "Isabella", "Isabelle", "Isadora", "Isaiah", "Isa�ah", "Isaure",
-			"Isayah", "Is�e", "Iseult", "Ishak", "Ishaq", "Isia", "Isidore", "Isild", "Isis", "Islam", "Islem",
-			"Ismael", "Isma�l", "Ismail", "Isma�l", "Isra", "Israa", "Israel", "Isra�l", "Issa", "Issam", "Issiaka",
-			"Ivan", "Ivana", "Ivy", "Iwan", "Iyad", "Iyed", "Izaac", "Izia", "Iz�a", "Jack", "Jacob", "Jacqueline",
+			"Ilies", "Ilina", "Ilona", "Ilya", "Ilyan", "Ilyana", "Ilyane", "Ilyas", "Ilyass", "Ilyes", "Ilyès",
+			"Ilyess", "Imad", "Iman", "Imane", "Imani", "Imany", "Imen", "Imene", "Imène", "Imran", "Imrân", "Imrane",
+			"Ina", "Inaya", "Inayah", "India", "Ines", "Inés", "Inès", "Inês", "Ingrid", "Inna", "Inza", "Ioana",
+			"Iona", "Irène", "Irina", "Iris", "Isaac", "Isabella", "Isabelle", "Isadora", "Isaiah", "Isaïah", "Isaure",
+			"Isayah", "Isée", "Iseult", "Ishak", "Ishaq", "Isia", "Isidore", "Isild", "Isis", "Islam", "Islem",
+			"Ismael", "Ismaël", "Ismail", "Ismaïl", "Isra", "Israa", "Israel", "Israël", "Issa", "Issam", "Issiaka",
+			"Ivan", "Ivana", "Ivy", "Iwan", "Iyad", "Iyed", "Izaac", "Izia", "Izïa", "Jack", "Jacob", "Jacqueline",
 			"Jacques", "Jad", "Jade", "Jaden", "Jalil", "Jamal", "James", "Jamil", "Jan", "Jana", "Jane", "Janelle",
 			"Janna", "Jannah", "Jannat", "Jarod", "Jasmine", "Jason", "Jassem", "Jassim", "Jawad", "Jawed", "Jayan",
 			"Jayden", "Jayson", "Jean", "Jean-Baptiste", "Jean-Christophe", "Jean-David", "Jean-Luc", "Jean-Marc",
-			"Jeanne", "Jeannette", "Jed", "Jehanne", "Jenna", "Jennah", "Jennifer", "Jenny", "J�r�mie", "Jeremy",
-			"J�r�my", "J�r�me", "Jessica", "Jessie", "Jessim", "Jessy", "Jibril", "Jihane", "Jill", "Jim", "Jimmy",
-			"Jinane", "Joachim", "Joakim", "Joan", "Joana", "Joanna", "Joanne", "Joaquim", "Jodie", "Joe", "Jo�l",
-			"Jo�lle", "Joey", "Johan", "Johana", "Johann", "Johanna", "Johanne", "John", "Johnny", "Jonah", "Jonas",
-			"Jonathan", "Jordan", "Jordane", "Jordy", "Joris", "Joseph", "Jos�phine", "Josh", "Joshua", "Josselin",
-			"Josu�", "Joud", "Joudia", "Joy", "Joyce", "Juan", "Juba", "Jude", "Judith", "Jules", "Julia", "Julian",
+			"Jeanne", "Jeannette", "Jed", "Jehanne", "Jenna", "Jennah", "Jennifer", "Jenny", "Jérémie", "Jeremy",
+			"Jérémy", "Jérôme", "Jessica", "Jessie", "Jessim", "Jessy", "Jibril", "Jihane", "Jill", "Jim", "Jimmy",
+			"Jinane", "Joachim", "Joakim", "Joan", "Joana", "Joanna", "Joanne", "Joaquim", "Jodie", "Joe", "Joël",
+			"Joëlle", "Joey", "Johan", "Johana", "Johann", "Johanna", "Johanne", "John", "Johnny", "Jonah", "Jonas",
+			"Jonathan", "Jordan", "Jordane", "Jordy", "Joris", "Joseph", "Joséphine", "Josh", "Joshua", "Josselin",
+			"Josué", "Joud", "Joudia", "Joy", "Joyce", "Juan", "Juba", "Jude", "Judith", "Jules", "Julia", "Julian",
 			"Juliana", "Juliane", "Julianne", "Julie", "Julien", "Juliette", "Jun", "June", "Junior", "Junon", "Justin",
 			"Justine", "Kacper", "Kader", "Kadiatou", "Kadidia", "Kadidiatou", "Kadidja", "Kady", "Kahil", "Kahina",
-			"Ka�na", "Ka�s", "Ka�ss", "Kali", "Kalilou", "Kamel", "Kam�lia", "Kamil", "Kamila", "Karamba", "Karamoko",
+			"Kaïna", "Kaïs", "Kaïss", "Kali", "Kalilou", "Kamel", "Kamélia", "Kamil", "Kamila", "Karamba", "Karamoko",
 			"Karen", "Karim", "Karima", "Karine", "Karl", "Karla", "Karol", "Karolina", "Kassandra", "Kassim",
 			"Katarina", "Kate", "Katell", "Kathleen", "Katia", "Kawtar", "Kawthar", "Kayden", "Kayla", "Kayliah",
-			"Kayna", "Kayron", "Kays", "Ke�la", "Keira", "Kelly", "Kelvin", "Kelya", "Kelyan", "Kenan", "Kendra",
+			"Kayna", "Kayron", "Kays", "Keïla", "Keira", "Kelly", "Kelvin", "Kelya", "Kelyan", "Kenan", "Kendra",
 			"Kendrick", "Kenji", "Kenny", "Kenza", "Kenzi", "Kenzo", "Kenzy", "Keren", "Kessy", "Ketsia", "Kevin",
-			"K�vin", "Keyla", "Keziah", "Khadidiatou", "Khadidja", "Khadija", "Khady", "Khaled", "Khalid", "Khalifa",
+			"Kévin", "Keyla", "Keziah", "Khadidiatou", "Khadidja", "Khadija", "Khady", "Khaled", "Khalid", "Khalifa",
 			"Khalil", "Kheira", "Kiara", "Kilian", "Killian", "Kilyan", "Kim", "Kimberley", "Kimberly", "Kimi", "Kimia",
 			"Kiyan", "Klara", "Koumba", "Kristina", "Kurtis", "Kyan", "Kyara", "Kyle", "Kylian", "Kyliann", "Kyllian",
-			"Ladji", "Laetitia", "La�titia", "Lahna", "La�a", "Lalie", "Laly", "Lalya", "Lamia", "Lamine", "Lana",
+			"Ladji", "Laetitia", "Laëtitia", "Lahna", "Laïa", "Lalie", "Laly", "Lalya", "Lamia", "Lamine", "Lana",
 			"Lancelot", "Lara", "Lassana", "Laszlo", "Latifa", "Laura", "Laure", "Laureen", "Lauren", "Laurence",
-			"Laur�ne", "Laurent", "Lauriane", "Laurine", "Lauryn", "Laya", "Layana", "Layanah", "Layane", "Layel",
-			"Layla", "Layna", "Lazar", "Lazare", "Lea", "L�a", "Leah", "L�ah", "Leana", "L�ana", "L�andre", "Leandro",
-			"L�andro", "L�ane", "L�anne", "Leelou", "Lehna", "Leia", "Le�a", "Leila", "Le�la", "Le�na", "L�lio", "Lena",
-			"L�na", "L�ni", "Lennie", "Lenny", "Leny", "L�ny", "Leo", "L�o", "L�o-Paul", "Leon", "L�on", "L�ona",
-			"Leonard", "L�onard", "Leonardo", "L�one", "L�onie", "Leonor", "L�onor", "L�onore", "L�ontine", "Leopold",
-			"L�opold", "L�opoldine", "Leslie", "Leticia", "Levana", "L�vana", "Levi", "L�vi", "Lewis", "Leya", "Leyla",
+			"Laurène", "Laurent", "Lauriane", "Laurine", "Lauryn", "Laya", "Layana", "Layanah", "Layane", "Layel",
+			"Layla", "Layna", "Lazar", "Lazare", "Lea", "Léa", "Leah", "Léah", "Leana", "Léana", "Léandre", "Leandro",
+			"Léandro", "Léane", "Léanne", "Leelou", "Lehna", "Leia", "Leïa", "Leila", "Leïla", "Leïna", "Lélio", "Lena",
+			"Léna", "Léni", "Lennie", "Lenny", "Leny", "Lény", "Leo", "Léo", "Léo-Paul", "Leon", "Léon", "Léona",
+			"Leonard", "Léonard", "Leonardo", "Léone", "Léonie", "Leonor", "Léonor", "Léonore", "Léontine", "Leopold",
+			"Léopold", "Léopoldine", "Leslie", "Leticia", "Levana", "Lévana", "Levi", "Lévi", "Lewis", "Leya", "Leyla",
 			"Leyna", "Leyth", "Lia", "Liam", "Liana", "Liel", "Liham", "Lila", "Lilas", "Lili", "Lili-Rose", "Lilia",
 			"Lilian", "Liliana", "Liliane", "Lilie", "Lilly", "Lilou", "Lilwenn", "Lily", "Lily-Rose", "Lilya", "Lina",
-			"Linda", "Lindsay", "Line", "Lino", "Lino�", "Linoy", "Lionel", "Lior", "Liora", "Liron", "Lirone", "Lisa",
+			"Linda", "Lindsay", "Line", "Lino", "Linoï", "Linoy", "Lionel", "Lior", "Liora", "Liron", "Lirone", "Lisa",
 			"Lisandro", "Lise", "Lison", "Lital", "Liv", "Livia", "Livio", "Liya", "Liyah", "Liz", "Liza", "Loan",
-			"Loane", "Logan", "Lohan", "Lo�c", "Lo�s", "Lo�se", "Lola", "Lorena", "Lorenzo", "Lorette", "Lorie",
+			"Loane", "Logan", "Lohan", "Loïc", "Loïs", "Loïse", "Lola", "Lorena", "Lorenzo", "Lorette", "Lorie",
 			"Loris", "Lorraine", "Lou", "Lou-Ann", "Lou-Anne", "Louan", "Louane", "Louann", "Louanne", "Louay",
 			"Loubna", "Louca", "Louis", "Louis-Marie", "Louisa", "Louise", "Louison", "Louka", "Loula", "Louna",
 			"Lounes", "Lounis", "Loup", "Louve", "Luan", "Lubin", "Luc", "Luca", "Lucas", "Lucca", "Luce", "Lucia",
 			"Lucie", "Lucien", "Lucile", "Lucille", "Lucy", "Ludivine", "Ludmila", "Ludovic", "Luigi", "Luis", "Luisa",
 			"Luka", "Lukas", "Luke", "Lula", "Luna", "Lune", "Luz", "Lya", "Lyah", "Lyam", "Lyana", "Lyanna", "Lydia",
 			"Lyes", "Lyham", "Lyla", "Lylia", "Lylou", "Lyna", "Lynda", "Lyne", "Lynn", "Lyra", "Lysa", "Lysandre",
-			"Lyse", "Maayane", "Maceo", "Mac�o", "Macha", "Maddalena", "Madeleine", "Madeline", "Madina", "Mado",
-			"Madoussou", "Mady", "Ma�", "Mael", "Ma�l", "Ma�lan", "Ma�lie", "Ma�line", "Ma�lis", "Maelle", "Ma�lle",
-			"Ma�ly", "Ma�lyne", "Maelys", "Ma�lys", "Ma�lys", "Maeva", "Ma�va", "Ma�va", "Magdalena", "Maha",
-			"Mahamadou", "Mahault", "Mahaut", "Mahdi", "Mah�", "Maher", "Mahmoud", "Maho", "Mai", "Ma�", "Maia", "Ma�a",
-			"Ma�ly", "Ma�lys", "Maimouna", "Ma�mouna", "Ma�na", "Maissa", "Ma�ssa", "Ma�ssane", "Ma�wenn", "Maja",
-			"Makan", "Maksim", "Mala�ka", "Malak", "Malcolm", "Malek", "Malena", "Malia", "Malick", "Malik", "Malika",
+			"Lyse", "Maayane", "Maceo", "Macéo", "Macha", "Maddalena", "Madeleine", "Madeline", "Madina", "Mado",
+			"Madoussou", "Mady", "Maé", "Mael", "Maël", "Maëlan", "Maëlie", "Maëline", "Maëlis", "Maelle", "Maëlle",
+			"Maëly", "Maëlyne", "Maelys", "Maélys", "Maëlys", "Maeva", "Maéva", "Maëva", "Magdalena", "Maha",
+			"Mahamadou", "Mahault", "Mahaut", "Mahdi", "Mahé", "Maher", "Mahmoud", "Maho", "Mai", "Maï", "Maia", "Maïa",
+			"Maïly", "Maïlys", "Maimouna", "Maïmouna", "Maïna", "Maissa", "Maïssa", "Maïssane", "Maïwenn", "Maja",
+			"Makan", "Maksim", "Malaïka", "Malak", "Malcolm", "Malek", "Malena", "Malia", "Malick", "Malik", "Malika",
 			"Malo", "Malone", "Mama", "Mamadou", "Mamady", "Mame", "Mamou", "Mamoudou", "Manal", "Manar", "Manel",
 			"Manelle", "Mani", "Manil", "Manon", "Mansour", "Manuel", "Manuela", "Mara", "Maram", "Marc",
 			"Marc-Antoine", "Marceau", "Marcel", "Marcello", "Marco", "Marcus", "Margaux", "Margo", "Margot",
@@ -225,95 +226,94 @@ public class DemoData {
 			"Mariya", "Marjane", "Marjorie", "Mark", "Marko", "Markus", "Marley", "Marlo", "Marlon", "Marlow", "Marnie",
 			"Marouane", "Marta", "Martha", "Marthe", "Martin", "Marvin", "Marvyn", "Marwa", "Marwan", "Marwane",
 			"Marwen", "Maryam", "Maryline", "Marylou", "Masha", "Massil", "Massinissa", "Massyl", "Matei", "Mateja",
-			"Mateo", "Mat�o", "Mateusz", "Matheo", "Math�o", "Mathias", "Mathieu", "Mathilda", "Mathilde", "Mathis",
-			"Mathurin", "Mathys", "Matias", "Matilda", "Matilde", "Matis", "Matisse", "Matt", "Matteo", "Matt�o",
-			"Matth�o", "Matthew", "Matthias", "Matthieu", "Matthis", "Mattia", "Matys", "Maud", "Maude", "Maureen",
+			"Mateo", "Matéo", "Mateusz", "Matheo", "Mathéo", "Mathias", "Mathieu", "Mathilda", "Mathilde", "Mathis",
+			"Mathurin", "Mathys", "Matias", "Matilda", "Matilde", "Matis", "Matisse", "Matt", "Matteo", "Mattéo",
+			"Matthéo", "Matthew", "Matthias", "Matthieu", "Matthis", "Mattia", "Matys", "Maud", "Maude", "Maureen",
 			"Maurice", "Max", "Maxence", "Maxens", "Maxim", "Maxime", "Maximilian", "Maximilien", "Maxine", "May",
-			"Maya", "Mayane", "Mayar", "Mayas", "Mayeul", "Mayline", "Maylis", "Ma�lis", "Mayron", "Mayssa", "Mayssane",
-			"Mazarine", "Mazen", "Mehdi", "Mehdy", "Meir", "Me�r", "Me�ssa", "Me�ssane", "M�lanie", "Melchior", "M�lia",
-			"M�lie", "Melina", "M�lina", "M�linda", "M�line", "M�lin�e", "M�lisande", "Melissa", "M�lissa",
-			"M�lissande", "Mellina", "M�llina", "M�lodie", "Melody", "M�lody", "M�lusine", "Melvil", "Melvin", "Melvyn",
-			"M�lya", "M�lyna", "Menahem", "Mendel", "Meriam", "Meriem", "Merlin", "Merwan", "Meryam", "Meryem", "Meryl",
-			"Meyron", "Meyssa", "Meziane", "Mia", "Michael", "Micha�l", "Michel", "Michelle", "Mickael", "Micka�l",
-			"Miguel", "Mika", "Mika�l", "Mikail", "Mika�l", "Mike", "Mila", "Milan", "Milann", "Milena", "Miles",
-			"Milhan", "Milhane", "Milica", "Milla", "Milo", "Mina", "Minh", "Mira", "Miral", "Miriam", "Miya", "Moch�",
+			"Maya", "Mayane", "Mayar", "Mayas", "Mayeul", "Mayline", "Maylis", "Maÿlis", "Mayron", "Mayssa", "Mayssane",
+			"Mazarine", "Mazen", "Mehdi", "Mehdy", "Meir", "Meïr", "Meïssa", "Meïssane", "Mélanie", "Melchior", "Mélia",
+			"Mélie", "Melina", "Mélina", "Mélinda", "Méline", "Mélinée", "Mélisande", "Melissa", "Mélissa",
+			"Mélissande", "Mellina", "Méllina", "Mélodie", "Melody", "Mélody", "Mélusine", "Melvil", "Melvin", "Melvyn",
+			"Mélya", "Mélyna", "Menahem", "Mendel", "Meriam", "Meriem", "Merlin", "Merwan", "Meryam", "Meryem", "Meryl",
+			"Meyron", "Meyssa", "Meziane", "Mia", "Michael", "Michaël", "Michel", "Michelle", "Mickael", "Mickaël",
+			"Miguel", "Mika", "Mikaël", "Mikail", "Mikaïl", "Mike", "Mila", "Milan", "Milann", "Milena", "Miles",
+			"Milhan", "Milhane", "Milica", "Milla", "Milo", "Mina", "Minh", "Mira", "Miral", "Miriam", "Miya", "Moché",
 			"Modibo", "Mody", "Mohamed", "Mohamed-Ali", "Mohamed-Amine", "Mohamed-Lamine", "Mohammad", "Mohammed",
-			"Mo�ra", "Mo�se", "Molly", "Mona", "Monica", "Monique", "Morgan", "Morgane", "Morganne", "Mory", "Mosh�",
+			"Moïra", "Moïse", "Molly", "Mona", "Monica", "Monique", "Morgan", "Morgane", "Morganne", "Mory", "Moshé",
 			"Mouad", "Mouctar", "Mouhamad", "Mouhamadou", "Mouhamed", "Mouhammad", "Moulay", "Mouna", "Mounia",
 			"Mounir", "Moussa", "Moustafa", "Moustapha", "Muhammad", "Muhammed", "Mustapha", "Mya", "Myla", "Mylan",
-			"Mylann", "Myriam", "Myrtille", "Nabil", "Nabintou", "Nada", "Nadia", "Nadine", "Nadir", "Nael", "Na�l",
-			"Naelle", "Na�lle", "Nafissatou", "Nahel", "Nahia", "Nahil", "Nahla", "Nahyl", "Na�a", "Na�l", "Naila",
-			"Na�la", "Na�m", "Na�ma", "Na�s", "Nala", "Nalya", "Namizata", "Namory", "Nana", "Naomi", "Naomie", "Naor",
-			"Narimane", "Nassim", "Natacha", "Natalia", "Natan", "Natasha", "Natha�l", "Nathalie", "Nathan",
-			"Nathanael", "Nathana�l", "Nathane", "Nathaniel", "Nava", "Nawal", "Nawel", "Nawfel", "Naya", "Nayel",
-			"Nayla", "Nazim", "Ndeye", "Neela", "Neil", "Ne�la", "Nelia", "N�lia", "Nell", "Nellia", "Nelly", "Nelson",
-			"Nelya", "N�lya", "N�n�", "N�o", "Nermine", "Nesrine", "Neyl", "Neyla", "Niam�", "Nicolas", "Nicole",
+			"Mylann", "Myriam", "Myrtille", "Nabil", "Nabintou", "Nada", "Nadia", "Nadine", "Nadir", "Nael", "Naël",
+			"Naelle", "Naëlle", "Nafissatou", "Nahel", "Nahia", "Nahil", "Nahla", "Nahyl", "Naïa", "Naïl", "Naila",
+			"Naïla", "Naïm", "Naïma", "Naïs", "Nala", "Nalya", "Namizata", "Namory", "Nana", "Naomi", "Naomie", "Naor",
+			"Narimane", "Nassim", "Natacha", "Natalia", "Natan", "Natasha", "Nathaël", "Nathalie", "Nathan",
+			"Nathanael", "Nathanaël", "Nathane", "Nathaniel", "Nava", "Nawal", "Nawel", "Nawfel", "Naya", "Nayel",
+			"Nayla", "Nazim", "Ndeye", "Neela", "Neil", "Neïla", "Nelia", "Nélia", "Nell", "Nellia", "Nelly", "Nelson",
+			"Nelya", "Nélya", "Néné", "Néo", "Nermine", "Nesrine", "Neyl", "Neyla", "Niamé", "Nicolas", "Nicole",
 			"Niels", "Nihel", "Nikita", "Nikola", "Nil", "Nils", "Nina", "Nine", "Nino", "Ninon", "Niouma", "Nisrine",
-			"Nissim", "Nizar", "Noa", "Noah", "Noam", "No�m", "Noan", "No�", "No�e", "No�lia", "No�lie", "Noemi",
-			"No�mi", "No�mie", "Noha", "Noham", "Nohan", "Noh�", "Nola", "Nolan", "Nolann", "Nolhan", "Noor", "Nora",
-			"Norah", "Norhane", "Nouha", "Nour", "Noura", "Nourane", "Noya", "Oc�ane", "Octave", "Octavie", "Od�lia",
+			"Nissim", "Nizar", "Noa", "Noah", "Noam", "Noâm", "Noan", "Noé", "Noée", "Noélia", "Noélie", "Noemi",
+			"Noémi", "Noémie", "Noha", "Noham", "Nohan", "Nohé", "Nola", "Nolan", "Nolann", "Nolhan", "Noor", "Nora",
+			"Norah", "Norhane", "Nouha", "Nour", "Noura", "Nourane", "Noya", "Océane", "Octave", "Octavie", "Odélia",
 			"Olga", "Olive", "Oliver", "Olivia", "Olivier", "Oliwia", "Olympe", "Olympia", "Omar", "Ombeline", "Ondine",
-			"Oona", "Oph�lie", "Ora", "Oren", "Oriane", "Orion", "Orlane", "Ornella", "Orso", "Orson", "Ortal", "Oscar",
+			"Oona", "Ophélie", "Ora", "Oren", "Oriane", "Orion", "Orlane", "Ornella", "Orso", "Orson", "Ortal", "Oscar",
 			"Oskar", "Othman", "Othmane", "Otto", "Oumar", "Oumou", "Ouriel", "Ousmane", "Oussama", "Ovadia", "Owen",
-			"Pablo", "Paco", "Pac�me", "Paloma", "Paola", "Paolo", "Pape", "Paris", "Pascal", "Patricia", "Patrick",
+			"Pablo", "Paco", "Pacôme", "Paloma", "Paola", "Paolo", "Pape", "Paris", "Pascal", "Patricia", "Patrick",
 			"Paul", "Paul-Antoine", "Paul-Arthur", "Paul-Emile", "Paula", "Paulin", "Pauline", "Pedro", "Penda",
-			"P�n�lope", "Perla", "Perle", "Perrine", "Peter", "P�tronille", "Pharell", "Phil�as", "Phil�mon",
-			"Philibert", "Philippa", "Philippe", "Philippine", "Philom�ne", "Pia", "Pierre", "Pierre-Alexandre",
+			"Pénélope", "Perla", "Perle", "Perrine", "Peter", "Pétronille", "Pharell", "Philéas", "Philémon",
+			"Philibert", "Philippa", "Philippe", "Philippine", "Philomène", "Pia", "Pierre", "Pierre-Alexandre",
 			"Pierre-Antoine", "Pierre-Louis", "Pietro", "Pio", "Pol", "Preston", "Priam", "Prince", "Prisca",
 			"Priscille", "Prosper", "Prudence", "Prune", "Prunelle", "Purity", "Qassim", "Quentin", "Quitterie",
-			"Racha", "Rachel", "Racim", "Rafael", "Rafa�l", "Rafaela", "Rahim", "Rahma", "Ralph", "Ramata",
-			"Ramatoulaye", "Rami", "Ramy", "Rana", "Rania", "Ranim", "Ranya", "Raoul", "Raphael", "Rapha�l",
-			"Rapha�lle", "Rayan", "Rayane", "Rayen", "Rayhana", "Razan", "Razane", "Rebecca", "R�becca", "Reda", "R�da",
-			"Redouane", "Reine", "R�mi", "R�my", "Renaud", "R�pha�l", "Riad", "Ricardo", "Richard", "Rim", "Rime",
+			"Racha", "Rachel", "Racim", "Rafael", "Rafaël", "Rafaela", "Rahim", "Rahma", "Ralph", "Ramata",
+			"Ramatoulaye", "Rami", "Ramy", "Rana", "Rania", "Ranim", "Ranya", "Raoul", "Raphael", "Raphaël",
+			"Raphaëlle", "Rayan", "Rayane", "Rayen", "Rayhana", "Razan", "Razane", "Rebecca", "Rébecca", "Reda", "Réda",
+			"Redouane", "Reine", "Rémi", "Rémy", "Renaud", "Réphaël", "Riad", "Ricardo", "Richard", "Rim", "Rime",
 			"Rita", "Ritaj", "Ritej", "Rivka", "Riwan", "Riyad", "Robert", "Robin", "Robinson", "Roch", "Rodolphe",
-			"Rodrigo", "Rodrigue", "Rohan", "Rokhaya", "Rokia", "Rokya", "Roland", "Romain", "Roma�ssa", "Roman",
-			"Romane", "Romeo", "Rom�o", "Romie", "Romy", "Ron", "Ronan", "Rony", "Rosa", "Rosalie", "Rose", "Rosie",
+			"Rodrigo", "Rodrigue", "Rohan", "Rokhaya", "Rokia", "Rokya", "Roland", "Romain", "Romaïssa", "Roman",
+			"Romane", "Romeo", "Roméo", "Romie", "Romy", "Ron", "Ronan", "Rony", "Rosa", "Rosalie", "Rose", "Rosie",
 			"Roxane", "Roxanne", "Roy", "Ruben", "Rubens", "Ruby", "Rudy", "Ruth", "Ryad", "Ryan", "Rym", "Saad",
 			"Sabine", "Sabri", "Sabrina", "Sabrine", "Sacha", "Sadio", "Safa", "Safia", "Safiatou", "Safiya", "Safwan",
-			"Safwane", "Safya", "Sahel", "Said", "Sa�d", "Saif", "Saja", "Sakina", "Salem", "Salif", "Saliha", "Salim",
-			"Salima", "Salimata", "Saliou", "Sally", "Salma", "Salman", "Salom�", "Salom�e", "Salomon", "Saly", "Sam",
+			"Safwane", "Safya", "Sahel", "Said", "Saïd", "Saif", "Saja", "Sakina", "Salem", "Salif", "Saliha", "Salim",
+			"Salima", "Salimata", "Saliou", "Sally", "Salma", "Salman", "Salomé", "Salomée", "Salomon", "Saly", "Sam",
 			"Samantha", "Samba", "Sami", "Samia", "Samir", "Samira", "Samson", "Samuel", "Samy", "Sana", "Sanaa",
 			"Sandra", "Sandrine", "Sandro", "Sandy", "Santiago", "Sara", "Sarah", "Sarah-Lou", "Saran", "Sarra",
-			"Sasha", "Saskia", "Satine", "Saul", "Sa�l", "Savannah", "Scarlett", "Scott", "Sean", "Sebastian",
-			"Sebastien", "S�bastien", "Sekou", "S�kou", "Selena", "S�l�na", "S�l�ne", "Selim", "S�lim", "Selma",
-			"Selyan", "Sephora", "S�phora", "S�raphine", "Serena", "S�r�na", "Serge", "Serigne", "Serine", "S�rine",
-			"S�verin", "Seydina", "Seydou", "Seynabou", "Shady", "Shahd", "Shahine", "Sha�", "Sha�li", "Sha�ly",
-			"Sha�ma", "Sha�na", "Sha�nez", "Shana", "Shanaya", "Shani", "Shanice", "Shanna", "Shannon", "Shanon",
-			"Shany", "Sharon", "Shawn", "Shay", "Shayan", "Shayma", "Shayna", "Shelly", "Sherine", "Sh�rine", "Shira",
+			"Sasha", "Saskia", "Satine", "Saul", "Saül", "Savannah", "Scarlett", "Scott", "Sean", "Sebastian",
+			"Sebastien", "Sébastien", "Sekou", "Sékou", "Selena", "Séléna", "Sélène", "Selim", "Sélim", "Selma",
+			"Selyan", "Sephora", "Séphora", "Séraphine", "Serena", "Séréna", "Serge", "Serigne", "Serine", "Sérine",
+			"Séverin", "Seydina", "Seydou", "Seynabou", "Shady", "Shahd", "Shahine", "Shaï", "Shaïli", "Shaïly",
+			"Shaïma", "Shaïna", "Shaïnez", "Shana", "Shanaya", "Shani", "Shanice", "Shanna", "Shannon", "Shanon",
+			"Shany", "Sharon", "Shawn", "Shay", "Shayan", "Shayma", "Shayna", "Shelly", "Sherine", "Shérine", "Shira",
 			"Shirel", "Shirine", "Shyrel", "Sia", "Siaka", "Sibylle", "Sidi", "Sidney", "Sidonie", "Sidra", "Sidy",
-			"Sienna", "Siham", "Sihem", "Silas", "Silo�", "Sim�on", "Simon", "Simone", "Sinan", "Sira", "Sirine",
-			"Sixte", "Sixtine", "Skander", "Soan", "So�n", "Sofia", "Sofian", "Sofiane", "Sofya", "Sohan", "Sohane",
-			"Sokhna", "Sokona", "Solal", "Solan", "Solange", "Sol�ne", "Solenn", "Soline", "Solveig", "Sonia", "Sophia",
-			"Sophie", "Soraya", "Soren", "S�ren", "Souheyl", "Soujoud", "Souka�na", "Soulayman", "Souleyman",
-			"Souleymane", "Soumaya", "Stacy", "Stan", "Stanislas", "Stanley", "Steeve", "Stefan", "Stella", "St�phane",
-			"St�phanie", "Steve", "Steven", "Suzanne", "Suzie", "Suzon", "Sven", "Swan", "Swann", "Sybille", "Sydney",
-			"Sylia", "Sylvain", "Sylvia", "Sylvie", "Syrine", "Szymon", "Taha", "Tahar", "Tahel", "Tahira", "Ta�na",
-			"Ta�s", "Takumi", "Tal", "Tali", "Talia", "Taly", "Talya", "Tamara", "Tancr�de", "Tanguy", "Tania",
-			"Tanina", "Tanya", "Tao", "Tara", "Tasnim", "Tasnime", "Tatiana", "Taym", "Tayron", "T�a", "Teddy",
-			"Tehila", "Telma", "Tenzin", "T�o", "Teodor", "Terence", "T�rence", "Teresa", "Tesnim", "Tesnime", "Tess",
-			"Tessa", "Thadd�e", "Tha�s", "Thalia", "Thalie", "Thanina", "Th�a", "Thelma", "Th�mis", "Theo", "Th�o",
-			"Th�odora", "Theodore", "Th�odore", "Th�ophane", "Th�ophile", "Th�otime", "Th�r�se", "Thiago", "Thibaud",
+			"Sienna", "Siham", "Sihem", "Silas", "Siloé", "Siméon", "Simon", "Simone", "Sinan", "Sira", "Sirine",
+			"Sixte", "Sixtine", "Skander", "Soan", "Soën", "Sofia", "Sofian", "Sofiane", "Sofya", "Sohan", "Sohane",
+			"Sokhna", "Sokona", "Solal", "Solan", "Solange", "Solène", "Solenn", "Soline", "Solveig", "Sonia", "Sophia",
+			"Sophie", "Soraya", "Soren", "Sören", "Souheyl", "Soujoud", "Soukaïna", "Soulayman", "Souleyman",
+			"Souleymane", "Soumaya", "Stacy", "Stan", "Stanislas", "Stanley", "Steeve", "Stefan", "Stella", "Stéphane",
+			"Stéphanie", "Steve", "Steven", "Suzanne", "Suzie", "Suzon", "Sven", "Swan", "Swann", "Sybille", "Sydney",
+			"Sylia", "Sylvain", "Sylvia", "Sylvie", "Syrine", "Szymon", "Taha", "Tahar", "Tahel", "Tahira", "Taïna",
+			"Taïs", "Takumi", "Tal", "Tali", "Talia", "Taly", "Talya", "Tamara", "Tancrède", "Tanguy", "Tania",
+			"Tanina", "Tanya", "Tao", "Tara", "Tasnim", "Tasnime", "Tatiana", "Taym", "Tayron", "Téa", "Teddy",
+			"Tehila", "Telma", "Tenzin", "Téo", "Teodor", "Terence", "Térence", "Teresa", "Tesnim", "Tesnime", "Tess",
+			"Tessa", "Thaddée", "Thaïs", "Thalia", "Thalie", "Thanina", "Théa", "Thelma", "Thémis", "Theo", "Théo",
+			"Théodora", "Theodore", "Théodore", "Théophane", "Théophile", "Théotime", "Thérèse", "Thiago", "Thibaud",
 			"Thibault", "Thibaut", "Thierno", "Thierry", "Thomas", "Tia", "Tiago", "Tiana", "Tidiane", "Tidjane",
-			"Tiffany", "Tiguida", "Tilio", "Tim", "Tim�o", "Timot�", "Timoth�", "Timoth�e", "Timothy", "Tina",
+			"Tiffany", "Tiguida", "Tilio", "Tim", "Timéo", "Timoté", "Timothé", "Timothée", "Timothy", "Tina",
 			"Tiphaine", "Titouan", "Tobias", "Tom", "Toma", "Tomas", "Tommy", "Tony", "Tosca", "Toscane", "Tracy",
-			"Tristan", "Trystan", "Tsipora", "Tyana", "Tybalt", "Tylan", "Tyler", "Tym�o", "Typhaine", "Tyron", "Ugo",
-			"Ulysse", "Uma", "Uriel", "Vadim", "Valentin", "Valentina", "Valentine", "Valentino", "Val�re", "Valeria",
-			"Val�rian", "Val�rie", "Vanessa", "Vasco", "Vassili", "Vassily", "Vera", "Vianney", "Victoire", "Victor",
+			"Tristan", "Trystan", "Tsipora", "Tyana", "Tybalt", "Tylan", "Tyler", "Tyméo", "Typhaine", "Tyron", "Ugo",
+			"Ulysse", "Uma", "Uriel", "Vadim", "Valentin", "Valentina", "Valentine", "Valentino", "Valère", "Valeria",
+			"Valérian", "Valérie", "Vanessa", "Vasco", "Vassili", "Vassily", "Vera", "Vianney", "Victoire", "Victor",
 			"Victoria", "Victorien", "Victorine", "Viggo", "Viktor", "Viktoria", "Vincent", "Vinciane", "Violaine",
 			"Violette", "Virgil", "Virgile", "Virginie", "Vittoria", "Viviane", "Vivien", "Vivienne", "Vladimir",
-			"Wael", "Wa�l", "Wa�l", "Walid", "Wanda", "Wandrille", "Warren", "Wassil", "Wassim", "Wendy", "Wesley",
+			"Wael", "Waël", "Waïl", "Walid", "Wanda", "Wandrille", "Warren", "Wassil", "Wassim", "Wendy", "Wesley",
 			"Wiem", "Wiktoria", "Wilfried", "Wilhem", "Will", "Willem", "William", "Willy", "Wilson", "Winner",
-			"Wissam", "Wissem", "Xavier", "Yacine", "Yacoub", "Yacouba", "Yael", "Ya�l", "Ya�lle", "Yahia", "Yahya",
-			"Ya�r", "Yakine", "Yakoub", "Yamina", "Yan", "Yana", "Yani", "Yanice", "Yanis", "Yaniv", "Yann", "Yanni",
+			"Wissam", "Wissem", "Xavier", "Yacine", "Yacoub", "Yacouba", "Yael", "Yaël", "Yaëlle", "Yahia", "Yahya",
+			"Yaïr", "Yakine", "Yakoub", "Yamina", "Yan", "Yana", "Yani", "Yanice", "Yanis", "Yaniv", "Yann", "Yanni",
 			"Yannick", "Yannis", "Yara", "Yaron", "Yasin", "Yasmina", "Yasmine", "Yasser", "Yassin", "Yassine", "Yaya",
-			"Yazen", "Yazid", "Yesmine", "Yessine", "Ylan", "Yoan", "Yoann", "Yoav", "Yoel", "Yo�l", "Yohan", "Yohann",
-			"Yolan", "Yona", "Yoni", "Yoram", "Yosra", "Yossef", "Youcef", "Youmna", "Youna", "Younes", "Youn�s",
-			"Youness", "Younous", "Younouss", "Youri", "Yousra", "Youssef", "Youssouf", "Ys�", "Ys�e", "Yumi", "Yuna",
+			"Yazen", "Yazid", "Yesmine", "Yessine", "Ylan", "Yoan", "Yoann", "Yoav", "Yoel", "Yoël", "Yohan", "Yohann",
+			"Yolan", "Yona", "Yoni", "Yoram", "Yosra", "Yossef", "Youcef", "Youmna", "Youna", "Younes", "Younès",
+			"Youness", "Younous", "Younouss", "Youri", "Yousra", "Youssef", "Youssouf", "Ysé", "Ysée", "Yumi", "Yuna",
 			"Yunus", "Yuri", "Yusuf", "Yvan", "Yves", "Zach", "Zacharia", "Zacharie", "Zachary", "Zack", "Zackary",
 			"Zadig", "Zahara", "Zahra", "Zakaria", "Zakariya", "Zakary", "Zakarya", "Zara", "Zayd", "Zayn", "Zaynab",
-			"Zayneb", "Zeinab", "Zelda", "Z�lie", "Z�phyr", "Zeynab", "Zeyneb", "Zeynep", "Ziad", "Zied", "Zina",
-			"Zineb", "Zinedine", "Zion", "Zita", "Ziyad", "Zoe", "Zo�", "Zo�", "Zoey", "Zohra", "Zuzanna", "Zyad" };
-
+			"Zayneb", "Zeinab", "Zelda", "Zélie", "Zéphyr", "Zeynab", "Zeyneb", "Zeynep", "Ziad", "Zied", "Zina",
+			"Zineb", "Zinedine", "Zion", "Zita", "Ziyad", "Zoe", "Zoé", "Zoë", "Zoey", "Zohra", "Zuzanna", "Zyad" };
 	// Liste de noms en 44
 	static String[] noms = { "MOYON", "HERVOUET", "HERVY", "DOUILLARD", "EVAIN", "DUGAST", "BERTHO", "DOUSSET",
 			"MORICEAU", "BATARD", "GUILBAUD", "TERRIEN", "LERAY", "VIAUD", "SORIN", "BICHON", "PERRAUD", "MAISONNEUVE",
@@ -336,7 +336,6 @@ public class DemoData {
 			"GUILLOTEAU", "CHAUVET", "BUREAU", "RENAUD", "LEBERT", "SAULNIER", "BRARD", "MALARD", "HAVARD", "BOUE",
 			"ALLAIN", "HEMERY", "BLAIN", "BOURREAU", "GUILLOTIN", "NEAU", "PINARD", "HERVE", "PITON", "LELOUP",
 			"OUVRARD", "MONNIER", "GAUDIN" };
-
 	// Liste des villes du 44
 	static String[] villes = { "Abbaretz (44001)", "Aigrefeuille-sur-Maine (44002)", "Ancenis-Saint-Géréon (44003)",
 			"Chaumes-en-Retz (44005)", "Assérac (44006)", "Avessac (44007)", "Basse-Goulaine (44009)",
@@ -390,7 +389,6 @@ public class DemoData {
 			"La Turballe (44211)", "Vallet (44212)", "Loireauxence (44213)", "Vay (44214)", "Vertou (44215)",
 			"Vieillevigne (44216)", "Vigneux-de-Bretagne (44217)", "Villepot (44218)", "Vue (44220)",
 			"La Chevallerais (44221)", "La Roche-Blanche (44222)", "Geneston (44223)", "La Grigonnais (44224)" };
-
 	// Liste des différents genres
 	static String[] sexes = { "H", "F", "B", "A", "T" };
 
@@ -537,25 +535,26 @@ public class DemoData {
 	@EventListener
 	public void appReadyBasic(ApplicationReadyEvent event) {
 
-		sldao.save(new SecurityLevel("NDS Client, accès aux utilisations basiques de réservation et achats."));
-		sldao.save(new SecurityLevel(
+		sldao.save(new SecurityLevel("Client","NDS Client, accès aux utilisations basiques de réservation et achats."));
+		sldao.save(new SecurityLevel("VIP","NDS Client Premium, accès aux utilisations premium de réservation et achats."));
+		sldao.save(new SecurityLevel("Employee",
 				"NDS Employé, accès aux utilisations basiques, de ventes et de modifications clients."));
-		sldao.save(new SecurityLevel(
+		sldao.save(new SecurityLevel("RH",
 				"NDS RH, accès aux utilisations basiques, ajout et suppression d\'employés de NDS 2,3,4."));
-		sldao.save(new SecurityLevel(
+		sldao.save(new SecurityLevel("Moderator",
 				"NDS Modérateur, accès aux utilisations basiques, de ventes et de modifications clients, employé et RH."));
-		sldao.save(new SecurityLevel("NDS Administrateur, accès total."));
+		sldao.save(new SecurityLevel("Adminstrator","NDS Administrateur, accès total."));
 
-		mdao.save(new Movie("Nadia, butterfly", "Nadia, butterfly", 0, 2021, LocalTime.of(1, 46, 00, 00), "Drame", 5.00,
-				"Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l\'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision..."));
-		mdao.save(new Movie("Nouvel ordre", "New Order", 12, 2021, LocalTime.of(1, 28, 00, 00), "Drame", 5.00,
+		mdao.save(new Movie("Nadia, butterfly", "Nadia, butterfly", 0, 2021, LocalTime.of(1, 46, 00, 00), "Drame", 5.00, "https://m.media-amazon.com/images/M/MV5BNGFkMDlhZTMtOWU5Zi00YTFmLTkzNTktM2FkYTUzZmU3ZjljXkEyXkFqcGdeQXVyMjUwNDA4OTk@._V1_SX300.jpg"
+				,"Le film fait partie de la Sélection Officielle de Cannes 2020. Nadia, 23 ans, nage pour le Canada aux Jeux olympiques. Cette compétition prestigieuse représente l\'aboutissement de sa vie de sacrifices. Pourtant, par peur de rester piégée dans le monde hermétique et éphémère du sport de haut niveau, Nadia a pris la décision..."));
+		mdao.save(new Movie("Nouvel ordre", "New Order", 12, 2021, LocalTime.of(1, 28, 00, 00), "Drame", 5.00,"https://m.media-amazon.com/images/M/MV5BOTcwNmM5MWItYmU5Mi00NmFkLWEwNmMtNWUxY2U1NTIzOWIwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
 				"Un mariage mondain est interrompu par l\'arrivée d\'invités importuns."));
 		mdao.save(new Movie("Promising Young Woman", "Promising Young Woman", 12, 2021, LocalTime.of(1, 54, 00, 00),
-				"Thriller", 5.00,
+				"Thriller", 5.00,"https://m.media-amazon.com/images/M/MV5BOTI0OGQzOWEtZWY1ZC00MTFjLThmODAtYWQ3MDk4ZGEyNGYyXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_SX300.jpg",
 				"Tout le monde s\'entendait pour dire que Cassie était une jeune femme pleine d\'avenir jusqu\'à ce qu\'un évènement inattendu ne vienne tout bouleverser. Mais rien dans la vie de Cassie n\'est en fait conforme aux apparences , elle est aussi intelligente que rusée, séduisante que calculatrice et mêne une double vie dès la nuit..."));
 		mdao.save(new Movie("Tom & Jerry", "Tom & Jerry", 0, 2021, LocalTime.of(1, 41, 00, 00), "Animation", 5.00,
-				"Les nouvelles aventures de Tom & Jerry dans un long métrage melant CGI et prises de vues réelles. Tom, le chat et Jerry, la souris n\'ont plus de domicile. Ils emménagent dans un hôtel chic de New York où Kayla a trouvé un emploi. Mais pour qu\'elle puisse le garder, il faut impérativement qu\'elle chasse Jerry avant la réception..."));
-		mdao.save(new Movie("Freaky", "Freaky", 0, 2021, LocalTime.of(1, 42, 00, 00), "Thriller", 5.00,
+				"https://m.media-amazon.com/images/M/MV5BNDg1Zjc4YzktMmRmZi00ZWJmLWJiYzgtYjg3MmE0OTM1NzY5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg","Les nouvelles aventures de Tom & Jerry dans un long métrage melant CGI et prises de vues réelles. Tom, le chat et Jerry, la souris n\'ont plus de domicile. Ils emménagent dans un hôtel chic de New York où Kayla a trouvé un emploi. Mais pour qu\'elle puisse le garder, il faut impérativement qu\'elle chasse Jerry avant la réception..."));
+		mdao.save(new Movie("Freaky", "Freaky", 0, 2021, LocalTime.of(1, 42, 00, 00), "Thriller", 5.00,"https://m.media-amazon.com/images/M/MV5BMTRkYmJlY2ItNmFlZi00OWVhLTg1ZTctOGE0MjM5ZGMwMmY4XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg",
 				"Millie Kessler, une adolescente de 17 ans, occupée à faire bonne figure dans son très élitiste lycée, Blissfield High, devient la nouvelle cible du Boucher, un tueur en série tristement notoire. Son année de Terminale va alors devenir le cadet de ses soucis. Lorsque, sous l\'effet du poignard antique du Boucher ils se réveillent dans le corps de..."));
 		mdao.save(new Movie("9 jours à Raqqa", "9 jours à Raqqa", 12, 2021, LocalTime.of(1, 30, 00, 00), "Documentaire",
 				5.00,
@@ -563,26 +562,26 @@ public class DemoData {
 		mdao.save(new Movie("Comment je suis devenu super-héros", "Comment je suis devenu super-héros", 12, 2021,
 				LocalTime.of(1, 37, 00, 00), "Policier / Espionnage", 5.00,
 				"Paris 2020. Dans une société où les surhommes sont banalisés et parfaitement intégrés, une mystérieuse substance procurant des super-pouvoirs à ceux qui n\'en ont pas se répand. Face aux incidents qui se multiplient, les lieutenants Moreau et Schaltzmann sont chargés de l\'enquête. Avec l\'aide de Monté Carlo et Callista, deux..."));
-		mdao.save(new Movie("Fatima", "Fatima", 12, 2021, LocalTime.of(1, 53, 00, 00), "Drame", 5.00,
+		mdao.save(new Movie("Fatima", "Fatima", 12, 2021, LocalTime.of(1, 53, 00, 00), "Drame", 5.00,"https://m.media-amazon.com/images/M/MV5BZTY4OWExZDYtN2ZkNy00ODA5LWE1MTktNGM3NzhmYTAwOTYyXkEyXkFqcGdeQXVyMTA2MDQ3MTQ3._V1_SX300.jpg",
 				"Portugal. 1917, trois jeunes bergers de Fatima racontent avoir vu la Vierge Marie. Leurs révélations vont toucher de nombreux croyants mais également attirer la colère des représentants de l\'Eglise et du gouvernement. Ils vont tout faire pour essayer d\'étouffer l\'affaire et obliger les trois enfants à se rétracter. Mais la rumeur..."));
 		mdao.save(new Movie("Mystère à Saint-Tropez", "Mystère à Saint-Tropez", 12, 2021, LocalTime.of(00, 00, 00, 00),
 				"Comédie", 5.00,
 				"Aout 1970, en pleine période yéyé. Comme chaque année, le milliardaire Claude Tranchant et sa femme Eliane ont invité le gratin du show-business dans leur somptueuse villa tropézienne. Rien ne semble pouvoir gâcher les festivités, si ce n\'est l\'inquiétant sabotage de la décapotable du couple. Persuadé d\'être victime"));
-		mdao.save(new Movie("Nomadland", "Nomadland", 12, 2021, LocalTime.of(1, 48, 00, 00), "Drame", 5.00,
+		mdao.save(new Movie("Nomadland", "Nomadland", 12, 2021, LocalTime.of(1, 48, 00, 00), "Drame", 5.00,"https://m.media-amazon.com/images/M/MV5BMDRiZWUxNmItNDU5Yy00ODNmLTk0M2ItZjQzZTA5OTJkZjkyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
 				"Après avoir tout perdu pendant la Grande Récession, une sexagénaire se lance dans un voyage à travers l\'Ouest américain, vivant comme un nomade des temps modernes."));
 		mdao.save(new Movie("Nos plus belles années", "Nos plus belles années", 12, 2021, LocalTime.of(2, 15, 00, 00),
-				"Comédie dramatique", 5.00,
+				"Comédie dramatique", 5.00,"https://m.media-amazon.com/images/M/MV5BNzMyMDYwNmMtYTRkNi00NTdjLTllYWMtOTI4NmM1OGRlZjE1L2ltYWdlXkEyXkFqcGdeQXVyMjA0NzcwMjI@._V1_SX300.jpg",
 				"C\'est l\'histoire de quatre amis, racontée sur quarante ans, en Italie, des années 1980 à aujourd\'hui. La chronique de leurs espoirs, de leurs désillusions, de leurs amours, et surtout, de leur amitié."));
 		mdao.save(new Movie("Un homme en colère", "Un homme en colère", 12, 2021, LocalTime.of(00, 00, 00, 00),
-				"Action", 5.00,
+				"Action", 5.00,"N/A",
 				"Un convoyeur de fond fraichement engagé surprend ses collègues par l\'incroyable précision de ses tirs de riposte alors qu\'ils subissent les assauts de braqueurs expérimentés.Tous se demandent désormais qui il est, d\'où il vient et pourquoi est-il là."));
 		mdao.save(new Movie("Délicieux", "Délicieux", 12, 2021, LocalTime.of(1, 53, 00, 00), "Comédie dramatique", 5.00,
-				"XVIIIe siècle. Un cuisinier est limogé par son maître. Il trouve le courage au contact d\'une jeune femme étonnante de se libérer de sa condition de domestique et de proposer son savoir-faire directement au public en créant le premier restaurant."));
+				"N/A","XVIIIe siècle. Un cuisinier est limogé par son maître. Il trouve le courage au contact d\'une jeune femme étonnante de se libérer de sa condition de domestique et de proposer son savoir-faire directement au public en créant le premier restaurant."));
 		mdao.save(new Movie("L\'un des notres", "L\'un des notres", 12, 2021, LocalTime.of(1, 55, 00, 00), "Thriller",
 				5.00,
 				"Après la perte de leur fils, le shérif à la retraite George Blackledge et son épouse, Margaret quittent leur ranch du Montana pour sauver leur jeune petit-fils des griffes d\'une dangereuse famille tenue d\'une main de fer par la matriarche Blanche Weboy. Quand ils découvrent que les Weboy n\'ont pas l\'intention de laisser partir l\'enfant..."));
 		mdao.save(new Movie("Ca tourne à Saint-Pierre et Miquelon", "Ca tourne à Saint-Pierre et Miquelon", 12, 2021,
-				LocalTime.of(1, 35, 00, 00), "Comédie dramatique", 5.00,
+				LocalTime.of(1, 35, 00, 00), "Comédie dramatique", 5.00,"N/A",
 				"Céline, une actrice, engagée par le célèbre réalisateur Milan Zodowski, arrive à Saint-Pierre et Miquelon. Sur place, il n\'y a qu\'un ingénieur du son et une régisseuse pour toute équipe et Milan refuse obstinément de sortir du cabanon où il s\'est enfermé. Le grand \'menteur en sc�ne\", adepte du cinéma vérité, fera-t-il tourner Céline ou l\'a-t-il..."));
 
 		prdao.save(new Product("Ticket Cinéma Unité", 8.00, "Ticketterie",
@@ -619,21 +618,29 @@ public class DemoData {
 		prdao.save(new Product("Schweppes 33cl", 1.50, "Boisson", "Votre incontournable boisson Schweppes!"));
 		prdao.save(new Product("Schweppes 50cl", 2.00, "Boisson", "Votre incontournable boisson Schweppes!"));
 
-		crdao.save(new CinemaRoom("Atlantis", 0, "4K", 256));
-		crdao.save(new CinemaRoom("Babylone", 0, "4K", 256));
-		crdao.save(new CinemaRoom("Carthage", 0, "4K", 128));
-		crdao.save(new CinemaRoom("Daedalus", 1, "4K", 256));
-		crdao.save(new CinemaRoom("Eristhem", 1, "4K", 128));
-		crdao.save(new CinemaRoom("Franborg", 1, "4K", 128));
-		crdao.save(new CinemaRoom("Gargantos", 2, "4K", 256));
-		crdao.save(new CinemaRoom("Hermetic", 2, "4K", 128));
-		crdao.save(new CinemaRoom("Istanbul", 2, "2K", 64));
-		crdao.save(new CinemaRoom("Jakarta", 2, "2K", 64));
+		crdao.save(new CinemaRoom("Atlantis", 0, "4K", 128));
+		crdao.save(new CinemaRoom("Babylone", 0, "4K", 128));
+		crdao.save(new CinemaRoom("Carthage", 0, "4K", 64));
+		crdao.save(new CinemaRoom("Daedalus", 1, "4K", 128));
+		crdao.save(new CinemaRoom("Eristhem", 1, "4K", 64));
+		crdao.save(new CinemaRoom("Franborg", 1, "4K", 64));
+		crdao.save(new CinemaRoom("Gargantos", 2, "4K", 128));
+		crdao.save(new CinemaRoom("Hermetic", 2, "4K", 64));
+		crdao.save(new CinemaRoom("Istanbul", 2, "2K", 32));
+		crdao.save(new CinemaRoom("Jakarta", 2, "2K", 32));
 
 		List<SecurityLevel> allSL = (List<SecurityLevel>) sldao.findAll();
 		Random rand = new Random();
-
-		for (int i = 0; i < 64; ++i) {
+		
+		
+		User ME1 = new User("MoshGoss","azertyuiop",new Person("Delmée","Quentin",LocalDate.of(1991, 3, 9), "H", "Nantes","Quentin.Delmee@QBY.fr"),allSL.get(0));
+		User ME2 = new User("DocKantum","azertyuiop",new Person("Delmée","Quentin",LocalDate.of(1991, 3, 9), "H", "Nantes","Quentin.Delmee@QBY.fr"),allSL.get(5));
+		
+		udao.save(ME1);
+		udao.save(ME2);
+		
+		
+		for (int i = 0; i < 32; ++i) {
 			String tempN = noms[rand.nextInt(noms.length)];
 			String tempP = prenoms[rand.nextInt(prenoms.length)];
 			LocalDate bd = randomDate();
@@ -642,18 +649,20 @@ public class DemoData {
 			String email = tempN + "." + tempP + "@email44.fr";
 
 			Person tempPerson = new Person(tempN, tempP, bd, tempS, tempV, email);
-			pedao.save(tempPerson);
 
 			String tempPseudo = pseudoFutur[rand.nextInt(pseudoFutur.length)];
 			int SL = rolesNDS[rand.nextInt(rolesNDS.length)];
 
 			User tempUser = new User(tempPseudo, createMDP(), tempPerson, allSL.get(SL - 1));
 			udao.save(tempUser);
+//			pedao.save(tempPerson);
+//			tempPerson.setIdUser(tempUser);
+//			pedao.save(tempPerson);
 		}
 
-		List<CinemaRoom> cineRoom = (List<CinemaRoom>) crdao.findAll();
+		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll();
 
-		for (CinemaRoom cinemaRoom : cineRoom) {
+		for (CinemaRoom cinemaRoom : allRooms) {
 			int tempSize = cinemaRoom.getNbSeats() / 32;
 			int tempRank = 32;
 
@@ -664,36 +673,82 @@ public class DemoData {
 				}
 			}
 		}
-
+		
+		
 		List<User> allUsers = (List<User>) udao.findAll();
-		System.out.println(allUsers);
 		List<Movie> allMovies = (List<Movie>) mdao.findAll();
-		System.out.println(allMovies);
-		List<CinemaRoom> allRooms = (List<CinemaRoom>) crdao.findAll();
-		System.out.println(allRooms);
 		List<Product> allProducts = (List<Product>) prdao.findAll();
-		System.out.println(allProducts);
 		List<Seat> allSeats = (List<Seat>) seadao.findAll();
-
-		for (int i = 0; i < 10; ++i) {
-			String tempC = comments[rand.nextInt(comments.length)];
+		int count = 0 ;
+		for (CinemaRoom cinemaRoom : allRooms) {
+			
 			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
-			Movie tempM = allMovies.get(rand.nextInt(allMovies.size()));
-			CinemaRoom tempCR = allRooms.get(rand.nextInt(allRooms.size()));
 			String tempP = proprete[rand.nextInt(proprete.length)];
-			Product tempProduct = allProducts.get(rand.nextInt(allProducts.size()));
-			LocalDateTime ldt = LocalDateTime.of(randomDate(), LocalTime.of(0, 0));
-			Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size()));
-			int tempQ = rand.nextInt(20);
-			int tempTC = rand.nextInt(20);
-
-			cdao.save(new Commentary(rand.nextInt(5), tempC, tempU, tempM));
-			odao.save(new Opinion(tempCR, tempU, rand.nextInt(5), tempP));
-			pudao.save(new Purchase(tempProduct, tempU, ldt, tempQ, tempTC));
-
-			rdao.save(new Reservation(tempU, tempSeat, ldt));
-			sesdao.save(new Session(tempCR, tempM, ldt, tempCR.getNbSeats()));
+			odao.save(new Opinion(cinemaRoom, tempU, rand.nextInt(5), tempP));
+			odao.save(new Opinion(cinemaRoom,ME1, rand.nextInt(5),tempP));
+			Movie tempM = allMovies.get(count);
+			++count ;
+			for( int i = 8 ; i < 22 ; i = i+3)
+			{
+				LocalDateTime ldt = LocalDateTime.of(LocalDate.now(),LocalTime.of(i,0)) ;
+				sesdao.save(new Session(cinemaRoom, tempM, ldt, cinemaRoom.getNbSeats()));
+				Seat tempSeat = allSeats.get(rand.nextInt(allSeats.size()));
+				rdao.save(new Reservation(tempU, tempSeat,tempM, ldt));
+				rdao.save(new Reservation(ME1, tempSeat,tempM, ldt));
+			}
+			
+			
 		}
 
+		
+		
+		for (Movie movie : allMovies) {
+			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
+			String tempC = comments[rand.nextInt(comments.length)];
+			cdao.save(new Commentary(rand.nextInt(5), tempC, tempU, movie));
+			cdao.save(new Commentary(rand.nextInt(5), tempC, ME1, movie));
+		}
+		
+		for (Product prod : allProducts)
+		{
+			User tempU = allUsers.get(rand.nextInt(allUsers.size()));
+			LocalDateTime ldt = LocalDateTime.of(randomDate(), LocalTime.of(0, 0));
+			int tempQ = rand.nextInt(20);
+			int tempTC = rand.nextInt(20);
+			pudao.save(new Purchase(prod, tempU, ldt, tempQ, tempTC));
+			pudao.save(new Purchase(prod, ME1, ldt, tempQ, tempTC));
+		}
+		
+		
+		  qdao.save( new Quizz( "Abeilles du rucher", "Comment appelle-t-on une personne qui élève des abeilles à miel ?", "Apiculteur", "Ostréiculteur", "Aviculteur", "Raniculteur", 1, "Pratiquée sur tous les continents, cette activité diffère selon les variétés d\'abeilles, le climat et le développement économique.", "https://fr.wikipedia.org/wiki/Apiculteur"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "De quel suc sécrété se nourrissent la plupart des abeilles de nos régions ?", "Nectar", "Cerne", "Bourgeon", "Loge", 1, "Cette substance possède, par son goût ou son odeur, un pouvoir d\'attraction sur les insectes ainsi que sur certains oiseaux.", "https://fr.wikipedia.org/wiki/Nectar_(botanique)"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Avec quel autre insecte plus agressif confond-on souvent l\'abeille ?", "Guêpe", "Frelon", "Taon", "Bourdon", 1, "La guêpe est un insecte ayant généralement un abdomen jaune rayé de noir et dont la femelle porte un dard venimeux.", "https://fr.wikipedia.org/wiki/Guêpe"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Que font les abeilles volant de fleur en fleur à la recherche de nourriture ?", "Elles butinent", "Elles ruminent", "Elles patinent", "Elles dessinent", 1, "L\'abeille récolte ainsi dans la nature nectar, propolis, miellat et pollen. En butinant, l\'abeille assure également la pollinisation.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quel phénomène important l\'abeille permet-elle d\'assurer en butinant ?", "Pollinisation", "Germination", "Sporulation", "Introgression", 1, "Les plantes contribuent quant à elle à l\'alimentation des pollinisateurs en leur fournissant le pollen en excès ou nectar.", "https://fr.wikipedia.org/wiki/Pollinisation"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Laquelle de ces propositions n\'est pas un produit dérivé de l\'abeille ?", "Beurre", "Miel", "Cire", "Gelée", 1, "Ces produits sont stockés dans des galeries pour les espèces solitaires, des assemblages complexes pour les espèces sociales.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quel est le seul individu femelle fertile au sein d\'une colonie d\'abeilles ?", "Reine", "Ouvrière", "Guêpe", "Frelon", 1, "La reine, à l\'abdomen plus allongé, est habituellement la mère de la plupart des abeilles de la ruche, sinon de la totalité.", "https://fr.wikipedia.org/wiki/Reine_des_abeilles"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quel mâle de l\'abeille est le produit de l\'éclosion d\'un oeuf non fécondé ?", "Faux bourdon", "Phasme", "Tique", "Coléoptère", 1, "Contrairement à l\'abeille ouvrière femelle, le faux bourdon ne possède pas de dard et ne récolte ni nectar ni pollen.", "https://fr.wikipedia.org/wiki/Faux_bourdon"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quelle petite abeille a fait la joie des enfants à la télévision dans les années 1980 ?", "Maya", "Heidi", "Tao Tao", "Zigby", 1, "Maya découvre le monde en compagnie de ses amis Willy l\'abeille, Flip la sauterelle, Max le ver de terre et Alexandre la souris.", "https://fr.wikipedia.org/wiki/Maya_l\'abeille_(série_télévisée)"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Environ combien d\'espèces d\'abeilles sont répertoriées à ce jour sur la planète ?", "20 000", "15 000", "10 000", "5 000", 1, "Les abeilles peuvent être classées selon leur mode de vie : abeilles domestiques, sauvages, solitaires ou bien sociales.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quel nom donne-t-on à un groupe d\'abeilles vivant en société ?", "Colonie", "Écotype", "Niche", "Guilde", 2, "En biologie, une colonie est un groupe d\'organismes de la même espèce vivant rassemblés selon un mode de vie particulier.", "https://fr.wikipedia.org/wiki/Colonie_(biologie)"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quelle espèce d\'abeille est probablement la plus connue en Europe ?", "Apis mellifera", "Apis cerana", "Apis florea", "Apis dorsata", 2, "Semi-domestique, le nom de genre Apis est le terme latin pour abeille, et mellifera signifie qui donne du miel.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quelle est la durée de vie moyenne d\'une abeille durant les mois d\'été ?", "Un mois", "Deux mois", "Trois mois", "Quatre mois", 2, "Se nourrissant du nectar des fleurs, une abeille peut vivre jusqu\'à dix mois en hiver et seulement un mois en été.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quelle expression désigne une espèce d\'abeille vivant en colonie ?", "Abeille sociale", "Abeille parasite", "Abeille solitaire", "Abeille à miel", 2, "D\'autres espèces sont des abeilles parasites ou abeilles coucous qui pratiquent le cleptoparasitisme.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "De quoi la larve d\'une future reine des abeilles est-elle exclusivement nourrie ?", "Gelée royale", "Insectes", "Sel", "Sédiments", 2, "La gelée royale est le produit de sécrétion des abeilles ouvrières, entre le cinquième et le quatorzième jour de leur existence.", "https://fr.wikipedia.org/wiki/Gelée_royale"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Comment appelle-t-on un rassemblement important d\'abeilles ?", "Essaim", "Grappe", "Manteau", "Sac", 2, "Le phénomène dit de nuée n\'a pas d\'origine météorologique directe mais est saisonnier et lié aux épisodes de sécheresse.", "https://fr.wikipedia.org/wiki/Essaim"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quelle abeille est la grande favorite de l\'apiculture en Europe ?", "Abeille noire", "Abeille rouge", "Abeille bleue", "Abeille blanche", 2, "Son aire de répartition originale s\'étendait de l\'ouest de la Russie à l\'Europe du Nord et probablement à la péninsule ibérique.", "https://fr.wikipedia.org/wiki/Apis_mellifera_mellifera"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Que se passe-t-il pour l\'abeille lorsque celle-ci utilise son dard cranté pour piquer ?", "Elle meurt", "Elle dort", "Elle gonfle", "Elle boit", 2, "La piqûre entraîne une partie des organes internes de l\'abeille, dont son sac à venin, ce qui est presque toujours fatal à l\'abeille.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Comment appelle-t-on l\'ensemble des ruches d\'un apiculteur ?", "Rucher", "Colonie", "Essaim", "Grappe", 2, "L\'emplacement des ruchers se fait notamment en fonction de l\'environnement et de l\'exposition (de préférence sud ou sud-est).", "https://fr.wikipedia.org/wiki/Rucher"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quel film d\'animation raconte la vie d\'une abeille fraîchement diplômée ?", "« Bee Movie »", "« Rosa »", "« Happy Feet »", "« Le Lorax »", 2, "Ce film d\'animation en images de synthèse sorti en 2007 a été écrit et produit par Jerry Seinfeld pour DreamWorks SKG.", "https://fr.wikipedia.org/wiki/Bee_Movie_:_Drôle_d\'abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Dans quelle résine a-t-on retrouvé les plus anciens fossiles d\'abeilles ?", "Ambre", "Turquoise", "Jais", "Opale", 3, "Le plus vieux fossile à ce jour est Melittosphex burmensis, daté de 100 millions d\'années et découvert en 2006 en Birmanie.", "https://fr.wikipedia.org/wiki/Ambre"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "De combien de castes une colonie d\'abeilles est-elle composée ?", "Trois", "Quatre", "Cinq", "Six", 3, "La reine, l\'unique femelle fertile du groupe, une majorité d\'ouvrières et des mâles (ou faux-bourdons) qui fécondent les futures reines.", "https://fr.wikipedia.org/wiki/Abeille"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quelles abeilles utilisent des galeries creusées dans le bois ?", "Xylicoles", "Rubicoles", "Horticoles", "Vinicoles", 3, "Un xylophage est un organisme vivant dont le régime alimentaire est composé principalement d\'aubier, mais aussi de bois parfait.", "https://fr.wikipedia.org/wiki/Xylophage"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Jusqu\'à combien d\'oeufs la reine des abeilles peut-elle pondre environ en une année ?", "400 000", "300 000", "200 000", "100 000", 3, "Quand sa spermathèque commence à se vider, elle ne peut plus pondre d\'oeufs d\'ouvrières et sa diffusion de phéromones se modifie.", "https://fr.wikipedia.org/wiki/Reine_des_abeilles"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quel processus fait naître une nouvelle reine-mère pour la ruche ?", "Remérage", "Reinage", "Ruchage", "Restaurage", 3, "La colonie amorce alors le périlleux processus de nourrir plusieurs nymphes de gelée royale, la survie de la colonie en dépendant.", "https://fr.wikipedia.org/wiki/Reine_des_abeilles"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Dans quelle maternité de la ruche se développent les futures abeilles ?", "Couvain", "Bûcher", "Dortoir", "Levant", 3, "Il est généralement situé au centre de la ruche et est entouré de rayons de miel et de pollen (pain d\'abeille) pour l\'alimenter.", "https://fr.wikipedia.org/wiki/Couvain"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Comment les abeilles évitent-elles d\'engendrer un organisme étouffant ?", "Essaimage", "Remérage", "Pollinage", "Ruchage", 3, "Ce phénomène a lieu quand une partie des abeilles quitte la ruche avec une reine (l\'essaim) pour former une nouvelle colonie.", "https://fr.wikipedia.org/wiki/Essaimage"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quelle pratique consiste à soigner avec les produits de la ruche ?", "Apithérapie", "Oligothérapie", "Phytothérapie", "Ayurveda", 3, "L\'apithérapie propose d\'utiliser les propriétés supposées du miel, de la propolis, du venin d\'abeilles, de la gelée royale et du pollen.", "https://fr.wikipedia.org/wiki/Apithérapie"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Quel choc une piqûre d\'abeille peut-elle parfois entraîner sur l\'homme ?", "Anaphylactique", "Perforin", "Antigène", "Macrophage", 3, "Il s\'agit d\'une manifestation d\'hypersensibilité immédiate due à la libération de médiateurs vaso-actifs chez un sujet sensibilisé.", "https://fr.wikipedia.org/wiki/Choc_anaphylactique"));
+		  qdao.save( new Quizz( "Abeilles du rucher", "Qu\'ont remplacé les abeilles impériales de Napoléon Bonaparte ?", "Fleur de lys", "Myosotis", "Bleuet", "Trèfle", 3, "Les fleurs de lis d\'or sur champ d\'azur devinrent les armes de France et l\'emblème spécifique des rois de France.", "https://fr.wikipedia.org/wiki/Fleur_de_lys"));
 	}
 }

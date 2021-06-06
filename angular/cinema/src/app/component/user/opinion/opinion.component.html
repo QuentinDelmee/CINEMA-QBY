@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-header>
+                <mat-icon>feedback</mat-icon>
+        </mat-card-header>
+
+
+        <mat-card-content>
+                <mat-card-title>My Room Ratings</mat-card-title>
+                <button mat-raised-button color="primary">
+                        <a mat-stroked-button color="" [routerLink]="['/user']">Return</a>
+                </button>
+                <mat-divider></mat-divider>
+        <table mat-table [dataSource]="opinions" [trackBy]="trackOpinion" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="CINEMA ROOM">
+                <th mat-header-cell *matHeaderCellDef> CINEMA ROOM </th>
+                <td mat-cell *matCellDef="let opinion"> {{opinion.idCinemaRoom.roomName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="RATING">
+                <th mat-header-cell *matHeaderCellDef> RATING </th>
+                <td mat-cell *matCellDef="let opinion"> {{opinion.rating}} </td>
+            </ng-container>
+            <ng-container matColumnDef="COMMENT">
+                <th mat-header-cell *matHeaderCellDef> COMMENT </th>
+                <td mat-cell *matCellDef="let opinion"> {{ opinion.cleanlyness}} </td>
+            </ng-container>
+            <ng-container matColumnDef="DELETE">
+                <th mat-header-cell *matHeaderCellDef> DELETE </th>
+                <td mat-cell *matCellDef="let opinion;let index = index"> <button mat-mini-fab color="primary" (click)="delete(opinion, index)">
+                    <mat-icon>delete</mat-icon>
+                </button> </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="['CINEMA ROOM', 'RATING', 'COMMENT', 'DELETE' ];"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['CINEMA ROOM','RATING', 'COMMENT', 'DELETE' ];"></tr>
+        </table>
+</mat-card-content>
+</mat-card>
